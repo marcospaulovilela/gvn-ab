@@ -5,22 +5,22 @@ using gvn_ab_mobile.Models;
 using Xamarin.Forms;
 
 namespace gvn_ab_mobile.Views {
-    public partial class NewItemPage : ContentPage {
-        public Item Item { get; set; }
+    public partial class NewUsuarioPage : ContentPage {
+        public Usuario usuario { get; set; }
 
-        public NewItemPage() {
+        public NewUsuarioPage() {
             InitializeComponent();
 
-            Item = new Item {
-                Text = "Item name",
-                Description = "This is a nice description"
+            usuario = new Usuario {
+                Cpf = "",
+                Nome = "John Doe"
             };
 
             BindingContext = this;
         }
 
         async void Save_Clicked(object sender, EventArgs e) {
-            MessagingCenter.Send(this, "AddItem", Item);
+            MessagingCenter.Send(this, "AddUsuario", usuario);
             await Navigation.PopToRootAsync();
         }
     }

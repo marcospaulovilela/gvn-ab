@@ -9,78 +9,57 @@ using Xamarin.Forms;
 
 [assembly: Dependency(typeof(gvn_ab_mobile.Services.MockDataStore))]
 namespace gvn_ab_mobile.Services {
-    public class MockDataStore : IDataStore<Item> {
-        bool isInitialized;
-        List<Item> items;
+    public class MockDataStore : IDataStore<Models.Usuario> {
+        List<Models.Usuario> usuarios;
 
-        public async Task<bool> AddItemAsync(Item item) {
+        public async Task<bool> AddItemAsync(Models.Usuario usuario) {
+            new DAO.DAOUsuario().Insert(usuario);
+            await InitializeAsync();
+            
+            return await Task.FromResult(true);
+        }
+
+        public async Task<bool> UpdateItemAsync(Models.Usuario usuario) {
             await InitializeAsync();
 
-            items.Add(item);
+            var _item = usuarios.Where((Models.Usuario arg) => arg.Id == usuario.Id).FirstOrDefault();
+            usuarios.Remove(_item);
+            usuarios.Add(usuario);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Item item) {
+        public async Task<bool> DeleteItemAsync(Models.Usuario usuario) {
             await InitializeAsync();
 
-            var _item = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(_item);
-            items.Add(item);
+            var _item = usuarios.Where((Models.Usuario arg) => arg.Id == usuario.Id).FirstOrDefault();
+            usuarios.Remove(_item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(Item item) {
+        public async Task<Models.Usuario> GetItemAsync(long Id) {
             await InitializeAsync();
 
-            var _item = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(_item);
-
-            return await Task.FromResult(true);
+            return await Task.FromResult(usuarios.FirstOrDefault(s => s.Id == Id));
         }
 
-        public async Task<Item> GetItemAsync(string id) {
+        public async Task<IEnumerable<Models.Usuario>> GetItemsAsync(bool forceRefresh = false) {
             await InitializeAsync();
 
-            return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
-        }
-
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false) {
-            await InitializeAsync();
-
-            return await Task.FromResult(items);
+            return await Task.FromResult(usuarios);
         }
 
         public Task<bool> PullLatestAsync() {
             return Task.FromResult(true);
         }
-
-
+    
         public Task<bool> SyncAsync() {
             return Task.FromResult(true);
         }
 
         public async Task InitializeAsync() {
-            if (isInitialized)
-                return;
-
-            items = new List<Item>();
-            var _items = new List<Item>
-            {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Buy some cat food", Description="The cats are hungry"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Learn F#", Description="Seems like a functional idea"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Learn to play guitar", Description="Noted"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Buy some new candles", Description="Pine and cranberry for that winter feel"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Complete holiday shopping", Description="Keep it a secret!"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Finish a todo list", Description="Done"},
-            };
-
-            foreach (Item item in _items) {
-                items.Add(item);
-            }
-
-            isInitialized = true;
+            usuarios = new DAO.DAOUsuario().Select();
         }
     }
 }

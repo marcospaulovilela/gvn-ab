@@ -9,19 +9,19 @@ using gvn_ab_mobile.Views;
 using Xamarin.Forms;
 
 namespace gvn_ab_mobile.ViewModels {
-    public class ItemsViewModel : BaseViewModel {
-        public ObservableRangeCollection<Item> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
+    public class UsuariosViewModel : BaseViewModel {
+        public ObservableRangeCollection<Usuario> Usuarios { get; set; }
+        public Command LoadUsuariosCommand { get; set; }
 
-        public ItemsViewModel() {
-            Title = "Browse";
-            Items = new ObservableRangeCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+        public UsuariosViewModel() {
+            Title = "Usuarios";
+            Usuarios = new ObservableRangeCollection<Models.Usuario>();
+            LoadUsuariosCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) => {
-                var _item = item as Item;
-                Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
+            MessagingCenter.Subscribe<NewUsuarioPage, Usuario>(this, "AddUsuario", async (obj, u) => {
+                var _u = u as Usuario;
+                Usuarios.Add(_u);
+                await DataStore.AddItemAsync(_u);
             });
         }
 
@@ -32,9 +32,9 @@ namespace gvn_ab_mobile.ViewModels {
             IsBusy = true;
 
             try {
-                Items.Clear();
+                Usuarios.Clear();
                 var items = await DataStore.GetItemsAsync(true);
-                Items.ReplaceRange(items);
+                Usuarios.ReplaceRange(items);
             } catch (Exception ex) {
                 Debug.WriteLine(ex);
                 MessagingCenter.Send(new MessagingCenterAlert {

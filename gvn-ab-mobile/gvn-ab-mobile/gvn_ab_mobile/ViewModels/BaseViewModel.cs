@@ -9,7 +9,7 @@ namespace gvn_ab_mobile.ViewModels {
         /// <summary>
         /// Get the azure service instance
         /// </summary>
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Models.Usuario> DataStore => DependencyService.Get<IDataStore<Models.Usuario>>();
 
         bool isBusy = false;
         public bool IsBusy {

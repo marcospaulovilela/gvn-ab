@@ -17,10 +17,7 @@ namespace gvn_ab_mobile.Helpers {
         /// <param name="propertyName">Property name.</param>
         /// <param name="onChanged">On changed.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        protected bool SetProperty<T>(
-            ref T backingStore, T value,
-            [CallerMemberName]string propertyName = "",
-            Action onChanged = null) {
+        protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName]string propertyName = "", Action onChanged = null) {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
 

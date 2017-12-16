@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gvn_ab_mobile", "gvn-ab-mobile\gvn_ab_mobile\gvn_ab_mobile.csproj", "{F065BFF3-2FF2-468C-A780-44307733D08E}"
 EndProject
@@ -130,5 +130,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E66D918C-209F-48FF-A081-10BB8FA24B1C}
 	EndGlobalSection
 EndGlobal
