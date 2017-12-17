@@ -47,6 +47,7 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _tpCdsOrigem, value); }
         }
 
+        //CAMPO ESTRANHO
         //Campo uuid - Tipo string
         private string _uuid; //Condicional
         [MaxLength(44)] //Mínimo 36 caracteres; Máximo 44 caracteres
