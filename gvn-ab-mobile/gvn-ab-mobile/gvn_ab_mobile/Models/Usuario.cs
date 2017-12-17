@@ -16,21 +16,21 @@ namespace gvn_ab_mobile.Models {
         }
 
         private string _cpf;
-        [MaxLength(11)]
+        [MaxLength(11), NotNull, Unique]
         public string Cpf {
             get { return this._cpf; }
             set { SetProperty(ref _cpf, value); }
         }
 
         private string _nome;
-        [MaxLength(100)]
+        [MaxLength(100), NotNull]
         public string Nome {
             get { return this._nome; }
             set { SetProperty(ref _nome, value); }
         }
 
         private string _password;
-        [MaxLength(100)]
+        [MaxLength(100), NotNull]
         public string Password {
             get { return this._password; }
             set { SetProperty(ref _password, value); }

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gvn_ab_mobile.Views.LoginPage"
+             BackgroundImage="rainDrops">
+    <ContentPage.Content>
+        <Grid Padding="20, 30, 20, 20" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Text="SAUDE" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="White" />
+
+            <Grid Grid.Row="4" HorizontalOptions="Fill" Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="iconUsername.png" HeightRequest="30" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                <Entry Placeholder="Usuario"  FontSize="Large" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding usuario.Cpf}"/>
+            </Grid>
+
+            <Grid Grid.Row="5" HorizontalOptions="Fill" Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="iconPassword.png" HeightRequest="30" VerticalOptions="Center" />
+                <Entry Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding usuario.Password}"/>
+            </Grid>
+
+            <StackLayout Grid.Row="6" Spacing="12" HorizontalOptions="Fill">
+                <Button Text="Entrar" BackgroundColor="#505050" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" Command="{Binding Login}" />
+                <Button Text="BTN-TEMPORARIO (REINICIA BASE DE USUARIO)" BackgroundColor="#505050" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" Clicked="ButtonReset_ClickedAsync" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

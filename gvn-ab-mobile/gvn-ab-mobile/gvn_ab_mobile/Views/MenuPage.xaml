@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="#282828"
+             x:Class="gvn_ab_mobile.Views.MenuPage">
+    <ContentPage.Content>
+
+        <Grid Padding="20, 30, 20, 20" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Text="Fichas" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="White" />
+            
+            <StackLayout Grid.Row="3" Spacing="12" HorizontalOptions="Fill">
+                <Button Text="Cadastro invidividual" Image="iconUsername" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill">
+                <Button Text="Cadastro Domiciliar" Image="iconHome" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+            </StackLayout>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
