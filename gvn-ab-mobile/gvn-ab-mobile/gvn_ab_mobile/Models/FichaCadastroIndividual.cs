@@ -47,7 +47,7 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _tpCdsOrigem, value); }
         }
 
-        //CAMPO ESTRANHO
+        //CAMPO ESTRANHO (CONDICIONAL?)
         //Campo uuid - Tipo string
         private string _uuid; //Condicional
         [MaxLength(44)] //Mínimo 36 caracteres; Máximo 44 caracteres
@@ -737,7 +737,7 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _dataObito, value); }
         }
 
-        //CAMPO ESTRANHO
+        //CAMPO ESTRANHO (DATA REPETIDA?)
         //Campo numeroDO - Tipo string
         private string _numeroDO; //Condicional
         [MaxLength(9)] //Mínimo 9 caracteres; Máximo 9 caracteres

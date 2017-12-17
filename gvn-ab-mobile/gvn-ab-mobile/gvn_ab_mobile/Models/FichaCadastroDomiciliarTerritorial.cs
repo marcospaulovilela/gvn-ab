@@ -180,7 +180,7 @@ namespace gvn_ab_mobile.Models
 
         //Campo stDisponibilidadeEnergia - Tipo long
         private long _stDisponibilidadeEnergia; //Não Obrigatório
-        public long stDisponibilidadeEnergia
+        public long StDisponibilidadeEnergia
         {
             get { return this._stDisponibilidadeEnergia; }
             set { SetProperty(ref _stDisponibilidadeEnergia, value); }
