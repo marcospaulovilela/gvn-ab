@@ -9,7 +9,7 @@ namespace gvn_ab_mobile.DAO {
     public class DAOUsuario : DAO<Models.Usuario> {
 
         public Models.Usuario GetUsuarioById(long Id) {
-            var result = base.Select("selet * from Usuario where Id = ?", Id);
+            var result = base.Select("select * from Usuario where Id = ?", Id);
             return result.FirstOrDefault(null);
         }
     }
