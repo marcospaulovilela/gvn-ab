@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.DAO {
-    public abstract class DAO<T>
+    public abstract class DAO<T> : IDisposable
         where T : class {
         private SQLiteConnection connection;
 
@@ -36,7 +36,7 @@ namespace gvn_ab_mobile.DAO {
             return 0;
         }
 
-        public virtual List<T> Select() {
+        public List<T> Select() {
             var scan = this.connection.Table<T>().ToList();
             if (scan == null)
                 scan = new List<T>();
@@ -44,10 +44,14 @@ namespace gvn_ab_mobile.DAO {
             return scan;
         }
 
-        public virtual List<T> Select(string query, params object[] parameters) {
+        public List<T> Select(string query, params object[] parameters) {
             return this.connection.Query<T>(query, parameters);
         }
        
+        public void ClearBase() {
+            this.connection.DeleteAll<T>();
+        }
+
         public void Dispose() {
             this.connection.Dispose();
         }
