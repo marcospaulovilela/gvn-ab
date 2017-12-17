@@ -38,6 +38,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviors\EntryMaxLengthBehavior.cs" />
+    <Compile Include="Behaviors\ValidatorEntryBehavior.cs" />
+    <Compile Include="Behaviors\Validators.cs" />
     <Compile Include="Config\ISQLiteConfig.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DAOUsuario.cs" />

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              x:Class="gvn_ab_mobile.Views.LoginPage"
              BackgroundImage="rainDrops">
     <ContentPage.Content>
@@ -26,7 +27,11 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Image Source="iconUsername.png" HeightRequest="30" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                <Entry Placeholder="Usuario"  FontSize="Large" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding usuario.Cpf}"/>
+                <Entry Placeholder="Usuario"  Keyboard="Numeric"  FontSize="Large" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding usuario.Cpf}">
+                    <Entry.Behaviors>
+                        <behaviors:ValidatorsCpf />
+                    </Entry.Behaviors>
+                </Entry>
             </Grid>
 
             <Grid Grid.Row="5" HorizontalOptions="Fill" Padding="5">
