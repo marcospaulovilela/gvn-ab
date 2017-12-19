@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models
 {
@@ -154,15 +155,6 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _atencaoDomiciliarModalidade, value); }
         }
 
-        //CAMPO ESTRANHO
-        //Campo problemaCondicaoAvaliada - Tipo 
-        private List<string> _problemaCondicaoAvaliada; //Obrigatório
-        public List<string> ProblemaCondicaoAvaliada
-        {
-            get { return this._problemaCondicaoAvaliada; }
-            set { SetProperty(ref _problemaCondicaoAvaliada, value); }
-        }
-
         //Campo examesSolicitados - Tipo List<String>
         private List<string> _examesSolicitados; //Não Obrigatório
         [MaxLength(23)] //Mínimo 0 dígitos; Máximo 23 dígitos
@@ -179,16 +171,6 @@ namespace gvn_ab_mobile.Models
         {
             get { return this._examesAvaliados; }
             set { SetProperty(ref _examesAvaliados, value); }
-        }
-
-        //CAMPO ESTRANHO
-        //Campo outroSia - Tipo List<String>
-        private List<string> _outroSia; //Não Obrigatório
-        [MaxLength(23)] //Mínimo 0 dígitos; Máximo 23 dígitos
-        public List<string> OutroSia
-        {
-            get { return this._outroSia; }
-            set { SetProperty(ref _outroSia, value); }
         }
 
         //Campo vacinaEmDia - Tipo boolean
@@ -271,27 +253,6 @@ namespace gvn_ab_mobile.Models
 
         //FIM FichaAtendimentoIndividualChild
 
-        //INÍCIO OutrosSia
-
-        //Campo codigoExame - Tipo string
-        private string _codigoExame; //Não Obrigatório
-        public string CodigoExame
-        {
-            get { return this._codigoExame; }
-            set { SetProperty(ref _codigoExame, value); }
-        }
-
-        //Campo solicitadoAvaliado - Tipo List<string>
-        private List<string> _solicitadoAvaliado; //Obrigatório
-        [MaxLength(2)] //Mínimo 1; Máximo 2
-        public List<string> SolicitadoAvaliado
-        {
-            get { return this._solicitadoAvaliado; }
-            set { SetProperty(ref _solicitadoAvaliado, value); }
-        }
-
-        //FIM OutrosSia
-
         //INÍCIO ProblemaCondicaoAvaliacaoAI
 
         //Campo ciaps - Tipo List<string>
@@ -336,6 +297,17 @@ namespace gvn_ab_mobile.Models
         }
 
         //FIM ProblemaCondicaoAvaliacaoAI
+
+        //CARDINALIDADE RELAÇÃO OUTROSSIA
+
+        [OneToMany]
+        public List<fichaOutrosSia> OutrosSia
+        {
+            get;
+            set;
+        }
+
+        //
 
     }
 }
