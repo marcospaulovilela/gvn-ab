@@ -398,8 +398,19 @@ namespace gvn_ab_mobile.Models
 
         //FIM INSTITUIÇÃO PERMANÊNCIA
 
+        //CARDINALIDADE RELAÇÃO FICHA HEADER
+
+        [OneToOne]
+        public FichaHeader Header
+        {
+            get;
+            set;
+        }
+
+        //
+
         //CARDINALIDADE FICHA FACMILIA
-    
+
         [OneToMany]
         public List<FichaFamilia> Familias
         {

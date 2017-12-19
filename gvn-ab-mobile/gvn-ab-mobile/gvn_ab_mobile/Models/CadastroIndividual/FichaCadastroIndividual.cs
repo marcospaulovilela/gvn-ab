@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models
 {
@@ -748,6 +749,17 @@ namespace gvn_ab_mobile.Models
         }
 
         //FIM SAÍDA CIDADÃO CADASTRO
+
+        //CARDINALIDADE RELAÇÃO FICHA HEADER
+
+        [OneToOne]
+        public FichaHeader Header
+        {
+            get;
+            set;
+        }
+
+        //
 
     }
 }
