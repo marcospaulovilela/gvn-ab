@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using SQLiteNetExtensions.Attributes;
 using SQLite.Net.Attributes;
 
 namespace gvn_ab_mobile.Models
@@ -198,8 +199,8 @@ namespace gvn_ab_mobile.Models
         private long _tipoDomicilio; //Não Obrigatório
         public long TipoDomicilio
         {
-            get { return this._tipoAcessoDomicilio; }
-            set { SetProperty(ref _tipoAcessoDomicilio, value); }
+            get { return this._tipoDomicilio; }
+            set { SetProperty(ref _tipoDomicilio, value); }
         }
 
         //Campo aguaConsumoDomicilio - Tipo long
@@ -396,6 +397,17 @@ namespace gvn_ab_mobile.Models
         }
 
         //FIM INSTITUIÇÃO PERMANÊNCIA
+
+        //CARDINALIDADE FICHA FACMILIA
+    
+        [OneToMany]
+        public List<FichaFamilia> Familias
+        {
+            get;
+            set;
+        }
+
+        //
 
     }
 }

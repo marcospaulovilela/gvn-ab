@@ -385,8 +385,8 @@ namespace gvn_ab_mobile.Models
         [MaxLength(7)] //Mínimo 7 caracteres - Máximo 7 caracteres
         public string CodigoIbgeMunicipioNascimento
         {
-            get { return this._nomeSocial; }
-            set { SetProperty(ref _nomeSocial, value); }
+            get { return this._codigoIbgeMunicipioNascimento; }
+            set { SetProperty(ref _codigoIbgeMunicipioNascimento, value); }
         }
 
         //Campo dataNascimentoCidadao - Tipo long
@@ -439,8 +439,8 @@ namespace gvn_ab_mobile.Models
         [MaxLength(70)] //Mínimo 3 caracteres; Máximo 70 caracteres
         public string NomeMaeCidadao
         {
-            get { return this._nomeCidadao; }
-            set { SetProperty(ref _nomeCidadao, value); }
+            get { return this._nomeMaeCidadao; }
+            set { SetProperty(ref _nomeMaeCidadao, value); }
         }
 
         //Campo cnsCidadao - Tipo string
