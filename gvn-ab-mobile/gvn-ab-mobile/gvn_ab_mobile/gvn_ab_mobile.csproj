@@ -45,7 +45,7 @@
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DAOFichaAtendimentoIndividual.cs" />
     <Compile Include="DAO\DAOFichaAtendimentoIndividualChild.cs" />
-    <Compile Include="DAO\DaoFichaCadastroDomiciliarTerritorial.cs" />
+    <Compile Include="DAO\DAOFichaCadastroDomiciliarTerritorial.cs" />
     <Compile Include="DAO\DAOFichaFamilia.cs" />
     <Compile Include="DAO\DAOFichaHeader.cs" />
     <Compile Include="DAO\DAOFichaOutrosSia.cs" />
