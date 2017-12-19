@@ -50,7 +50,7 @@
     <Compile Include="DAO\DAOFichaHeader.cs" />
     <Compile Include="DAO\DAOFichaOutrosSia.cs" />
     <Compile Include="DAO\DAOUsuario.cs" />
-    <Compile Include="DAO\FichaCadastroIndividual.cs" />
+    <Compile Include="DAO\DAOFichaCadastroIndividual.cs" />
     <Compile Include="Helpers\MessengingCenterAlert.cs" />
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\ObservableRangeCollection.cs" />
