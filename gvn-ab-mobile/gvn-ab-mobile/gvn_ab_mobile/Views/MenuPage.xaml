@@ -21,9 +21,12 @@
                 <Button Text="Cadastro invidividual" Image="iconUsername" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
             </StackLayout>
 
-
             <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill">
                 <Button Text="Cadastro Domiciliar" Image="iconHome" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="5" Spacing="12" HorizontalOptions="Fill">
+                <Button Text="Sync (APENAS GET AINDA) " IsVisible="{Binding usuario.Root}" BackgroundColor="Transparent" Opacity="0.80" BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
             </StackLayout>
 
         </Grid>

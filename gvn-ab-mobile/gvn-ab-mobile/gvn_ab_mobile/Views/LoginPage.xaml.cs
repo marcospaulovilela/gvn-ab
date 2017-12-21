@@ -25,7 +25,8 @@ namespace gvn_ab_mobile.Views {
             DAO.Insert(new Models.Usuario() {
                 Cpf = "123456789",
                 Nome = "Usuario Teste",
-                Password = "123"
+                Password = "123",
+                Root = true
             });
         }
     }

@@ -35,7 +35,14 @@ namespace gvn_ab_mobile.Models {
             get { return this._password; }
             set { SetProperty(ref _password, value); }
         }
-        
+
+        private bool _root;
+        [NotNull]
+        public bool Root {
+            get { return this._root; }
+            set { SetProperty(ref this._root, value); }
+        }
+
         public override string ToString() {
             return $"{this.Cpf} - {this.Nome}";
         }

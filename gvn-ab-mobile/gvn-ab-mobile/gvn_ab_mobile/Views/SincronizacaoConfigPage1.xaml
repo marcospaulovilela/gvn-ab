@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gvn_ab_mobile.Views.SincronizacaoConfigPage1">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Endereço Governa.Saude.AtencaoBasica: "  FontSize="Medium"/>
+            <Entry Text="{Binding configuracao.Ip}" FontSize="Small" />
+
+            <Button Text="Conectar" BackgroundColor="#505050" IsEnabled="{Binding modelView.Conexao}" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gvn_ab_mobile.Views.SincronizacaoConfigPage2">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Unidade: "  FontSize="Medium"/>
+            <Picker SelectedIndex="{Binding modelView.Configuracao.Unidades}" HorizontalOptions="FillAndExpand">
+                <Picker.Items>
+                    <x:String>ESF São Pedro</x:String>
+                    <x:String>UPA Teste</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Versão: "  FontSize="Medium"/>
+            <Picker SelectedIndex="{Binding modelView.Configuracao.Versao}" HorizontalOptions="FillAndExpand">
+                <Picker.Items>
+                    <x:String>v2.2</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button Text="Importar base de dados!" BackgroundColor="#505050" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
