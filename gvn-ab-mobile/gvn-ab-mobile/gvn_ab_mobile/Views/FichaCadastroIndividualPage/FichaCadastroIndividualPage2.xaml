@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="20, 30, 20, 20" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Text="Identificação do Usuário/Cidadão" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="Black" />
+
+                <Grid Grid.Row="4" HorizontalOptions="Fill" Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="CNS do Cidadão:" FontSize="20" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="0" TextColor="Black" />
+                    <Entry Placeholder="CNS do Cidadao" FontSize="Large" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="1" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.CnsCidadao}"/>
+                </Grid>
+
+                <Grid Grid.Row="5" HorizontalOptions="Fill" Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Cidadão é o Responsável Familiar?" FontSize="20" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="0" TextColor="Black" />
+                    <Switch Grid.Row="1" Grid.Column="0" IsToggled="{Binding Ficha.StatusEhResponsavel}"></Switch>
+                </Grid>
+
+                <Grid Grid.Row="6" HorizontalOptions="Fill" Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="CNS do Responsável Familiar:" FontSize="20" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="0" TextColor="Black" />
+                    <Entry Placeholder="CNS do Responsável Familiar" FontSize="Large" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="1" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.CnsResponsavelFamiliar}"/>
+                </Grid>
+
+
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

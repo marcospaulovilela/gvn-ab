@@ -27,7 +27,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Image Source="iconUsername.png" HeightRequest="30" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                <Entry Placeholder="Usuario"  Keyboard="Numeric"  FontSize="Large" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding usuario.Cpf}">
+                <Entry Placeholder="Usuario"  Keyboard="Numeric"  FontSize="Large" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Cpf}">
                     <Entry.Behaviors>
                         <behaviors:ValidatorsCpf />
                     </Entry.Behaviors>
@@ -44,7 +44,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Image Source="iconPassword.png" HeightRequest="30" VerticalOptions="Center" />
-                <Entry Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding usuario.Password}"/>
+                <Entry Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Password}"/>
             </Grid>
 
             <StackLayout Grid.Row="6" Spacing="12" HorizontalOptions="Fill">

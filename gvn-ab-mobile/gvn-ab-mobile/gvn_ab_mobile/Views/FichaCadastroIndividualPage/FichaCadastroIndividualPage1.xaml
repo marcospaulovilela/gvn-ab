@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="WhiteSmoke"
+             x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage1">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="O Cidadão concorda em responder o questionário de Cadastro individual?" FontSize="20" TextColor="Black" />
+       
+            <Button Clicked="OnConcordaClicked" Text="Concorda"  BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="Black" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
