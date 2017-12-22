@@ -32,7 +32,7 @@ namespace gvn_ab_mobile.Models {
         /// UNIDADE DE ATENDIMENTO (ESTABELECIMENTO) AO QUAL O TABLE SERA SINCRONIZADO
         /// </summary>
         private long? _CodEstabelecimento;
-        [NotNull]page
+        [NotNull]
         public long? CodEstabelecimento{
             get { return this._CodEstabelecimento; }
             set { SetProperty(ref _CodEstabelecimento, value); }

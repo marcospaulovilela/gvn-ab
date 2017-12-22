@@ -7,20 +7,6 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label Text="Teste" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="White" />
-                <Label Text="Teste" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" TextColor="White" />
-            </Grid>
-
-
             <Grid Padding="20, 30, 20, 20" RowSpacing="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20" />
