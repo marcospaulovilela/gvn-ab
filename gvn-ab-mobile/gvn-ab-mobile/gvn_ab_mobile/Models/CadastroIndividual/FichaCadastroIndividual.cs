@@ -9,7 +9,7 @@ using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models
 {
-    class FichaCadastroIndividual : Helpers.ObservableObject
+    public class FichaCadastroIndividual : Helpers.ObservableObject
     {
         
         //Campo ID - Tipo long
@@ -498,8 +498,8 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo statusEhResponsavel - Tipo boolean
-        private long _statusEhResponsavel; //Não Obrigatório
-        public long StatusEhResponsavel
+        private bool _statusEhResponsavel; //Não Obrigatório
+        public bool StatusEhResponsavel
         {
             get { return this._statusEhResponsavel; }
             set { SetProperty(ref _statusEhResponsavel, value); }

@@ -26,5 +26,21 @@ namespace gvn_ab_mobile.Views {
             this.BindingContext = this;
             this.usuario = usuario;
         }
+
+        async void OnAtendimentoIndividualClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FichaAtendimentoIndividualPage.FichaAtendimentoIndividualPage1());
+        }
+
+        async void OnCadastroIndividualClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FichaCadastroIndividualPage.FichaCadastroIndividualPage1());
+        }
+
+        async void OnCadastroDomiciliarClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage1());
+        }
+
     }
 }

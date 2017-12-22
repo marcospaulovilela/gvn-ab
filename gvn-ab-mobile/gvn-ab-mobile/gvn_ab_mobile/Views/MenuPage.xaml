@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             BackgroundColor="#282828"
+             BackgroundColor="WhiteSmoke"
              x:Class="gvn_ab_mobile.Views.MenuPage">
     <ContentPage.Content>
 
@@ -15,14 +15,19 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Label Text="Fichas" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="White" />
+            <Label Text="Fichas" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="Black" />
             
             <StackLayout Grid.Row="3" Spacing="12" HorizontalOptions="Fill">
-                <Button Text="Cadastro invidividual" Image="iconUsername" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+                <Button Clicked="OnCadastroIndividualClicked" Text="Cadastro Individual" Image="iconPessoas" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="Black" />
             </StackLayout>
 
             <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill">
-                <Button Text="Cadastro Domiciliar" Image="iconHome" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+                <Button Clicked="OnCadastroDomiciliarClicked" Text="Cadastro Domiciliar" Image="iconCasas" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="Black" />
+            </StackLayout>
+
+            
+            <StackLayout Grid.Row="5" Spacing="12" HorizontalOptions="Fill">
+                <Button Clicked="OnAtendimentoIndividualClicked" Text="Atendimento Individual" Image="iconMedico" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="Black" />
             </StackLayout>
 
             <StackLayout Grid.Row="5" Spacing="12" HorizontalOptions="Fill">
