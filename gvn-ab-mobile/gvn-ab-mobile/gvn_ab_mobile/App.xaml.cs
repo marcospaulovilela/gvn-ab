@@ -13,7 +13,7 @@ namespace gvn_ab_mobile {
         }
 
         public static void SetMainPage() {
-            Current.MainPage = new NavigationPage(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2()); ;
+            Current.MainPage = new NavigationPage(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4()); ;
             //new TabbedPage {
             //    Children = {
             //        new NavigationPage(new UsuariosPage()) {

@@ -14,31 +14,108 @@
 
                 <Label Text="Identificação do Usuário/Cidadão" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="Black" />
 
-                <ScrollView Grid.Row="3">
-                    <StackLayout>
-                        <Grid HorizontalOptions="Fill" Padding="5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                <StackLayout Grid.Row="3">
+                    <ScrollView Orientation="Vertical">
+                    <Grid HorizontalOptions="Fill" Padding="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-                            <Label Text="CNS do Cidadão:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="0" TextColor="Black" />
-                            <Entry Placeholder="CNS do Cidadao" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="1" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.CnsCidadao}"/>
+                        <?LINHA 1?>
+                        
+                        <Label Text="CNS do Cidadão:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="0" TextColor="Black" />
+                        <Entry Placeholder="CNS do Cidadao" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="1" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.CnsCidadao}"/>
 
-                            <Label Text="Cidadão é o Responsável Familiar?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="1" TextColor="Black" />
-                            <Switch Grid.Row="1" HorizontalOptions="Center" Grid.Column="1" IsToggled="{Binding Ficha.StatusEhResponsavel}"></Switch>
+                        <Label Text="Cidadão é o Responsável Familiar?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="1" TextColor="Black" />
+                        <Switch Grid.Row="1" HorizontalOptions="Center" Grid.Column="1" IsToggled="{Binding Ficha.StatusEhResponsavel}"></Switch>
 
-                            <Label Text="CNS do Responsável Familiar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="2" TextColor="Black" />
-                            <Entry Placeholder="CNS do Responsável Familiar" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="1" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.CnsResponsavelFamiliar}"/>
+                        <Label Text="CNS do Responsável Familiar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="2" TextColor="Black" />
+                        <Entry Placeholder="CNS do Responsável Familiar" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="1" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.CnsResponsavelFamiliar}"/>
+
+                        <Label Text="Microárea:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="3" TextColor="Black" />
+                        <Entry Placeholder="Microárea" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="1" Grid.Column="3" TextColor="Black" Text="{Binding Ficha.MicroArea}"/>
+
+                        <?LINHA 2?>
+                        
+                        <Label Text="Nome do Cidadão:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Row="3" Grid.Column="0" TextColor="Black" />
+                        <Entry Placeholder="Nome do Cidadao" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" Grid.Row="3" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.NomeCidadao}"/>
+
+                        <?LINHA 3?>
+                        
+                        <Label Text="Nome Social:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="5" Grid.Column="0" TextColor="Black" />
+                        <Entry Placeholder="Nome Social" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="6" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.NomeSocial}"/>
+
+                        <Label Text="Data Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="5" Grid.Column="1" TextColor="Black" />
+                        <Entry Placeholder="Data Nascimento" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.DataNascimentoCidadao}"/>
+
+                        <Label Text="Sexo:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Start" Grid.Row="5" Grid.Column="2" TextColor="Black" />
+                        <Switch Grid.Row="6" HorizontalOptions="Start" Grid.Column="2" IsToggled="{Binding Ficha.SexoCidadao}"></Switch>
+
+                        <?LINHA 4?>
+                        
+                        <Label Text="Raça/Cor:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="8" Grid.Column="0" TextColor="Black" />
+                        <Entry Placeholder="Raça/Cor" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="9" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.RacaCorCidadao}"/>
+
+                        <Label Text="Etnia:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="8" Grid.Column="1" TextColor="Black" />
+                        <Entry Placeholder="Etnia" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="9" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.Etnia}"/>
+
+                        <Label Text="Número Nis (Pis/Pasep):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="8" Grid.Column="2" TextColor="Black" />
+                        <Entry Placeholder="Número" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="9" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.NumeroNisPisPasep}"/>
+
+                        <?LINHA 5?>
+                        
+                        <Label Text="Nome Completo da Mãe:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="11" Grid.Column="0" TextColor="Black" />
+                        <Entry Placeholder="Nome Mãe" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="12" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.NomeMaeCidadao}"/>
+                        
+                        <?CHECKBOX?>
+                        <Label Text="Desconhece Nome Mãe:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="11" Grid.Column="1" TextColor="Black" />
+                        <Entry Placeholder="Desconhecido" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="12" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.DesconheceNomeMae}"/>
+
+                        <?LINHA 6?>
+                        
+                        <Label Text="Nome Completo da Pai:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="14" Grid.Column="0" TextColor="Black" />
+                        <Entry Placeholder="Nome Pai" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="15" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.NomePaiCidadao}"/>
+                        
+                        <?CHECKBOX?>
+                        <Label Text="Desconhece Nome Pai:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="14" Grid.Column="1" TextColor="Black" />
+                        <Entry Placeholder="Desconhecido" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="15" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.DesconheceNomePai}"/>
+
+                        <?LINHA 7?>
+                        
+                        <Label Text="Nacionalidade:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="17" Grid.Column="0" TextColor="Black" />
+                        <Entry Placeholder="Nacionalidade" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="18" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.NacionalidadeCidadao}"/>
+                        
+                        <Label Text="País de Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="17" Grid.Column="1" TextColor="Black" />
+                        <Entry Placeholder="País" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="18" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.PaisNascimento}"/>
+
+                        <Label Text="Data de Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="17" Grid.Column="2" TextColor="Black" />
+                        <Entry Placeholder="Data" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="18" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.DtNaturalizacao}"/>
+
+                        <?LINHA 8?>
+                        
+                        <Label Text="Portaria de Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="20" Grid.Column="1" TextColor="Black" />
+                        <Entry Placeholder="Portaria Naturalização" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="21" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.PortariaNaturalizacao}"/>
+
+                        <?Municipio e UF de Nascimento?>
+                                          
+                        <?LINHA 9?>
+                        <Label Text="Data de Entrada no Brasil:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="23" Grid.Column="1" TextColor="Black" />
+                        <Entry Placeholder="Data" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="24" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.DtEntradaBrasil}"/>
+
+                        <?TelefoneCelular?>
+                       
+                        <Label Text="E-mail:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="23" Grid.Column="1" TextColor="Black" />
+                        <Entry Placeholder="e-mail" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="24" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.EmailCidadao}"/>
+                        
                         </Grid>
-                    </StackLayout>
-                </ScrollView>
-
+                        </ScrollView>
+                </StackLayout>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

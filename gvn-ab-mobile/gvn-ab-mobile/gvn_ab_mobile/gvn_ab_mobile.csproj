@@ -33,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -86,6 +87,12 @@
     </Compile>
     <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage2.xaml.cs">
       <DependentUpon>FichaCadastroIndividualPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage3.xaml.cs">
+      <DependentUpon>FichaCadastroIndividualPage3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage4.xaml.cs">
+      <DependentUpon>FichaCadastroIndividualPage4.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -205,6 +212,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage2.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage3.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage4.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

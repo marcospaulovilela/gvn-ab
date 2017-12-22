@@ -738,7 +738,6 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _dataObito, value); }
         }
 
-        //CAMPO ESTRANHO (DATA REPETIDA?)
         //Campo numeroDO - Tipo string
         private string _numeroDO; //Condicional
         [MaxLength(9)] //Mínimo 9 caracteres; Máximo 9 caracteres
