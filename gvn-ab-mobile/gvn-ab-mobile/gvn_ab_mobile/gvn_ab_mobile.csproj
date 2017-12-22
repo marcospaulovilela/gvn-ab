@@ -191,22 +191,22 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage1.xaml">
+    <EmbeddedResource Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage1.xaml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage1.xaml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage2.xaml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

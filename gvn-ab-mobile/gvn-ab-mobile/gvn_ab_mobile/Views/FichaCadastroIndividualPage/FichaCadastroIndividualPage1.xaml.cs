@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using gvn_ab_mobile.Views.FichaCadastroIndividualPage;
 
 namespace gvn_ab_mobile.Views.FichaCadastroIndividualPage
 {

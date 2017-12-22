@@ -14,7 +14,7 @@ namespace gvn_ab_mobile.Views.FichaAtendimentoIndividualPage
     {
         public FichaAtendimentoIndividualPage1()
         {
-            InitializeComponent();
+                InitializeComponent();
         }
     }
 }
