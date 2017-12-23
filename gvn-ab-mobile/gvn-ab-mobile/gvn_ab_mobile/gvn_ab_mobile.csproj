@@ -40,6 +40,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Behaviors\EntryMaxLengthBehavior.cs" />
+    <Compile Include="Behaviors\Validator.cs" />
+    <Compile Include="Behaviors\ButtonSubmitBehavior.cs" />
+    <Compile Include="Behaviors\ValidatorPickerBehavior.cs" />
     <Compile Include="Behaviors\ValidatorEntryBehavior.cs" />
     <Compile Include="Behaviors\Validators.cs" />
     <Compile Include="Config\ISQLiteConfig.cs" />
@@ -61,18 +64,16 @@
     <Compile Include="Models\CadastroIndividual\FichaCadastroIndividual.cs" />
     <Compile Include="Models\CadastroDomiciliarTerritorial\FichaFamilia.cs" />
     <Compile Include="Models\AtendimentoIndividual\FichaOutrosSia.cs" />
+    <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\FichaHeader.cs" />
     <Compile Include="Models\SincronizacaoConfig.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IDataStore.cs" />
-    <Compile Include="Services\MockDataStore.cs" />
+    <Compile Include="ViewModels\SincronizacaoConfigViewModel.cs" />
     <Compile Include="ViewModels\FichaCadastroIndividualViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\UsuarioViewModel .cs" />
-    <Compile Include="ViewModels\UsuariosViewModel.cs" />
     <Compile Include="Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -106,15 +107,6 @@
     <Compile Include="Views\SincronizacaoConfigPage1.xaml.cs">
       <DependentUpon>SincronizacaoConfigPage1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UsuarioPage.xaml.cs">
-      <DependentUpon>UsuarioPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UsuariosPage.xaml.cs">
-      <DependentUpon>UsuariosPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\NewUsuarioPage.xaml.cs">
-      <DependentUpon>NewUsuarioPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -122,18 +114,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AboutPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UsuarioPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UsuariosPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\NewUsuarioPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -227,6 +207,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -234,7 +217,9 @@
       <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\LiveXAML.2.1.16\build\LiveXAML.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\LiveXAML.2.1.16\build\LiveXAML.targets'))" />
   </Target>
+  <Import Project="..\..\packages\LiveXAML.2.1.16\build\LiveXAML.targets" Condition="Exists('..\..\packages\LiveXAML.2.1.16\build\LiveXAML.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -16,7 +16,7 @@ namespace gvn_ab_mobile.ViewModels {
 
             this.Login = new Command(async () => await LoginExecuteAsync());
         }
-
+        
         private async System.Threading.Tasks.Task LoginExecuteAsync() {
             using (var objDao = new DAO.DAOUsuario()) {
                 var CpfUser = objDao.GetUsuarioByCpf(this.Usuario.Cpf);

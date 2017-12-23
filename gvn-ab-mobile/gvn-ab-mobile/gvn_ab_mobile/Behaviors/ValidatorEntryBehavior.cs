@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace gvn_ab_mobile.Behaviors {
-    public abstract class ValidatorEntryBehavior : Behavior<Entry> {
+    public abstract class ValidatorEntryBehavior : Validator<Entry> {
         private Color DefaultColor { get; set; }
 
         protected int? MaxLength { get; set; }
 
         protected override void OnAttachedTo(Entry bindable) {
-            this.DefaultColor = bindable.TextColor;
+            this.DefaultColor = bindable.BackgroundColor;
             bindable.TextChanged += onTextChanged;
             
             base.OnAttachedTo(bindable);
@@ -28,13 +28,22 @@ namespace gvn_ab_mobile.Behaviors {
         /// </summary>
         /// <param name="input">Entrada do Entry.</param>
         /// <returns> TRUE se a validação tiver sucesso, FALSE se não.</returns>
-        public abstract bool Validate(string input);
+
+        public override bool Validate(object sender) {
+            if (this.isValid(((Entry)sender).Text)) {
+                ((Entry)sender).BackgroundColor = this.DefaultColor;
+                return true;
+            } else {
+                ((Entry)sender).BackgroundColor = Color.DarkOrange;
+                return false;
+            };
+        }
 
         void onTextChanged(object sender, TextChangedEventArgs args) {
             var entry = (Entry)sender;
 
-            //MUDA A COR CASO TENHA ERRO.
-            entry.TextColor = (this.Validate(args.NewTextValue)) ? this.DefaultColor : Color.DarkOrange;
+            //VALIDAÇÃO DE CONTROLE
+            this.Validate(sender);
 
             //LIMITA O TAMANHO DO TEXTO
             if (entry.Text.Length > MaxLength) {

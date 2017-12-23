@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.Behaviors {
-    public class ValidatorsCpf : ValidatorEntryBehavior {
+    public class ValidatorCpf : ValidatorEntryBehavior {
         
-        public ValidatorsCpf() {
+        public ValidatorCpf() {
             base.MaxLength = 11;
         }
 
@@ -32,11 +32,11 @@ namespace gvn_ab_mobile.Behaviors {
             return cpf.EndsWith(digits);
         }
 
-        public override bool Validate(string input) {
-            input = input.Replace(".", "").Replace(",", "").Replace("-", "");
-
-            if (input.Length != 11) return false;
-            return IsCpf(input);
+        public override bool isValid(object input) {
+            if (input == null) return false;
+            string buffer = ((string)input).Replace(".", "").Replace(",", "").Replace("-", "");
+            if (buffer.Length != 11) return false;
+            return this.IsCpf(buffer);
         }
     }
 }

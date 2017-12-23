@@ -1,6 +1,5 @@
 ﻿using gvn_ab_mobile.Helpers;
 using gvn_ab_mobile.Models;
-using gvn_ab_mobile.Services;
 
 using Xamarin.Forms;
 
@@ -9,8 +8,7 @@ namespace gvn_ab_mobile.ViewModels {
         /// <summary>
         /// Get the azure service instance
         /// </summary>
-        public IDataStore<Models.Usuario> DataStore => DependencyService.Get<IDataStore<Models.Usuario>>();
-
+        
         bool isBusy = false;
         public bool IsBusy {
             get { return isBusy; }

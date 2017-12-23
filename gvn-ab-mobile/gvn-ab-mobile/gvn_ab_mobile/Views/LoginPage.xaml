@@ -29,9 +29,9 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Image Source="iconUsername.png" HeightRequest="30" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Entry Placeholder="Usuario"  Keyboard="Numeric"  FontSize="Large" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Cpf}">
+                    <Entry Placeholder="Usuario C.P.F."  Keyboard="Numeric"  FontSize="Large" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Cpf}">
                         <Entry.Behaviors>
-                            <behaviors:ValidatorsCpf />
+                            <behaviors:ValidatorCpf />
                         </Entry.Behaviors>
                     </Entry>
                 </Grid>

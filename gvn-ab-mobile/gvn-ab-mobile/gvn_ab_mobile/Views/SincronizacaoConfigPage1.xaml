@@ -1,13 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="gvn_ab_mobile.Views.SincronizacaoConfigPage1">
+             x:Class="gvn_ab_mobile.Views.SincronizacaoConfigPage1"
+             Title="Configurações para sincronização">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Endereço Governa.Saude.AtencaoBasica: "  FontSize="Medium"/>
-            <Entry Text="{Binding configuracao.Ip}" FontSize="Small" />
-
-            <Button Text="Conectar" BackgroundColor="#505050" IsEnabled="{Binding modelView.Conexao}" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" />
-        </StackLayout>
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
+                    <Entry Text="{Binding SincronizacaoConfig.DesEndereco }" FontSize="Small" Placeholder="Endereço Governa.Saude.AtencaoBasica" VerticalOptions="Center" />
+                    <Button Text="Conectar" BackgroundColor="SteelBlue" Command="{Binding Connectar}" IsEnabled="{Binding SincronizacaoConfig.hasDesEndereco }" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="White"  VerticalOptions="Center"/>
+                </StackLayout>                
+            </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.Models {
-    class SincronizacaoConfig : Helpers.ObservableObject {
+    public class SincronizacaoConfig : Helpers.ObservableObject {
 
         /// <summary>
         /// Really? 
@@ -25,7 +25,19 @@ namespace gvn_ab_mobile.Models {
         [NotNull]
         public string DesEndereco {
             get { return this._DesEndereco; }
-            set { SetProperty(ref _DesEndereco, value); }
+            set {
+                SetProperty(ref _DesEndereco, value);
+                OnPropertyChanged("hasDesEndereco");
+            }
+        }
+
+        public bool hasDesEndereco {
+            get {
+                return !string.IsNullOrEmpty(this.DesEndereco);
+            }
+            set {
+                
+            }
         }
 
         /// <summary>
@@ -33,7 +45,7 @@ namespace gvn_ab_mobile.Models {
         /// </summary>
         private long? _CodEstabelecimento;
         [NotNull]
-        public long? CodEstabelecimento{
+        public long? CodEstabelecimento {
             get { return this._CodEstabelecimento; }
             set { SetProperty(ref _CodEstabelecimento, value); }
         }

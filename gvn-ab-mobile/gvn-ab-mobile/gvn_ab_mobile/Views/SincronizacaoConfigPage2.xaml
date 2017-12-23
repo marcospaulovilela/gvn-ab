@@ -1,25 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="gvn_ab_mobile.Views.SincronizacaoConfigPage2">
+             x:Class="gvn_ab_mobile.Views.SincronizacaoConfigPage2"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
+             Title="Configurações para sincronização">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Unidade: "  FontSize="Medium"/>
-            <Picker SelectedIndex="{Binding modelView.Configuracao.Unidades}" HorizontalOptions="FillAndExpand">
-                <Picker.Items>
-                    <x:String>ESF São Pedro</x:String>
-                    <x:String>UPA Teste</x:String>
-                </Picker.Items>
-            </Picker>
-
-            <Label Text="Versão: "  FontSize="Medium"/>
-            <Picker SelectedIndex="{Binding modelView.Configuracao.Versao}" HorizontalOptions="FillAndExpand">
-                <Picker.Items>
-                    <x:String>v2.2</x:String>
-                </Picker.Items>
-            </Picker>
-
-            <Button Text="Importar base de dados!" BackgroundColor="#505050" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" />
-        </StackLayout>
+        <Grid HorizontalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
+                <StackLayout>
+                    <Label Text="C.P.F. "  FontSize="Medium"/>
+                    <Entry x:Name="cpf" Keyboard="Numeric"  FontSize="Large" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Gray" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Cpf}">
+                        <Entry.Behaviors>
+                            <behaviors:ValidatorCpf />
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+                
+                <StackLayout>
+                    <Label Text="Estabelecimento de saude: "  FontSize="Medium"/>
+                    <Picker x:Name="Unidade" ItemsSource="{Binding Estabelecimentos}" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker.Behaviors>
+                            <behaviors:ValidatorPickerBehavior />
+                        </Picker.Behaviors>                        
+                    </Picker>
+                </StackLayout>
+                
+                <StackLayout >
+                    <Label Text="Versão: "  FontSize="Medium"/>
+                    <Picker x:Name="Versao" TextColor="Gray" HorizontalOptions="FillAndExpand" IsEnabled="False" SelectedIndex="1">
+                        <Picker.Items>
+                            <x:String>v2.2</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+                
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
+                    <Button Text="Sync" BackgroundColor="SteelBlue" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="White"  VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Sync}" Controls="Unidade|cpf" />
+                        </Button.Behaviors>
+                    </Button>
+                </StackLayout>
+                
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
