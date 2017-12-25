@@ -38,7 +38,7 @@
                         </Picker.Items>
                     </Picker>
                 </StackLayout>
-                
+
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
                     <Button Text="Sync" BackgroundColor="SteelBlue" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
@@ -46,7 +46,6 @@
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>
-                
             </StackLayout>
         </Grid>
     </ContentPage.Content>

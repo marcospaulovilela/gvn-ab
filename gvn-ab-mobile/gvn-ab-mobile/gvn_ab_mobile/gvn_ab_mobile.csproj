@@ -65,8 +65,13 @@
     <Compile Include="Models\CadastroDomiciliarTerritorial\FichaFamilia.cs" />
     <Compile Include="Models\AtendimentoIndividual\FichaOutrosSia.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
+    <Compile Include="Models\Pais.cs" />
+    <Compile Include="Models\Nacionalidade.cs" />
     <Compile Include="Models\FichaHeader.cs" />
+    <Compile Include="Models\Etinia.cs" />
+    <Compile Include="Models\Sexo.cs" />
     <Compile Include="Models\SincronizacaoConfig.cs" />
+    <Compile Include="Models\RacaCor.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\SincronizacaoConfigViewModel.cs" />

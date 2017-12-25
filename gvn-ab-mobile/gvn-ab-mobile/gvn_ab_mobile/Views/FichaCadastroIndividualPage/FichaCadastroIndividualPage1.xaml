@@ -2,12 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="WhiteSmoke"
-             x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage1">
+             x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage1"
+             Title="Ficha de Cadastro Individual">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="O Cidadão concorda em responder o questionário de Cadastro individual?" FontSize="20" TextColor="Black" />
-       
-            <Button Clicked="OnConcordaClicked" Text="Concorda"  BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="Black" />
-        </StackLayout>
+        <Grid HorizontalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
+                <Label Text="O Cidadão concorda em responder o questionário de Cadastro individual?" FontSize="Default" TextColor="Black" HorizontalOptions="CenterAndExpand" />
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                    <Button Text="Sim" BackgroundColor="SteelBlue" Command="{Binding Concordar}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
+                    <Button Text="Não" BackgroundColor="SteelBlue" Command="{Binding NaoConcordar}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

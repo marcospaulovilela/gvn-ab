@@ -11,6 +11,7 @@ namespace gvn_ab_mobile.ViewModels {
         public ICommand Sync { get; }
 
         public Models.SincronizacaoConfig SincronizacaoConfig { get; set; }
+        public ObservableRangeCollection<Models.Estabelecimento> Estabelecimentos { get; set; }
 
         public SincronizacaoConfigViewModel(Page page) {
             this.Page = page;
@@ -20,8 +21,6 @@ namespace gvn_ab_mobile.ViewModels {
             this.Connectar = new Command(async () => await this.ConnectarExecuteAsync());
             this.Estabelecimentos = new ObservableRangeCollection<Models.Estabelecimento>();
         }
-
-        public ObservableRangeCollection<Models.Estabelecimento> Estabelecimentos { get; set; }
 
         private async System.Threading.Tasks.Task ConnectarExecuteAsync() {
             this.IsBusy = true;

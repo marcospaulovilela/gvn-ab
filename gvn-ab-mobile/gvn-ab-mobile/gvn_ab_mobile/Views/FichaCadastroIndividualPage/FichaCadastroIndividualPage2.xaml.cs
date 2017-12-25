@@ -13,9 +13,9 @@ namespace gvn_ab_mobile.Views.FichaCadastroIndividualPage {
     public partial class FichaCadastroIndividualPage2 : ContentPage {
         ViewModels.FichaCadastroIndividualViewModel viewModel;
 
-        public FichaCadastroIndividualPage2() {
+        public FichaCadastroIndividualPage2(ViewModels.FichaCadastroIndividualViewModel viewModel) {
             InitializeComponent();
-            this.BindingContext = this.viewModel = new ViewModels.FichaCadastroIndividualViewModel(this);
+            this.BindingContext = this.viewModel = viewModel;
         }
     }
 }
