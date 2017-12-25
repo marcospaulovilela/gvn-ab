@@ -1,107 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3">
+             x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3"
+             Title="Informações Sóciodemográficas">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid Padding="20, 30, 20, 20" RowSpacing="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-
-                <Label Text="Informações Sóciodemográficas" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="Black" />
-
-                <StackLayout Grid.Row="3">
-                    <ScrollView Orientation="Vertical">
-                        <Grid HorizontalOptions="Fill" Padding="5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <?LINHA 1?>
-
-                            <Label Text="Relação de Parentesco com o Responsável Familiar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="0" TextColor="Black" />
-                            <Entry Placeholder="Relação" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="1" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.RelacaoParentescoCidadao}"/>
-
-                            <Label Text="Ocupação:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" TextColor="Black" />
-                            <Entry Placeholder="Ocupação" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="1" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.OcupacaoCodigoCbo2002}"/>
-
-                            <?LINHA 2?>
-
-                            <Label Text="Frequenta Escola ou Creche:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Row="3" Grid.Column="0" TextColor="Black" />
-                            <Switch Grid.Row="3" HorizontalOptions="Center" Grid.Column="1" IsToggled="{Binding Ficha.StatusFrequentaEscola}"></Switch>
-
-                            <?LINHA 3?>
-
-                            <Label Text="Qual é o curso mais elevado que frenquenta ou frequentou?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="5" Grid.Column="0" TextColor="Black" />
-                            <Entry Placeholder="Grau de Instrução" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="6" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.GrauInstrucaoCidadao}"/>
-
-                            <Label Text="Situação no Mercado de Trabalho:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="5" Grid.Column="2" TextColor="Black" />
-                            <Entry Placeholder="Situação" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="6" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.SituacaoMercadoTrabalhoCidadao}"/>
-                            
-                            <?LINHA 4?>
-
-                            <?CHECKBOX?>
-                            <Label Text="Crianças de 0 a 9 anos, com quem fica?:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="8" Grid.Column="0" TextColor="Black" />
-                            <Entry Placeholder="" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="9" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.ResponsavelPorCrianca}"/>
-
-                            <?LINHA 5?>
-
-                            <Label Text="Frequenta Benzedeira?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="11" Grid.Column="0" TextColor="Black" />
-                            <Switch Grid.Row="12" HorizontalOptions="Center" Grid.Column="0" IsToggled="{Binding Ficha.StatusFrequentaBenzedeira}"></Switch>
-
-                            <Label Text="Participa de algum Grupo Comunitário?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="11" Grid.Column="1" TextColor="Black" />
-                            <Switch Grid.Row="12" HorizontalOptions="Center" Grid.Column="1" IsToggled="{Binding Ficha.StatusParticipaGrupoComunitario}"></Switch>
-
-                            <Label Text="Possui Plano de Saúde Privado?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="11" Grid.Column="2" TextColor="Black" />
-                            <Switch Grid.Row="12" HorizontalOptions="Center" Grid.Column="2" IsToggled="{Binding Ficha.StatusPossuiPlanoSaudePrivado}"></Switch>
-                            
-                            <?LINHA 6?>
-
-                            <Label Text="É membro de Povo ou Comunidade Tradicional?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="14" Grid.Column="0" TextColor="Black" />
-                            <Switch Grid.Row="15" HorizontalOptions="Center" Grid.Column="0" IsToggled="{Binding Ficha.StatusMembroPovoComunidadeTradicional}"></Switch>
-
-                            <Label Text="Se sim, Qual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="14" Grid.Column="1" TextColor="Black" />
-                            <Entry Placeholder="" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="15" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.PovoComunidadeTradicional}"/>
-
-                            <?LINHA 7?>
-
-                            <Label Text="Deseja Informar Orientação Sexual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="17" Grid.Column="0" TextColor="Black" />
-                            <Switch Grid.Row="18" HorizontalOptions="Center" Grid.Column="0" IsToggled="{Binding Ficha.StatusDesejaInformarOrientacaoSexual}"></Switch>
-
-                            <Label Text="Se sim, Qual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="17" Grid.Column="2" TextColor="Black" />
-                            <Entry Placeholder="Orientação Sexual" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="18" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.OrientacaoSexualCidadao}"/>
-
-                            <?LINHA 8?>
-
-                            <Label Text="Deseja Informar Identidade de Gênero?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="20" Grid.Column="0" TextColor="Black" />
-                            <Switch Grid.Row="21" HorizontalOptions="Center" Grid.Column="0" IsToggled="{Binding Ficha.StatusDesejaInformarIdentidadeGenero}"></Switch>
-
-                            <Label Text="Se sim, Qual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="20" Grid.Column="2" TextColor="Black" />
-                            <Entry Placeholder="Identidade de Gênero" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="21" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.IdentidadeGeneroCidadao}"/>
-
-                            <?LINHA 9?>
-
-                            <Label Text="Tem alguma deficiência?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="23" Grid.Column="0" TextColor="Black" />
-                            <Switch Grid.Row="24" HorizontalOptions="Center" Grid.Column="0" IsToggled="{Binding Ficha.StatusTemAlgumaDeficiencia}"></Switch>
-
-                            <?CHECKBOX?>
-                            <Label Text="Se sim, Qual(is)?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="23" Grid.Column="2" TextColor="Black" />
-                            <Entry Placeholder="Deficiências" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="24" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.DeficienciasCidadao}"/>
-
-                        </Grid>
-                    </ScrollView>
+        <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Relação de Parentesco com o Responsável Familiar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="0" TextColor="Black" />
+                        <Picker x:Name="CodRelacaoParentesco" ItemsSource="{Binding RelacoesParentesco}" HorizontalOptions="FillAndExpand" Title="Parentesco" Scale="1"/>
+                    </StackLayout>
                 </StackLayout>
-            </Grid>
-        </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Ocupação:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="2" TextColor="Black" />
+                        <Picker x:Name="CodCbo" ItemsSource="{Binding Ocupacoes}" HorizontalOptions="FillAndExpand" Title="Ocupação" Scale="1"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Frequenta Escola ou Creche:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" TextColor="Black" />
+                    <Switch Grid.Row="3" HorizontalOptions="Center" Grid.Column="1" IsToggled="{Binding Ficha.StatusFrequentaEscola}" />
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label Text="Curso mais elevado que frenquenta ou frequentou?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="5" Grid.Column="0" TextColor="Black" />
+                    <Picker x:Name="CodCursoMaisElevado" ItemsSource="{Binding Cursos}" HorizontalOptions="FillAndExpand" Title="Curso" Scale="1"/>
+                </StackLayout>
+                
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label Text="Situação no Mercado de Trabalho:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="5" Grid.Column="2" TextColor="Black" />
+                    <Picker x:Name="CodSituacaoMercadoTrabalho" ItemsSource="{Binding SituacoesMercado}" HorizontalOptions="FillAndExpand" Title="Situação" Scale="1"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Crianças de 0 a 9 anos, com quem fica?:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="8" Grid.Column="0" TextColor="Black" />
+                    <Picker x:Name="CodResponsavelCrianca" ItemsSource="{Binding Responsaveis}" HorizontalOptions="FillAndExpand" Title="Responsavel" Scale="1"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Frequenta Benzedeira?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="11" Grid.Column="0" TextColor="Black" />
+                    <Switch Grid.Row="12" HorizontalOptions="Center" Grid.Column="0" IsToggled="{Binding Ficha.StatusFrequentaBenzedeira}"></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Participa de algum Grupo Comunitário?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="11" Grid.Column="1" TextColor="Black" />
+                    <Switch Grid.Row="12" HorizontalOptions="Center" Grid.Column="1" IsToggled="{Binding Ficha.StatusParticipaGrupoComunitario}"></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Possui Plano de Saúde Privado?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="11" Grid.Column="2" TextColor="Black" />
+                    <Switch Grid.Row="12" HorizontalOptions="Center" Grid.Column="2" IsToggled="{Binding Ficha.StatusPossuiPlanoSaudePrivado}"></Switch>
+                </StackLayout>
+
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="É membro de Povo ou Comunidade Tradicional?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="14" Grid.Column="0" TextColor="Black" />
+                        <Switch Grid.Row="15" HorizontalOptions="Center" Grid.Column="0" IsToggled="{Binding Ficha.StatusMembroPovoComunidadeTradicional}"></Switch>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Qual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="14" Grid.Column="1" TextColor="Black" />
+                        <Entry Placeholder="Povo ou Comunidade Tradicional" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Grid.Row="15" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.PovoComunidadeTradicional}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Deseja Informar Orientação Sexual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="17" Grid.Column="0" TextColor="Black" />
+                        <Switch Grid.Row="18" HorizontalOptions="Center" Grid.Column="0" IsToggled="{Binding Ficha.StatusDesejaInformarOrientacaoSexual}"></Switch>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Qual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="17" Grid.Column="2" TextColor="Black" />
+                        <Picker x:Name="CodOrientacaoSexual" ItemsSource="{Binding OrientacoesSexuais}" HorizontalOptions="FillAndExpand" Title="Orientação sexual" Scale="1"/>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Deseja Informar Identidade de Gênero?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="20" Grid.Column="0" TextColor="Black" />
+                        <Switch Grid.Row="21" HorizontalOptions="Center" Grid.Column="0" IsToggled="{Binding Ficha.StatusDesejaInformarIdentidadeGenero}"></Switch>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Qual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="20" Grid.Column="2" TextColor="Black" />
+                        <Picker x:Name="CodIdentidadeGenero" ItemsSource="{Binding IdentidadeGeneros}" HorizontalOptions="FillAndExpand" Title="Identidade de gênero" Scale="1"/>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Tem alguma deficiência?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="23" Grid.Column="0" TextColor="Black" />
+                        <Switch Grid.Row="24" HorizontalOptions="Center" Grid.Column="0" IsToggled="{Binding Ficha.StatusTemAlgumaDeficiencia}"></Switch>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Qual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Grid.Row="20" Grid.Column="2" TextColor="Black" />
+                        <Entry Placeholder="Deficiências" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Grid.Row="24" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.DeficienciasCidadao}"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

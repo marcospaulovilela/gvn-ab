@@ -64,7 +64,14 @@
     <Compile Include="Models\CadastroIndividual\FichaCadastroIndividual.cs" />
     <Compile Include="Models\CadastroDomiciliarTerritorial\FichaFamilia.cs" />
     <Compile Include="Models\AtendimentoIndividual\FichaOutrosSia.cs" />
+    <Compile Include="Models\IdentidadeGenero.cs" />
+    <Compile Include="Models\OrientacaoSexual.cs" />
+    <Compile Include="Models\Responsavel.cs" />
+    <Compile Include="Models\SituacaoMercado.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
+    <Compile Include="Models\Curso.cs" />
+    <Compile Include="Models\RelacaoParentesco.cs" />
+    <Compile Include="Models\Ocupacao.cs" />
     <Compile Include="Models\Pais.cs" />
     <Compile Include="Models\Nacionalidade.cs" />
     <Compile Include="Models\FichaHeader.cs" />

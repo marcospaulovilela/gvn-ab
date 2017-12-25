@@ -14,10 +14,10 @@ namespace gvn_ab_mobile.Views.FichaCadastroIndividualPage
     {
         ViewModels.FichaCadastroIndividualViewModel viewModel;
 
-        public FichaCadastroIndividualPage3()
+        public FichaCadastroIndividualPage3(ViewModels.FichaCadastroIndividualViewModel viewModel)
         {
             InitializeComponent();
-            this.BindingContext = this.viewModel = new ViewModels.FichaCadastroIndividualViewModel(this);
+            this.BindingContext = this.viewModel = viewModel;
         }
     }
 }

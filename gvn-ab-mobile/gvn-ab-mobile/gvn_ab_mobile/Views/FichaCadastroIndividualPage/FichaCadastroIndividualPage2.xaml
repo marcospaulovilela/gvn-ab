@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="WhiteSmoke"
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2"
-             Title="Ficha de Cadastro Individual">
+             Title="Identificação do Cidadão">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
             <StackLayout>
@@ -50,16 +50,16 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Sexo:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Picker x:Name="IndSexo" ItemsSource="{Binding Sexos}" HorizontalOptions="FillAndExpand" Title="Sexo" Scale="1"/>
+                        <Picker x:Name="CodSexo" ItemsSource="{Binding Sexos}" HorizontalOptions="FillAndExpand" Title="Sexo" Scale="1"/>
                     </StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Raça/Cor:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="IndRacaCor"  ItemsSource="{Binding RacasCores}"  HorizontalOptions="FillAndExpand" Title="Raça/Cor" />
+                        <Picker x:Name="CodRacaCor"  ItemsSource="{Binding RacasCores}"  HorizontalOptions="FillAndExpand" Title="Raça/Cor" />
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Etnia:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="IndEtinia"  ItemsSource="{Binding Etinias}"  HorizontalOptions="FillAndExpand" Title="Etinia" />
+                        <Picker x:Name="CodEtinia"  ItemsSource="{Binding Etinias}"  HorizontalOptions="FillAndExpand" Title="Etinia" />
                     </StackLayout>
                 </StackLayout>
 
@@ -96,13 +96,13 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label Text="Nacionalidade:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                    <Picker x:Name="IndNacionalidade"  ItemsSource="{Binding Nacionalidades}"  HorizontalOptions="FillAndExpand"  Title="Nacionalidade"/>
+                    <Picker x:Name="CodNacionalidade"  ItemsSource="{Binding Nacionalidades}"  HorizontalOptions="FillAndExpand"  Title="Nacionalidade"/>
                 </StackLayout>
                 
                 <StackLayout Orientation="Horizontal">
                         <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="País de Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="IndPaisNascimento"  ItemsSource="{Binding Paises}"  HorizontalOptions="FillAndExpand" Title="Pais" />
+                        <Picker x:Name="CodPaisNascimento"  ItemsSource="{Binding Paises}"  HorizontalOptions="FillAndExpand" Title="Pais" />
                     </StackLayout>
                     <StackLayout >
                         <Label Text="Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
