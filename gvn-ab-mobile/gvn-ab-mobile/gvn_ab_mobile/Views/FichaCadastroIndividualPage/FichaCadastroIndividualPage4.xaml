@@ -1,49 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4">
+             x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4"
+             Title="Saída do Cidadão">
     <ContentPage.Content>
-        <StackLayout>
-                <Grid Padding="20, 30, 20, 20" RowSpacing="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="20" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <Label Text="Saída do Cidadão do Cadastro" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="Black" />
-
-                    <StackLayout Grid.Row="3">
-                        <ScrollView Orientation="Vertical">
-                            <Grid HorizontalOptions="Fill" Padding="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <?LINHA 1?>
-
-                                <Label Text="Motivo Saída:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="0" TextColor="Black" />
-                                <Entry Placeholder="Motivo" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" Grid.Row="0" Grid.Column="1" TextColor="Black" Text="{Binding Ficha.MotivoSaidaCidadao}"/>
-
-                                <?LINHA 2?>
-
-                                <Label Text="Data Óbito:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Row="3" Grid.Column="0" TextColor="Black" />
-                                <Entry Placeholder="Data" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="0" TextColor="Black" Text="{Binding Ficha.DataObito}"/>
-
-                                <Label Text="Número da D.O:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Row="3" Grid.Column="2" TextColor="Black" />
-                                <Entry Placeholder="" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.NumeroDO}"/>
-
-                            </Grid>
-                        </ScrollView>
+        <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Motivo Saída:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
+                        <Picker x:Name="CodMotivoSaida"  ItemsSource="{Binding MotivosSaida}"  HorizontalOptions="FillAndExpand" Title="Motivo da saida" />
                     </StackLayout>
-                </Grid>
+
+                    <StackLayout >
+                        <Label Text="Obito:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                        <DatePicker  Date="{Binding Ficha.DataObito}" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Número da D.O:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Row="3" Grid.Column="2" TextColor="Black" />
+                    <Entry Placeholder="" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.NumeroDO}"/>
+                </StackLayout>
             </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

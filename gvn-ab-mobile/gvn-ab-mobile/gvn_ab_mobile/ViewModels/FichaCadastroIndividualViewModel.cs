@@ -42,9 +42,7 @@ namespace gvn_ab_mobile.ViewModels {
             this.Concordar = new Command(async () => await ConcordarExecuteAsync());
             this.NaoConcordar = new Command(async () => await NaoConcordarExecuteAsync());
 
-        }
 
-        private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
             this.Sexos = new ObservableRangeCollection<Models.Sexo>();
             this.Paises = new ObservableRangeCollection<Models.Pais>();
             this.Etinias = new ObservableRangeCollection<Models.Etinia>();
@@ -64,15 +62,6 @@ namespace gvn_ab_mobile.ViewModels {
 
             this.Paises.Add(new Models.Pais() { CodPais = 0, DesPais = "LEMBRAR DE TRAZER ISSO NA SINCRONIZAÇÃO." });
 
-
-            await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
-        }
-
-        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
-            await this.Page.DisplayAlert("Salvar no banco", "voltar para o menu", "fazer isso depois.");
-        }
-
-        private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
             this.Cursos = new ObservableRangeCollection<Models.Curso>();
             this.Ocupacoes = new ObservableRangeCollection<Models.Ocupacao>();
             this.Responsaveis = new ObservableRangeCollection<Models.Responsavel>();
@@ -88,9 +77,23 @@ namespace gvn_ab_mobile.ViewModels {
             this.IdentidadeGeneros.Add(new Models.IdentidadeGenero() { CodIdentidadeGenero = 0, DesIdentidadeGenero = "LEMBRAR DE TRAZER ISSO NA SINCRONIZAÇÃO." });
             this.OrientacoesSexuais.Add(new Models.OrientacaoSexual() { CodOrientacaoSexual = 0, DesOrientacaoSexual = "LEMBRAR DE TRAZER ISSO NA SINCRONIZAÇÃO." });
             this.RelacoesParentesco.Add(new Models.RelacaoParentesco() { CodRelacaoParentesco = 0, DesRelacaoParentesco = "LEMBRAR DE TRAZER ISSO NA SINCRONIZAÇÃO." });
+        }
 
+        private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
+            await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
+        }
 
-            await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
+        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
+            await this.Page.DisplayAlert("Salvar no banco", "voltar para o menu", "fazer isso depois.");
+        }
+
+        private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
+            var CurrentPage = this.Page.Navigation.NavigationStack.Last();
+            if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2) {
+                await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
+            } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3) {
+                await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4(this));
+            };
         }
     }
 }
