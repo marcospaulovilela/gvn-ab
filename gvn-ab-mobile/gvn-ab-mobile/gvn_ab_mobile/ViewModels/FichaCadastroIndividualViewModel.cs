@@ -89,10 +89,21 @@ namespace gvn_ab_mobile.ViewModels {
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
             var CurrentPage = this.Page.Navigation.NavigationStack.Last();
-            if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2) {
+            if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2)
+            {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
-            } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3) {
+            }
+            else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3)
+            {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4(this));
+            }
+            else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4)
+            {
+                await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
+            }
+            else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5)
+            {
+                await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
             };
         }
     }
