@@ -69,13 +69,13 @@ namespace gvn_ab_mobile.Models
 
         //INÍCIO CONDIÇÕES DE SAÚDE
 
-        //Campo descricaoCausalInternacaoEm12Meses - Tipo string
-        private string _descricaoCausalInternacaoEm12Meses; //Condicional
+        //Campo descricaoCausaInternacaoEm12Meses - Tipo string
+        private string _descricaoCausaInternacaoEm12Meses; //Condicional
         [MaxLength(100)] //Máximo 100 caracteres
-        public string DescricaoCausalInternacaoEm12Meses
+        public string DescricaoCausalnternacaoEm12Meses
         {
-            get { return this._descricaoCausalInternacaoEm12Meses; }
-            set { SetProperty(ref _descricaoCausalInternacaoEm12Meses, value); }
+            get { return this._descricaoCausaInternacaoEm12Meses; }
+            set { SetProperty(ref _descricaoCausaInternacaoEm12Meses, value); }
         }
 
         //Campo descricaoOutraCondicao1 - Tipo string
@@ -214,12 +214,12 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _statusTemDiabetes, value); }
         }
 
-        //Campo statusTemDoencaoRespiratoria - Tipo boolean
-        private bool _statusTemDoencaoRespiratoria; //Não Obrigatório
-        public bool StatusTemDoencaoRespiratoria
+        //Campo statusTemDoencaRespiratoria - Tipo boolean
+        private bool _statusTemDoencaRespiratoria; //Não Obrigatório
+        public bool StatusTemDoencaRespiratoria
         {
-            get { return this._statusTemDoencaoRespiratoria; }
-            set { SetProperty(ref _statusTemDoencaoRespiratoria, value); }
+            get { return this._statusTemDoencaRespiratoria; }
+            set { SetProperty(ref _statusTemDoencaRespiratoria, value); }
         }
 
         //Campo statusTemHanseniase - Tipo boolean
@@ -366,6 +366,64 @@ namespace gvn_ab_mobile.Models
             get { return this._quantidadeAlimentacoesAoDiaSituacaoRua; }
             set { SetProperty(ref _quantidadeAlimentacoesAoDiaSituacaoRua, value); }
         }
+
+        //Campo statusAcompanhadoPorOutraInstituicao - Tipo boolean
+        private bool _statusAcompanhadoPorOutraInstituicao; //Não Obrigatório
+        public bool StatusAcompanhadoPorOutraInstituicao
+        {
+            get { return this._statusAcompanhadoPorOutraInstituicao; }
+            set { SetProperty(ref _statusAcompanhadoPorOutraInstituicao, value); }
+        }
+
+        //Campo statusPossuiReferenciaFamiliar - Tipo boolean
+        private bool _statusPossuiReferenciaFamiliar; //Não Obrigatório
+        public bool StatusPossuiReferenciaFamiliar
+        {
+            get { return this._statusPossuiReferenciaFamiliar; }
+            set { SetProperty(ref _statusPossuiReferenciaFamiliar, value); }
+        }
+
+        //Campo statusRecebeBeneficio - Tipo boolean
+        private bool _statusRecebeBeneficio; //Não Obrigatório
+        public bool StatusRecebeBeneficio
+        {
+            get { return this._statusRecebeBeneficio; }
+            set { SetProperty(ref _statusRecebeBeneficio, value); }
+        }
+
+        //Campo statusSituacaoRua - Tipo boolean
+        private bool _statusSituacaoRua; //Obrigatório
+        [NotNull]
+        public bool StatusSituacaoRua
+        {
+            get { return this._statusSituacaoRua; }
+            set { SetProperty(ref _statusSituacaoRua, value); }
+        }
+
+        //Campo statusTemAcessoHigienePessoalSituacaoRua - Tipo boolean
+        private bool _statusTemAcessoHigienePessoalSituacaoRua; //Não Obrigatório
+        public bool StatusTemAcessoHigienePessoalSituacaoRua
+        {
+            get { return this._statusTemAcessoHigienePessoalSituacaoRua; }
+            set { SetProperty(ref _statusTemAcessoHigienePessoalSituacaoRua, value); }
+        }
+
+        //Campo statusVisitaFamiliarFrequentemente - Tipo boolean
+        private bool _statusVisitaFamiliarFrequentemente; //Não Obrigatório
+        public bool StatusVisitaFamiliarFrequentemente
+        {
+            get { return this._statusVisitaFamiliarFrequentemente; }
+            set { SetProperty(ref _statusVisitaFamiliarFrequentemente, value); }
+        }
+
+        //Campo tempoSituacaoRua - Tipo long
+        private long _tempoSituacaoRua; //Não Obrigatório
+        public long TempoSituacaoRua
+        {
+            get { return this._tempoSituacaoRua; }
+            set { SetProperty(ref _tempoSituacaoRua, value); }
+        }
+
 
         //FIM EM SITUAÇÃO DE RUA
 

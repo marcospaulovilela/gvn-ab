@@ -101,6 +101,12 @@
     <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage4.xaml.cs">
       <DependentUpon>FichaCadastroIndividualPage4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage5.xaml.cs">
+      <DependentUpon>FichaCadastroIndividualPage5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage6.xaml.cs">
+      <DependentUpon>FichaCadastroIndividualPage6.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -215,6 +221,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage2.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage5.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage6.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

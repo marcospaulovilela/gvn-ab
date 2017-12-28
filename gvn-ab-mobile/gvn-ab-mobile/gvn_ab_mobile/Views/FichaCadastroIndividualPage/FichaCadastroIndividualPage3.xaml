@@ -94,7 +94,7 @@
                         <Switch HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemAlgumaDeficiencia}"></Switch>
                     </StackLayout>
                     <StackLayout>
-                        <Label Text="Qual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Label Text="Se sim, quais?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Entry Placeholder="Deficiências" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DeficienciasCidadao}"/>
                     </StackLayout>
                 </StackLayout>
