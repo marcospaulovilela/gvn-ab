@@ -12,5 +12,10 @@ namespace gvn_ab_mobile.Models {
     public class Curso : Models.EntidadeEnumerador { }
     public class RelacaoParentesco : Models.EntidadeEnumerador { }
     public class Responsavel : Models.EntidadeEnumerador { }
-    public class Sexo : Models.EntidadeEnumerador { }   
+    public class Sexo : Models.EntidadeEnumerador { }
+    public class MotivoSaida : Models.EntidadeEnumerador { }
+    public class Nacionalidade : Models.EntidadeEnumerador { }
+    public class SituacaoMercado : Models.EntidadeEnumerador { }
+    public class IdentidadeGenero : Models.EntidadeEnumerador { }
+
 }

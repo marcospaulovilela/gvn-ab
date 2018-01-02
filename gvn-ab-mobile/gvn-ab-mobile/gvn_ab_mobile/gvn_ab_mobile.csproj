@@ -47,6 +47,7 @@
     <Compile Include="Behaviors\Validators.cs" />
     <Compile Include="Config\ISQLiteConfig.cs" />
     <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\DAOEnumeradores.cs" />
     <Compile Include="DAO\DAOFichaAtendimentoIndividual.cs" />
     <Compile Include="DAO\DAOFichaAtendimentoIndividualChild.cs" />
     <Compile Include="DAO\DAOFichaCadastroDomiciliarTerritorial.cs" />
@@ -66,11 +67,8 @@
     <Compile Include="Models\AtendimentoIndividual\FichaOutrosSia.cs" />
     <Compile Include="Models\EntidadeEnumerador.cs" />
     <Compile Include="Models\Enumeradores.cs" />
-    <Compile Include="Models\IdentidadeGenero.cs" />
-    <Compile Include="Models\SituacaoMercado.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Ocupacao.cs" />
-    <Compile Include="Models\Nacionalidade.cs" />
     <Compile Include="Models\FichaHeader.cs" />
     <Compile Include="Models\SincronizacaoConfig.cs" />
     <Compile Include="Models\Usuario.cs" />
