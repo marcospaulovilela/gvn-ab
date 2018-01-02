@@ -13,15 +13,6 @@
             </Grid.ColumnDefinitions>
             <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
                 <StackLayout>
-                    <Label Text="C.P.F. "  FontSize="Medium"/>
-                    <Entry x:Name="cpf" Keyboard="Numeric"  FontSize="Large" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Gray" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Cpf}">
-                        <Entry.Behaviors>
-                            <behaviors:ValidatorCpf />
-                        </Entry.Behaviors>
-                    </Entry>
-                </StackLayout>
-                
-                <StackLayout>
                     <Label Text="Estabelecimento de saude: "  FontSize="Medium"/>
                     <Picker x:Name="Unidade" ItemsSource="{Binding Estabelecimentos}" TextColor="Gray" HorizontalOptions="FillAndExpand">
                         <Picker.Behaviors>

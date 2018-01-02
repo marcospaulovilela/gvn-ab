@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.Models {
     public abstract class EntidadeEnumerador : Helpers.ObservableObject {
+        public EntidadeEnumerador() {}
+
+        public EntidadeEnumerador(string descricao) {
+            this.Descricao = descricao;
+        }
+
         private long? _codigo;
         [PrimaryKey]
         public long? Codigo {

@@ -36,7 +36,7 @@ namespace gvn_ab_mobile.ViewModels {
                 System.Diagnostics.Debug.WriteLine(ex);
                 MessagingCenter.Send(new MessagingCenterAlert {
                     Title = "Error",
-                    Message = "Unable to load items.",
+                    Message = "Não foi possivel carregar os items do serviço.",
                     Cancel = "OK"
                 }, "message");
             } finally {
@@ -48,7 +48,14 @@ namespace gvn_ab_mobile.ViewModels {
             this.IsBusy = true;
 
             try {
-                this.Page.DisplayAlert("A", "B", "C");
+                //APAGA TODO O BANCO DE DADOS E O RECONSTROI
+                DAO.DAO<object>.DropDatabase();
+
+                //CRIA OS ENUMERADORES E SALVA OS VALORES PADROES DO ESUS
+                using (var dao = new DAO.DAOSexo()) { 
+                    dao.CreateTable();
+                    var t = dao.Select();
+                }
 
             } catch (Exception ex) {
                 System.Diagnostics.Debug.WriteLine(ex);

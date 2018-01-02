@@ -2,24 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
-             x:Class="gvn_ab_mobile.Views.LoginPage"
-             BackgroundImage="rainDrops">
+             x:Class="gvn_ab_mobile.Views.LoginPage">
     <ContentPage.Content>
 
         <StackLayout>
             <Grid Padding="20, 30, 20, 20" RowSpacing="20">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="20" />
-                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Text="SAUDE" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="White" />
-
-                <Grid Grid.Row="4" HorizontalOptions="Fill" Padding="5">
+                <StackLayout Grid.Row="0">
+                    <Image Source="logoGoverna.png" />
+                    <Label Text="Saude" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="SteelBlue" />
+                    <Label Text="Atenção Basica" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="SteelBlue" />
+                </StackLayout>    
+                
+                <Grid Grid.Row="2" HorizontalOptions="Fill" Padding="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -29,14 +31,14 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Image Source="iconUsername.png" HeightRequest="30" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Entry Placeholder="Usuario C.P.F."  Keyboard="Numeric"  FontSize="Large" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Cpf}">
+                    <Entry x:Name="Cpf" Placeholder="Usúario"  Keyboard="Numeric"  FontSize="Large" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Cpf}">
                         <Entry.Behaviors>
                             <behaviors:ValidatorCpf />
                         </Entry.Behaviors>
                     </Entry>
                 </Grid>
 
-                <Grid Grid.Row="5" HorizontalOptions="Fill" Padding="5">
+                <Grid Grid.Row="3" HorizontalOptions="Fill" Padding="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -46,12 +48,16 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Image Source="iconPassword.png" HeightRequest="30" VerticalOptions="Center" />
-                    <Entry Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="White" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Password}"/>
+                    <Entry Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Gray" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Password}"/>
                 </Grid>
 
-                <StackLayout Grid.Row="6" Spacing="12" HorizontalOptions="Fill">
-                    <Button Text="Entrar" BackgroundColor="#505050" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" Command="{Binding Login}" />
-                    <Button Text="BTN-TEMPORARIO (REINICIA BASE DE USUARIO)" BackgroundColor="#505050" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" Clicked="ButtonReset_ClickedAsync" />
+                <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill">
+                    <Button Text="Entrar" BackgroundColor="SteelBlue" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Login}" Controls="Cpf" />
+                        </Button.Behaviors>
+                    </Button>
+                    <Button Text="Sync" IsVisible="True"  BackgroundColor="SteelBlue" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" Command="{Binding Sincronizar}" />
                 </StackLayout>
             </Grid>
         </StackLayout>
