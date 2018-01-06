@@ -1,5 +1,6 @@
 ﻿using gvn_ab_mobile.Helpers;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -41,27 +42,35 @@ namespace gvn_ab_mobile.ViewModels {
                 }, "message");
             } finally {
                 IsBusy = false;
-            };   
+            };
         }
 
-        private async System.Threading.Tasks.Task SyncExecuteAsync() {
+        private async Task SyncExecuteAsync() {
             this.IsBusy = true;
+            Task.Run(() => {
+                try {
+                    //APAGA TODO O BANCO DE DADOS E O RECONSTROI
+                    DAO.DAO<object>.DropDatabase();
 
-            try {
-                //APAGA TODO O BANCO DE DADOS E O RECONSTROI
-                DAO.DAO<object>.DropDatabase();
+                    //CRIA OS ENUMERADORES E SALVA OS VALORES PADROES DO ESUS
+                    new DAO.DAOPais().CreateTable();
+                    new DAO.DAORacaCor().CreateTable();
+                    new DAO.DAOEtnia().CreateTable();
+                    new DAO.DAOOrientacaoSexual().CreateTable();
+                    new DAO.DAOCurso().CreateTable();
+                    new DAO.DAORelacaoParentesco().CreateTable();
+                    new DAO.DAOResponsavel().CreateTable();
+                    new DAO.DAOMotivoSaida().CreateTable();
+                    new DAO.DAONacionalidade().CreateTable();
+                    new DAO.DAOSituacaoMercado().CreateTable();
+                    new DAO.DAOIdentidadeGenero().CreateTable();
 
-                //CRIA OS ENUMERADORES E SALVA OS VALORES PADROES DO ESUS
-                using (var dao = new DAO.DAOSexo()) { 
-                    dao.CreateTable();
-                    var t = dao.Select();
-                }
-
-            } catch (Exception ex) {
-                System.Diagnostics.Debug.WriteLine(ex);
-            } finally {
-                IsBusy = false;
-            };
+                } catch (Exception ex) {
+                    System.Diagnostics.Debug.WriteLine(ex);
+                } finally {
+                    IsBusy = false;
+                };
+            });
         }
     }
 }
