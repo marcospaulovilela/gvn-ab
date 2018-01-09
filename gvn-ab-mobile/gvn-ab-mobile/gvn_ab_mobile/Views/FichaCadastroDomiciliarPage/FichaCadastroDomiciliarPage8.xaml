@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gvn_ab_mobile.Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8"
+             Title="Identificação do Responsável Técnico da Instituição de Permanência">
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
+            <StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Nome:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Entry Placeholder="Nome" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="CNS do Responsável:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Entry Placeholder="CNS" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                    </StackLayout>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Cargo na Instituição:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Entry Placeholder="Cargo" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Telefone de Contato:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Entry Placeholder="Telefone" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                    </StackLayout>
+
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
