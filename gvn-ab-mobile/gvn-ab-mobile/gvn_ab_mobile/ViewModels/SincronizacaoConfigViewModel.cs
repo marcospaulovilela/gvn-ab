@@ -52,7 +52,18 @@ namespace gvn_ab_mobile.ViewModels {
                     //APAGA TODO O BANCO DE DADOS E O RECONSTROI
                     DAO.DAO<object>.DropDatabase();
 
+                    using(var DAOUsuario = new DAO.DAOUsuario()) {
+                        DAOUsuario.CreateTable();
+                        DAOUsuario.Insert(new Models.Usuario() {
+                             Cpf = "11958730696",
+                             Password = "123456",
+                             Root = true,
+                             Nome = "Marcos Paulo Vilela"
+                         });
+                    };
+
                     //CRIA OS ENUMERADORES E SALVA OS VALORES PADROES DO ESUS
+                    new DAO.DAOSexo().CreateTable();
                     new DAO.DAOPais().CreateTable();
                     new DAO.DAORacaCor().CreateTable();
                     new DAO.DAOEtnia().CreateTable();
@@ -64,6 +75,13 @@ namespace gvn_ab_mobile.ViewModels {
                     new DAO.DAONacionalidade().CreateTable();
                     new DAO.DAOSituacaoMercado().CreateTable();
                     new DAO.DAOIdentidadeGenero().CreateTable();
+
+                    new DAO.DAOConsideracaoPeso().CreateTable();
+                    new DAO.DAODoencaCardiaca().CreateTable();
+                    new DAO.DAOProblemaRins().CreateTable();
+                    new DAO.DAODoencaRespiratoria().CreateTable();
+
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new Views.LoginPage()));
 
                 } catch (Exception ex) {
                     System.Diagnostics.Debug.WriteLine(ex);

@@ -65,4 +65,24 @@ namespace gvn_ab_mobile.Models {
         public IdentidadeGenero(string descricao) : base(descricao) { }
     }
 
+    public class ConsideracaoPeso : Models.EntidadeEnumerador {
+        public ConsideracaoPeso() { }
+        public ConsideracaoPeso(string descricao) : base(descricao) { }
+    }
+
+    public class DoencaCardiaca : Models.EntidadeEnumerador {
+        public DoencaCardiaca() { }
+        public DoencaCardiaca(string descricao) : base(descricao) { }
+    }
+
+    public class ProblemaRins : Models.EntidadeEnumerador {
+        public ProblemaRins() { }
+        public ProblemaRins(string descricao) : base(descricao) { }
+    }
+
+    public class DoencaRespiratoria : Models.EntidadeEnumerador {
+        public DoencaRespiratoria() { }
+        public DoencaRespiratoria(string descricao) : base(descricao) { }
+    }
+
 }

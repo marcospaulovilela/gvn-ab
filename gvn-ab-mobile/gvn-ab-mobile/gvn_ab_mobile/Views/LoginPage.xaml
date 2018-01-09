@@ -48,7 +48,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Image Source="iconPassword.png" HeightRequest="30" VerticalOptions="Center" />
-                    <Entry Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Gray" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Password}"/>
+                    <Entry Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Password}"/>
                 </Grid>
 
                 <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill">

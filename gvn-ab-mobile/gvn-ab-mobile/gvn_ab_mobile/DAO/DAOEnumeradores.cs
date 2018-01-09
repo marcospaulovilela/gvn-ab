@@ -341,4 +341,53 @@ namespace gvn_ab_mobile.DAO {
             });
         }
     }
+
+    class DAOConsideracaoPeso : DAO<Models.ConsideracaoPeso> {
+        public override int? CreateTable() {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.ConsideracaoPeso>() {
+                new Models.ConsideracaoPeso("Abaixo do peso") { Codigo = 21 },
+                new Models.ConsideracaoPeso("Peso adequado") { Codigo = 22 },
+                new Models.ConsideracaoPeso("Acima do peso") { Codigo = 23 }
+            });
+        }
+    }
+
+    class DAODoencaCardiaca : DAO<Models.DoencaCardiaca> {
+        public override int? CreateTable() {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.DoencaCardiaca>() {
+                new Models.DoencaCardiaca("Insuficiência cardíaca") { Codigo = 24 },
+                new Models.DoencaCardiaca("Outro") { Codigo = 25 },
+                new Models.DoencaCardiaca("Não sabe") { Codigo = 26 }
+            });
+        }
+    }
+
+    class DAOProblemaRins : DAO<Models.ProblemaRins> {
+        public override int? CreateTable() {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.ProblemaRins>() {
+                new Models.ProblemaRins("Insuficiência renal") { Codigo = 27 },
+                new Models.ProblemaRins("Outro") { Codigo = 28 },
+                new Models.ProblemaRins("Não sabe") { Codigo = 29 }
+            });
+        }
+    }
+
+    class DAODoencaRespiratoria : DAO<Models.DoencaRespiratoria> {
+        public override int? CreateTable() {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.DoencaRespiratoria>() {
+                new Models.DoencaRespiratoria("ASMA") { Codigo = 30 },
+                new Models.DoencaRespiratoria("DPOC / Enfisema") { Codigo = 31 },
+                new Models.DoencaRespiratoria("Outro") { Codigo = 32 },
+                new Models.DoencaRespiratoria("Não sabe") { Codigo = 33 }
+            });
+        }
+    }
 }

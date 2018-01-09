@@ -7,33 +7,24 @@
 
         <Grid Padding="20, 30, 20, 20" RowSpacing="20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="20" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="20" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Label Text="Fichas" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="Black" />
-            
-            <StackLayout Grid.Row="3" Spacing="12" HorizontalOptions="Fill">
-                <Button Clicked="OnCadastroIndividualClicked" Text="Cadastro Individual" Image="iconPessoas" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="Black" />
+            <StackLayout Grid.Row="0">
+                <Image Source="logoGoverna.png" />
+                <Label Text="Saude" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="SteelBlue" />
+                <Label Text="Fichas" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="SteelBlue" />
             </StackLayout>
 
-            <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill">
-                <Button Clicked="OnCadastroDomiciliarClicked" Text="Cadastro Domiciliar" Image="iconCasas" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="Black" />
+            <StackLayout Grid.Row="2" Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
+                <Button Clicked="OnCadastroIndividualClicked" Text="Cadastro Individual" Image="iconPessoas" BackgroundColor="SteelBlue" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+                <Button Clicked="OnCadastroDomiciliarClicked" Text="Cadastro Domiciliar" Image="iconCasas" BackgroundColor="SteelBlue" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+                <Button Clicked="OnAtendimentoIndividualClicked" Text="Atendimento Individual" Image="iconMedico" BackgroundColor="SteelBlue" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+                <Button Text="ENVIAR" IsVisible="{Binding usuario.Root}" BackgroundColor="SteelBlue" Opacity="0.80" BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+                <Button Text="Sair" Clicked="OnSairClicked" BackgroundColor="SteelBlue" Opacity="0.80" BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
             </StackLayout>
-
-            
-            <StackLayout Grid.Row="5" Spacing="12" HorizontalOptions="Fill">
-                <Button Clicked="OnAtendimentoIndividualClicked" Text="Atendimento Individual" Image="iconMedico" BackgroundColor="Transparent" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="Black" />
-            </StackLayout>
-
-            <StackLayout Grid.Row="5" Spacing="12" HorizontalOptions="Fill">
-                <Button Text="Sync (APENAS GET AINDA) " IsVisible="{Binding usuario.Root}" BackgroundColor="Transparent" Opacity="0.80" BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
-            </StackLayout>
-
         </Grid>
 
     </ContentPage.Content>

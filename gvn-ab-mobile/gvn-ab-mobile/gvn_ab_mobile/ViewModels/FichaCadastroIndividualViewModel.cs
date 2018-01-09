@@ -36,6 +36,12 @@ namespace gvn_ab_mobile.ViewModels {
         // USADO PAGE 4
         public ObservableRangeCollection<Models.MotivoSaida> MotivosSaida { get; set; }
 
+        // USADO PAGE 5
+        public ObservableRangeCollection<Models.ConsideracaoPeso> ConsideracoesPeso { get; set; }
+        public ObservableRangeCollection<Models.DoencaCardiaca> DoencasCardiacas { get; set; }
+        public ObservableRangeCollection<Models.ProblemaRins> ProblemasRins { get; set; }
+        public ObservableRangeCollection<Models.DoencaRespiratoria> DoencasRespiratorias { get; set; }
+        
         public FichaCadastroIndividualViewModel(Page page) {
             this.Ficha = new Models.FichaCadastroIndividual();
             this.Page = page;
@@ -58,6 +64,12 @@ namespace gvn_ab_mobile.ViewModels {
             this.IdentidadeGeneros = new ObservableRangeCollection<Models.IdentidadeGenero>(new DAO.DAOIdentidadeGenero().Select());
             this.OrientacoesSexuais = new ObservableRangeCollection<Models.OrientacaoSexual>(new DAO.DAOOrientacaoSexual().Select());
             this.RelacoesParentesco = new ObservableRangeCollection<Models.RelacaoParentesco>(new DAO.DAORelacaoParentesco().Select());
+
+            this.ConsideracoesPeso = new ObservableRangeCollection<Models.ConsideracaoPeso>(new DAO.DAOConsideracaoPeso().Select());
+            this.DoencasCardiacas= new ObservableRangeCollection<Models.DoencaCardiaca>(new DAO.DAODoencaCardiaca().Select());
+            this.ProblemasRins = new ObservableRangeCollection<Models.ProblemaRins>(new DAO.DAOProblemaRins().Select());
+            this.DoencasRespiratorias = new ObservableRangeCollection<Models.DoencaRespiratoria>(new DAO.DAODoencaRespiratoria().Select());
+
         }
 
         private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
@@ -74,6 +86,10 @@ namespace gvn_ab_mobile.ViewModels {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4(this));
+            } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4) {
+                await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
+            } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5) {
+                await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
             };
         }
     }

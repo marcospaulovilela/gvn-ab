@@ -42,5 +42,8 @@ namespace gvn_ab_mobile.Views {
             await Navigation.PushAsync(new FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage1());
         }
 
+        private void OnSairClicked(object sender, EventArgs e) {
+            App.Current.MainPage = new NavigationPage(new Views.LoginPage());
+        }
     }
 }

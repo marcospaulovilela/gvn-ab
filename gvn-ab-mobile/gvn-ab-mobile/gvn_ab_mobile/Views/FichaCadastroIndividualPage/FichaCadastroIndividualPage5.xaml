@@ -18,7 +18,7 @@
 
                 <StackLayout>
                     <Label Text="Sobre seu peso, como você se considera?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Peso" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.SituacaoPeso}"/>
+                    <Picker x:Name="CodConsideracaoPeso"  ItemsSource="{Binding ConsideracoesPeso}"  HorizontalOptions="FillAndExpand" Title="Peso" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -58,12 +58,12 @@
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Tem Doença Cardíaca/Do Coração?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTeveInfarto}"></Switch>
+                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusDoencaCardiaca}"></Switch>
                 </StackLayout>
                 
                 <StackLayout>
                     <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Doenças Cardíacas" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DoencaCardiaca}"/>
+                    <Picker x:Name="CodDoencaCardiaca"  ItemsSource="{Binding DoencasCardiacas}"  HorizontalOptions="FillAndExpand" Title="Doença cardiaca" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -73,7 +73,7 @@
 
                 <StackLayout>
                     <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Doenças Rins" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DoencaRins}"/>
+                    <Picker x:Name="CodProblemaRins"  ItemsSource="{Binding ProblemasRins}"  HorizontalOptions="FillAndExpand" Title="Problemas nos rins" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -83,7 +83,7 @@
 
                 <StackLayout>
                     <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Doenças Respiratórias" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DoencaRespiratoria}"/>
+                    <Picker x:Name="CodDoencasRespiratorias"  ItemsSource="{Binding DoencasRespiratorias }"  HorizontalOptions="FillAndExpand" Title="Doenças respiratorias" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
