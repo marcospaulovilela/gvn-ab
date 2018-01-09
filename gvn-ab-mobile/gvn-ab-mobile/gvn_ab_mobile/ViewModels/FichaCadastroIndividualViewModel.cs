@@ -77,7 +77,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
-            await this.Page.DisplayAlert("Salvar no banco", "voltar para o menu", "fazer isso depois.");
+            await this.Page.DisplayAlert("Fazer assinatura do cidadão", "", "Ok");
         }
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {

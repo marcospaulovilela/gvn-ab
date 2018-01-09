@@ -43,7 +43,7 @@ namespace gvn_ab_mobile.Views {
         }
 
         private void OnSairClicked(object sender, EventArgs e) {
-            App.Current.MainPage = new NavigationPage(new Views.LoginPage());
+            App.Current.MainPage = new NavigationPage(new Views.LoginPage()) { BarBackgroundColor = Color.SteelBlue };
         }
     }
 }

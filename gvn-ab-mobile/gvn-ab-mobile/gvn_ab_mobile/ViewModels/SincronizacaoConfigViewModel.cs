@@ -81,7 +81,7 @@ namespace gvn_ab_mobile.ViewModels {
                     new DAO.DAOProblemaRins().CreateTable();
                     new DAO.DAODoencaRespiratoria().CreateTable();
 
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new Views.LoginPage()));
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new Views.LoginPage()) { BarBackgroundColor = Color.SteelBlue });
 
                 } catch (Exception ex) {
                     System.Diagnostics.Debug.WriteLine(ex);

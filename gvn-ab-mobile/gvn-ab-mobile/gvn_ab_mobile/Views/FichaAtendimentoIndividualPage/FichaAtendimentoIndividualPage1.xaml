@@ -23,7 +23,7 @@
 
                 <StackLayout Orientation="Horizontal">
 
-                    <StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="CNS do Cidadão:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Entry Placeholder="CNS Cidadão" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
                     </StackLayout>
