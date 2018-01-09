@@ -1,5 +1,6 @@
 ﻿using gvn_ab_mobile.Helpers;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -17,7 +18,7 @@ namespace gvn_ab_mobile.ViewModels {
             this.Page = page;
             this.SincronizacaoConfig = new Models.SincronizacaoConfig();
 
-            this.Sync = new Command(async () => await this.SyncExecuteAsync());
+            this.Sync = new Command(() => this.SyncExecute());
             this.Connectar = new Command(async () => await this.ConnectarExecuteAsync());
             this.Estabelecimentos = new ObservableRangeCollection<Models.Estabelecimento>();
         }
@@ -36,25 +37,40 @@ namespace gvn_ab_mobile.ViewModels {
                 System.Diagnostics.Debug.WriteLine(ex);
                 MessagingCenter.Send(new MessagingCenterAlert {
                     Title = "Error",
-                    Message = "Unable to load items.",
+                    Message = "Não foi possivel carregar os items do serviço.",
                     Cancel = "OK"
                 }, "message");
             } finally {
                 IsBusy = false;
-            };   
+            };
         }
 
-        private async System.Threading.Tasks.Task SyncExecuteAsync() {
+        private void SyncExecute() {
             this.IsBusy = true;
+            Task.Run(() => {
+                try {
+                    //APAGA TODO O BANCO DE DADOS E O RECONSTROI
+                    DAO.DAO<object>.DropDatabase();
 
-            try {
-                this.Page.DisplayAlert("A", "B", "C");
+                    //CRIA OS ENUMERADORES E SALVA OS VALORES PADROES DO ESUS
+                    new DAO.DAOPais().CreateTable();
+                    new DAO.DAORacaCor().CreateTable();
+                    new DAO.DAOEtnia().CreateTable();
+                    new DAO.DAOOrientacaoSexual().CreateTable();
+                    new DAO.DAOCurso().CreateTable();
+                    new DAO.DAORelacaoParentesco().CreateTable();
+                    new DAO.DAOResponsavel().CreateTable();
+                    new DAO.DAOMotivoSaida().CreateTable();
+                    new DAO.DAONacionalidade().CreateTable();
+                    new DAO.DAOSituacaoMercado().CreateTable();
+                    new DAO.DAOIdentidadeGenero().CreateTable();
 
-            } catch (Exception ex) {
-                System.Diagnostics.Debug.WriteLine(ex);
-            } finally {
-                IsBusy = false;
-            };
+                } catch (Exception ex) {
+                    System.Diagnostics.Debug.WriteLine(ex);
+                } finally {
+                    IsBusy = false;
+                };
+            });
         }
     }
 }

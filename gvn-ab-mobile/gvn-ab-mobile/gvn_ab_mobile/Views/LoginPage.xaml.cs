@@ -18,16 +18,5 @@ namespace gvn_ab_mobile.Views {
 
             this.BindingContext = this.viewModel = new ViewModels.LoginViewModel(this);
         }
-
-        private async Task ButtonReset_ClickedAsync(object sender, EventArgs e) {
-            var DAO = new DAO.DAOUsuario();
-            DAO.ClearBase();
-            DAO.Insert(new Models.Usuario() {
-                Cpf = "123456789",
-                Nome = "Usuario Teste",
-                Password = "123",
-                Root = true
-            });
-        }
     }
 }

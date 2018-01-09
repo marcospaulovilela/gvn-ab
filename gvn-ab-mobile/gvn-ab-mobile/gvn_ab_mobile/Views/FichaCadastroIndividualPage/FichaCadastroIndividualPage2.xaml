@@ -59,7 +59,7 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Etnia:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodEtinia"  ItemsSource="{Binding Etinias}"  HorizontalOptions="FillAndExpand" Title="Etinia" />
+                        <Picker x:Name="CodEtnia"  ItemsSource="{Binding Etnias}"  HorizontalOptions="FillAndExpand" Title="Etnia" />
                     </StackLayout>
                 </StackLayout>
 

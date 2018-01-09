@@ -5,48 +5,44 @@
              xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              Title="Configurações para sincronização">
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="10"/>
-            </Grid.ColumnDefinitions>
-            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
-                <StackLayout>
-                    <Label Text="C.P.F. "  FontSize="Medium"/>
-                    <Entry x:Name="cpf" Keyboard="Numeric"  FontSize="Large" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Gray" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Cpf}">
-                        <Entry.Behaviors>
-                            <behaviors:ValidatorCpf />
-                        </Entry.Behaviors>
-                    </Entry>
-                </StackLayout>
-                
-                <StackLayout>
-                    <Label Text="Estabelecimento de saude: "  FontSize="Medium"/>
-                    <Picker x:Name="Unidade" ItemsSource="{Binding Estabelecimentos}" TextColor="Gray" HorizontalOptions="FillAndExpand">
-                        <Picker.Behaviors>
-                            <behaviors:ValidatorPickerBehavior />
-                        </Picker.Behaviors>                        
-                    </Picker>
-                </StackLayout>
-                
-                <StackLayout >
-                    <Label Text="Versão: "  FontSize="Medium"/>
-                    <Picker x:Name="Versao" TextColor="Gray" HorizontalOptions="FillAndExpand" IsEnabled="False" SelectedIndex="1">
-                        <Picker.Items>
-                            <x:String>v2.2</x:String>
-                        </Picker.Items>
-                    </Picker>
-                </StackLayout>
+        <AbsoluteLayout>
+            <Grid HorizontalOptions="FillAndExpand"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1" BackgroundColor="{Binding IsBusyColor}">
+                    <StackLayout>
+                        <Label Text="Estabelecimento de saude: "  FontSize="Medium"/>
+                        <Picker x:Name="Unidade" ItemsSource="{Binding Estabelecimentos}" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
+                    </StackLayout>
 
-                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
-                    <Button Text="Sync" BackgroundColor="SteelBlue" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="White"  VerticalOptions="Center">
-                        <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Sync}" Controls="Unidade|cpf" />
-                        </Button.Behaviors>
-                    </Button>
+                    <StackLayout >
+                        <Label Text="Versão: "  FontSize="Medium"/>
+                        <Picker x:Name="Versao" TextColor="Gray" HorizontalOptions="FillAndExpand" IsEnabled="False" SelectedIndex="1">
+                            <Picker.Items>
+                                <x:String>v2.2</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+
+                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
+                        <Button Text="Sync" BackgroundColor="SteelBlue" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="White"  VerticalOptions="Center">
+                            <Button.Behaviors>
+                                <behaviors:ButtonSubmitBehavior Command="{Binding Sync}" Controls="Unidade|cpf" />
+                            </Button.Behaviors>
+                        </Button>
+                    </StackLayout>
                 </StackLayout>
-            </StackLayout>
-        </Grid>
+            </Grid>
+
+            <ContentView x:Name="actIndBackground" BackgroundColor="#222222" Opacity="0.5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsBusy}"/>
+            <ActivityIndicator x:Name="actInd" Color="White" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" /> 
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
