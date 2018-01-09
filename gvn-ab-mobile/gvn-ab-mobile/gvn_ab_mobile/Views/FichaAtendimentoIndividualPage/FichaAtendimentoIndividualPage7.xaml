@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gvn_ab_mobile.Views.FichaAtendimentoIndividualPage.FichaAtendimentoIndividualPage7"
+             Title="Encaminhamento">
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
+            <StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Retorno para Consulta Agendada:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Retorno para Cuidado Continuado/Programado:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Agendamento para Grupos:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Agendamento para NASF:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Alta do Episódio:" FontAttributes="Bold" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Encaminhamento Interno no Dia:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Encaminhamento Para Serviço Especializado:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Encaminhamento para CAPS:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Encaminhamento para Internação Hospitalar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Encaminhamento para Urgência:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Encaminhamento para Serviço de Atenção Domiciliar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Encaminhamento Intersetorial:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

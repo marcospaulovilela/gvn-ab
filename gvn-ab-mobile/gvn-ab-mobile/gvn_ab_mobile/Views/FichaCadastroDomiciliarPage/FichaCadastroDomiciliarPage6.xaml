@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gvn_ab_mobile.Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6"
+             Title="Termo Instituição de Permanência">
+        <ContentPage.Content>
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
+                    <Label Text="O Cidadão concorda em realizar o cadastro de Instituição de Permanência?" FontSize="Default" TextColor="Black" HorizontalOptions="CenterAndExpand" />
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                        <Button Text="Sim" BackgroundColor="SteelBlue" Command="{Binding Concordar}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
+                        <Button Text="Não" BackgroundColor="SteelBlue" Command="{Binding NaoConcordar}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ContentPage.Content>
+</ContentPage>

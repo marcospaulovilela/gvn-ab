@@ -84,8 +84,47 @@
     <Compile Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage1.xaml.cs">
       <DependentUpon>FichaAtendimentoIndividualPage1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage2.xaml.cs">
+      <DependentUpon>FichaAtendimentoIndividualPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage3.xaml.cs">
+      <DependentUpon>FichaAtendimentoIndividualPage3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage4.xaml.cs">
+      <DependentUpon>FichaAtendimentoIndividualPage4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage5.xaml.cs">
+      <DependentUpon>FichaAtendimentoIndividualPage5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage6.xaml.cs">
+      <DependentUpon>FichaAtendimentoIndividualPage6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage7.xaml.cs">
+      <DependentUpon>FichaAtendimentoIndividualPage7.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage1.xaml.cs">
       <DependentUpon>FichaCadastroDomiciliarPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage2.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage3.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarPage3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage4.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarPage4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage5.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarPage5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage6.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarPage6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage7.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarPage7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage8.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarPage8.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage2.xaml.cs">
       <DependentUpon>FichaCadastroIndividualPage2.xaml</DependentUpon>
@@ -154,10 +193,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -230,6 +265,90 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage6.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage3.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage4.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage5.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage6.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage7.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage8.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage3.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage4.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage5.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage6.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage7.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

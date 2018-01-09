@@ -13,7 +13,7 @@
             </Grid.ColumnDefinitions>
 
             <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
-                <Label Text="O Cidadão concorda em responder o questionário de Cadastro individual?" FontSize="Default" TextColor="Black" HorizontalOptions="CenterAndExpand" />
+                <Label Text="O Cidadão concorda em responder o questionário de Cadastro Individual?" FontSize="Default" TextColor="Black" HorizontalOptions="CenterAndExpand" />
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
                     <Button Text="Sim" BackgroundColor="SteelBlue" Command="{Binding Concordar}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>

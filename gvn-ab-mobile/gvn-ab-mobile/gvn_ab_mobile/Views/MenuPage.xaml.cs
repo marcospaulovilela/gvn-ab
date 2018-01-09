@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace gvn_ab_mobile.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuPage : ContentPage {
-        private Models.Usuario usuario { get; set; }
+        private Models.Usuario Usuario { get; set; }
 
         public MenuPage() {
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
@@ -19,12 +19,12 @@ namespace gvn_ab_mobile.Views {
             this.BindingContext = this;
         }
 
-        public MenuPage(Models.Usuario usuario) {
+        public MenuPage(Models.Usuario Usuario) {
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
 
             this.BindingContext = this;
-            this.usuario = usuario;
+            this.Usuario = Usuario;
         }
 
         async void OnAtendimentoIndividualClicked(object sender, EventArgs e)

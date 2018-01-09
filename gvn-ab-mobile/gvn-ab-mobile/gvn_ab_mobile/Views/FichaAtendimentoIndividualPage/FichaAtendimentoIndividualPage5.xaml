@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gvn_ab_mobile.Views.FichaAtendimentoIndividualPage.FichaAtendimentoIndividualPage5"
+             Title="Exames Avaliados">
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
+            <StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Colesterol Total:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Creatina:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="EAS/EQU:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="EletroCardiograma:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Eletroforese de Hemoglobina:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Espirometria:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Exame de Escarro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Glicemia:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="HDL:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Saúde Sexual e Reprodutiva:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Hemoglobina Glicada:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Hemograma:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="LDL:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Retinografia/Fundo de olho com oftamologista:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Sorologia de Sífilis (VDRL):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Sorologia para Dengue:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Sorologia para HIV:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Teste Indireto de Antiglobulina humana (TIA):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Teste de Gravidez:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Ultrassonografia Obstétrica:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Urocultura:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Teste da Orelhinha (EOA):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Teste do Olhinho (TRV):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Teste do Pezinho:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Switch  HorizontalOptions="Center" ></Switch>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Outro Exame (código exigido do SIGTAP):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Entry Placeholder="Código Exame 1" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Outro Exame (código exigido do SIGTAP):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Entry Placeholder="Código Exame 2" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Outro Exame (código exigido do SIGTAP):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Entry Placeholder="Código Exame 3" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
