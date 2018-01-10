@@ -9,7 +9,7 @@ using SQLite;
 
 namespace gvn_ab_mobile.Models
 {
-    class FichaFamilia : Helpers.ObservableObject
+    public class FichaFamilia : Helpers.ObservableObject
     {
 
         //Campo ID - Tipo long

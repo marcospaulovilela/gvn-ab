@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using gvn_ab_mobile.Views.FichaAtendimentoIndividualPage;
 
 namespace gvn_ab_mobile.Views.FichaAtendimentoIndividualPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FichaAtendimentoIndividualPage4 : ContentPage
     {
-        public FichaAtendimentoIndividualPage4()
+        ViewModels.FichaAtendimentoIndividualViewModel viewModel;
+
+        public FichaAtendimentoIndividualPage4(ViewModels.FichaAtendimentoIndividualViewModel viewModel)
         {
             InitializeComponent();
+            this.BindingContext = this.viewModel = new ViewModels.FichaAtendimentoIndividualViewModel(this);
         }
     }
 }

@@ -136,6 +136,10 @@
                     <Entry Placeholder="CID-10" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
                 </StackLayout>
 
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                    <Button Text="Continuar" BackgroundColor="SteelBlue" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
+                </StackLayout>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

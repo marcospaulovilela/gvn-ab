@@ -73,6 +73,8 @@
     <Compile Include="Models\SincronizacaoConfig.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\FichaAtendimentoIndividualViewModel.cs" />
+    <Compile Include="ViewModels\FichaCadastroDomiciliarViewModel.cs" />
     <Compile Include="ViewModels\SincronizacaoConfigViewModel.cs" />
     <Compile Include="ViewModels\FichaCadastroIndividualViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

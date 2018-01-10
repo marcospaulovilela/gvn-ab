@@ -9,7 +9,7 @@ using SQLite.Net.Attributes;
 
 namespace gvn_ab_mobile.Models
 {
-    class FichaCadastroDomiciliarTerritorial : Helpers.ObservableObject
+    public class FichaCadastroDomiciliarTerritorial : Helpers.ObservableObject
     {
 
         //Campo ID - Tipo long

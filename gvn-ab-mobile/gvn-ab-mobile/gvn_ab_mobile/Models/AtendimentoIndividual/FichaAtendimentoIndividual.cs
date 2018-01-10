@@ -9,7 +9,7 @@ using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models
 {
-    class FichaAtendimentoIndividual : Helpers.ObservableObject
+    public class FichaAtendimentoIndividual : Helpers.ObservableObject
     {
 
         //Campo ID - Tipo long
