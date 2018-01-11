@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace gvn_ab_mobile.Views {
@@ -17,6 +11,10 @@ namespace gvn_ab_mobile.Views {
             InitializeComponent();
          
             this.BindingContext = this.viewModel = new ViewModels.LoginViewModel(this);
+
+
+            System.Collections.Generic.List<Models.Cbo> cbo = new DAO.DAOCbo().Select();
+            System.Collections.Generic.List<Models.Profissional> profissionais = new DAO.DAOProfissional().Select();
         }
     }
 }

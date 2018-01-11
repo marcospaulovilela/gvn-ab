@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System.Collections.Generic;
 
 namespace gvn_ab_mobile.Models {
@@ -24,6 +25,9 @@ namespace gvn_ab_mobile.Models {
         public bool Equals(Cbo left, Cbo right) {
             return left.CodCbo == right.CodCbo;
         }
+
+        [ForeignKey(typeof(Models.Profissional))]
+        public int ProfissionalId { get; set; }
 
         public int GetHashCode(Cbo obj) {
             if (string.IsNullOrEmpty(obj.CodCbo)) return 0;
