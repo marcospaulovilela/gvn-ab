@@ -3,7 +3,7 @@ using SQLiteNetExtensions.Attributes;
 using System.Collections.Generic;
 
 namespace gvn_ab_mobile.Models {
-    public class Cbo : Helpers.ObservableObject, IEqualityComparer<Cbo> {
+    public class Cbo : Helpers.ObservableObject {
         private string codCbo;
         [PrimaryKey, NotNull]
         public string CodCbo {
@@ -20,18 +20,6 @@ namespace gvn_ab_mobile.Models {
         
         public override string ToString() {
             return $"{this.CodCbo} - {this.NomCbo}";
-        }
-
-        public bool Equals(Cbo left, Cbo right) {
-            return left.CodCbo == right.CodCbo;
-        }
-
-        [ForeignKey(typeof(Models.Profissional))]
-        public int ProfissionalId { get; set; }
-
-        public int GetHashCode(Cbo obj) {
-            if (string.IsNullOrEmpty(obj.CodCbo)) return 0;
-            return int.Parse(obj.CodCbo);
         }
     }
 }

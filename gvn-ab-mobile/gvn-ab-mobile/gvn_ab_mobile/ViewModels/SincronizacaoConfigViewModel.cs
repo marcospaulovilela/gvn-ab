@@ -86,6 +86,28 @@ namespace gvn_ab_mobile.ViewModels {
                     using (DAO.DAOProblemaRins DAOProblemaRins = new DAO.DAOProblemaRins()) { DAOProblemaRins.CreateTable(); }
                     using (DAO.DAODoencaRespiratoria DAODoencaRespiratoria = new DAO.DAODoencaRespiratoria()) { DAODoencaRespiratoria.CreateTable(); }
 
+                    using (DAO.DAOTurno DAOTurno = new DAO.DAOTurno()) { DAOTurno.CreateTable(); }
+                    using (DAO.DAOLocalAtendimento DAOLocalAtendimento = new DAO.DAOLocalAtendimento()) { DAOLocalAtendimento.CreateTable(); }
+                    using (DAO.DAOTipoAtendimento DAOTipoAtendimento = new DAO.DAOTipoAtendimento()) { DAOTipoAtendimento.CreateTable(); }
+                    using (DAO.DAOAtencaoDomiciliar DAOAtencaoDomiciliar = new DAO.DAOAtencaoDomiciliar()) { DAOAtencaoDomiciliar.CreateTable(); }
+                    using (DAO.DAORacionalidadeSaude DAORacionalidadeSaude = new DAO.DAORacionalidadeSaude()) { DAORacionalidadeSaude.CreateTable(); }
+                    using (DAO.DAOAleitamentoMaterno DAOAleitamentoMaterno = new DAO.DAOAleitamentoMaterno()) { DAOAleitamentoMaterno.CreateTable(); }
+
+                    using (DAO.DAOSituacaoMoradiaPosseTerra DAOSituacaoMoradiaPosseTerra = new DAO.DAOSituacaoMoradiaPosseTerra()) { DAOSituacaoMoradiaPosseTerra.CreateTable(); }
+                    using (DAO.DAOTipoDeDomicilio DAOTipoDeDomicilio = new DAO.DAOTipoDeDomicilio()) { DAOTipoDeDomicilio.CreateTable(); }
+                    using (DAO.DAOTipoDeAcessoAoDomicilio DAOTipoDeAcessoAoDomicilio = new DAO.DAOTipoDeAcessoAoDomicilio()) { DAOTipoDeAcessoAoDomicilio.CreateTable(); }
+                    using (DAO.DAOCondicaoDePosseEUsoDaTerra DAOCondicaoDePosseEUsoDaTerra = new DAO.DAOCondicaoDePosseEUsoDaTerra()) { DAOCondicaoDePosseEUsoDaTerra.CreateTable(); }
+                    using (DAO.DAOMaterialPredominanteNaConstrucao DAOMaterialPredominanteNaConstrucao = new DAO.DAOMaterialPredominanteNaConstrucao()) { DAOMaterialPredominanteNaConstrucao.CreateTable(); }
+                    using (DAO.DAOLocalizacao DAOLocalizacao = new DAO.DAOLocalizacao()) { DAOLocalizacao.CreateTable(); }
+                    using (DAO.DAOAbastecimentoDeAgua DAOAbastecimentoDeAgua = new DAO.DAOAbastecimentoDeAgua()) { DAOAbastecimentoDeAgua.CreateTable(); }
+                    using (DAO.DAOAguaConsumoDomicilio DAOAguaConsumoDomicilio = new DAO.DAOAguaConsumoDomicilio()) { DAOAguaConsumoDomicilio.CreateTable(); }
+                    using (DAO.DAOFormaDeEscoamentoDoBanheiroOuSanitario DAOFormaDeEscoamentoDoBanheiroOuSanitario = new DAO.DAOFormaDeEscoamentoDoBanheiroOuSanitario()) { DAOFormaDeEscoamentoDoBanheiroOuSanitario.CreateTable(); }
+                    using (DAO.DAODestinoDoLixo DAODestinoDoLixo = new DAO.DAODestinoDoLixo()) { DAODestinoDoLixo.CreateTable(); }
+
+                    using (DAO.DAOAnimalNoDomicilio DAOAnimalNoDomicilio = new DAO.DAOAnimalNoDomicilio()) { DAOAnimalNoDomicilio.CreateTable(); }
+                    using (DAO.DAORendaFamiliar DAORendaFamiliar = new DAO.DAORendaFamiliar()) { DAORendaFamiliar.CreateTable(); }
+
+
                     using (DAO.DAOProfissional DAOProfissional = new DAO.DAOProfissional()) {
                         var _Profissionais = await TaskGetProfissionais;
                         var Profissionais = new List<Models.Profissional>();
@@ -123,28 +145,6 @@ namespace gvn_ab_mobile.ViewModels {
                         //DAOSync.CreateTable();
                         //DAOSync.Insert(this.SincronizacaoConfig);
                     };
-
-                    new DAO.DAOTurno().CreateTable();
-                    new DAO.DAOLocalAtendimento().CreateTable();
-                    new DAO.DAOTipoAtendimento().CreateTable();
-                    new DAO.DAOAtencaoDomiciliar().CreateTable();
-                    new DAO.DAORacionalidadeSaude().CreateTable();
-                    new DAO.DAOAleitamentoMaterno().CreateTable();
-
-                    new DAO.DAOSituacaoMoradiaPosseTerra().CreateTable();
-                    new DAO.DAOLocalizacao().CreateTable();
-                    new DAO.DAOTipoDeDomicilio().CreateTable();
-                    new DAO.DAOTipoDeAcessoAoDomicilio().CreateTable();
-                    new DAO.DAOCondicaoDePosseEUsoDaTerra().CreateTable();
-                    new DAO.DAOMaterialPredominanteNaConstrucao().CreateTable();
-                    new DAO.DAOAbastecimentoDeAgua().CreateTable();
-                    new DAO.DAOAguaConsumoDomicilio().CreateTable();
-                    new DAO.DAOFormaDeEscoamentoDoBanheiroOuSanitario().CreateTable();
-                    new DAO.DAODestinoDoLixo().CreateTable();
-
-                    new DAO.DAOAnimalNoDomicilio().CreateTable();
-
-                    new DAO.DAORendaFamiliar().CreateTable();
 
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new Views.LoginPage()) { BarBackgroundColor = Color.SteelBlue });
 

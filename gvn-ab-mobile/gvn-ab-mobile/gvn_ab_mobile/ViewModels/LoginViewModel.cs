@@ -22,7 +22,7 @@ namespace gvn_ab_mobile.ViewModels {
 
         private async Task LoginExecuteAsync() {
             using (var objDao = new DAO.DAOProfissional()) {
-                var CpfUser = objDao.GetUsuarioByCodigo(this.Profissional.CodProfissional);
+                var CpfUser = objDao.GetProfissionalByCodigo(this.Profissional.CodProfissional);
                 if (CpfUser != null && CpfUser.DesSenha == this.Profissional.DesSenha) { //SERIO??? BRINCADEIRA SEGURANÇA FAZER DIREITO DEPOIS.....
                     this.Profissional = new Models.Profissional();
                     await this.Page.Navigation.PushAsync(new Views.MenuPage());

@@ -27,7 +27,7 @@ namespace gvn_ab_mobile.Models {
         }
 
         private List<Models.Cbo> cbos;
-        [OneToMany]
+        [OneToMany(CascadeOperations = CascadeOperation.CascadeRead)]
         public List<Models.Cbo> Cbos {
             get { return this.cbos; }
             set { SetProperty(ref cbos, value); }
