@@ -124,6 +124,28 @@ namespace gvn_ab_mobile.ViewModels {
                         //DAOSync.Insert(this.SincronizacaoConfig);
                     };
 
+                    new DAO.DAOTurno().CreateTable();
+                    new DAO.DAOLocalAtendimento().CreateTable();
+                    new DAO.DAOTipoAtendimento().CreateTable();
+                    new DAO.DAOAtencaoDomiciliar().CreateTable();
+                    new DAO.DAORacionalidadeSaude().CreateTable();
+                    new DAO.DAOAleitamentoMaterno().CreateTable();
+
+                    new DAO.DAOSituacaoMoradiaPosseTerra().CreateTable();
+                    new DAO.DAOLocalizacao().CreateTable();
+                    new DAO.DAOTipoDeDomicilio().CreateTable();
+                    new DAO.DAOTipoDeAcessoAoDomicilio().CreateTable();
+                    new DAO.DAOCondicaoDePosseEUsoDaTerra().CreateTable();
+                    new DAO.DAOMaterialPredominanteNaConstrucao().CreateTable();
+                    new DAO.DAOAbastecimentoDeAgua().CreateTable();
+                    new DAO.DAOAguaConsumoDomicilio().CreateTable();
+                    new DAO.DAOFormaDeEscoamentoDoBanheiroOuSanitario().CreateTable();
+                    new DAO.DAODestinoDoLixo().CreateTable();
+
+                    new DAO.DAOAnimalNoDomicilio().CreateTable();
+
+                    new DAO.DAORendaFamiliar().CreateTable();
+
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new Views.LoginPage()) { BarBackgroundColor = Color.SteelBlue });
 
                 } catch (Exception ex) {

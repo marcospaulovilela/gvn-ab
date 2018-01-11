@@ -34,6 +34,11 @@
                     </StackLayout>
 
                 </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                    <Button Text="Continuar" BackgroundColor="SteelBlue" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
+                </StackLayout>
+
 
             </StackLayout>
         </ScrollView>

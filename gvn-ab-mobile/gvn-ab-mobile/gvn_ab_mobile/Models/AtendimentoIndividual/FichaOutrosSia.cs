@@ -5,7 +5,7 @@ using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models
 {
-    class FichaOutrosSia : Helpers.ObservableObject
+    public class FichaOutrosSia : Helpers.ObservableObject
     {
 
         //Campo ID - Tipo long

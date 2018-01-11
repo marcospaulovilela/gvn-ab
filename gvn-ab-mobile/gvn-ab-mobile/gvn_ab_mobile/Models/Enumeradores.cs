@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.Models {
+
+    //Ficha Cadastro Individual
     public class Pais : Models.EntidadeEnumerador {
         public Pais() { }
         public Pais(string descricao) : base(descricao) { }
@@ -84,5 +86,123 @@ namespace gvn_ab_mobile.Models {
         public DoencaRespiratoria() { }
         public DoencaRespiratoria(string descricao) : base(descricao) { }
     }
+
+    //
+
+    //Ficha Cadastro Domiciliar e Territorial
+
+    public class SituacaoMoradiaPosseTerra : Models.EntidadeEnumerador
+    {
+        public SituacaoMoradiaPosseTerra() { }
+        public SituacaoMoradiaPosseTerra(string descricao) : base(descricao) { }
+    }
+
+    public class Localizacao : Models.EntidadeEnumerador
+    {
+        public Localizacao() { }
+        public Localizacao(string descricao) : base(descricao) { }
+    }
+
+    public class TipoDomicilio : Models.EntidadeEnumerador
+    {
+        public TipoDomicilio() { }
+        public TipoDomicilio(string descricao) : base(descricao) { }
+    }
+
+    public class TipoAcessoDomicilio : Models.EntidadeEnumerador
+    {
+        public TipoAcessoDomicilio() { }
+        public TipoAcessoDomicilio(string descricao) : base(descricao) { }
+    }
+
+    public class CondicaoPosseUsoTerra : Models.EntidadeEnumerador
+    {
+        public CondicaoPosseUsoTerra() { }
+        public CondicaoPosseUsoTerra(string descricao) : base(descricao) { }
+    }
+
+    public class MaterialPredominanteConstrucaoParedesExternasDomicilio : Models.EntidadeEnumerador
+    {
+        public MaterialPredominanteConstrucaoParedesExternasDomicilio() { }
+        public MaterialPredominanteConstrucaoParedesExternasDomicilio(string descricao) : base(descricao) { }
+    }
+
+    public class AbastecimentoAgua : Models.EntidadeEnumerador
+    {
+        public AbastecimentoAgua() { }
+        public AbastecimentoAgua(string descricao) : base(descricao) { }
+    }
+
+    public class AguaConsumoDomicilio : Models.EntidadeEnumerador
+    {
+        public AguaConsumoDomicilio() { }
+        public AguaConsumoDomicilio(string descricao) : base(descricao) { }
+    }
+
+    public class FormaEscoamentoBanheiroOuSanitario : Models.EntidadeEnumerador
+    {
+        public FormaEscoamentoBanheiroOuSanitario() { }
+        public FormaEscoamentoBanheiroOuSanitario(string descricao) : base(descricao) { }
+    }
+
+    public class DestinoLixo : Models.EntidadeEnumerador
+    {
+        public DestinoLixo() { }
+        public DestinoLixo(string descricao) : base(descricao) { }
+    }
+
+    public class AnimaisDomicilio : Models.EntidadeEnumerador
+    {
+        public AnimaisDomicilio() { }
+        public AnimaisDomicilio(string descricao) : base(descricao) { }
+    }
+
+    public class RendaFamiliar : Models.EntidadeEnumerador
+    {
+        public RendaFamiliar() { }
+        public RendaFamiliar(string descricao) : base(descricao) { }
+    }
+
+    //
+
+    //Ficha Atendimento Individual
+
+    public class Turno : Models.EntidadeEnumerador
+    {
+        public Turno() { }
+        public Turno(string descricao) : base(descricao) { }
+    }
+
+    public class LocalDeAtendimento : Models.EntidadeEnumerador
+    {
+        public LocalDeAtendimento() { }
+        public LocalDeAtendimento(string descricao) : base(descricao) { }
+    }
+
+    public class TipoDeAtendimento : Models.EntidadeEnumerador
+    {
+        public TipoDeAtendimento() { }
+        public TipoDeAtendimento(string descricao) : base(descricao) { }
+    }
+
+    public class AtencaoDomiciliar : Models.EntidadeEnumerador
+    {
+        public AtencaoDomiciliar() { }
+        public AtencaoDomiciliar(string descricao) : base(descricao) { }
+    }
+
+    public class RacionalidadeSaude : Models.EntidadeEnumerador
+    {
+        public RacionalidadeSaude() { }
+        public RacionalidadeSaude(string descricao) : base(descricao) { }
+    }
+
+    public class AleitamentoMaterno : Models.EntidadeEnumerador
+    {
+        public AleitamentoMaterno() { }
+        public AleitamentoMaterno(string descricao) : base(descricao) { }
+    }
+
+    //
 
 }

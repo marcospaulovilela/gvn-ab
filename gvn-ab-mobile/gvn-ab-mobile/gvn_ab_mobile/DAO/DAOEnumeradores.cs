@@ -390,4 +390,319 @@ namespace gvn_ab_mobile.DAO {
             });
         }
     }
+
+    //Ficha Cadastro Domiciliar e Territorial
+
+    class DAOSituacaoMoradiaPosseTerra : DAO<Models.SituacaoMoradiaPosseTerra>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.SituacaoMoradiaPosseTerra>() {
+                  new Models.SituacaoMoradiaPosseTerra("Próprio") { Codigo = 75 },
+                  new Models.SituacaoMoradiaPosseTerra("Financiado") { Codigo = 76 },
+                  new Models.SituacaoMoradiaPosseTerra("Alugado") { Codigo = 77 },
+                  new Models.SituacaoMoradiaPosseTerra("Arrendado") { Codigo = 78 },
+                  new Models.SituacaoMoradiaPosseTerra("Cedido") { Codigo = 79 },
+                  new Models.SituacaoMoradiaPosseTerra("Ocupação") { Codigo = 80 },
+                  new Models.SituacaoMoradiaPosseTerra("Situação de Rua") { Codigo = 81 },
+                  new Models.SituacaoMoradiaPosseTerra("Outra") { Codigo = 82 },
+            });
+        }
+    }
+
+    class DAOLocalizacao : DAO<Models.Localizacao>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.Localizacao>() {
+                  new Models.Localizacao("Urbana") { Codigo = 83 },
+                  new Models.Localizacao("Rural") { Codigo = 84 },
+            });
+        }
+    }
+
+    class DAOTipoDeDomicilio : DAO<Models.TipoDomicilio>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.TipoDomicilio>() {
+                  new Models.TipoDomicilio("Casa") { Codigo = 85 },
+                  new Models.TipoDomicilio("Apartamento") { Codigo = 86 },
+                  new Models.TipoDomicilio("Cômodo") { Codigo = 87 },
+                  new Models.TipoDomicilio("Outro") { Codigo = 88 },
+            });
+        }
+    }
+
+    class DAOTipoAcessoDomicilio : DAO<Models.TipoAcessoDomicilio>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.TipoAcessoDomicilio>() {
+                  new Models.TipoAcessoDomicilio("Pavimento") { Codigo = 89 },
+                  new Models.TipoAcessoDomicilio("Chão Batido") { Codigo = 90 },
+                  new Models.TipoAcessoDomicilio("Fluvial") { Codigo = 91 },
+                  new Models.TipoAcessoDomicilio("Outro") { Codigo = 92 },
+            });
+        }
+    }
+
+    class DAOTipoDeAcessoAoDomicilio : DAO<Models.TipoAcessoDomicilio>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.TipoAcessoDomicilio>() {
+                  new Models.TipoAcessoDomicilio("Pavimento") { Codigo = 89 },
+                  new Models.TipoAcessoDomicilio("Chão Batido") { Codigo = 90 },
+                  new Models.TipoAcessoDomicilio("Fluvial") { Codigo = 91 },
+                  new Models.TipoAcessoDomicilio("Outro") { Codigo = 92 },
+            });
+        }
+    }
+
+    class DAOCondicaoDePosseEUsoDaTerra : DAO<Models.CondicaoPosseUsoTerra>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.CondicaoPosseUsoTerra>() {
+                  new Models.CondicaoPosseUsoTerra("Proprietário") { Codigo = 101 },
+                  new Models.CondicaoPosseUsoTerra("Parceiro(a) / Meeiro(a)") { Codigo = 102 },
+                  new Models.CondicaoPosseUsoTerra("Assentado(a)") { Codigo = 103 },
+                  new Models.CondicaoPosseUsoTerra("Posseiro") { Codigo = 104 },
+                  new Models.CondicaoPosseUsoTerra("Arrendatário(a)") { Codigo = 105 },
+                  new Models.CondicaoPosseUsoTerra("Comodatário(a)") { Codigo = 106 },
+                  new Models.CondicaoPosseUsoTerra("Beneficiário(a) do banco da terra") { Codigo = 107 },
+                  new Models.CondicaoPosseUsoTerra("Não se aplica") { Codigo = 108 },
+            });
+        }
+    }
+
+    class DAOMaterialPredominanteNaConstrucao : DAO<Models.MaterialPredominanteConstrucaoParedesExternasDomicilio>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.MaterialPredominanteConstrucaoParedesExternasDomicilio>() {
+                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Alvenaria com revestimento") { Codigo = 109 },
+                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Alvenaria sem revestimento") { Codigo = 110 },
+                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Taipa com revestimento") { Codigo = 111 },
+                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Taipa sem revestimento") { Codigo = 112 },
+                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Madeira emparelhada") { Codigo = 113 },
+                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Material aproveitado") { Codigo = 114 },
+                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Palha") { Codigo = 115 },
+                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Outro material") { Codigo = 116 },
+            });
+        }
+    }
+
+    class DAOAbastecimentoDeAgua : DAO<Models.AbastecimentoAgua>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.AbastecimentoAgua>() {
+                  new Models.AbastecimentoAgua("Rede encanada até o domicílio") { Codigo = 117 },
+                  new Models.AbastecimentoAgua("Poço / Nascente no domicílio") { Codigo = 118 },
+                  new Models.AbastecimentoAgua("Cisterna") { Codigo = 119 },
+                  new Models.AbastecimentoAgua("Carro pipa") { Codigo = 120 },
+                  new Models.AbastecimentoAgua("Outro") { Codigo = 121 },
+            });
+        }
+    }
+
+    class DAOAguaConsumoDomicilio : DAO<Models.AguaConsumoDomicilio>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.AguaConsumoDomicilio>() {
+                  new Models.AguaConsumoDomicilio("Filtrada") { Codigo = 97 },
+                  new Models.AguaConsumoDomicilio("Fervida") { Codigo = 98 },
+                  new Models.AguaConsumoDomicilio("Clorada") { Codigo = 99 },
+                  new Models.AguaConsumoDomicilio("Mineral") { Codigo = 152 },
+                  new Models.AguaConsumoDomicilio("Sem Tratamento") { Codigo = 100 },
+            });
+        }
+    }
+
+    class DAOFormaDeEscoamentoDoBanheiroOuSanitario : DAO<Models.FormaEscoamentoBanheiroOuSanitario>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.FormaEscoamentoBanheiroOuSanitario>() {
+                  new Models.FormaEscoamentoBanheiroOuSanitario("Rede coletora de esgoto / pluvial") { Codigo = 122 },
+                  new Models.FormaEscoamentoBanheiroOuSanitario("Fossa séptica") { Codigo = 123 },
+                  new Models.FormaEscoamentoBanheiroOuSanitario("Fossa rudimentar") { Codigo = 124 },
+                  new Models.FormaEscoamentoBanheiroOuSanitario("Direto para um rio / lago / mar") { Codigo = 125 },
+                  new Models.FormaEscoamentoBanheiroOuSanitario("Céu aberto") { Codigo = 126 },
+                  new Models.FormaEscoamentoBanheiroOuSanitario("Outra Forma") { Codigo = 127 },
+            });
+        }
+    }
+
+    class DAODestinoDoLixo : DAO<Models.DestinoLixo>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.DestinoLixo>() {
+                  new Models.DestinoLixo("Coletado") { Codigo = 93 },
+                  new Models.DestinoLixo("Queimado / Enterrado") { Codigo = 94 },
+                  new Models.DestinoLixo("Céu aberto") { Codigo = 95 },
+                  new Models.DestinoLixo("Outro") { Codigo = 96 },
+            });
+        }
+    }
+
+    class DAOAnimalNoDomicilio : DAO<Models.AnimaisDomicilio>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.AnimaisDomicilio>() {
+                  new Models.AnimaisDomicilio("Gato") { Codigo = 128 },
+                  new Models.AnimaisDomicilio("Cachorro") { Codigo = 129 },
+                  new Models.AnimaisDomicilio("Pássaro") { Codigo = 130 },
+                  new Models.AnimaisDomicilio("Outros") { Codigo = 132 },
+            });
+        }
+    }
+
+    class DAORendaFamiliar : DAO<Models.RendaFamiliar>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.RendaFamiliar>() {
+                  new Models.RendaFamiliar("1/4 de salário mínimo") { Codigo = 1 },
+                  new Models.RendaFamiliar("Meio salário mínimo") { Codigo = 2 },
+                  new Models.RendaFamiliar("Um salário mínimo") { Codigo = 3 },
+                  new Models.RendaFamiliar("Dois salários mínimos") { Codigo = 4 },
+                  new Models.RendaFamiliar("Três salários mínimos") { Codigo = 7 },
+                  new Models.RendaFamiliar("Quatro salários mínimos") { Codigo = 5 },
+                  new Models.RendaFamiliar("Acima de quatro salários mínimos") { Codigo = 6 },
+            });
+        }
+    }
+
+    //Ficha Atendimento Individual
+
+    class DAOTurno : DAO<Models.Turno>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.Turno>() {
+                  new Models.Turno("Manhã") { Codigo = 1 },
+                  new Models.Turno("Tarde") { Codigo = 2 },
+                  new Models.Turno("Noite") { Codigo = 3 },
+            });
+        }
+    }
+
+    class DAOLocalAtendimento : DAO<Models.LocalDeAtendimento>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.LocalDeAtendimento>() {
+                  new Models.LocalDeAtendimento("UBS") { Codigo = 1 },
+                  new Models.LocalDeAtendimento("Unidade Móvel") { Codigo = 2 },
+                  new Models.LocalDeAtendimento("Rua") { Codigo = 3 },
+                  new Models.LocalDeAtendimento("Domicílio") { Codigo = 4 },
+                  new Models.LocalDeAtendimento("Escola/Creche") { Codigo = 5 },
+                  new Models.LocalDeAtendimento("Outros") { Codigo = 6 },
+                  new Models.LocalDeAtendimento("Polo (Academia da Saúde)") { Codigo = 7 },
+                  new Models.LocalDeAtendimento("Instituição/Abrigo") { Codigo = 8 },
+                  new Models.LocalDeAtendimento("Unidade Prisional ou Congêneres") { Codigo = 9 },
+                  new Models.LocalDeAtendimento("Unidade Socioeducativa") { Codigo = 10 },
+            });
+        }
+    }
+
+    class DAOTipoAtendimento : DAO<Models.TipoDeAtendimento>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.TipoDeAtendimento>() {
+                  new Models.TipoDeAtendimento("Consulta Agendada Programada/Cuidado Continuado") { Codigo = 1 },
+                  new Models.TipoDeAtendimento("Consulta Agendada") { Codigo = 2 },
+                  new Models.TipoDeAtendimento("Escuta Inicial/Orientação") { Codigo = 4 },
+                  new Models.TipoDeAtendimento("Consulta no Dia") { Codigo = 5 },
+                  new Models.TipoDeAtendimento("Atendimento de Urgência") { Codigo = 6 },
+            });
+        }
+    }
+
+    class DAOAtencaoDomiciliar : DAO<Models.AtencaoDomiciliar>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.AtencaoDomiciliar>() {
+                  new Models.AtencaoDomiciliar("AD1") { Codigo = 1 },
+                  new Models.AtencaoDomiciliar("AD2") { Codigo = 2 },
+                  new Models.AtencaoDomiciliar("AD3") { Codigo = 3 },
+                  new Models.AtencaoDomiciliar("Inelegível") { Codigo = 4 },
+            });
+        }
+    }
+
+    class DAORacionalidadeSaude : DAO<Models.RacionalidadeSaude>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.RacionalidadeSaude>() {
+                  new Models.RacionalidadeSaude("Medicina Tradicional Chinesa") { Codigo = 1 },
+                  new Models.RacionalidadeSaude("Antroposofia Aplicada à Saúde") { Codigo = 2 },
+                  new Models.RacionalidadeSaude("Homeopatia") { Codigo = 3 },
+                  new Models.RacionalidadeSaude("Fitoterapia") { Codigo = 4 },
+                  new Models.RacionalidadeSaude("Ayurveda") { Codigo = 5 },
+                  new Models.RacionalidadeSaude("Outra") { Codigo = 6 },
+            });
+        }
+    }
+
+    class DAOAleitamentoMaterno : DAO<Models.AleitamentoMaterno>
+    {
+        public override int? CreateTable()
+        {
+            base.CreateTable();
+
+            return base.Insert(new List<Models.AleitamentoMaterno>() {
+                  new Models.AleitamentoMaterno("Exclusivo") { Codigo = 1 },
+                  new Models.AleitamentoMaterno("Predominante") { Codigo = 2 },
+                  new Models.AleitamentoMaterno("Complementado") { Codigo = 3 },
+                  new Models.AleitamentoMaterno("Inexistente") { Codigo = 4 },
+            });
+        }
+    }
+
 }
