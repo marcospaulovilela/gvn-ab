@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace gvn_ab_mobile.DAO {
     class DAOPais : DAO<Models.Pais> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.Pais>() {
                 new Models.Pais("AFEGANISTÃO"),new Models.Pais("ÁFRICA DO SUL"),new Models.Pais("ALBÂNIA"),
@@ -97,7 +97,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAORacaCor : DAO<Models.RacaCor> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.RacaCor>() {
                 new Models.RacaCor("Branca"), new Models.RacaCor("Preta"), new Models.RacaCor("Parda"),
@@ -108,7 +108,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOEtnia : DAO<Models.Etnia> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.Etnia>() {
                 new Models.Etnia("ACONA (WAKONAS, NACONAS, JAKONA, ACORANES)"), new Models.Etnia("AIKANA (AIKANA, MAS SAKA,TUBARAO)"), new Models.Etnia("AJURU"),
@@ -205,7 +205,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOOrientacaoSexual : DAO<Models.OrientacaoSexual> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.OrientacaoSexual>() {
                 new Models.OrientacaoSexual("Heterossexual"){ Codigo = 148 },
@@ -218,7 +218,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOIdentidadeGenero : DAO<Models.IdentidadeGenero> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.IdentidadeGenero>() {
                 new Models.IdentidadeGenero("Homem transsexual"){ Codigo = 149 },
@@ -231,7 +231,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOCurso : DAO<Models.Curso> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.Curso>() {
                 new Models.Curso("Creche") { Codigo = 51 },
@@ -255,7 +255,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAORelacaoParentesco : DAO<Models.RelacaoParentesco> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.RelacaoParentesco>() {
                 new Models.RelacaoParentesco("Cônjuge / Companheiro(a)") { Codigo = 137 },
@@ -274,7 +274,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOResponsavel : DAO<Models.Responsavel> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.Responsavel>() {
                 new Models.Responsavel("Adulto responsável") { Codigo = 1 },
@@ -290,7 +290,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOSexo : DAO<Models.Sexo> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.Sexo>() {
                   new Models.Sexo("Masculino") { Codigo = 0 },
@@ -302,7 +302,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOMotivoSaida : DAO<Models.MotivoSaida> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.MotivoSaida>() {
                 new Models.MotivoSaida("Óbito") { Codigo = 135 },
@@ -313,7 +313,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAONacionalidade : DAO<Models.Nacionalidade> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.Nacionalidade>() {
                 new Models.Nacionalidade("Brasileira") { Codigo = 1 },
@@ -325,7 +325,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOSituacaoMercado : DAO<Models.SituacaoMercado> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.SituacaoMercado>() {
                 new Models.SituacaoMercado("Empregador") { Codigo = 66 },
@@ -344,7 +344,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOConsideracaoPeso : DAO<Models.ConsideracaoPeso> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.ConsideracaoPeso>() {
                 new Models.ConsideracaoPeso("Abaixo do peso") { Codigo = 21 },
@@ -356,7 +356,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAODoencaCardiaca : DAO<Models.DoencaCardiaca> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.DoencaCardiaca>() {
                 new Models.DoencaCardiaca("Insuficiência cardíaca") { Codigo = 24 },
@@ -368,7 +368,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOProblemaRins : DAO<Models.ProblemaRins> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.ProblemaRins>() {
                 new Models.ProblemaRins("Insuficiência renal") { Codigo = 27 },
@@ -380,7 +380,7 @@ namespace gvn_ab_mobile.DAO {
 
     class DAODoencaRespiratoria : DAO<Models.DoencaRespiratoria> {
         public override int? CreateTable() {
-            base.CreateTable();
+            if(base.CreateTable() == 0) return 0;
 
             return base.Insert(new List<Models.DoencaRespiratoria>() {
                 new Models.DoencaRespiratoria("ASMA") { Codigo = 30 },

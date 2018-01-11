@@ -15,7 +15,7 @@ namespace gvn_ab_mobile.Views {
         public LoginPage() {
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false); //DESATIVA A BARRA DE NAVEGAÇÃO
             InitializeComponent();
-
+         
             this.BindingContext = this.viewModel = new ViewModels.LoginViewModel(this);
         }
     }

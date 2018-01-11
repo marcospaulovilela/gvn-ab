@@ -21,7 +21,7 @@
                     <Label Text="Atenção Basica" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="SteelBlue" />
                 </StackLayout>    
                 
-                <Grid Grid.Row="2" HorizontalOptions="Fill" Padding="5">
+                <Grid Grid.Row="2" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Padding="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -31,7 +31,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Image Source="iconUsername.png" HeightRequest="30" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Entry x:Name="Cpf" Placeholder="Usúario"  Keyboard="Numeric"  FontSize="Large" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Cpf}">
+                    <Entry x:Name="Cpf" Placeholder="Usúario"  Keyboard="Numeric"  FontSize="Large" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.CodProfissional}">
                         <Entry.Behaviors>
                             <behaviors:ValidatorCpf />
                         </Entry.Behaviors>
@@ -48,16 +48,16 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Image Source="iconPassword.png" HeightRequest="30" VerticalOptions="Center" />
-                    <Entry Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Usuario.Password}"/>
+                    <Entry Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.DesSenha}"/>
                 </Grid>
 
-                <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill">
-                    <Button Text="Entrar" BackgroundColor="SteelBlue" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White">
+                <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
+                    <Button Text="Entrar" BackgroundColor="SteelBlue" Opacity="0.80" BorderColor="Black" BorderRadius="1" VerticalOptions="CenterAndExpand" BorderWidth="100" HorizontalOptions="Fill" TextColor="White">
                         <Button.Behaviors>
                             <behaviors:ButtonSubmitBehavior Command="{Binding Login}" Controls="Cpf" />
                         </Button.Behaviors>
                     </Button>
-                    <Button Text="Sync" IsVisible="True"  BackgroundColor="SteelBlue" Opacity="0.80" BorderColor="Black" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" Command="{Binding Sincronizar}" />
+                    <Button Text="Sync" IsVisible="True"  BackgroundColor="SteelBlue" Opacity="0.80" BorderColor="Black" VerticalOptions="CenterAndExpand" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" Command="{Binding Sincronizar}" />
                 </StackLayout>
             </Grid>
         </StackLayout>

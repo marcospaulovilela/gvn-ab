@@ -1,4 +1,5 @@
-﻿using SQLite.Net;
+﻿using SQLite;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.DAO {
     public abstract class DAO<T> : IDisposable
-        where T : class {
+        where T : new () {
 
         private static string dbName = "gvn-ab.db3";
         /// <summary>
@@ -16,9 +17,9 @@ namespace gvn_ab_mobile.DAO {
         /// <returns></returns>
         public static int? DropDatabase() {
             gvn_ab_mobile.Config.ISQLiteConfig config = Xamarin.Forms.DependencyService.Get<gvn_ab_mobile.Config.ISQLiteConfig>();
-            using (var connection = new SQLiteConnection(config.Platform, System.IO.Path.Combine(config.Path, dbName))) {
+            using (var connection = new SQLiteConnection(System.IO.Path.Combine(config.Path, dbName))) {
                 List<string> tables = new List<string>(){
-                    "Pais", "RacaCor", "Etnia", "OrientacaoSexual", "Curso", "RelacaoParentesco", "Responsavel", "Sexo", "MotivoSaida", "Nacionalidade", "SituacaoMercado", "IdentidadeGenero", "Usuario"
+                    "Pais", "RacaCor", "Etnia", "OrientacaoSexual", "Curso", "RelacaoParentesco", "Responsavel", "Sexo", "MotivoSaida", "Nacionalidade", "SituacaoMercado", "IdentidadeGenero", "Profissional", "Cbo" , "Estabelecimento"
                 };
                 
                 connection.BeginTransaction();
@@ -42,7 +43,7 @@ namespace gvn_ab_mobile.DAO {
 
         public DAO() {
             gvn_ab_mobile.Config.ISQLiteConfig config = Xamarin.Forms.DependencyService.Get<gvn_ab_mobile.Config.ISQLiteConfig>();
-            this.connection = new SQLiteConnection(config.Platform, System.IO.Path.Combine(config.Path, dbName));
+            this.connection = new SQLiteConnection(System.IO.Path.Combine(config.Path, dbName));
         }
 
         public virtual bool ValidateInsert(T obj) { return true; }
@@ -50,7 +51,10 @@ namespace gvn_ab_mobile.DAO {
         public virtual bool ValidateDelete(T obj) { return true; }
 
         public virtual int? CreateTable() {
-            return this.connection?.CreateTable<T>();
+            if (!this.connection?.TableMappings.Any() ?? false) {
+                return this.connection?.CreateTable<T>();
+            };
+            return 0;
         }
 
         /// <summary>
@@ -67,8 +71,10 @@ namespace gvn_ab_mobile.DAO {
             return 0;
         }
 
-        public virtual int? Insert(List<T> obj) {
-            if (obj.TrueForAll(o => this.ValidateInsert(o)))
+        public virtual int? Insert(IEnumerable<T> obj) {
+            if (obj == null) return 0;
+            
+            if (new List<T>(obj).TrueForAll(o => this.ValidateInsert(o)))
                 return this.connection?.InsertAll(obj);
 
             return 0;
@@ -108,7 +114,7 @@ namespace gvn_ab_mobile.DAO {
         }
 
         public T Select(long id) {
-            return this.connection?.Get<T>(id);
+            return this.connection.Get<T>(id);
         }
 
         public List<T> Select(string query, params object[] parameters) {

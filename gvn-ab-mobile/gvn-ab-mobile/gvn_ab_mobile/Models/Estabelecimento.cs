@@ -1,36 +1,30 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.Models {
     public class Estabelecimento : Helpers.ObservableObject {
-        private long? _id;
+        private long? id;
         [PrimaryKey, AutoIncrement]
         public long? Id {
-            get { return this._id; }
-            set { SetProperty(ref _id, value); }
+            get { return this.id; }
+            set { SetProperty(ref id, value); }
         }
 
-        public long? _codEstabelecimento;
+        private long? codUnidade;
         [NotNull, Unique]
-        public long? CodEstabelecimento {
-            get { return this._codEstabelecimento; }
-            set { SetProperty(ref _codEstabelecimento, value); }
+        public long? CodUnidade {
+            get { return this.codUnidade; }
+            set { SetProperty(ref codUnidade, value); }
         }
 
-        public string _nomEstabelecimento;
+        private string desNomFantasia;
         [NotNull, Unique]
-        public string NomEstabelecimento {
-            get { return this._nomEstabelecimento; }
-            set { SetProperty(ref _nomEstabelecimento, value); }
+        public string DesNomFantasia {
+            get { return this.desNomFantasia; }
+            set { SetProperty(ref desNomFantasia, value); }
         }
-
-
+        
         public override string ToString() {
-            return this.NomEstabelecimento;
+            return this.DesNomFantasia;
         }
 
     }

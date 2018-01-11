@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using SQLite.Net.Attributes; 
+﻿using SQLite;
 
 namespace gvn_ab_mobile.Models {
     public class Ocupacao: Helpers.ObservableObject {

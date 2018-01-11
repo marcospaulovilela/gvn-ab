@@ -54,11 +54,15 @@
     <Compile Include="DAO\DAOFichaFamilia.cs" />
     <Compile Include="DAO\DAOFichaHeader.cs" />
     <Compile Include="DAO\DAOFichaOutrosSia.cs" />
-    <Compile Include="DAO\DAOUsuario.cs" />
+    <Compile Include="DAO\DAOEstabelecimento.cs" />
+    <Compile Include="DAO\DAOCbo.cs" />
+    <Compile Include="DAO\DAOSincronizacaoConfig.cs" />
+    <Compile Include="DAO\DAOProfissional.cs" />
     <Compile Include="DAO\DAOFichaCadastroIndividual.cs" />
     <Compile Include="Helpers\MessengingCenterAlert.cs" />
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\ObservableRangeCollection.cs" />
+    <Compile Include="Helpers\RestAPI.cs" />
     <Compile Include="Models\AtendimentoIndividual\FichaAtendimentoIndividual.cs" />
     <Compile Include="Models\AtendimentoIndividual\FichaAtendimentoIndividualChild.cs" />
     <Compile Include="Models\CadastroDomiciliarTerritorial\FichaCadastroDomiciliarTerritorial.cs" />
@@ -70,8 +74,9 @@
     <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Ocupacao.cs" />
     <Compile Include="Models\FichaHeader.cs" />
+    <Compile Include="Models\Cbo.cs" />
     <Compile Include="Models\SincronizacaoConfig.cs" />
-    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Profissional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\SincronizacaoConfigViewModel.cs" />
     <Compile Include="ViewModels\FichaCadastroIndividualViewModel.cs" />
@@ -220,14 +225,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MoreLinq, Version=2.9.21302.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\morelinq.2.9.0\lib\netstandard1.0\MoreLinq.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SQLite-net, Version=1.4.118.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\sqlite-net-pcl.1.4.118\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SQLite.Net-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
     </Reference>
     <Reference Include="SQLiteNetExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SQLiteNetExtensions.2.0.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\SQLiteNetExtensions.dll</HintPath>
@@ -240,6 +245,12 @@
     </Reference>
     <Reference Include="SQLitePCLRaw.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SQLitePCLRaw.core.1.1.5\lib\portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\netstandard1.1\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>

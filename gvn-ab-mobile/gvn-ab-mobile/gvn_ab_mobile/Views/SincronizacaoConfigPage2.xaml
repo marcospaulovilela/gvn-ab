@@ -15,7 +15,7 @@
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1" BackgroundColor="{Binding IsBusyColor}">
                     <StackLayout>
                         <Label Text="Estabelecimento de saude: "  FontSize="Medium"/>
-                        <Picker x:Name="Unidade" ItemsSource="{Binding Estabelecimentos}" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker x:Name="Unidade" ItemsSource="{Binding Estabelecimentos}" SelectedItem="{Binding Estabelecimento}" TextColor="Gray" HorizontalOptions="FillAndExpand">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />
                             </Picker.Behaviors>

@@ -10,10 +10,10 @@ namespace gvn_ab_mobile.ViewModels {
         public ICommand Login{ get; private set; }
         public ICommand Sincronizar { get; private set; }
 
-        public Models.Usuario Usuario {get;set;}
+        public Models.Profissional Profissional {get;set;}
 
         public LoginViewModel(Page page) {
-            this.Usuario = new Models.Usuario();
+            this.Profissional = new Models.Profissional();
             this.Page = page;
 
             this.Login = new Command(async () => await LoginExecuteAsync());
@@ -21,10 +21,10 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async Task LoginExecuteAsync() {
-            using (var objDao = new DAO.DAOUsuario()) {
-                var CpfUser = objDao.GetUsuarioByCpf(this.Usuario.Cpf);
-                if (CpfUser != null && CpfUser.Password == this.Usuario.Password) { //SERIO??? BRINCADEIRA SEGURANÇA FAZER DIREITO DEPOIS.....
-                    this.Usuario.Cpf = this.Usuario.Password = ""; //limpa a entidade para caso voltar no login.
+            using (var objDao = new DAO.DAOProfissional()) {
+                var CpfUser = objDao.GetUsuarioByCodigo(this.Profissional.CodProfissional);
+                if (CpfUser != null && CpfUser.DesSenha == this.Profissional.DesSenha) { //SERIO??? BRINCADEIRA SEGURANÇA FAZER DIREITO DEPOIS.....
+                    this.Profissional = new Models.Profissional();
                     await this.Page.Navigation.PushAsync(new Views.MenuPage());
                 } else {
                     await this.Page.DisplayAlert("Erro de login", "Usuario ou senha invalidos", "Ok");

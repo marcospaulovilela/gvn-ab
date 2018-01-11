@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using SQLite.Net.Attributes;
+using SQLite;
 using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models
