@@ -1,44 +1,15 @@
-﻿using SQLite;
-
+﻿using MoreLinq;
+using SQLite;
+using SQLiteNetExtensions.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.DAO {
     public abstract class DAO<T> : IDisposable
         where T : new () {
 
         private static string dbName = "gvn-ab.db3";
-        /// <summary>
-        /// Apaga todo o banco de dados (CUIDADO!!, Com sabedoria usar você deve.)
-        /// </summary>
-        /// <returns></returns>
-        public static int? DropDatabase() {
-            gvn_ab_mobile.Config.ISQLiteConfig config = Xamarin.Forms.DependencyService.Get<gvn_ab_mobile.Config.ISQLiteConfig>();
-            using (var connection = new SQLiteConnection(System.IO.Path.Combine(config.Path, dbName))) {
-                List<string> tables = new List<string>(){
-                    "Pais", "RacaCor", "Etnia", "OrientacaoSexual", "Curso", "RelacaoParentesco", "Responsavel", "Sexo", "MotivoSaida", "Nacionalidade", "SituacaoMercado", "IdentidadeGenero", "Profissional", "Cbo" , "Estabelecimento"
-                };
-                
-                connection.BeginTransaction();
-                try {
-                    foreach (var table in tables) {
-                        connection.Execute($"DROP TABLE IF EXISTS {table}");
-                    };
-                    connection.Commit();
-
-                    return connection?.Execute("VACUUM");
-                } catch (Exception e) {
-                    connection.Rollback();
-                    return null;
-                } finally {
-                    connection.Close();
-                };
-            };
-        }
-
+     
         private SQLiteConnection connection;
 
         public DAO() {
@@ -51,12 +22,15 @@ namespace gvn_ab_mobile.DAO {
         public virtual bool ValidateDelete(T obj) { return true; }
 
         public virtual int? CreateTable() {
-            if (!this.connection?.TableMappings.Any() ?? false) {
-                return this.connection?.CreateTable<T>();
-            };
-            return 0;
+            return this.connection?.CreateTable<T>();
         }
 
+        public bool TableExists() {
+            const string cmdText = "SELECT name FROM sqlite_master WHERE type='table' AND name=?";
+            var cmd = connection.CreateCommand(cmdText, typeof(T).Name);
+            return cmd.ExecuteScalar<string>() != null;
+        }
+        
         /// <summary>
         /// Apaga a tabela do banco.
         /// </summary>
@@ -75,9 +49,9 @@ namespace gvn_ab_mobile.DAO {
             if (obj == null) return 0;
             
             if (new List<T>(obj).TrueForAll(o => this.ValidateInsert(o)))
-                return this.connection?.InsertAll(obj);
+                this.connection?.InsertAllWithChildren(obj, true);
 
-            return 0;
+            return 1;
         }
 
         public virtual int? Update(T obj) {
@@ -106,7 +80,7 @@ namespace gvn_ab_mobile.DAO {
         }
 
         public List<T> Select() {
-            var scan = this.connection?.Table<T>().ToList();
+            var scan = this.connection?.GetAllWithChildren<T>();
             if (scan == null)
                 scan = new List<T>();
 
@@ -118,7 +92,11 @@ namespace gvn_ab_mobile.DAO {
         }
 
         public List<T> Select(string query, params object[] parameters) {
-            return this.connection?.Query<T>(query, parameters);
+            List<T> result = this.connection?.Query<T>(query, parameters);
+            if (result == null) return null;
+
+            result.ForEach(o => this.connection?.GetChildren<T>(o));
+            return result;
         }
 
         public void ClearTable() {

@@ -10,12 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace gvn_ab_mobile.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuPage : ContentPage {
-        private Models.Profissional Usuario { get; set; }
+        public Models.Cbo Cbo{ get; set; }
+        public Models.Profissional Profissional { get; set; }
 
-        public MenuPage() {
+        public MenuPage(Models.Profissional profissional, Models.Cbo cbo) {
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
 
+            this.Cbo = cbo;
+            this.Profissional = profissional;
+                
             this.BindingContext = this;
         }
 
@@ -24,7 +28,7 @@ namespace gvn_ab_mobile.Views {
             InitializeComponent();
 
             this.BindingContext = this;
-            this.Usuario = Usuario;
+            this.Profissional = Usuario;
         }
 
         async void OnAtendimentoIndividualClicked(object sender, EventArgs e)
@@ -43,7 +47,7 @@ namespace gvn_ab_mobile.Views {
         }
 
         private void OnSairClicked(object sender, EventArgs e) {
-            App.Current.MainPage = new NavigationPage(new Views.LoginPage()) { BarBackgroundColor = Color.SteelBlue };
+            App.Current.MainPage = new NavigationPage(new Views.Login.LoginPage()) { BarBackgroundColor = Color.FromHex("#003264") };
         }
     }
 }

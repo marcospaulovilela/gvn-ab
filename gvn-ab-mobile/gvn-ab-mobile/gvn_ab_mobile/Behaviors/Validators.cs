@@ -5,6 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.Behaviors {
+    public class ValidatorEmpty : ValidatorEntryBehavior {
+
+        public ValidatorEmpty() {
+            base.MaxLength = null;
+        }
+        
+        public override bool isValid(object input) {
+            if (input == null) return false;
+            return !string.IsNullOrEmpty(((string)input));
+        }
+    }
+
     public class ValidatorCpf : ValidatorEntryBehavior {
         
         public ValidatorCpf() {

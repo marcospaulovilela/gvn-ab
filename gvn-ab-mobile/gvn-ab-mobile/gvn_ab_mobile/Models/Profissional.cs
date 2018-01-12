@@ -13,10 +13,17 @@ namespace gvn_ab_mobile.Models {
         }
 
         private string codProfissional;
-        [MaxLength(11), NotNull, Unique]
+        [MaxLength(11), NotNull]
         public string CodProfissional {
             get { return this.codProfissional; }
             set { SetProperty(ref codProfissional, value); }
+        }
+
+        private string desLogin;
+        [NotNull, Unique]
+        public string DesLogin {
+            get { return this.desLogin; }
+            set { SetProperty(ref desLogin, value); }
         }
 
         private string nomProfissional;
@@ -27,7 +34,7 @@ namespace gvn_ab_mobile.Models {
         }
 
         private List<Models.Cbo> cbos;
-        [OneToMany(CascadeOperations = CascadeOperation.CascadeRead)]
+        [OneToMany("CodProfissionalCbo", null, CascadeOperations = CascadeOperation.All)]
         public List<Models.Cbo> Cbos {
             get { return this.cbos; }
             set { SetProperty(ref cbos, value); }
