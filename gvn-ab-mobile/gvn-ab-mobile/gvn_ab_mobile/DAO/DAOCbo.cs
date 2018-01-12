@@ -7,6 +7,9 @@ using gvn_ab_mobile.Models;
 
 namespace gvn_ab_mobile.DAO {
     public class DAOCbo : DAO<Models.Cbo> {
-
+        public override int? CreateTable() {
+            base.DropTable();
+            return base.CreateTable();
+        }
     }
 }

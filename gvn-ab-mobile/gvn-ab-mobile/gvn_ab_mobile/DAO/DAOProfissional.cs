@@ -7,8 +7,13 @@ using gvn_ab_mobile.Models;
 
 namespace gvn_ab_mobile.DAO {
     public class DAOProfissional : DAO<Models.Profissional> {
-        public Models.Profissional GetProfissionalByCodigo(string CodProfissional) {
-            var result = base.Select("SELECT * FROM [Usuario] WHERE [CodProfissional] = ?", CodProfissional);
+        public override int? CreateTable() {
+            base.DropTable();
+            return base.CreateTable();
+        }
+
+        public Models.Profissional GetProfissionalByDesLogin(string DesLogin) {
+            var result = base.Select("SELECT * FROM [Profissional] WHERE [DesLogin] = ?", DesLogin);
             return result.FirstOrDefault();
         }
     }

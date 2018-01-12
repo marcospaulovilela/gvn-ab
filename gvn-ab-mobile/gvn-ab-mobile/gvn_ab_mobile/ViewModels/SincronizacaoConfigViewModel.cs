@@ -1,4 +1,5 @@
 ﻿using gvn_ab_mobile.Helpers;
+using MoreLinq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace gvn_ab_mobile.ViewModels {
                     this.Estabelecimentos.Clear();
                     this.Estabelecimentos.AddRange(await new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Estabelecimento.ashx").GetAsync<Models.Estabelecimento>());
 
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new Views.SincronizacaoConfigPage2(this)) { BarBackgroundColor = Color.SteelBlue });
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new Views.SincronizacaoConfigPage2(this)) { BarBackgroundColor = Color.FromHex("#003264") });
 
                 } catch (Exception ex) {
                     System.Diagnostics.Debug.WriteLine(ex);
@@ -108,45 +109,26 @@ namespace gvn_ab_mobile.ViewModels {
                     using (DAO.DAORendaFamiliar DAORendaFamiliar = new DAO.DAORendaFamiliar()) { DAORendaFamiliar.CreateTable(); }
 
 
+                    #region Profissionais
                     using (DAO.DAOProfissional DAOProfissional = new DAO.DAOProfissional()) {
-                        var _Profissionais = await TaskGetProfissionais;
-                        var Profissionais = new List<Models.Profissional>();
-                        foreach (var profissional in _Profissionais) {
-                            if (!Profissionais.Any(o => o.CodProfissional == profissional.CodProfissional))
-                                Profissionais.Add(profissional);
-                        };
+                        var Profissionais = await TaskGetProfissionais;
+                        Profissionais.ForEach(o => o.DesSenha = "123456");
 
-
-                        var Cbos = new List<Models.Cbo>();
-                        foreach(var cbo in Profissionais.SelectMany(o => o.Cbos).Distinct().ToList()) {
-                            if (!Cbos.Any(o => o.CodCbo == cbo.CodCbo))
-                                Cbos.Add(cbo);
-                        };
-                       
                         using (DAO.DAOCbo DAOCbo = new DAO.DAOCbo()) {
-                            DAOCbo.DropTable();
                             DAOCbo.CreateTable();
-                            DAOCbo.Insert(Cbos);
-                        };
+                        }
 
-                        DAOProfissional.DropTable();
                         DAOProfissional.CreateTable();
-                        DAOProfissional.Insert(new Models.Profissional() {
-                            CodProfissional = "11958730696",
-                            DesSenha = "123456",
-                            NomProfissional = "Marcos Paulo Vilela"
-                        });
-
                         DAOProfissional.Insert(Profissionais);
                     };
-
+                    #endregion
 
                     using (DAO.DAOSincronizacaoConfig DAOSync = new DAO.DAOSincronizacaoConfig()) {
                         //DAOSync.CreateTable();
                         //DAOSync.Insert(this.SincronizacaoConfig);
                     };
 
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new Views.LoginPage()) { BarBackgroundColor = Color.SteelBlue });
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new Views.Login.LoginPage()) { BarBackgroundColor = Color.FromHex("#003264") });
 
                 } catch (Exception ex) {
                     System.Diagnostics.Debug.WriteLine(ex);

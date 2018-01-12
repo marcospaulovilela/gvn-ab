@@ -151,7 +151,10 @@
     <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage6.xaml.cs">
       <DependentUpon>FichaCadastroIndividualPage6.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginPage.xaml.cs">
+    <Compile Include="Views\Login\LoginPage2.xaml.cs">
+      <DependentUpon>LoginPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuPage.xaml.cs">
@@ -175,7 +178,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\LoginPage.xaml">
+    <EmbeddedResource Include="Views\Login\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -362,6 +365,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage7.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Login\LoginPage2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 namespace gvn_ab_mobile.DAO {
     class DAOPais : DAO<Models.Pais> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.Pais>() {
                 new Models.Pais("AFEGANISTÃO"),new Models.Pais("ÁFRICA DO SUL"),new Models.Pais("ALBÂNIA"),
                 new Models.Pais("ALEMANHA"),new Models.Pais("ANDORRA"),new Models.Pais("ANGOLA"),
@@ -97,8 +98,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAORacaCor : DAO<Models.RacaCor> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.RacaCor>() {
                 new Models.RacaCor("Branca"), new Models.RacaCor("Preta"), new Models.RacaCor("Parda"),
                 new Models.RacaCor("Amarela"), new Models.RacaCor("Indígena"), new Models.RacaCor("Sem informação")
@@ -108,8 +110,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOEtnia : DAO<Models.Etnia> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.Etnia>() {
                 new Models.Etnia("ACONA (WAKONAS, NACONAS, JAKONA, ACORANES)"), new Models.Etnia("AIKANA (AIKANA, MAS SAKA,TUBARAO)"), new Models.Etnia("AJURU"),
                 new Models.Etnia("AKUNSU (AKUNT''SU)"), new Models.Etnia("AMANAYE"), new Models.Etnia("AMONDAWA"),
@@ -205,8 +208,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOOrientacaoSexual : DAO<Models.OrientacaoSexual> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.OrientacaoSexual>() {
                 new Models.OrientacaoSexual("Heterossexual"){ Codigo = 148 },
                 new Models.OrientacaoSexual("Homossexual (gay / lésbica)"){ Codigo = 153 },
@@ -218,8 +222,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOIdentidadeGenero : DAO<Models.IdentidadeGenero> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.IdentidadeGenero>() {
                 new Models.IdentidadeGenero("Homem transsexual"){ Codigo = 149 },
                 new Models.IdentidadeGenero("Mulher transsexual"){ Codigo = 150 },
@@ -231,8 +236,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOCurso : DAO<Models.Curso> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.Curso>() {
                 new Models.Curso("Creche") { Codigo = 51 },
                 new Models.Curso("Pré-escola (exceto CA)") { Codigo = 52 },
@@ -255,8 +261,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAORelacaoParentesco : DAO<Models.RelacaoParentesco> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.RelacaoParentesco>() {
                 new Models.RelacaoParentesco("Cônjuge / Companheiro(a)") { Codigo = 137 },
                 new Models.RelacaoParentesco("Filho(a)") { Codigo = 138 },
@@ -274,8 +281,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOResponsavel : DAO<Models.Responsavel> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.Responsavel>() {
                 new Models.Responsavel("Adulto responsável") { Codigo = 1 },
                 new Models.Responsavel("Outra(s) criança(s)") { Codigo = 2 },
@@ -290,8 +298,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOSexo : DAO<Models.Sexo> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.Sexo>() {
                   new Models.Sexo("Masculino") { Codigo = 0 },
                   new Models.Sexo("Feminino") { Codigo = 1 },
@@ -302,8 +311,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOMotivoSaida : DAO<Models.MotivoSaida> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.MotivoSaida>() {
                 new Models.MotivoSaida("Óbito") { Codigo = 135 },
                 new Models.MotivoSaida("Mudança de território") { Codigo = 136 }
@@ -313,8 +323,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAONacionalidade : DAO<Models.Nacionalidade> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.Nacionalidade>() {
                 new Models.Nacionalidade("Brasileira") { Codigo = 1 },
                 new Models.Nacionalidade("Naturalizado") { Codigo = 2 },
@@ -325,8 +336,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOSituacaoMercado : DAO<Models.SituacaoMercado> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.SituacaoMercado>() {
                 new Models.SituacaoMercado("Empregador") { Codigo = 66 },
                 new Models.SituacaoMercado("Assalariado com carteira de trabalho") { Codigo = 67 },
@@ -344,8 +356,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOConsideracaoPeso : DAO<Models.ConsideracaoPeso> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.ConsideracaoPeso>() {
                 new Models.ConsideracaoPeso("Abaixo do peso") { Codigo = 21 },
                 new Models.ConsideracaoPeso("Peso adequado") { Codigo = 22 },
@@ -356,8 +369,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAODoencaCardiaca : DAO<Models.DoencaCardiaca> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.DoencaCardiaca>() {
                 new Models.DoencaCardiaca("Insuficiência cardíaca") { Codigo = 24 },
                 new Models.DoencaCardiaca("Outro") { Codigo = 25 },
@@ -368,8 +382,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOProblemaRins : DAO<Models.ProblemaRins> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.ProblemaRins>() {
                 new Models.ProblemaRins("Insuficiência renal") { Codigo = 27 },
                 new Models.ProblemaRins("Outro") { Codigo = 28 },
@@ -380,8 +395,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAODoencaRespiratoria : DAO<Models.DoencaRespiratoria> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.DoencaRespiratoria>() {
                 new Models.DoencaRespiratoria("ASMA") { Codigo = 30 },
                 new Models.DoencaRespiratoria("DPOC / Enfisema") { Codigo = 31 },
@@ -395,8 +411,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOSituacaoMoradiaPosseTerra : DAO<Models.SituacaoMoradiaPosseTerra> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.SituacaoMoradiaPosseTerra>() {
                   new Models.SituacaoMoradiaPosseTerra("Próprio") { Codigo = 75 },
                   new Models.SituacaoMoradiaPosseTerra("Financiado") { Codigo = 76 },
@@ -412,8 +429,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOLocalizacao : DAO<Models.Localizacao> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0; if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.Localizacao>() {
                   new Models.Localizacao("Urbana") { Codigo = 83 },
                   new Models.Localizacao("Rural") { Codigo = 84 },
@@ -423,8 +441,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOTipoDeDomicilio : DAO<Models.TipoDomicilio> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.TipoDomicilio>() {
                   new Models.TipoDomicilio("Casa") { Codigo = 85 },
                   new Models.TipoDomicilio("Apartamento") { Codigo = 86 },
@@ -436,8 +455,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOTipoAcessoDomicilio : DAO<Models.TipoAcessoDomicilio> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.TipoAcessoDomicilio>() {
                   new Models.TipoAcessoDomicilio("Pavimento") { Codigo = 89 },
                   new Models.TipoAcessoDomicilio("Chão Batido") { Codigo = 90 },
@@ -449,8 +469,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOTipoDeAcessoAoDomicilio : DAO<Models.TipoAcessoDomicilio> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.TipoAcessoDomicilio>() {
                   new Models.TipoAcessoDomicilio("Pavimento") { Codigo = 89 },
                   new Models.TipoAcessoDomicilio("Chão Batido") { Codigo = 90 },
@@ -462,8 +483,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOCondicaoDePosseEUsoDaTerra : DAO<Models.CondicaoPosseUsoTerra> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.CondicaoPosseUsoTerra>() {
                   new Models.CondicaoPosseUsoTerra("Proprietário") { Codigo = 101 },
                   new Models.CondicaoPosseUsoTerra("Parceiro(a) / Meeiro(a)") { Codigo = 102 },
@@ -479,8 +501,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOMaterialPredominanteNaConstrucao : DAO<Models.MaterialPredominanteConstrucaoParedesExternasDomicilio> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.MaterialPredominanteConstrucaoParedesExternasDomicilio>() {
                   new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Alvenaria com revestimento") { Codigo = 109 },
                   new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Alvenaria sem revestimento") { Codigo = 110 },
@@ -496,8 +519,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOAbastecimentoDeAgua : DAO<Models.AbastecimentoAgua> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.AbastecimentoAgua>() {
                   new Models.AbastecimentoAgua("Rede encanada até o domicílio") { Codigo = 117 },
                   new Models.AbastecimentoAgua("Poço / Nascente no domicílio") { Codigo = 118 },
@@ -510,8 +534,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOAguaConsumoDomicilio : DAO<Models.AguaConsumoDomicilio> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.AguaConsumoDomicilio>() {
                   new Models.AguaConsumoDomicilio("Filtrada") { Codigo = 97 },
                   new Models.AguaConsumoDomicilio("Fervida") { Codigo = 98 },
@@ -524,8 +549,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOFormaDeEscoamentoDoBanheiroOuSanitario : DAO<Models.FormaEscoamentoBanheiroOuSanitario> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.FormaEscoamentoBanheiroOuSanitario>() {
                   new Models.FormaEscoamentoBanheiroOuSanitario("Rede coletora de esgoto / pluvial") { Codigo = 122 },
                   new Models.FormaEscoamentoBanheiroOuSanitario("Fossa séptica") { Codigo = 123 },
@@ -539,8 +565,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAODestinoDoLixo : DAO<Models.DestinoLixo> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.DestinoLixo>() {
                   new Models.DestinoLixo("Coletado") { Codigo = 93 },
                   new Models.DestinoLixo("Queimado / Enterrado") { Codigo = 94 },
@@ -552,8 +579,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOAnimalNoDomicilio : DAO<Models.AnimaisDomicilio> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.AnimaisDomicilio>() {
                   new Models.AnimaisDomicilio("Gato") { Codigo = 128 },
                   new Models.AnimaisDomicilio("Cachorro") { Codigo = 129 },
@@ -565,8 +593,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAORendaFamiliar : DAO<Models.RendaFamiliar> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.RendaFamiliar>() {
                   new Models.RendaFamiliar("1/4 de salário mínimo") { Codigo = 1 },
                   new Models.RendaFamiliar("Meio salário mínimo") { Codigo = 2 },
@@ -582,8 +611,9 @@ namespace gvn_ab_mobile.DAO {
     //Ficha Atendimento Individual
     class DAOTurno : DAO<Models.Turno> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.Turno>() {
                   new Models.Turno("Manhã") { Codigo = 1 },
                   new Models.Turno("Tarde") { Codigo = 2 },
@@ -594,8 +624,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOLocalAtendimento : DAO<Models.LocalDeAtendimento> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.LocalDeAtendimento>() {
                   new Models.LocalDeAtendimento("UBS") { Codigo = 1 },
                   new Models.LocalDeAtendimento("Unidade Móvel") { Codigo = 2 },
@@ -613,8 +644,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOTipoAtendimento : DAO<Models.TipoDeAtendimento> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.TipoDeAtendimento>() {
                   new Models.TipoDeAtendimento("Consulta Agendada Programada/Cuidado Continuado") { Codigo = 1 },
                   new Models.TipoDeAtendimento("Consulta Agendada") { Codigo = 2 },
@@ -627,8 +659,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOAtencaoDomiciliar : DAO<Models.AtencaoDomiciliar> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.AtencaoDomiciliar>() {
                   new Models.AtencaoDomiciliar("AD1") { Codigo = 1 },
                   new Models.AtencaoDomiciliar("AD2") { Codigo = 2 },
@@ -640,8 +673,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAORacionalidadeSaude : DAO<Models.RacionalidadeSaude> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.RacionalidadeSaude>() {
                   new Models.RacionalidadeSaude("Medicina Tradicional Chinesa") { Codigo = 1 },
                   new Models.RacionalidadeSaude("Antroposofia Aplicada à Saúde") { Codigo = 2 },
@@ -655,8 +689,9 @@ namespace gvn_ab_mobile.DAO {
 
     class DAOAleitamentoMaterno : DAO<Models.AleitamentoMaterno> {
         public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
+            if (base.TableExists()) return 0;
 
+            base.CreateTable();
             return base.Insert(new List<Models.AleitamentoMaterno>() {
                   new Models.AleitamentoMaterno("Exclusivo") { Codigo = 1 },
                   new Models.AleitamentoMaterno("Predominante") { Codigo = 2 },

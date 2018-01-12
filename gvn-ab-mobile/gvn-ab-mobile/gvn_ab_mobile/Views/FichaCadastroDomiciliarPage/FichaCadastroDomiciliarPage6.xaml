@@ -15,8 +15,8 @@
                     <Label Text="O Cidadão concorda em realizar o cadastro de Instituição de Permanência?" FontSize="Default" TextColor="Black" HorizontalOptions="CenterAndExpand" />
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                        <Button Text="Sim" BackgroundColor="SteelBlue" Command="{Binding ConcordarInstituicaoPermanencia}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
-                        <Button Text="Não" BackgroundColor="SteelBlue" Command="{Binding NaoConcordarInstituicaoPermanencia}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
+                        <Button Text="Sim" BackgroundColor="#003264" Command="{Binding ConcordarInstituicaoPermanencia}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
+                        <Button Text="Não" BackgroundColor="#003264" Command="{Binding NaoConcordarInstituicaoPermanencia}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

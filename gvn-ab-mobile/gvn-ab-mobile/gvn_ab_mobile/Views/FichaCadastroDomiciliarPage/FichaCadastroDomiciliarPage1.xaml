@@ -16,8 +16,8 @@
                 <Label Text="O Cidadão concorda em responder o questionário de Cadastro Domiciliar e Territorial?" FontSize="Default" TextColor="Black" HorizontalOptions="CenterAndExpand" />
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                    <Button Text="Sim" BackgroundColor="SteelBlue" Command="{Binding Concordar}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
-                    <Button Text="Não" BackgroundColor="SteelBlue" Command="{Binding NaoConcordar}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
+                    <Button Text="Sim" BackgroundColor="#003264" Command="{Binding Concordar}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
+                    <Button Text="Não" BackgroundColor="#003264" Command="{Binding NaoConcordar}" HorizontalOptions="Center" TextColor="White"  VerticalOptions="Center"/>
                 </StackLayout>
             </StackLayout>
         </Grid>
