@@ -25,11 +25,11 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableRangeCollection<Models.Nacionalidade> Nacionalidades { get; set; }
 
         // USADO PAGE 3
-        public ObservableRangeCollection<Models.Curso> Cursos { get; set; }
+        public ObservableRangeCollection<Models.CursoMaisElevado> CursosMaisElevados { get; set; }
         public ObservableRangeCollection<Models.Ocupacao> Ocupacoes { get; set; }
-        public ObservableRangeCollection<Models.Responsavel> Responsaveis { get; set; }
-        public ObservableRangeCollection<Models.SituacaoMercado> SituacoesMercado { get; set; }
-        public ObservableRangeCollection<Models.IdentidadeGenero> IdentidadeGeneros { get; set; }
+        public ObservableRangeCollection<Models.ResponsavelCrianca> ResponsaveisCriancas { get; set; }
+        public ObservableRangeCollection<Models.SituacaoMercadoTrabalho> SituacoesMercadoTrabalho { get; set; }
+        public ObservableRangeCollection<Models.IdentidadeGeneroCidadao> IdentidadeGeneroCidadaos { get; set; }
         public ObservableRangeCollection<Models.OrientacaoSexual> OrientacoesSexuais { get; set; }
         public ObservableRangeCollection<Models.RelacaoParentesco> RelacoesParentesco { get; set; }
 
@@ -57,11 +57,11 @@ namespace gvn_ab_mobile.ViewModels {
             this.RacasCores = new ObservableRangeCollection<Models.RacaCor>(new DAO.DAORacaCor().Select());
             this.Nacionalidades = new ObservableRangeCollection<Models.Nacionalidade>(new DAO.DAONacionalidade().Select());
             
-            this.Cursos = new ObservableRangeCollection<Models.Curso>(new DAO.DAOCurso().Select());
+            this.CursosMaisElevados = new ObservableRangeCollection<Models.CursoMaisElevado>(new DAO.DAOCursoMaisElevado().Select());
             this.Ocupacoes = new ObservableRangeCollection<Models.Ocupacao>(); //MAPEAR OS CBOS ..... AINDA TEM Q SER FEITO
-            this.Responsaveis = new ObservableRangeCollection<Models.Responsavel>(new DAO.DAOResponsavel().Select()); 
-            this.SituacoesMercado = new ObservableRangeCollection<Models.SituacaoMercado>(new DAO.DAOSituacaoMercado().Select());
-            this.IdentidadeGeneros = new ObservableRangeCollection<Models.IdentidadeGenero>(new DAO.DAOIdentidadeGenero().Select());
+            this.ResponsaveisCriancas = new ObservableRangeCollection<Models.ResponsavelCrianca>(new DAO.DAOResponsavelCrianca().Select()); 
+            this.SituacoesMercadoTrabalho = new ObservableRangeCollection<Models.SituacaoMercadoTrabalho>(new DAO.DAOSituacaoMercadoTrabalho().Select());
+            this.IdentidadeGeneroCidadaos = new ObservableRangeCollection<Models.IdentidadeGeneroCidadao>(new DAO.DAOIdentidadeGeneroCidadao().Select());
             this.OrientacoesSexuais = new ObservableRangeCollection<Models.OrientacaoSexual>(new DAO.DAOOrientacaoSexual().Select());
             this.RelacoesParentesco = new ObservableRangeCollection<Models.RelacaoParentesco>(new DAO.DAORelacaoParentesco().Select());
 

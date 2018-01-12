@@ -27,9 +27,9 @@ namespace gvn_ab_mobile.Models {
         public OrientacaoSexual(string descricao) : base(descricao) { }
     }
 
-    public class Curso : Models.EntidadeEnumerador {
-        public Curso() { }
-        public Curso(string descricao) : base(descricao) { }
+    public class CursoMaisElevado : Models.EntidadeEnumerador {
+        public CursoMaisElevado() { }
+        public CursoMaisElevado(string descricao) : base(descricao) { }
     }
 
     public class RelacaoParentesco : Models.EntidadeEnumerador {
@@ -37,9 +37,9 @@ namespace gvn_ab_mobile.Models {
         public RelacaoParentesco(string descricao) : base(descricao) { }
     }
 
-    public class Responsavel : Models.EntidadeEnumerador {
-        public Responsavel() { }
-        public Responsavel(string descricao) : base(descricao) { }
+    public class ResponsavelCrianca : Models.EntidadeEnumerador {
+        public ResponsavelCrianca() { }
+        public ResponsavelCrianca(string descricao) : base(descricao) { }
     }
 
     public class Sexo : Models.EntidadeEnumerador {
@@ -57,14 +57,14 @@ namespace gvn_ab_mobile.Models {
         public Nacionalidade(string descricao) : base(descricao) { }
     }
 
-    public class SituacaoMercado : Models.EntidadeEnumerador {
-        public SituacaoMercado() { }
-        public SituacaoMercado(string descricao) : base(descricao) { }
+    public class SituacaoMercadoTrabalho : Models.EntidadeEnumerador {
+        public SituacaoMercadoTrabalho() { }
+        public SituacaoMercadoTrabalho(string descricao) : base(descricao) { }
     }
 
-    public class IdentidadeGenero : Models.EntidadeEnumerador {
-        public IdentidadeGenero() { }
-        public IdentidadeGenero(string descricao) : base(descricao) { }
+    public class IdentidadeGeneroCidadao : Models.EntidadeEnumerador {
+        public IdentidadeGeneroCidadao() { }
+        public IdentidadeGeneroCidadao(string descricao) : base(descricao) { }
     }
 
     public class ConsideracaoPeso : Models.EntidadeEnumerador {
@@ -91,46 +91,46 @@ namespace gvn_ab_mobile.Models {
 
     //Ficha Cadastro Domiciliar e Territorial
 
-    public class SituacaoMoradiaPosseTerra : Models.EntidadeEnumerador
+    public class SituacaoDeMoradia : Models.EntidadeEnumerador
     {
-        public SituacaoMoradiaPosseTerra() { }
-        public SituacaoMoradiaPosseTerra(string descricao) : base(descricao) { }
+        public SituacaoDeMoradia() { }
+        public SituacaoDeMoradia(string descricao) : base(descricao) { }
     }
 
-    public class Localizacao : Models.EntidadeEnumerador
+    public class LocalizacaoDaMoradia : Models.EntidadeEnumerador
     {
-        public Localizacao() { }
-        public Localizacao(string descricao) : base(descricao) { }
+        public LocalizacaoDaMoradia() { }
+        public LocalizacaoDaMoradia(string descricao) : base(descricao) { }
     }
 
-    public class TipoDomicilio : Models.EntidadeEnumerador
+    public class TipoDeDomicilio : Models.EntidadeEnumerador
     {
-        public TipoDomicilio() { }
-        public TipoDomicilio(string descricao) : base(descricao) { }
+        public TipoDeDomicilio() { }
+        public TipoDeDomicilio(string descricao) : base(descricao) { }
     }
 
-    public class TipoAcessoDomicilio : Models.EntidadeEnumerador
+    public class TipoDeAcessoAoDomicilio : Models.EntidadeEnumerador
     {
-        public TipoAcessoDomicilio() { }
-        public TipoAcessoDomicilio(string descricao) : base(descricao) { }
+        public TipoDeAcessoAoDomicilio() { }
+        public TipoDeAcessoAoDomicilio(string descricao) : base(descricao) { }
     }
 
-    public class CondicaoPosseUsoTerra : Models.EntidadeEnumerador
+    public class CondicaoDePosseEUsoDaTerra : Models.EntidadeEnumerador
     {
-        public CondicaoPosseUsoTerra() { }
-        public CondicaoPosseUsoTerra(string descricao) : base(descricao) { }
+        public CondicaoDePosseEUsoDaTerra() { }
+        public CondicaoDePosseEUsoDaTerra(string descricao) : base(descricao) { }
     }
 
-    public class MaterialPredominanteConstrucaoParedesExternasDomicilio : Models.EntidadeEnumerador
+    public class MaterialPredominanteNaConstrucao : Models.EntidadeEnumerador
     {
-        public MaterialPredominanteConstrucaoParedesExternasDomicilio() { }
-        public MaterialPredominanteConstrucaoParedesExternasDomicilio(string descricao) : base(descricao) { }
+        public MaterialPredominanteNaConstrucao() { }
+        public MaterialPredominanteNaConstrucao(string descricao) : base(descricao) { }
     }
 
-    public class AbastecimentoAgua : Models.EntidadeEnumerador
+    public class AbastecimentoDeAgua : Models.EntidadeEnumerador
     {
-        public AbastecimentoAgua() { }
-        public AbastecimentoAgua(string descricao) : base(descricao) { }
+        public AbastecimentoDeAgua() { }
+        public AbastecimentoDeAgua(string descricao) : base(descricao) { }
     }
 
     public class AguaConsumoDomicilio : Models.EntidadeEnumerador
@@ -139,22 +139,22 @@ namespace gvn_ab_mobile.Models {
         public AguaConsumoDomicilio(string descricao) : base(descricao) { }
     }
 
-    public class FormaEscoamentoBanheiroOuSanitario : Models.EntidadeEnumerador
+    public class FormaDeEscoamentoDoBanheiroOuSanitario : Models.EntidadeEnumerador
     {
-        public FormaEscoamentoBanheiroOuSanitario() { }
-        public FormaEscoamentoBanheiroOuSanitario(string descricao) : base(descricao) { }
+        public FormaDeEscoamentoDoBanheiroOuSanitario() { }
+        public FormaDeEscoamentoDoBanheiroOuSanitario(string descricao) : base(descricao) { }
     }
 
-    public class DestinoLixo : Models.EntidadeEnumerador
+    public class DestinoDoLixo : Models.EntidadeEnumerador
     {
-        public DestinoLixo() { }
-        public DestinoLixo(string descricao) : base(descricao) { }
+        public DestinoDoLixo() { }
+        public DestinoDoLixo(string descricao) : base(descricao) { }
     }
 
-    public class AnimaisDomicilio : Models.EntidadeEnumerador
+    public class AnimalNoDomicilio : Models.EntidadeEnumerador
     {
-        public AnimaisDomicilio() { }
-        public AnimaisDomicilio(string descricao) : base(descricao) { }
+        public AnimalNoDomicilio() { }
+        public AnimalNoDomicilio(string descricao) : base(descricao) { }
     }
 
     public class RendaFamiliar : Models.EntidadeEnumerador
@@ -185,10 +185,10 @@ namespace gvn_ab_mobile.Models {
         public TipoDeAtendimento(string descricao) : base(descricao) { }
     }
 
-    public class AtencaoDomiciliar : Models.EntidadeEnumerador
+    public class ModalidadeAD : Models.EntidadeEnumerador
     {
-        public AtencaoDomiciliar() { }
-        public AtencaoDomiciliar(string descricao) : base(descricao) { }
+        public ModalidadeAD() { }
+        public ModalidadeAD(string descricao) : base(descricao) { }
     }
 
     public class RacionalidadeSaude : Models.EntidadeEnumerador

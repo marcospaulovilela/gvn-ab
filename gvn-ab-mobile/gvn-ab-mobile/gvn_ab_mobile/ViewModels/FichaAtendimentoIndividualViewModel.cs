@@ -24,7 +24,7 @@ namespace gvn_ab_mobile.ViewModels
         // USADO PAGE 2
         public ObservableRangeCollection<Models.LocalDeAtendimento> LocaisAtendimentos { get; set; }
         public ObservableRangeCollection<Models.TipoDeAtendimento> TiposAtendimentos { get; set; }
-        public ObservableRangeCollection<Models.AtencaoDomiciliar> AtencaoDomiciliar { get; set; }
+        public ObservableRangeCollection<Models.ModalidadeAD> ModalidadeAD { get; set; }
         public ObservableRangeCollection<Models.RacionalidadeSaude> RacionalidadeSaude { get; set; }
         public ObservableRangeCollection<Models.AleitamentoMaterno> AleitamentoMaterno { get; set; }
 
@@ -38,9 +38,9 @@ namespace gvn_ab_mobile.ViewModels
             this.Turnos = new ObservableRangeCollection<Models.Turno>(new DAO.DAOTurno().Select());
             this.Sexos = new ObservableRangeCollection<Models.Sexo>(new DAO.DAOSexo().Select()); //traz todos os sexos na base.
 
-            this.LocaisAtendimentos = new ObservableRangeCollection<Models.LocalDeAtendimento>(new DAO.DAOLocalAtendimento().Select());
-            this.TiposAtendimentos = new ObservableRangeCollection<Models.TipoDeAtendimento>(new DAO.DAOTipoAtendimento().Select());
-            this.AtencaoDomiciliar = new ObservableRangeCollection<Models.AtencaoDomiciliar>(new DAO.DAOAtencaoDomiciliar().Select());
+            this.LocaisAtendimentos = new ObservableRangeCollection<Models.LocalDeAtendimento>(new DAO.DAOLocalDeAtendimento().Select());
+            this.TiposAtendimentos = new ObservableRangeCollection<Models.TipoDeAtendimento>(new DAO.DAOTipoDeAtendimento().Select());
+            this.ModalidadeAD = new ObservableRangeCollection<Models.ModalidadeAD>(new DAO.DAOModalidadeAD().Select());
             this.RacionalidadeSaude = new ObservableRangeCollection<Models.RacionalidadeSaude>(new DAO.DAORacionalidadeSaude().Select());
             this.AleitamentoMaterno = new ObservableRangeCollection<Models.AleitamentoMaterno>(new DAO.DAOAleitamentoMaterno().Select());
         }

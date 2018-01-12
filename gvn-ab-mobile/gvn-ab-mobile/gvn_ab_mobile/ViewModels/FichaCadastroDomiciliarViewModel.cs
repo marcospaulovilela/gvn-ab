@@ -23,19 +23,19 @@ namespace gvn_ab_mobile.ViewModels
         public Models.FichaCadastroDomiciliarTerritorial Ficha { get; set; }
 
         // USADO PAGE 3
-        public ObservableRangeCollection<Models.SituacaoMoradiaPosseTerra> SituacoesMoradiaPosseTerra { get; set; }
-        public ObservableRangeCollection<Models.Localizacao> Localizacoes { get; set; }
-        public ObservableRangeCollection<Models.TipoDomicilio> TiposDomicilio { get; set; }
-        public ObservableRangeCollection<Models.TipoAcessoDomicilio> TiposAcessoDomicilio { get; set; }
-        public ObservableRangeCollection<Models.CondicaoPosseUsoTerra> CondicoesPosseUsoTerra { get; set; }
-        public ObservableRangeCollection<Models.MaterialPredominanteConstrucaoParedesExternasDomicilio> MateriaisPredominantesConstrucaoParedesExternaDomicilio { get; set; }
-        public ObservableRangeCollection<Models.AbastecimentoAgua> AbastecimentosAgua { get; set; }
+        public ObservableRangeCollection<Models.SituacaoDeMoradia> SituacoesDeMoradia { get; set; }
+        public ObservableRangeCollection<Models.LocalizacaoDaMoradia> LocalizacoesMoradias { get; set; }
+        public ObservableRangeCollection<Models.TipoDeDomicilio> TiposDeDomicilio { get; set; }
+        public ObservableRangeCollection<Models.TipoDeAcessoAoDomicilio> TiposAcessoDomicilio { get; set; }
+        public ObservableRangeCollection<Models.CondicaoDePosseEUsoDaTerra> CondicoesPosseUsoTerra { get; set; }
+        public ObservableRangeCollection<Models.MaterialPredominanteNaConstrucao> MateriaisPredominantesConstrucao { get; set; }
+        public ObservableRangeCollection<Models.AbastecimentoDeAgua> AbastecimentosAgua { get; set; }
         public ObservableRangeCollection<Models.AguaConsumoDomicilio> AguaConsumoDomicilio { get; set; }
-        public ObservableRangeCollection<Models.FormaEscoamentoBanheiroOuSanitario> FormasEscoamentoBanheiroOuSanitario { get; set; }
-        public ObservableRangeCollection<Models.DestinoLixo> DestinosLixo { get; set; }
+        public ObservableRangeCollection<Models.FormaDeEscoamentoDoBanheiroOuSanitario> FormasEscoamentoBanheiroOuSanitario { get; set; }
+        public ObservableRangeCollection<Models.DestinoDoLixo> DestinosLixo { get; set; }
 
         //USADO PAGE 4
-        public ObservableRangeCollection<Models.AnimaisDomicilio> AnimaisDomicilio { get; set; }
+        public ObservableRangeCollection<Models.AnimalNoDomicilio> AnimaisNoDomicilio { get; set; }
 
         //USADO PAGE 5
         public ObservableRangeCollection<Models.RendaFamiliar> RendasFamiliares { get; set; }
@@ -55,18 +55,18 @@ namespace gvn_ab_mobile.ViewModels
             this.NaoConcordarInstituicaoPermanencia = new Command(async () => await NaoConcordarInstituicaoPermanenciaExecuteAsync());
 
 
-            this.SituacoesMoradiaPosseTerra = new ObservableRangeCollection<Models.SituacaoMoradiaPosseTerra>(new DAO.DAOSituacaoMoradiaPosseTerra().Select());
-            this.Localizacoes = new ObservableRangeCollection<Models.Localizacao>(new DAO.DAOLocalizacao().Select());
-            this.TiposDomicilio = new ObservableRangeCollection<Models.TipoDomicilio>(new DAO.DAOTipoDeDomicilio().Select());
-            this.TiposAcessoDomicilio = new ObservableRangeCollection<Models.TipoAcessoDomicilio>(new DAO.DAOTipoDeAcessoAoDomicilio().Select());
-            this.CondicoesPosseUsoTerra = new ObservableRangeCollection<Models.CondicaoPosseUsoTerra>(new DAO.DAOCondicaoDePosseEUsoDaTerra().Select());
-            this.MateriaisPredominantesConstrucaoParedesExternaDomicilio = new ObservableRangeCollection<Models.MaterialPredominanteConstrucaoParedesExternasDomicilio>(new DAO.DAOMaterialPredominanteNaConstrucao().Select());
-            this.AbastecimentosAgua = new ObservableRangeCollection<Models.AbastecimentoAgua>(new DAO.DAOAbastecimentoDeAgua().Select());
+            this.SituacoesDeMoradia = new ObservableRangeCollection<Models.SituacaoDeMoradia>(new DAO.DAOSituacaoDeMoradia().Select());
+            this.LocalizacoesMoradias = new ObservableRangeCollection<Models.LocalizacaoDaMoradia>(new DAO.DAOLocalizacaoDaMoradia().Select());
+            this.TiposDeDomicilio = new ObservableRangeCollection<Models.TipoDeDomicilio>(new DAO.DAOTipoDeDomicilio().Select());
+            this.TiposAcessoDomicilio = new ObservableRangeCollection<Models.TipoDeAcessoAoDomicilio>(new DAO.DAOTipoDeAcessoAoDomicilio().Select());
+            this.CondicoesPosseUsoTerra = new ObservableRangeCollection<Models.CondicaoDePosseEUsoDaTerra>(new DAO.DAOCondicaoDePosseEUsoDaTerra().Select());
+            this.MateriaisPredominantesConstrucao = new ObservableRangeCollection<Models.MaterialPredominanteNaConstrucao>(new DAO.DAOMaterialPredominanteNaConstrucao().Select());
+            this.AbastecimentosAgua = new ObservableRangeCollection<Models.AbastecimentoDeAgua>(new DAO.DAOAbastecimentoDeAgua().Select());
             this.AguaConsumoDomicilio = new ObservableRangeCollection<Models.AguaConsumoDomicilio>(new DAO.DAOAguaConsumoDomicilio().Select());
-            this.FormasEscoamentoBanheiroOuSanitario = new ObservableRangeCollection<Models.FormaEscoamentoBanheiroOuSanitario>(new DAO.DAOFormaDeEscoamentoDoBanheiroOuSanitario().Select());
-            this.DestinosLixo = new ObservableRangeCollection<Models.DestinoLixo>(new DAO.DAODestinoDoLixo().Select());
+            this.FormasEscoamentoBanheiroOuSanitario = new ObservableRangeCollection<Models.FormaDeEscoamentoDoBanheiroOuSanitario>(new DAO.DAOFormaDeEscoamentoDoBanheiroOuSanitario().Select());
+            this.DestinosLixo = new ObservableRangeCollection<Models.DestinoDoLixo>(new DAO.DAODestinoDoLixo().Select());
 
-            this.AnimaisDomicilio = new ObservableRangeCollection<Models.AnimaisDomicilio>(new DAO.DAOAnimalNoDomicilio().Select());
+            this.AnimaisNoDomicilio = new ObservableRangeCollection<Models.AnimalNoDomicilio>(new DAO.DAOAnimalNoDomicilio().Select());
 
             this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());
         }
