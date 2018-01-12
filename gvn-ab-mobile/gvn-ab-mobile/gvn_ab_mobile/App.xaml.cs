@@ -13,7 +13,7 @@ namespace gvn_ab_mobile {
         }
 
         public static void SetMainPage() {
-            Current.MainPage = new NavigationPage(new Views.LoginPage()) {
+            Current.MainPage = new NavigationPage(new Views.Login.LoginPage()) {
                 BarBackgroundColor = Color.FromHex("#003264")
             };
         }

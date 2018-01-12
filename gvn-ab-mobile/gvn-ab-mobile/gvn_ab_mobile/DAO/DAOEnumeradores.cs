@@ -569,11 +569,11 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.IdentidadeGenero>() {
-                new Models.IdentidadeGenero("Homem transsexual"){ Codigo = 149 },
-                new Models.IdentidadeGenero("Mulher transsexual"){ Codigo = 150 },
-                new Models.IdentidadeGenero("Travesti"){ Codigo = 156 },
-                new Models.IdentidadeGenero("Outro"){ Codigo = 151 }
+            return base.Insert(new List<Models.IdentidadeGeneroCidadao>() {
+                new Models.IdentidadeGeneroCidadao("Homem transsexual"){ Codigo = 149 },
+                new Models.IdentidadeGeneroCidadao("Mulher transsexual"){ Codigo = 150 },
+                new Models.IdentidadeGeneroCidadao("Travesti"){ Codigo = 156 },
+                new Models.IdentidadeGeneroCidadao("Outro"){ Codigo = 151 }
          });
         }
     }
@@ -582,22 +582,22 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.Curso>() {
-                new Models.Curso("Creche") { Codigo = 51 },
-                new Models.Curso("Pré-escola (exceto CA)") { Codigo = 52 },
-                new Models.Curso("Classe de alfabetização - CA") { Codigo = 53 },
-                new Models.Curso("Ensino fundamental 1ª a 4ª séries") { Codigo = 54 },
-                new Models.Curso("Ensino fundamental 5ª a 8ª séries") { Codigo = 55 },
-                new Models.Curso("Ensino fundamental completo") { Codigo = 56 },
-                new Models.Curso("Ensino fundamental especial") { Codigo = 61 },
-                new Models.Curso("Ensino fundamental EJA - séries iniciais (supletivo 1ª a 4ª)") { Codigo = 58 },
-                new Models.Curso("Ensino fundamental EJA - séries finais (supletivo 5ª a 8ª)") { Codigo = 59 },
-                new Models.Curso("Ensino médio, médio 2º ciclo (científico, técnico e etc)") { Codigo = 60 },
-                new Models.Curso("Ensino médio especial") { Codigo = 57 },
-                new Models.Curso("Ensino médio EJA (supletivo)") { Codigo = 62 },
-                new Models.Curso("Superior, aperfeiçoamento, especialização, mestrado, doutorado") { Codigo = 63 },
-                new Models.Curso("Alfabetização para adultos (Mobral, etc)") { Codigo = 64 },
-                new Models.Curso("Nenhum") { Codigo = 65 }
+            return base.Insert(new List<Models.CursoMaisElevado>() {
+                new Models.CursoMaisElevado("Creche") { Codigo = 51 },
+                new Models.CursoMaisElevado("Pré-escola (exceto CA)") { Codigo = 52 },
+                new Models.CursoMaisElevado("Classe de alfabetização - CA") { Codigo = 53 },
+                new Models.CursoMaisElevado("Ensino fundamental 1ª a 4ª séries") { Codigo = 54 },
+                new Models.CursoMaisElevado("Ensino fundamental 5ª a 8ª séries") { Codigo = 55 },
+                new Models.CursoMaisElevado("Ensino fundamental completo") { Codigo = 56 },
+                new Models.CursoMaisElevado("Ensino fundamental especial") { Codigo = 61 },
+                new Models.CursoMaisElevado("Ensino fundamental EJA - séries iniciais (supletivo 1ª a 4ª)") { Codigo = 58 },
+                new Models.CursoMaisElevado("Ensino fundamental EJA - séries finais (supletivo 5ª a 8ª)") { Codigo = 59 },
+                new Models.CursoMaisElevado("Ensino médio, médio 2º ciclo (científico, técnico e etc)") { Codigo = 60 },
+                new Models.CursoMaisElevado("Ensino médio especial") { Codigo = 57 },
+                new Models.CursoMaisElevado("Ensino médio EJA (supletivo)") { Codigo = 62 },
+                new Models.CursoMaisElevado("Superior, aperfeiçoamento, especialização, mestrado, doutorado") { Codigo = 63 },
+                new Models.CursoMaisElevado("Alfabetização para adultos (Mobral, etc)") { Codigo = 64 },
+                new Models.CursoMaisElevado("Nenhum") { Codigo = 65 }
          });
         }
     }
@@ -626,13 +626,13 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.Responsavel>() {
-                new Models.Responsavel("Adulto responsável") { Codigo = 1 },
-                new Models.Responsavel("Outra(s) criança(s)") { Codigo = 2 },
-                new Models.Responsavel("Adolescente") { Codigo = 133 },
-                new Models.Responsavel("Sozinha") { Codigo = 3 },
-                new Models.Responsavel("Creche") { Codigo = 134 },
-                new Models.Responsavel("Outro") { Codigo = 4 }
+            return base.Insert(new List<Models.ResponsavelCrianca>() {
+                new Models.ResponsavelCrianca("Adulto responsável") { Codigo = 1 },
+                new Models.ResponsavelCrianca("Outra(s) criança(s)") { Codigo = 2 },
+                new Models.ResponsavelCrianca("Adolescente") { Codigo = 133 },
+                new Models.ResponsavelCrianca("Sozinha") { Codigo = 3 },
+                new Models.ResponsavelCrianca("Creche") { Codigo = 134 },
+                new Models.ResponsavelCrianca("Outro") { Codigo = 4 }
 
             });
         }
@@ -680,17 +680,17 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.SituacaoMercado>() {
-                new Models.SituacaoMercado("Empregador") { Codigo = 66 },
-                new Models.SituacaoMercado("Assalariado com carteira de trabalho") { Codigo = 67 },
-                new Models.SituacaoMercado("Assalariado sem carteira de trabalho") { Codigo = 68 },
-                new Models.SituacaoMercado("Autônomo com previdência social") { Codigo = 69 },
-                new Models.SituacaoMercado("Autônomo sem previdência social") { Codigo = 70 },
-                new Models.SituacaoMercado("Aposentado / Pensionista") { Codigo = 71 },
-                new Models.SituacaoMercado("Desempregado") { Codigo = 72 },
-                new Models.SituacaoMercado("Não trabalha") { Codigo = 73 },
-                new Models.SituacaoMercado("Servidor público / Militar") { Codigo = 147 },
-                new Models.SituacaoMercado("Outro") { Codigo = 74 }
+            return base.Insert(new List<Models.SituacaoMercadoTrabalho>() {
+                new Models.SituacaoMercadoTrabalho("Empregador") { Codigo = 66 },
+                new Models.SituacaoMercadoTrabalho("Assalariado com carteira de trabalho") { Codigo = 67 },
+                new Models.SituacaoMercadoTrabalho("Assalariado sem carteira de trabalho") { Codigo = 68 },
+                new Models.SituacaoMercadoTrabalho("Autônomo com previdência social") { Codigo = 69 },
+                new Models.SituacaoMercadoTrabalho("Autônomo sem previdência social") { Codigo = 70 },
+                new Models.SituacaoMercadoTrabalho("Aposentado / Pensionista") { Codigo = 71 },
+                new Models.SituacaoMercadoTrabalho("Desempregado") { Codigo = 72 },
+                new Models.SituacaoMercadoTrabalho("Não trabalha") { Codigo = 73 },
+                new Models.SituacaoMercadoTrabalho("Servidor público / Militar") { Codigo = 147 },
+                new Models.SituacaoMercadoTrabalho("Outro") { Codigo = 74 }
             });
         }
     }
@@ -754,15 +754,15 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.SituacaoMoradiaPosseTerra>() {
-                  new Models.SituacaoMoradiaPosseTerra("Próprio") { Codigo = 75 },
-                  new Models.SituacaoMoradiaPosseTerra("Financiado") { Codigo = 76 },
-                  new Models.SituacaoMoradiaPosseTerra("Alugado") { Codigo = 77 },
-                  new Models.SituacaoMoradiaPosseTerra("Arrendado") { Codigo = 78 },
-                  new Models.SituacaoMoradiaPosseTerra("Cedido") { Codigo = 79 },
-                  new Models.SituacaoMoradiaPosseTerra("Ocupação") { Codigo = 80 },
-                  new Models.SituacaoMoradiaPosseTerra("Situação de Rua") { Codigo = 81 },
-                  new Models.SituacaoMoradiaPosseTerra("Outra") { Codigo = 82 },
+            return base.Insert(new List<Models.SituacaoDeMoradia>() {
+                  new Models.SituacaoDeMoradia("Próprio") { Codigo = 75 },
+                  new Models.SituacaoDeMoradia("Financiado") { Codigo = 76 },
+                  new Models.SituacaoDeMoradia("Alugado") { Codigo = 77 },
+                  new Models.SituacaoDeMoradia("Arrendado") { Codigo = 78 },
+                  new Models.SituacaoDeMoradia("Cedido") { Codigo = 79 },
+                  new Models.SituacaoDeMoradia("Ocupação") { Codigo = 80 },
+                  new Models.SituacaoDeMoradia("Situação de Rua") { Codigo = 81 },
+                  new Models.SituacaoDeMoradia("Outra") { Codigo = 82 },
             });
         }
     }
@@ -771,22 +771,9 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.Localizacao>() {
-                  new Models.Localizacao("Urbana") { Codigo = 83 },
-                  new Models.Localizacao("Rural") { Codigo = 84 },
-            });
-        }
-    }
-
-    class DAOTipoDeDomicilio : DAO<Models.TipoDomicilio> {
-        public override int? CreateTable() {
-            if (base.CreateTable() == 0) return 0;
-
-            return base.Insert(new List<Models.TipoDomicilio>() {
-                  new Models.TipoDomicilio("Casa") { Codigo = 85 },
-                  new Models.TipoDomicilio("Apartamento") { Codigo = 86 },
-                  new Models.TipoDomicilio("Cômodo") { Codigo = 87 },
-                  new Models.TipoDomicilio("Outro") { Codigo = 88 },
+            return base.Insert(new List<Models.LocalizacaoDaMoradia>() {
+                  new Models.LocalizacaoDaMoradia("Urbana") { Codigo = 83 },
+                  new Models.LocalizacaoDaMoradia("Rural") { Codigo = 84 },
             });
         }
     }
@@ -795,11 +782,11 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.TipoAcessoDomicilio>() {
-                  new Models.TipoAcessoDomicilio("Pavimento") { Codigo = 89 },
-                  new Models.TipoAcessoDomicilio("Chão Batido") { Codigo = 90 },
-                  new Models.TipoAcessoDomicilio("Fluvial") { Codigo = 91 },
-                  new Models.TipoAcessoDomicilio("Outro") { Codigo = 92 },
+            return base.Insert(new List<Models.TipoDeDomicilio>() {
+                  new Models.TipoDeDomicilio("Pavimento") { Codigo = 89 },
+                  new Models.TipoDeDomicilio("Chão Batido") { Codigo = 90 },
+                  new Models.TipoDeDomicilio("Fluvial") { Codigo = 91 },
+                  new Models.TipoDeDomicilio("Outro") { Codigo = 92 },
             });
         }
     }
@@ -808,11 +795,11 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.TipoAcessoDomicilio>() {
-                  new Models.TipoAcessoDomicilio("Pavimento") { Codigo = 89 },
-                  new Models.TipoAcessoDomicilio("Chão Batido") { Codigo = 90 },
-                  new Models.TipoAcessoDomicilio("Fluvial") { Codigo = 91 },
-                  new Models.TipoAcessoDomicilio("Outro") { Codigo = 92 },
+            return base.Insert(new List<Models.TipoDeAcessoAoDomicilio>() {
+                  new Models.TipoDeAcessoAoDomicilio("Pavimento") { Codigo = 89 },
+                  new Models.TipoDeAcessoAoDomicilio("Chão Batido") { Codigo = 90 },
+                  new Models.TipoDeAcessoAoDomicilio("Fluvial") { Codigo = 91 },
+                  new Models.TipoDeAcessoAoDomicilio("Outro") { Codigo = 92 },
             });
         }
     }
@@ -821,15 +808,15 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.CondicaoPosseUsoTerra>() {
-                  new Models.CondicaoPosseUsoTerra("Proprietário") { Codigo = 101 },
-                  new Models.CondicaoPosseUsoTerra("Parceiro(a) / Meeiro(a)") { Codigo = 102 },
-                  new Models.CondicaoPosseUsoTerra("Assentado(a)") { Codigo = 103 },
-                  new Models.CondicaoPosseUsoTerra("Posseiro") { Codigo = 104 },
-                  new Models.CondicaoPosseUsoTerra("Arrendatário(a)") { Codigo = 105 },
-                  new Models.CondicaoPosseUsoTerra("Comodatário(a)") { Codigo = 106 },
-                  new Models.CondicaoPosseUsoTerra("Beneficiário(a) do banco da terra") { Codigo = 107 },
-                  new Models.CondicaoPosseUsoTerra("Não se aplica") { Codigo = 108 },
+            return base.Insert(new List<Models.CondicaoDePosseEUsoDaTerra>() {
+                  new Models.CondicaoDePosseEUsoDaTerra("Proprietário") { Codigo = 101 },
+                  new Models.CondicaoDePosseEUsoDaTerra("Parceiro(a) / Meeiro(a)") { Codigo = 102 },
+                  new Models.CondicaoDePosseEUsoDaTerra("Assentado(a)") { Codigo = 103 },
+                  new Models.CondicaoDePosseEUsoDaTerra("Posseiro") { Codigo = 104 },
+                  new Models.CondicaoDePosseEUsoDaTerra("Arrendatário(a)") { Codigo = 105 },
+                  new Models.CondicaoDePosseEUsoDaTerra("Comodatário(a)") { Codigo = 106 },
+                  new Models.CondicaoDePosseEUsoDaTerra("Beneficiário(a) do banco da terra") { Codigo = 107 },
+                  new Models.CondicaoDePosseEUsoDaTerra("Não se aplica") { Codigo = 108 },
             });
         }
     }
@@ -838,15 +825,15 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.MaterialPredominanteConstrucaoParedesExternasDomicilio>() {
-                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Alvenaria com revestimento") { Codigo = 109 },
-                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Alvenaria sem revestimento") { Codigo = 110 },
-                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Taipa com revestimento") { Codigo = 111 },
-                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Taipa sem revestimento") { Codigo = 112 },
-                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Madeira emparelhada") { Codigo = 113 },
-                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Material aproveitado") { Codigo = 114 },
-                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Palha") { Codigo = 115 },
-                  new Models.MaterialPredominanteConstrucaoParedesExternasDomicilio("Outro material") { Codigo = 116 },
+            return base.Insert(new List<Models.MaterialPredominanteNaConstrucao>() {
+                  new Models.MaterialPredominanteNaConstrucao("Alvenaria com revestimento") { Codigo = 109 },
+                  new Models.MaterialPredominanteNaConstrucao("Alvenaria sem revestimento") { Codigo = 110 },
+                  new Models.MaterialPredominanteNaConstrucao("Taipa com revestimento") { Codigo = 111 },
+                  new Models.MaterialPredominanteNaConstrucao("Taipa sem revestimento") { Codigo = 112 },
+                  new Models.MaterialPredominanteNaConstrucao("Madeira emparelhada") { Codigo = 113 },
+                  new Models.MaterialPredominanteNaConstrucao("Material aproveitado") { Codigo = 114 },
+                  new Models.MaterialPredominanteNaConstrucao("Palha") { Codigo = 115 },
+                  new Models.MaterialPredominanteNaConstrucao("Outro material") { Codigo = 116 },
             });
         }
     }
@@ -855,12 +842,12 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.AbastecimentoAgua>() {
-                  new Models.AbastecimentoAgua("Rede encanada até o domicílio") { Codigo = 117 },
-                  new Models.AbastecimentoAgua("Poço / Nascente no domicílio") { Codigo = 118 },
-                  new Models.AbastecimentoAgua("Cisterna") { Codigo = 119 },
-                  new Models.AbastecimentoAgua("Carro pipa") { Codigo = 120 },
-                  new Models.AbastecimentoAgua("Outro") { Codigo = 121 },
+            return base.Insert(new List<Models.AbastecimentoDeAgua>() {
+                  new Models.AbastecimentoDeAgua("Rede encanada até o domicílio") { Codigo = 117 },
+                  new Models.AbastecimentoDeAgua("Poço / Nascente no domicílio") { Codigo = 118 },
+                  new Models.AbastecimentoDeAgua("Cisterna") { Codigo = 119 },
+                  new Models.AbastecimentoDeAgua("Carro pipa") { Codigo = 120 },
+                  new Models.AbastecimentoDeAgua("Outro") { Codigo = 121 },
             });
         }
     }
@@ -884,13 +871,13 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.FormaEscoamentoBanheiroOuSanitario>() {
-                  new Models.FormaEscoamentoBanheiroOuSanitario("Rede coletora de esgoto / pluvial") { Codigo = 122 },
-                  new Models.FormaEscoamentoBanheiroOuSanitario("Fossa séptica") { Codigo = 123 },
-                  new Models.FormaEscoamentoBanheiroOuSanitario("Fossa rudimentar") { Codigo = 124 },
-                  new Models.FormaEscoamentoBanheiroOuSanitario("Direto para um rio / lago / mar") { Codigo = 125 },
-                  new Models.FormaEscoamentoBanheiroOuSanitario("Céu aberto") { Codigo = 126 },
-                  new Models.FormaEscoamentoBanheiroOuSanitario("Outra Forma") { Codigo = 127 },
+            return base.Insert(new List<Models.FormaDeEscoamentoDoBanheiroOuSanitario>() {
+                  new Models.FormaDeEscoamentoDoBanheiroOuSanitario("Rede coletora de esgoto / pluvial") { Codigo = 122 },
+                  new Models.FormaDeEscoamentoDoBanheiroOuSanitario("Fossa séptica") { Codigo = 123 },
+                  new Models.FormaDeEscoamentoDoBanheiroOuSanitario("Fossa rudimentar") { Codigo = 124 },
+                  new Models.FormaDeEscoamentoDoBanheiroOuSanitario("Direto para um rio / lago / mar") { Codigo = 125 },
+                  new Models.FormaDeEscoamentoDoBanheiroOuSanitario("Céu aberto") { Codigo = 126 },
+                  new Models.FormaDeEscoamentoDoBanheiroOuSanitario("Outra Forma") { Codigo = 127 },
             });
         }
     }
@@ -899,11 +886,11 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.DestinoLixo>() {
-                  new Models.DestinoLixo("Coletado") { Codigo = 93 },
-                  new Models.DestinoLixo("Queimado / Enterrado") { Codigo = 94 },
-                  new Models.DestinoLixo("Céu aberto") { Codigo = 95 },
-                  new Models.DestinoLixo("Outro") { Codigo = 96 },
+            return base.Insert(new List<Models.DestinoDoLixo>() {
+                  new Models.DestinoDoLixo("Coletado") { Codigo = 93 },
+                  new Models.DestinoDoLixo("Queimado / Enterrado") { Codigo = 94 },
+                  new Models.DestinoDoLixo("Céu aberto") { Codigo = 95 },
+                  new Models.DestinoDoLixo("Outro") { Codigo = 96 },
             });
         }
     }
@@ -912,11 +899,11 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.AnimaisDomicilio>() {
-                  new Models.AnimaisDomicilio("Gato") { Codigo = 128 },
-                  new Models.AnimaisDomicilio("Cachorro") { Codigo = 129 },
-                  new Models.AnimaisDomicilio("Pássaro") { Codigo = 130 },
-                  new Models.AnimaisDomicilio("Outros") { Codigo = 132 },
+            return base.Insert(new List<Models.AnimalNoDomicilio>() {
+                  new Models.AnimalNoDomicilio("Gato") { Codigo = 128 },
+                  new Models.AnimalNoDomicilio("Cachorro") { Codigo = 129 },
+                  new Models.AnimalNoDomicilio("Pássaro") { Codigo = 130 },
+                  new Models.AnimalNoDomicilio("Outros") { Codigo = 132 },
             });
         }
     }
@@ -991,11 +978,11 @@ namespace gvn_ab_mobile.DAO {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
-            return base.Insert(new List<Models.AtencaoDomiciliar>() {
-                  new Models.AtencaoDomiciliar("AD1") { Codigo = 1 },
-                  new Models.AtencaoDomiciliar("AD2") { Codigo = 2 },
-                  new Models.AtencaoDomiciliar("AD3") { Codigo = 3 },
-                  new Models.AtencaoDomiciliar("Inelegível") { Codigo = 4 },
+            return base.Insert(new List<Models.ModalidadeAD>() {
+                  new Models.ModalidadeAD("AD1") { Codigo = 1 },
+                  new Models.ModalidadeAD("AD2") { Codigo = 2 },
+                  new Models.ModalidadeAD("AD3") { Codigo = 3 },
+                  new Models.ModalidadeAD("Inelegível") { Codigo = 4 },
             });
         }
     }
