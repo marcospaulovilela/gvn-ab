@@ -565,7 +565,7 @@ namespace gvn_ab_mobile.Models
         {
             get
             {
-                return (this.RacaCorCidadao == 0);
+                return (this.RacaCorCidadao == 5);
             }
             set
             {
