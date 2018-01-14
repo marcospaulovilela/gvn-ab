@@ -42,10 +42,14 @@
     <Compile Include="Behaviors\EntryMaxLengthBehavior.cs" />
     <Compile Include="Behaviors\Validator.cs" />
     <Compile Include="Behaviors\ButtonSubmitBehavior.cs" />
+    <Compile Include="Behaviors\ValidatorSelectMultipleItems .cs" />
     <Compile Include="Behaviors\ValidatorPickerBehavior.cs" />
     <Compile Include="Behaviors\ValidatorEntryBehavior.cs" />
     <Compile Include="Behaviors\Validators.cs" />
     <Compile Include="Config\ISQLiteConfig.cs" />
+    <Compile Include="Controls\SelectMultipleItems.xaml.cs">
+      <DependentUpon>SelectMultipleItems.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DAOEnumeradores.cs" />
     <Compile Include="DAO\DAOFichaAtendimentoIndividual.cs" />
@@ -371,6 +375,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Login\LoginPage2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\SelectMultipleItems.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -12,7 +12,18 @@ namespace gvn_ab_mobile.ViewModels {
         bool isBusy = false;
         public bool IsBusy {
             get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            set {
+                SetProperty(ref isBusy, value);
+                OnPropertyChanged("NotIsBusy");
+            }
+        }
+
+        public bool NotIsBusy {
+            get { return !isBusy; }
+            set {
+                SetProperty(ref isBusy, !value);
+                OnPropertyChanged("IsBusy");
+            }
         }
         /// <summary>
         /// Private backing field to hold the title

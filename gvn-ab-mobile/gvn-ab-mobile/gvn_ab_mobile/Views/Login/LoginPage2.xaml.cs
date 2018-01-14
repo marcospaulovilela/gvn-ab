@@ -14,5 +14,6 @@ namespace gvn_ab_mobile.Views.Login {
 
             this.BindingContext = this.viewModel = loginViewModel;
         }
+
     }
 }

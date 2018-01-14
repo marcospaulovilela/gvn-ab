@@ -1,167 +1,154 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
+             xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5"
              xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              Title="Condições/Situações de Saúde Gerais">
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Está gestante?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEhGestante}"></Switch>
-                </StackLayout>
-
+        <StackLayout Padding="20, 30, 20, 20">
+            <ScrollView HorizontalOptions="FillAndExpand" >
                 <StackLayout>
-                    <Label Text="Se sim, qual a maternidade de referência?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Maternidade de Referência" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.MaternidadeDeReferencia}"/>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Está gestante?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEhGestante}"></Switch>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Se sim, qual a maternidade de referência?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Entry Placeholder="Maternidade de Referência" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.MaternidadeDeReferencia}"/>
+                    </StackLayout>
 
                 <StackLayout>
                     <Label Text="Sobre seu peso, como você se considera?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodConsideracaoPeso" ItemsSource="{Binding ConsideracoesPeso}" SelectedItem="{Binding ConsideracaoPeso}" Title="Consideração Peso" TextColor="Gray" HorizontalOptions="FillAndExpand">
-                        <Picker.Behaviors>
-                            <behaviors:ValidatorPickerBehavior />
-                        </Picker.Behaviors>
-                    </Picker>
+                    <Picker x:Name="CodConsideracaoPeso"  ItemsSource="{Binding ConsideracoesPeso}"  HorizontalOptions="FillAndExpand" Title="Peso" />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Está fumante?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEhFumante}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Está fumante?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEhFumante}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Faz uso de Álcool?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEhDependenteAlcool}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Faz uso de Álcool?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEhDependenteAlcool}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Faz uso de Outras Drogas?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEhDependenteOutrasDrogas}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Faz uso de Outras Drogas?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEhDependenteOutrasDrogas}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tem Hipertensão Arterial?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemHipertensaoArterial}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Tem Hipertensão Arterial?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemHipertensaoArterial}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tem Diabetes?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemDiabetes}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Tem Diabetes?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemDiabetes}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Teve AVC/Derrame?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTeveAvcDerrame}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Teve AVC/Derrame?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTeveAvcDerrame}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Teve Infarto?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTeveInfarto}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Teve Infarto?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTeveInfarto}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tem Doença Cardíaca/Do Coração?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusDoencaCardiaca}"></Switch>
-                </StackLayout>
-                
-                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Tem Doença Cardíaca/Do Coração?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusDoencaCardiaca}"></Switch>
+                    </StackLayout>
+
                     <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodDoencaCardiaca" ItemsSource="{Binding DoencasCardiacas}" SelectedItem="{Binding DoencaCardiaca}" Title="Doença(s) Cardíaca(s)" TextColor="Gray" HorizontalOptions="FillAndExpand">
-                        <Picker.Behaviors>
-                            <behaviors:ValidatorPickerBehavior />
-                        </Picker.Behaviors>
-                    </Picker>
+                    <Picker x:Name="CodDoencaCardiaca"  ItemsSource="{Binding DoencasCardiacas}"  HorizontalOptions="FillAndExpand" Title="Doença cardiaca" />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tem ou Teve Problema nos Rins?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemTeveDoencasRins}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Tem ou Teve Problema nos Rins?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemTeveDoencasRins}"></Switch>
+                    </StackLayout>
 
                 <StackLayout>
                     <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodProblemaRins" ItemsSource="{Binding ProblemasRins}" SelectedItem="{Binding ProblemaRins}" Title="Problema(s) nos Rins" TextColor="Gray" HorizontalOptions="FillAndExpand">
-                        <Picker.Behaviors>
-                            <behaviors:ValidatorPickerBehavior />
-                        </Picker.Behaviors>
-                    </Picker>
+                    <Picker x:Name="CodProblemaRins"  ItemsSource="{Binding ProblemasRins}"  HorizontalOptions="FillAndExpand" Title="Problemas nos rins" />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tem Doença Respiratória/No Pulmão?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemDoencaRespiratoria}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Tem Doença Respiratória/No Pulmão?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemDoencaRespiratoria}"></Switch>
+                    </StackLayout>
 
                 <StackLayout>
                     <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodDoencasRespiratorias" ItemsSource="{Binding DoencasRespiratorias}" SelectedItem="{Binding DoencaRespiratoria}" Title="Doença(s) Respiratoria(s)" TextColor="Gray" HorizontalOptions="FillAndExpand">
-                        <Picker.Behaviors>
-                            <behaviors:ValidatorPickerBehavior />
-                        </Picker.Behaviors>
-                    </Picker>
+                    <Picker x:Name="CodDoencasRespiratorias"  ItemsSource="{Binding DoencasRespiratorias }"  HorizontalOptions="FillAndExpand" Title="Doenças respiratorias" />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Está com Hanseníase?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemHanseniase}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Está com Hanseníase?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemHanseniase}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Está com Tuberculose?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemTuberculose}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Está com Tuberculose?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemTuberculose}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tem ou Teve Câncer?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemTeveCancer}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Tem ou Teve Câncer?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemTeveCancer}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Teve alguma internação nos últimos 12 meses?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTeveInternadoem12Meses}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Teve alguma internação nos últimos 12 meses?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTeveInternadoem12Meses}"></Switch>
+                    </StackLayout>
 
-                <StackLayout>
-                    <Label Text="Se sim, por qual(is) causa(s)?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Causa(s)" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoCausaInternacaoEm12Meses}"/>
-                </StackLayout>
+                    <StackLayout>
+                        <Label Text="Se sim, por qual(is) causa(s)?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Entry Placeholder="Causa(s)" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoCausaInternacaoEm12Meses}"/>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Teve diagnóstico de de algum problema de saúde mental por profissional de saúde?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusDiagnosticoMental}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Teve diagnóstico de de algum problema de saúde mental por profissional de saúde?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusDiagnosticoMental}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Está Acamado?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEstaAcamado}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Está Acamado?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEstaAcamado}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Está Domiciliado?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEstaDomiciliado}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Está Domiciliado?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEstaDomiciliado}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Usa Plantas Medicinais?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusUsaPlantasMedicinais}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Usa Plantas Medicinais?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusUsaPlantasMedicinais}"></Switch>
+                    </StackLayout>
 
-                <StackLayout>
-                    <Label Text="Se sim, qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Plantas Medicinais utilizadas" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoPlantasMedicinaisUsadas}"/>
-                </StackLayout>
+                    <StackLayout>
+                        <Label Text="Se sim, qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Entry Placeholder="Plantas Medicinais utilizadas" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoPlantasMedicinaisUsadas}"/>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Usa Outras Práticas Integrativas e Complementares?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusUsaOutrasPraticasIntegrativasOuComplementares}"></Switch>
-                </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Usa Outras Práticas Integrativas e Complementares?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusUsaOutrasPraticasIntegrativasOuComplementares}"></Switch>
+                    </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                        <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
+                    </StackLayout>
                 </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

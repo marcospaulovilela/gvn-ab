@@ -14,20 +14,21 @@ namespace gvn_ab_mobile.ViewModels {
 
         public Models.Profissional Profissional { get; set; }
         public Models.Cbo Cbo { get; set; }
-
+        
         public LoginViewModel(Page page) {
             this.Profissional = new Models.Profissional() {
                 DesLogin = "admsaude",
                 DesSenha = "123456"
             };
             this.Page = page;
-
+            
             this.Login = new Command(async () => await LoginExecuteAsync());
             this.CboSelect = new Command(async () => await this.Page.Navigation.PushAsync(new Views.MenuPage(this.Profissional, this.Cbo = this.Profissional.Cbos.First())));
             this.Sincronizar = new Command(async () => await SincronizarExecuteAsync());
         }
 
         private async Task LoginExecuteAsync() {
+            
             try {
                 using (var objDao = new DAO.DAOProfissional()) {
                     var CpfUser = objDao.GetProfissionalByDesLogin(this.Profissional.DesLogin);

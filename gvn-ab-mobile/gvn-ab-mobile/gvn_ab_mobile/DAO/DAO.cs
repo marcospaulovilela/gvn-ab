@@ -8,7 +8,7 @@ namespace gvn_ab_mobile.DAO {
     public abstract class DAO<T> : IDisposable
         where T : new () {
 
-        private static string dbName = "gvn-ab.db3";
+        private static string dbName = "gvn-ab-2.db3";
      
         private SQLiteConnection connection;
 
@@ -40,9 +40,10 @@ namespace gvn_ab_mobile.DAO {
         }
 
         public virtual int? Insert(T obj) {
-            if (this.ValidateInsert(obj))
-                return this.connection?.Insert(obj);
-            return 0;
+            if (!this.ValidateInsert(obj)) return 0;
+
+            this.connection?.InsertWithChildren(obj, true);
+            return 1;
         }
 
         public virtual int? Insert(IEnumerable<T> obj) {
