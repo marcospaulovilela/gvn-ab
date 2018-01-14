@@ -58,12 +58,14 @@ namespace gvn_ab_mobile.ViewModels {
             this.Nacionalidades = new ObservableRangeCollection<Models.Nacionalidade>(new DAO.DAONacionalidade().Select());
             
             this.CursosMaisElevados = new ObservableRangeCollection<Models.CursoMaisElevado>(new DAO.DAOCursoMaisElevado().Select());
-            this.Ocupacoes = new ObservableRangeCollection<Models.Ocupacao>(); //MAPEAR OS CBOS ..... AINDA TEM Q SER FEITO
+            //this.Ocupacoes = new ObservableRangeCollection<Models.Ocupacao>(); //MAPEAR OS CBOS ..... AINDA TEM Q SER FEITO
             this.ResponsaveisCriancas = new ObservableRangeCollection<Models.ResponsavelCrianca>(new DAO.DAOResponsavelCrianca().Select()); 
             this.SituacoesMercadoTrabalho = new ObservableRangeCollection<Models.SituacaoMercadoTrabalho>(new DAO.DAOSituacaoMercadoTrabalho().Select());
             this.IdentidadeGeneroCidadaos = new ObservableRangeCollection<Models.IdentidadeGeneroCidadao>(new DAO.DAOIdentidadeGeneroCidadao().Select());
             this.OrientacoesSexuais = new ObservableRangeCollection<Models.OrientacaoSexual>(new DAO.DAOOrientacaoSexual().Select());
             this.RelacoesParentesco = new ObservableRangeCollection<Models.RelacaoParentesco>(new DAO.DAORelacaoParentesco().Select());
+
+            this.MotivosSaida = new ObservableRangeCollection<Models.MotivoSaida>(new DAO.DAOMotivoSaida().Select());
 
             this.ConsideracoesPeso = new ObservableRangeCollection<Models.ConsideracaoPeso>(new DAO.DAOConsideracaoPeso().Select());
             this.DoencasCardiacas= new ObservableRangeCollection<Models.DoencaCardiaca>(new DAO.DAODoencaCardiaca().Select());

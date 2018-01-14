@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              Title="Cidadão em Situação de Rua">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >

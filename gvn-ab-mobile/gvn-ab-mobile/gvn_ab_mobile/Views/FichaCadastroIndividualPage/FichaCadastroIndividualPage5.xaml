@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              Title="Condições/Situações de Saúde Gerais">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
@@ -18,7 +19,11 @@
 
                 <StackLayout>
                     <Label Text="Sobre seu peso, como você se considera?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodConsideracaoPeso"  ItemsSource="{Binding ConsideracoesPeso}"  HorizontalOptions="FillAndExpand" Title="Peso" />
+                    <Picker x:Name="CodConsideracaoPeso" ItemsSource="{Binding ConsideracoesPeso}" SelectedItem="{Binding ConsideracaoPeso}" Title="Consideração Peso" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker.Behaviors>
+                            <behaviors:ValidatorPickerBehavior />
+                        </Picker.Behaviors>
+                    </Picker>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -63,7 +68,11 @@
                 
                 <StackLayout>
                     <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodDoencaCardiaca"  ItemsSource="{Binding DoencasCardiacas}"  HorizontalOptions="FillAndExpand" Title="Doença cardiaca" />
+                    <Picker x:Name="CodDoencaCardiaca" ItemsSource="{Binding DoencasCardiacas}" SelectedItem="{Binding DoencaCardiaca}" Title="Doença(s) Cardíaca(s)" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker.Behaviors>
+                            <behaviors:ValidatorPickerBehavior />
+                        </Picker.Behaviors>
+                    </Picker>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -73,7 +82,11 @@
 
                 <StackLayout>
                     <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodProblemaRins"  ItemsSource="{Binding ProblemasRins}"  HorizontalOptions="FillAndExpand" Title="Problemas nos rins" />
+                    <Picker x:Name="CodProblemaRins" ItemsSource="{Binding ProblemasRins}" SelectedItem="{Binding ProblemaRins}" Title="Problema(s) nos Rins" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker.Behaviors>
+                            <behaviors:ValidatorPickerBehavior />
+                        </Picker.Behaviors>
+                    </Picker>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -83,7 +96,11 @@
 
                 <StackLayout>
                     <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodDoencasRespiratorias"  ItemsSource="{Binding DoencasRespiratorias }"  HorizontalOptions="FillAndExpand" Title="Doenças respiratorias" />
+                    <Picker x:Name="CodDoencasRespiratorias" ItemsSource="{Binding DoencasRespiratorias}" SelectedItem="{Binding DoencaRespiratoria}" Title="Doença(s) Respiratoria(s)" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker.Behaviors>
+                            <behaviors:ValidatorPickerBehavior />
+                        </Picker.Behaviors>
+                    </Picker>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">

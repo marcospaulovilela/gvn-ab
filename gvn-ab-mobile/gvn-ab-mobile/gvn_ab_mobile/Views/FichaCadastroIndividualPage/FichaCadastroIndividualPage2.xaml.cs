@@ -17,5 +17,10 @@ namespace gvn_ab_mobile.Views.FichaCadastroIndividualPage {
             InitializeComponent();
             this.BindingContext = this.viewModel = viewModel;
         }
+
+        private void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -458,7 +458,22 @@ namespace gvn_ab_mobile.Models
         public bool DesconheceNomeMae
         {
             get { return this._desconheceNomeMae; }
-            set { SetProperty(ref _desconheceNomeMae, value); }
+            set {
+                SetProperty(ref _desconheceNomeMae, value);
+                OnPropertyChanged("KnowsNomeMae");
+            }
+        }
+
+        public bool KnowsNomeMae
+        {
+            get
+            {
+                return !this.DesconheceNomeMae;
+            }
+            set
+            {
+
+            }
         }
 
         //Campo emailCidadao - Tipo string
@@ -539,7 +554,23 @@ namespace gvn_ab_mobile.Models
         public long RacaCorCidadao
         {
             get { return this._racaCorCidadao; }
-            set { SetProperty(ref _racaCorCidadao, value); }
+            set {
+                SetProperty(ref _racaCorCidadao, value);
+                OnPropertyChanged("IsIndigena");
+            }
+        }
+
+
+        public bool IsIndigena
+        {
+            get
+            {
+                return (this.RacaCorCidadao == 0);
+            }
+            set
+            {
+
+            }
         }
 
         //Campo sexoCidadao - Tipo long
@@ -556,7 +587,22 @@ namespace gvn_ab_mobile.Models
         public bool StatusEhResponsavel
         {
             get { return this._statusEhResponsavel; }
-            set { SetProperty(ref _statusEhResponsavel, value); }
+            set {
+                SetProperty(ref _statusEhResponsavel, value);
+                OnPropertyChanged("IsResponsavel");
+            }
+        }
+
+        public bool IsResponsavel
+        {
+            get
+            {
+                return !this.StatusEhResponsavel;
+            }
+            set
+            {
+
+            }
         }
 
         //Campo etnia - Tipo long
@@ -581,7 +627,22 @@ namespace gvn_ab_mobile.Models
         public bool DesconheceNomePai
         {
             get { return this._desconheceNomePai; }
-            set { SetProperty(ref _desconheceNomePai, value); }
+            set {
+                SetProperty(ref _desconheceNomePai, value);
+                OnPropertyChanged("KnowsNomePai");
+            }
+        }
+
+        public bool KnowsNomePai
+        {
+            get
+            {
+                return !this.DesconheceNomePai;
+            }
+            set
+            {
+
+            }
         }
 
         //Campo dtNaturalizacao - Tipo long
@@ -623,7 +684,22 @@ namespace gvn_ab_mobile.Models
         public bool StForaArea
         {
             get { return this._stForaArea; }
-            set { SetProperty(ref _stForaArea, value); }
+            set {
+                SetProperty(ref _stForaArea, value);
+                OnPropertyChanged("IsForaArea");
+            }
+        }
+
+        public bool IsForaArea
+        {
+            get
+            {
+                return !this.StForaArea;
+            }
+            set
+            {
+
+            }
         }
 
         //FIM IDENTIFICAÇÃO USUÁRIO CIDADÃO
