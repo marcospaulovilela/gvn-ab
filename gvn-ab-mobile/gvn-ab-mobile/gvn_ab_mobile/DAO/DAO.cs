@@ -8,7 +8,7 @@ namespace gvn_ab_mobile.DAO {
     public abstract class DAO<T> : IDisposable
         where T : new () {
 
-        private static string dbName = "gvn-ab.db3";
+        private static string dbName = "gvn-ab-2.db3";
      
         private SQLiteConnection connection;
 

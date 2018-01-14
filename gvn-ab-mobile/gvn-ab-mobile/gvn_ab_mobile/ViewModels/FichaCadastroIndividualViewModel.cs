@@ -1,6 +1,7 @@
 ﻿using gvn_ab_mobile.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -39,6 +40,8 @@ namespace gvn_ab_mobile.ViewModels {
         // USADO PAGE 5
         public ObservableRangeCollection<Models.ConsideracaoPeso> ConsideracoesPeso { get; set; }
         public ObservableRangeCollection<Models.DoencaCardiaca> DoencasCardiacas { get; set; }
+        public ObservableCollection<object> DoencasCardiacasSelecionadas { get; } = new ObservableCollection<object>();
+
         public ObservableRangeCollection<Models.ProblemaRins> ProblemasRins { get; set; }
         public ObservableRangeCollection<Models.DoencaRespiratoria> DoencasRespiratorias { get; set; }
         
@@ -69,11 +72,10 @@ namespace gvn_ab_mobile.ViewModels {
             this.DoencasCardiacas= new ObservableRangeCollection<Models.DoencaCardiaca>(new DAO.DAODoencaCardiaca().Select());
             this.ProblemasRins = new ObservableRangeCollection<Models.ProblemaRins>(new DAO.DAOProblemaRins().Select());
             this.DoencasRespiratorias = new ObservableRangeCollection<Models.DoencaRespiratoria>(new DAO.DAODoencaRespiratoria().Select());
-
         }
 
         private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
-            await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
+            await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
         }
 
         private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {

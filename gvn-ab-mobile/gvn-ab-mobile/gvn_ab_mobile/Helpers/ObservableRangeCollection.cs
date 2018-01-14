@@ -88,7 +88,7 @@ namespace gvn_ab_mobile.Helpers {
             Items.Clear();
             AddRange(collection, NotifyCollectionChangedAction.Reset);
         }
-
+        
         public IEnumerable<T> GetColletion() {
             return (IEnumerable<T>)this; 
         }
