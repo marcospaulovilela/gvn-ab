@@ -77,7 +77,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
-            await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
+            await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
         }
 
         private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {

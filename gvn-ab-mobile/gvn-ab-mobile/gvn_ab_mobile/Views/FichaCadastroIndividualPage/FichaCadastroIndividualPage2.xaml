@@ -70,7 +70,7 @@
                     
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Raça/Cor:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodRacaCor" ItemsSource="{Binding RacasCores}" SelectedItem="{Binding Ficha.RacaCorCidadao}" Title="Raça/Cor Cidadão" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker x:Name="CodRacaCor" SelectedItem="{Binding Ficha.RacaCorCidadao}" ItemsSource="{Binding RacasCores}" Title="Raça/Cor Cidadão" TextColor="Gray" HorizontalOptions="FillAndExpand">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />
                             </Picker.Behaviors>
