@@ -23,6 +23,23 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableRangeCollection<Models.Pais> Paises { get; set; }
         public ObservableRangeCollection<Models.Etnia> Etnias { get; set; }
         public ObservableRangeCollection<Models.RacaCor> RacasCores { get; set; }
+
+        Models.RacaCor _racaCorCidadao;
+        public Models.RacaCor RacaCorCidadao {
+            get { return this._racaCorCidadao; }
+            set {
+                this.Ficha.RacaCorCidadao = value;
+                
+                SetProperty(ref _racaCorCidadao, value);
+                OnPropertyChanged("IsRacaCor5");
+            }
+        }
+        public bool IsRacaCor5 {
+            get {
+                return this.RacaCorCidadao?.Codigo == 5;
+            }
+        }
+
         public ObservableRangeCollection<Models.Nacionalidade> Nacionalidades { get; set; }
 
         // USADO PAGE 3
@@ -75,7 +92,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
-            await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
+            await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
         }
 
         private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {

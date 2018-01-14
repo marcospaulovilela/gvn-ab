@@ -534,12 +534,14 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo racaCorCidadao - Tipo long
-        private long _racaCorCidadao; 
-        [NotNull] //Obrigatório
-        public long RacaCorCidadao
+        private Models.RacaCor _racaCorCidadao; 
+        [OneToOne, NotNull] //Obrigatório
+        public Models.RacaCor RacaCorCidadao
         {
             get { return this._racaCorCidadao; }
-            set { SetProperty(ref _racaCorCidadao, value); }
+            set {
+                SetProperty(ref _racaCorCidadao, value);
+            }
         }
 
         //Campo sexoCidadao - Tipo long

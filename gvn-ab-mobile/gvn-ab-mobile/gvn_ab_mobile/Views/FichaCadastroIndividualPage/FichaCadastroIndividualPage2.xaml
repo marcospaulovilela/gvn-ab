@@ -54,10 +54,10 @@
                     </StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Raça/Cor:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodRacaCor"  ItemsSource="{Binding RacasCores}"  HorizontalOptions="FillAndExpand" Title="Raça/Cor" />
+                        <Picker x:Name="CodRacaCor"  ItemsSource="{Binding RacasCores}"  SelectedItem="{Binding RacaCorCidadao }" HorizontalOptions="FillAndExpand" Title="Raça/Cor" />
                     </StackLayout>
 
-                    <StackLayout HorizontalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsRacaCor5}">
                         <Label Text="Etnia:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Picker x:Name="CodEtnia"  ItemsSource="{Binding Etnias}"  HorizontalOptions="FillAndExpand" Title="Etnia" />
                     </StackLayout>
