@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              Title="Informações Sóciodemográficas">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
@@ -9,13 +10,21 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Relação de Parentesco com o Responsável Familiar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodRelacaoParentesco" ItemsSource="{Binding RelacoesParentesco}" HorizontalOptions="FillAndExpand" Title="Parentesco" Scale="1"/>
+                        <Picker x:Name="CodRelacaoParentesco" ItemsSource="{Binding RelacoesParentesco}" SelectedItem="{Binding RelacaoParentesco}" Title="Relação Parentesco" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Ocupação:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Picker x:Name="CodCbo" ItemsSource="{Binding Ocupacoes}" HorizontalOptions="FillAndExpand" Title="Ocupação" Scale="1"/>
+                        <Picker x:Name="CodCbo" ItemsSource="{Binding Ocupacoes}" SelectedItem="{Binding Ocupacao}" Title="Ocupação" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
@@ -25,17 +34,29 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label Text="Curso mais elevado que frenquenta ou frequentou?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodCursoMaisElevado" ItemsSource="{Binding Cursos}" HorizontalOptions="FillAndExpand" Title="Curso" Scale="1"/>
+                    <Picker x:Name="CodCursoMaisElevado" ItemsSource="{Binding CursosMaisElevados}" SelectedItem="{Binding CursoMaisElevado}" Title="Curso" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker.Behaviors>
+                            <behaviors:ValidatorPickerBehavior />
+                        </Picker.Behaviors>
+                    </Picker>
                 </StackLayout>
                 
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label Text="Situação no Mercado de Trabalho:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodSituacaoMercadoTrabalho" ItemsSource="{Binding SituacoesMercado}" HorizontalOptions="FillAndExpand" Title="Situação" Scale="1"/>
+                    <Picker x:Name="CodSituacaoMercadoTrabalho" ItemsSource="{Binding SituacoesMercadoTrabalho}" SelectedItem="{Binding SituacaoMercadoTrabalho}" Title="Situação Mercado de Trabalho" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker.Behaviors>
+                            <behaviors:ValidatorPickerBehavior />
+                        </Picker.Behaviors>
+                    </Picker>
                 </StackLayout>
 
                 <StackLayout>
                     <Label Text="Crianças de 0 a 9 anos, com quem fica?:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodResponsavelCrianca" ItemsSource="{Binding Responsaveis}" HorizontalOptions="FillAndExpand" Title="Responsavel" Scale="1"/>
+                    <Picker x:Name="CodResponsavelCrianca" ItemsSource="{Binding ResponsaveisCriancas}" SelectedItem="{Binding ResponsavelCrianca}" Title="Responsável Criança" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker.Behaviors>
+                            <behaviors:ValidatorPickerBehavior />
+                        </Picker.Behaviors>
+                    </Picker>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -71,7 +92,11 @@
                     </StackLayout>
                     <StackLayout>
                         <Label Text="Qual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Picker x:Name="CodOrientacaoSexual" ItemsSource="{Binding OrientacoesSexuais}" HorizontalOptions="FillAndExpand" Title="Orientação sexual" Scale="1"/>
+                        <Picker x:Name="CodOrientacaoSexual" ItemsSource="{Binding OrientacoesSexuais}" SelectedItem="{Binding OrientacaoSexual}" Title="Orientação Sexual" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
                 </StackLayout>
 
@@ -83,7 +108,11 @@
                     </StackLayout>
                     <StackLayout>
                         <Label Text="Qual?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodIdentidadeGenero" ItemsSource="{Binding IdentidadeGeneros}" HorizontalOptions="FillAndExpand" Title="Identidade de gênero" Scale="1"/>
+                        <Picker x:Name="CodIdentidadeGenero" ItemsSource="{Binding IdentidadeGeneroCidadaos}" SelectedItem="{Binding IdentidadeGeneroCidadao}" Title="Identidade de Gênero" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
                 </StackLayout>
 
@@ -103,9 +132,6 @@
                     <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
                 </StackLayout>
                 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
-                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

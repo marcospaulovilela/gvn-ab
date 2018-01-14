@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              Title="Saída do Cidadão">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
@@ -9,7 +10,11 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Motivo Saída:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodMotivoSaida"  ItemsSource="{Binding MotivosSaida}"  HorizontalOptions="FillAndExpand" Title="Motivo da saida" />
+                        <Picker x:Name="CodMotivoSaida" ItemsSource="{Binding MotivosSaida}" SelectedItem="{Binding MotivoSaida}" Title="Motivo Saída" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
 
                     <StackLayout >

@@ -128,8 +128,8 @@ namespace gvn_ab_mobile.ViewModels {
             this.IsBusy = true;
             Task.Run(async () => {
                 try {
-                    this.Estabelecimentos.Clear();
-                    this.Estabelecimentos.AddRange(await new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Estabelecimento.ashx").GetAsync<Models.Estabelecimento>());
+                    //this.Estabelecimentos.Clear();
+                    //this.Estabelecimentos.AddRange(await new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Estabelecimento.ashx").GetAsync<Models.Estabelecimento>());
 
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new Views.SincronizacaoConfigPage2(this)) { BarBackgroundColor = Color.FromHex("#003264") });
 
@@ -154,20 +154,20 @@ namespace gvn_ab_mobile.ViewModels {
                     //DAO.DAO<object>.DropDatabase();
 
                     //INICIA A BUSCA POR PROFISSIONAIS
-                    this.SincronizacaoConfig.CodEstabelecimento = this.Estabelecimento.CodUnidade;
-                    var TaskGetProfissionais = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Profissional.ashx?codUnidade={this.Estabelecimento.CodUnidade}").GetAsync<Models.Profissional>();
+                    //this.SincronizacaoConfig.CodEstabelecimento = this.Estabelecimento.CodUnidade;
+                    //var TaskGetProfissionais = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Profissional.ashx?codUnidade={this.Estabelecimento.CodUnidade}").GetAsync<Models.Profissional>();
 
                     this.CargaDados();
 
                     using (DAO.DAOEstabelecimento DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
-                        DAOEstabelecimento.DropTable();
+                        /*DAOEstabelecimento.DropTable();
                         DAOEstabelecimento.CreateTable();
-                        DAOEstabelecimento.Insert(this.Estabelecimento);
+                        DAOEstabelecimento.Insert(this.Estabelecimento);*/
                     }
 
                     #region Profissionais
                     using (DAO.DAOProfissional DAOProfissional = new DAO.DAOProfissional()) {
-                        var Profissionais = await TaskGetProfissionais;
+                        /*var Profissionais = await TaskGetProfissionais;
                         Profissionais.ForEach(o => o.DesSenha = "123456");
 
                         using (DAO.DAOCbo DAOCbo = new DAO.DAOCbo()) {
@@ -175,7 +175,7 @@ namespace gvn_ab_mobile.ViewModels {
                         }
 
                         DAOProfissional.CreateTable();
-                        DAOProfissional.Insert(Profissionais);
+                        DAOProfissional.Insert(Profissionais);*/
                     };
                     #endregion
 
