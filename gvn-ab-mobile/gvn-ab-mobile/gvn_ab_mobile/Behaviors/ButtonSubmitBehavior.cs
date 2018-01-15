@@ -43,7 +43,7 @@ namespace gvn_ab_mobile.Behaviors {
 
                 foreach (var controlName in this.Controls.Split('|')) {
                     View Control = root.FindByName<View>(controlName);
-                    if (Control == null) continue;
+                    if (Control == null || !Control.IsVisible) continue;
 
                     foreach(IValidator v in Control.Behaviors.OfType<IValidator>()){
                         if (!v.Validate(Control)) result = false;
