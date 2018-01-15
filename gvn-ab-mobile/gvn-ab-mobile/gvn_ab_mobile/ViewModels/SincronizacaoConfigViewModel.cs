@@ -54,6 +54,9 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAODoencaCardiaca DAODoencaCardiaca = new DAO.DAODoencaCardiaca()) { DAODoencaCardiaca.CreateTable(); }
             using (DAO.DAOProblemaRins DAOProblemaRins = new DAO.DAOProblemaRins()) { DAOProblemaRins.CreateTable(); }
             using (DAO.DAODoencaRespiratoria DAODoencaRespiratoria = new DAO.DAODoencaRespiratoria()) { DAODoencaRespiratoria.CreateTable(); }
+            using (DAO.DAODeficienciaCidadao DAODeficienciaCidadao = new DAO.DAODeficienciaCidadao()) { DAODeficienciaCidadao.CreateTable();  }
+            using (DAO.DAOAcessoHigiene DAOAcessoHigiene = new DAO.DAOAcessoHigiene()) { DAOAcessoHigiene.CreateTable(); }
+            using (DAO.DAOQuantasVezesAlimentacao DAOQuantasVezesAlimentacao = new DAO.DAOQuantasVezesAlimentacao()) { DAOQuantasVezesAlimentacao.CreateTable();  }
 
             using (DAO.DAOTurno DAOTurno = new DAO.DAOTurno()) { DAOTurno.CreateTable(); }
             using (DAO.DAOLocalDeAtendimento DAOLocalAtendimento = new DAO.DAOLocalDeAtendimento()) { DAOLocalAtendimento.CreateTable(); }

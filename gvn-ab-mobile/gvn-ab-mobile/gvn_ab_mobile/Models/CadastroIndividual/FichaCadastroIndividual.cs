@@ -7,7 +7,7 @@ namespace gvn_ab_mobile.Models
 {
     public class FichaCadastroIndividual : Helpers.ObservableObject
     {
-        
+
         //Campo ID - Tipo long
         private long? _id;
         [PrimaryKey, AutoIncrement] //Chave Primária com incremento automático
@@ -23,7 +23,7 @@ namespace gvn_ab_mobile.Models
         public bool StatusTermoRecusaCadastroIndividualAtencaoBasica
         {
             get { return this._statusTermoRecusaCadastroIndividualAtencaoBasica; }
-            set { SetProperty(ref _statusTermoRecusaCadastroIndividualAtencaoBasica, value);  }
+            set { SetProperty(ref _statusTermoRecusaCadastroIndividualAtencaoBasica, value); }
         }
 
         //Campo fichaAtualizada - Tipo boolean
@@ -432,7 +432,7 @@ namespace gvn_ab_mobile.Models
         public string NomeSocial
         {
             get { return this._nomeSocial; }
-            set { SetProperty(ref _nomeSocial, value);  }
+            set { SetProperty(ref _nomeSocial, value); }
         }
 
         //Campo codigoIbgeMunicipioNascimento - Tipo string
@@ -472,9 +472,9 @@ namespace gvn_ab_mobile.Models
 
 
         //Campo nacionalidadeCidadao - Tipo string
-        private long _nacionalidadeCidadao; //Obrigatório
-        [NotNull]
-        public long NacionalidadeCidadao
+        private Models.Nacionalidade _nacionalidadeCidadao; //Obrigatório
+        [OneToOne, NotNull]
+        public Models.Nacionalidade NacionalidadeCidadao
         {
             get { return this._nacionalidadeCidadao; }
             set { SetProperty(ref _nacionalidadeCidadao, value); }
@@ -534,7 +534,7 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo racaCorCidadao - Tipo long
-        private Models.RacaCor _racaCorCidadao; 
+        private Models.RacaCor _racaCorCidadao;
         [OneToOne, NotNull] //Obrigatório
         public Models.RacaCor RacaCorCidadao
         {
@@ -545,9 +545,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo sexoCidadao - Tipo long
-        private long _sexoCidadao;
+        private Models.Sexo _sexoCidadao;
         [NotNull] //Obrigatório
-        public long SexoCidadao
+        public Models.Sexo SexoCidadao
         {
             get { return this._sexoCidadao; }
             set { SetProperty(ref _sexoCidadao, value); }
@@ -558,12 +558,15 @@ namespace gvn_ab_mobile.Models
         public bool StatusEhResponsavel
         {
             get { return this._statusEhResponsavel; }
-            set { SetProperty(ref _statusEhResponsavel, value); }
+            set {
+                SetProperty(ref _statusEhResponsavel, value);
+                OnPropertyChanged("IsResponsavel");
+            }
         }
 
         //Campo etnia - Tipo long
-        private long _etnia; //Condicional
-        public long Etnia
+        private Models.Etnia _etnia; //Condicional
+        public Models.Etnia Etnia
         {
             get { return this._etnia; }
             set { SetProperty(ref _etnia, value); }
@@ -622,10 +625,13 @@ namespace gvn_ab_mobile.Models
 
         //Campo stForaArea - Tipo boolean
         private bool _stForaArea; //Não Obrigatório
+        [OneToOne]
         public bool StForaArea
         {
             get { return this._stForaArea; }
-            set { SetProperty(ref _stForaArea, value); }
+            set {
+                SetProperty(ref _stForaArea, value);
+            }
         }
 
         //FIM IDENTIFICAÇÃO USUÁRIO CIDADÃO
@@ -633,17 +639,17 @@ namespace gvn_ab_mobile.Models
         //INÍCIO INFORMAÇÕES SÓCIO DEMOGRÁFICAS
 
         //Campo deficienciasCidadao - Tipo List<Long>
-        private List<long> _deficienciasCidadao; //Condicional
+        private List<Models.DeficienciaCidadao> _deficienciasCidadao; //Condicional
         [MaxLength(5)] //Mínimo 1 código; Máximo 5 códigos
-        public List<long> DeficienciasCidadao
+        public List<Models.DeficienciaCidadao> DeficienciasCidadao
         {
             get { return this._deficienciasCidadao; }
             set { SetProperty(ref _deficienciasCidadao, value); }
         }
 
         //Campo grauInstrucaoCidadao - Tipo long
-        private long _grauInstrucaoCidadao; //Não Obrigatório
-        public long GrauInstrucaoCidadao
+        private Models.CursoMaisElevado _grauInstrucaoCidadao; //Não Obrigatório
+        public Models.CursoMaisElevado GrauInstrucaoCidadao
         {
             get { return this._grauInstrucaoCidadao; }
             set { SetProperty(ref _grauInstrucaoCidadao, value); }
@@ -659,8 +665,8 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo orientacaoSexualCidadao - Tipo long
-        private long _orientacaoSexualCidadao; //Não Obrigatório
-        public long OrientacaoSexualCidadao
+        private Models.OrientacaoSexual _orientacaoSexualCidadao; //Não Obrigatório
+        public Models.OrientacaoSexual OrientacaoSexualCidadao
         {
             get { return this._orientacaoSexualCidadao; }
             set { SetProperty(ref _orientacaoSexualCidadao, value); }
@@ -676,16 +682,16 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo relacaoParentescoCidadao - Tipo long
-        private long _relacaoParentescoCidadao; //Não Obrigatório
-        public long RelacaoParentescoCidadao
+        private Models.RelacaoParentesco _relacaoParentescoCidadao; //Não Obrigatório
+        public Models.RelacaoParentesco RelacaoParentescoCidadao
         {
             get { return this._relacaoParentescoCidadao; }
             set { SetProperty(ref _relacaoParentescoCidadao, value); }
         }
 
         //Campo situacaoMercadoTrabalhoCidadao - Tipo long
-        private long _situacaoMercadoTrabalhoCidadao; //Não Obrigatório
-        public long SituacaoMercadoTrabalhoCidadao
+        private Models.SituacaoMercadoTrabalho _situacaoMercadoTrabalhoCidadao; //Não Obrigatório
+        public Models.SituacaoMercadoTrabalho SituacaoMercadoTrabalhoCidadao
         {
             get { return this._situacaoMercadoTrabalhoCidadao; }
             set { SetProperty(ref _situacaoMercadoTrabalhoCidadao, value); }
@@ -750,8 +756,8 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo identidadeGeneroCidadao - Tipo long
-        private long _identidadeGeneroCidadao; //Não Obrigatório
-        public long IdentidadeGeneroCidadao
+        private Models.IdentidadeGeneroCidadao _identidadeGeneroCidadao; //Não Obrigatório
+        public Models.IdentidadeGeneroCidadao IdentidadeGeneroCidadao
         {
             get { return this._identidadeGeneroCidadao; }
             set { SetProperty(ref _identidadeGeneroCidadao, value); }
@@ -766,9 +772,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo responsavelPorCrianca - Tipo List<Long>
-        private List<long> _responsavelPorCrianca; //Não Obrigatório
+        private List<Models.ResponsavelCrianca> _responsavelPorCrianca; //Não Obrigatório
         [MaxLength(6)] //Mínimo 1; Máximo 6
-        public List<long> ResponsavelPorCrianca
+        public List<Models.ResponsavelCrianca> ResponsavelPorCrianca
         {
             get { return this._responsavelPorCrianca; }
             set { SetProperty(ref _responsavelPorCrianca, value); }
@@ -779,8 +785,8 @@ namespace gvn_ab_mobile.Models
         //INÍCIO SAÍDA CIDADÃO CADASTRO
 
         //Campo motivoSaidaCidadao - Tipo long
-        private long _motivoSaidaCidadao; //Não Obrigatório
-        public long MotivoSaidaCidadao
+        private Models.MotivoSaida _motivoSaidaCidadao; //Não Obrigatório
+        public Models.MotivoSaida MotivoSaidaCidadao
         {
             get { return this._motivoSaidaCidadao; }
             set { SetProperty(ref _motivoSaidaCidadao, value); }

@@ -87,6 +87,18 @@ namespace gvn_ab_mobile.Models {
         public DoencaRespiratoria(string descricao) : base(descricao) { }
     }
 
+    public class AcessoHigiene : Models.EntidadeEnumerador
+    {
+        public AcessoHigiene() { }
+        public AcessoHigiene(string descricao) : base(descricao) { }
+    }
+
+    public class DeficienciaCidadao : Models.EntidadeEnumerador
+    {
+        public DeficienciaCidadao() { }
+        public DeficienciaCidadao(string descricao) : base(descricao) { }
+    }
+
     //
 
     //Ficha Cadastro Domiciliar e Territorial
@@ -161,6 +173,12 @@ namespace gvn_ab_mobile.Models {
     {
         public RendaFamiliar() { }
         public RendaFamiliar(string descricao) : base(descricao) { }
+    }
+
+    public class QuantasVezesAlimentacao : Models.EntidadeEnumerador
+    {
+        public QuantasVezesAlimentacao() { }
+        public QuantasVezesAlimentacao(string descricao) : base(descricao) { }
     }
 
     //

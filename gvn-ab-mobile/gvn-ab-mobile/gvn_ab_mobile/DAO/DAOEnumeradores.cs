@@ -752,6 +752,54 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
+    class DAOAcessoHigiene : DAO<Models.AcessoHigiene>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.AcessoHigiene>() {
+                new Models.AcessoHigiene("Banho") { Codigo = 42 },
+                new Models.AcessoHigiene("Acesso a sanitário") { Codigo = 43 },
+                new Models.AcessoHigiene("Higiene bucal") { Codigo = 44 },
+                new Models.AcessoHigiene("Outros") { Codigo = 45 }
+            });
+        }
+    }
+
+    class DAODeficienciaCidadao : DAO<Models.DeficienciaCidadao>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.DeficienciaCidadao>() {
+                new Models.DeficienciaCidadao("Auditiva") { Codigo = 12 },
+                new Models.DeficienciaCidadao("Visual") { Codigo = 13 },
+                new Models.DeficienciaCidadao("Intelectual/Cognitiva") { Codigo = 14 },
+                new Models.DeficienciaCidadao("Física") { Codigo = 15 },
+                new Models.DeficienciaCidadao("Outra") { Codigo = 16 }
+            });
+        }
+    }
+
+    class DAOQuantasVezesAlimentacao : DAO<Models.QuantasVezesAlimentacao>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.QuantasVezesAlimentacao>() {
+                new Models.QuantasVezesAlimentacao("1 vez") { Codigo = 34 },
+                new Models.QuantasVezesAlimentacao("2 ou 3 vezes") { Codigo = 35 },
+                new Models.QuantasVezesAlimentacao("mais de 3 vezes") { Codigo = 36 },
+            });
+        }
+    }
+
     //Ficha Cadastro Domiciliar e Territorial
 
     class DAOSituacaoDeMoradia : DAO<Models.SituacaoDeMoradia> {

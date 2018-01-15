@@ -11,10 +11,10 @@
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Está gestante?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusEhGestante}"></Switch>
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusEhGestante}"></Switch>
                     </StackLayout>
 
-                    <StackLayout>
+                    <StackLayout IsVisible="{Binding IsGestante}">
                         <Label Text="Se sim, qual a maternidade de referência?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Entry Placeholder="Maternidade de Referência" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.MaternidadeDeReferencia}"/>
                     </StackLayout>
@@ -61,34 +61,44 @@
 
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Tem Doença Cardíaca/Do Coração?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusDoencaCardiaca}"></Switch>
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusDoencaCardiaca}"></Switch>
                     </StackLayout>
 
-                    <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <controls:SelectMultipleItems x:Name="CodDoencaCardiaca" Items="{Binding DoencasCardiacas}" SelectedItems="{Binding DoencasCardiacasSelecionadas}"  >
-                        <controls:SelectMultipleItems.Behaviors>
-                            <behaviors:ValidatorSelectMultipleItems />
-                        </controls:SelectMultipleItems.Behaviors>
-                    </controls:SelectMultipleItems>
-
+                    <StackLayout IsVisible="{Binding HasDoencaCardiaca}">
+                        <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <controls:SelectMultipleItems x:Name="CodDoencaCardiaca" Items="{Binding DoencasCardiacas}" SelectedItems="{Binding DoencasCardiacasSelecionadas}"  >
+                            <controls:SelectMultipleItems.Behaviors>
+                             <behaviors:ValidatorSelectMultipleItems />
+                            </controls:SelectMultipleItems.Behaviors>
+                        </controls:SelectMultipleItems>
+                    </StackLayout>
+                    
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Tem ou Teve Problema nos Rins?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemTeveDoencasRins}"></Switch>
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusDoencaRins}"></Switch>
                     </StackLayout>
 
-                    <StackLayout>
+                    <StackLayout IsVisible="{Binding HasDoencaRins}">
                         <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Picker x:Name="CodProblemaRins"  ItemsSource="{Binding ProblemasRins}"  HorizontalOptions="FillAndExpand" Title="Problemas nos rins" />
+                        <controls:SelectMultipleItems x:Name="CodDoencaRins" Items="{Binding ProblemasRins}" SelectedItems="{Binding ProblemasRinsSelecionados}"  >
+                            <controls:SelectMultipleItems.Behaviors>
+                                <behaviors:ValidatorSelectMultipleItems />
+                            </controls:SelectMultipleItems.Behaviors>
+                        </controls:SelectMultipleItems>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Tem Doença Respiratória/No Pulmão?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTemDoencaRespiratoria}"></Switch>
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusDoencaRespiratoria}"></Switch>
                     </StackLayout>
 
-                    <StackLayout>
+                    <StackLayout IsVisible="{Binding HasDoencaRespiratoria}">
                         <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Picker x:Name="CodDoencasRespiratorias"  ItemsSource="{Binding DoencasRespiratorias }"  HorizontalOptions="FillAndExpand" Title="Doenças respiratorias" />
+                        <controls:SelectMultipleItems x:Name="CodDoencaRespiratoria" Items="{Binding DoencasRespiratorias}" SelectedItems="{Binding DoencasRespiratoriasSelecionadas}"  >
+                            <controls:SelectMultipleItems.Behaviors>
+                                <behaviors:ValidatorSelectMultipleItems />
+                            </controls:SelectMultipleItems.Behaviors>
+                        </controls:SelectMultipleItems>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">
@@ -108,10 +118,10 @@
 
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Teve alguma internação nos últimos 12 meses?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusTeveInternadoem12Meses}"></Switch>
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusTeveInternadoEm12Meses}"></Switch>
                     </StackLayout>
 
-                    <StackLayout>
+                    <StackLayout IsVisible="{Binding HasInternacaoEm12Meses}">
                         <Label Text="Se sim, por qual(is) causa(s)?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Entry Placeholder="Causa(s)" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoCausaInternacaoEm12Meses}"/>
                     </StackLayout>
@@ -133,10 +143,10 @@
 
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Usa Plantas Medicinais?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusUsaPlantasMedicinais}"></Switch>
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusUsaPlantasMedicinais}"></Switch>
                     </StackLayout>
 
-                    <StackLayout>
+                    <StackLayout IsVisible="{Binding UsesPlantasMedicinais}">
                         <Label Text="Se sim, qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Entry Placeholder="Plantas Medicinais utilizadas" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoPlantasMedicinaisUsadas}"/>
                     </StackLayout>
