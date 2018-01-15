@@ -51,4 +51,58 @@ namespace gvn_ab_mobile.Behaviors {
             return this.IsCpf(buffer);
         }
     }
+
+    public class ValidatorCns : ValidatorEntryBehavior {
+
+        public ValidatorCns() {
+            base.MaxLength = 15;
+        }
+
+        private bool IsCns(string cns) {
+            string result;
+
+            if (cns[0] == '1' || cns[0] == '2') {
+                string pis = cns.Substring(0, 11);
+
+                long sum = 0;
+                for (int i = 0; i < 11; i++) {
+                    sum += long.Parse(pis[i].ToString()) * (15 - i);
+                };
+                long rest = sum % 11;
+                long checkDigit = 11 - rest;
+
+                if (checkDigit == 11) {
+                    checkDigit = 0;
+                };
+                if (checkDigit == 10) {
+                    sum += 2;
+                    rest = sum % 11;
+                    checkDigit = 11 - rest;
+
+                    result = $"{pis}001{checkDigit}";
+                } else {
+                    result = $"{pis}000{checkDigit}";
+                };
+                return cns.Equals(result);
+
+            } else if (cns[0] == '7' || cns[0] == '8    ' || cns[0] == '9') {
+                long sum = 0;
+                for (int i = 0; i < 15; i++) {
+                    sum += long.Parse(cns[i].ToString()) * (15 - i);
+                };
+                long rest = sum % 11;
+                return rest == 0;
+
+            } else {
+                return false;
+            };
+        }
+
+        public override bool isValid(object input) {
+            if (input == null) return false;
+            string buffer = ((string)input);
+            if (buffer.Length != 15) return false;
+            return this.IsCns(buffer);
+        }
+    }
 }
