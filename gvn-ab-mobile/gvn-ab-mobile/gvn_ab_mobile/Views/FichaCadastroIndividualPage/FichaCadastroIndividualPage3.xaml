@@ -118,7 +118,7 @@
                         <Label Text="Se sim, quais?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <controls:SelectMultipleItems x:Name="CodDeficienciasCidadao" Items="{Binding DeficienciasCidadao}" SelectedItems="{Binding DeficienciasSelecionadas}"  >
                             <controls:SelectMultipleItems.Behaviors>
-                                <behaviors:ValidatorSelectMultipleItems />
+                                <behaviors:ValidatorSelectMultipleItems MinLength="1" MaxLength="5" />
                             </controls:SelectMultipleItems.Behaviors>
                         </controls:SelectMultipleItems>
                     </StackLayout>
