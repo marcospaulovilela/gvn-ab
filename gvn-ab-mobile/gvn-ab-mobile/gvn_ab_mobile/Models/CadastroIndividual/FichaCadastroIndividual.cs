@@ -3,823 +3,967 @@
 using SQLite;
 using SQLiteNetExtensions.Attributes;
 
-namespace gvn_ab_mobile.Models
-{
-    public class FichaCadastroIndividual : Helpers.ObservableObject
-    {
-
+namespace gvn_ab_mobile.Models {
+    public class FichaCadastroIndividual : Helpers.ObservableObject {
         //Campo ID - Tipo long
         private long? _id;
         [PrimaryKey, AutoIncrement] //Chave Primária com incremento automático
-        public long? Id
-        {
+        public long? Id {
             get { return this._id; }
             set { SetProperty(ref _id, value); }
         }
 
-        //Campo statusTermoRecusaCadastroIndividualAtencaoBasica - Tipo boolean
-        private bool _statusTermoRecusaCadastroIndividualAtencaoBasica; //Obrigatório
-        [NotNull]
-        public bool StatusTermoRecusaCadastroIndividualAtencaoBasica
-        {
-            get { return this._statusTermoRecusaCadastroIndividualAtencaoBasica; }
-            set { SetProperty(ref _statusTermoRecusaCadastroIndividualAtencaoBasica, value); }
-        }
 
-        //Campo fichaAtualizada - Tipo boolean
-        private bool _fichaAtualizada; //Obrigatório
-        [NotNull]
-        public bool FichaAtualizada
-        {
-            get { return this._fichaAtualizada; }
-            set { SetProperty(ref _fichaAtualizada, value); }
-        }
-
-        //Campo tpCdsOrigem - Tipo Integer
-        private int _tpCdsOrigem; //Obrigatório
-        [NotNull, MaxLength(1)] //Mínimo 1; Máximo 1
-        public int TpCdsOrigem
-        {
-            get { return this._tpCdsOrigem; }
-            set { SetProperty(ref _tpCdsOrigem, value); }
-        }
-
-        //CAMPO ESTRANHO (CONDICIONAL?)
-        //Campo uuid - Tipo string
-        private string _uuid; //Condicional
-        [MaxLength(44)] //Mínimo 36 caracteres; Máximo 44 caracteres
-        public string Uuid
-        {
-            get { return this._uuid; }
-            set { SetProperty(ref _uuid, value); }
-        }
-
-        //Campo uuidFichaOriginadora - Tipo string
-        private string _uuidFichaOriginadora; //Obrigatório
-        [NotNull, MaxLength(44)] //Mínimo 36 caracteres; Máximo 44 caracteres
-        public string UuidFichaOriginadora
-        {
-            get { return this._uuidFichaOriginadora; }
-            set { SetProperty(ref _uuidFichaOriginadora, value); }
-        }
-
-        //INÍCIO CONDIÇÕES DE SAÚDE
-
-        //Campo descricaoCausaInternacaoEm12Meses - Tipo string
+        #region Condições de saude
         private string _descricaoCausaInternacaoEm12Meses; //Condicional
-        [MaxLength(100)] //Máximo 100 caracteres
-        public string DescricaoCausalnternacaoEm12Meses
-        {
+        /// <summary>
+        /// Descrição da causa de internação do cidadão.
+        /// Não deve ser preenchido se o campo statusTeveInternadoem12Meses = false.
+        /// </summary>
+        [MaxLength(100)]
+        public string DescricaoCausalnternacaoEm12Meses {
             get { return this._descricaoCausaInternacaoEm12Meses; }
             set { SetProperty(ref _descricaoCausaInternacaoEm12Meses, value); }
         }
 
-        //Campo descricaoOutraCondicao1 - Tipo string
-        private string _descricaoOutraCondicao1; //Não Obrigatório
-        [MaxLength(100)] //Máximo 100 caracteres
-        public string DescricaoOutraCondicao1
-        {
+        private string _descricaoOutraCondicao1;
+        /// <summary>
+        /// Condição de saúde informada pelo cidadão.
+        /// </summary>
+        [MaxLength(100)]
+        public string DescricaoOutraCondicao1 {
             get { return this._descricaoOutraCondicao1; }
             set { SetProperty(ref _descricaoOutraCondicao1, value); }
         }
 
-        //Campo descricaoOutraCondicao2 - Tipo string
-        private string _descricaoOutraCondicao2; //Não Obrigatório
-        [MaxLength(100)] //Máximo 100 caracteres
-        public string DescricaoOutraCondicao2
-        {
+        private string _descricaoOutraCondicao2;
+        /// <summary>
+        /// Condição de saúde informada pelo cidadão.
+        /// </summary>
+        [MaxLength(100)]
+        public string DescricaoOutraCondicao2 {
             get { return this._descricaoOutraCondicao2; }
             set { SetProperty(ref _descricaoOutraCondicao2, value); }
         }
 
-        //Campo descricaoOutraCondicao3 - Tipo string
-        private string _descricaoOutraCondicao3; //Não Obrigatório
-        [MaxLength(100)] //Máximo 100 caracteres
-        public string DescricaoOutraCondicao3
-        {
+        private string _descricaoOutraCondicao3;
+        /// <summary>
+        /// Condição de saúde informada pelo cidadão.
+        /// </summary>
+        [MaxLength(100)]
+        public string DescricaoOutraCondicao3 {
             get { return this._descricaoOutraCondicao3; }
             set { SetProperty(ref _descricaoOutraCondicao3, value); }
         }
 
-        //Campo descricaoPlantasMedicinaisUsadas - Tipo string
-        private string _descricaoPlantasMedicinaisUsadas; //Não Obrigatório
-        [MaxLength(100)] //Máximo 100 caracteres
-        public string DescricaoPlantasMedicinaisUsadas
-        {
+        private string _descricaoPlantasMedicinaisUsadas;
+        /// <summary>
+        /// Descrição das plantas medicinais utilizadas.
+        /// Não deve ser preenchido se o campo statusUsaPlantasMedicinais = false.
+        /// </summary>
+        [MaxLength(100)]
+        public string DescricaoPlantasMedicinaisUsadas {
             get { return this._descricaoPlantasMedicinaisUsadas; }
             set { SetProperty(ref _descricaoPlantasMedicinaisUsadas, value); }
         }
 
-        //Campo doencaCardiaca - Tipo List<Long>
-        private List<long> _doencaCardiaca; //Condicional
-        [MaxLength(3)] //Máximo 3 códigos
-        public List<long> DoencaCardiaca
-        {
+        private List<Models.DoencaCardiaca> _doencaCardiaca;
+        /// <summary>
+        /// Doenças cardíacas que o cidadão informou.
+        /// Requerido preenchimento de pelo menos um item se o campo statusTeveDoencaCardiaca = true;
+        /// Não deve ser preenchido se o campo statusTeveDoencaCardiaca = false.
+        /// </summary>
+        [OneToMany, MaxLength(3)]
+        public List<Models.DoencaCardiaca> DoencaCardiaca {
             get { return this._doencaCardiaca; }
             set { SetProperty(ref _doencaCardiaca, value); }
         }
 
-        //Campo doencaRespiratoria - Tipo List<Long>
-        private List<long> _doencaRespiratoria; //Condicional
-        [MaxLength(4)] //Máximo 4 códigos
-        public List<long> DoencaRespiratoria
-        {
+        private List<Models.DoencaRespiratoria> _doencaRespiratoria;
+        /// <summary>
+        /// Doenças respiratórias que o cidadão informou.
+        /// Requerido preenchimento de pelo menos um item se o campo statusTemDoencaRespiratoria = true;
+        /// Não deve ser preenchido o campo statusTemDoencaRespiratoria = false.
+        /// </summary>
+        [OneToMany, MaxLength(4)]
+        public List<Models.DoencaRespiratoria> DoencaRespiratoria {
             get { return this._doencaRespiratoria; }
             set { SetProperty(ref _doencaRespiratoria, value); }
         }
 
-        //Campo doencaRins - Tipo List<Long>
-        private List<long> _doencaRins; //Condicional
-        [MaxLength(3)] //Máximo 3 códigos
-        public List<long> DoencaRins
-        {
+
+        private List<Models.ProblemaRins> _doencaRins;
+        /// <summary>
+        /// Requerido preenchimento de pelo menos um item se o campo statusTemTeveDoencasRins = true;
+        ///Não deve ser preenchido se o campo statusTemTeveDoencasRins = false
+        /// </summary>
+        [OneToMany, MaxLength(3)] 
+        public List<Models.ProblemaRins> DoencaRins {
             get { return this._doencaRins; }
             set { SetProperty(ref _doencaRins, value); }
         }
 
-        //Campo maternidadeDeReferencia - Tipo string
-        private string _maternidadeDeReferencia; //Não Obrigatório
-        [MaxLength(100)] //Máximo 100 caracteres
-        public string MaternidadeDeReferencia
-        {
+        
+        private string _maternidadeDeReferencia;
+        /// <summary>
+        /// Nome da maternidade de referência.
+        /// Não pode ser preenchido se o campo statusEhGestante = false.
+        /// </summary>
+        [MaxLength(100)] 
+        public string MaternidadeDeReferencia {
             get { return this._maternidadeDeReferencia; }
             set { SetProperty(ref _maternidadeDeReferencia, value); }
         }
 
-        //Campo situacaoPeso - Tipo long
-        private long _situacaoPeso; //Não Obrigatório
-        public long SituacaoPeso
-        {
+        
+        private Models.ConsideracaoPeso _situacaoPeso;
+        /// <summary>
+        /// //Situação referente ao peso corporal.
+        /// </summary>
+        [OneToOne]
+        public Models.ConsideracaoPeso SituacaoPeso {
             get { return this._situacaoPeso; }
             set { SetProperty(ref _situacaoPeso, value); }
         }
 
-        //Campo statusEhDependenteAlcool - Tipo boolean
-        private bool _statusEhDependenteAlcool; //Não Obrigatório
-        public bool StatusEhDependenteAlcool
-        {
+        private bool _statusEhDependenteAlcool;
+        /// <summary>
+        /// Marcador se o cidadão faz uso de álcool.
+        /// </summary>
+        public bool StatusEhDependenteAlcool {
             get { return this._statusEhDependenteAlcool; }
             set { SetProperty(ref _statusEhDependenteAlcool, value); }
         }
 
-        //Campo statusEhDependenteOutrasDrogas - Tipo boolean
-        private bool _statusEhDependenteOutrasDrogas; //Não Obrigatório
-        public bool StatusEhDependenteOutrasDrogas
-        {
+        private bool _statusEhDependenteOutrasDrogas;
+        /// <summary>
+        /// Marcador se o cidadão faz uso de outras drogas.
+        /// </summary>
+        public bool StatusEhDependenteOutrasDrogas {
             get { return this._statusEhDependenteOutrasDrogas; }
             set { SetProperty(ref _statusEhDependenteOutrasDrogas, value); }
         }
 
-        //Campo statusEhFumante - Tipo boolean
-        private bool _statusEhFumante; //Não Obrigatório
-        public bool StatusEhFumante
-        {
+        private bool _statusEhFumante;
+        /// <summary>
+        /// Marcador se o cidadão é fumante.
+        /// </summary>
+        public bool StatusEhFumante {
             get { return this._statusEhFumante; }
             set { SetProperty(ref _statusEhFumante, value); }
         }
-
-        //Campo statusEhGestante - Tipo boolean
-        private bool _statusEhGestante; //Não Obrigatório
-        public bool StatusEhGestante
-        {
+        
+        private bool _statusEhGestante;
+        /// <summary>
+        /// Marcador se o cidadão é gestante.
+        /// Não pode ser preenchido se:
+        ///Campo sexoCidadao = 0 - Masculino;
+        ///Campo dataNascimentoCidadao for menor que 9 anos ou maior que 60 anos a partir da dataAtendimento.
+        /// </summary>
+        public bool StatusEhGestante {
             get { return this._statusEhGestante; }
             set { SetProperty(ref _statusEhGestante, value); }
         }
 
-        //Campo statusEstaAcamado - Tipo boolean
-        private bool _statusEstaAcamado; //Não Obrigatório
-        public bool StatusEstaAcamado
-        {
+        private bool _statusEstaAcamado;
+        /// <summary>
+        /// Marcador se o cidadão é acamado.
+        /// </summary>
+        public bool StatusEstaAcamado {
             get { return this._statusEstaAcamado; }
             set { SetProperty(ref _statusEstaAcamado, value); }
         }
 
-        //Campo statusEstaDomiciliado - Tipo boolean
-        private bool _statusEstaDomiciliado; //Não Obrigatório
-        public bool StatusEstaDomiciliado
-        {
+        private bool _statusEstaDomiciliado;
+        /// <summary>
+        /// Marcador se o cidadão está domiciliado.
+        /// </summary>
+        public bool StatusEstaDomiciliado {
             get { return this._statusEstaDomiciliado; }
             set { SetProperty(ref _statusEstaDomiciliado, value); }
         }
 
-        //Campo statusTemDiabetes - Tipo boolean
-        private bool _statusTemDiabetes; //Não Obrigatório
-        public bool StatusTemDiabetes
-        {
+        private bool _statusTemDiabetes;
+        /// <summary>
+        /// Marcador se o cidadão tem diabetes.
+        /// </summary>
+        public bool StatusTemDiabetes {
             get { return this._statusTemDiabetes; }
             set { SetProperty(ref _statusTemDiabetes, value); }
         }
 
-        //Campo statusTemDoencaRespiratoria - Tipo boolean
-        private bool _statusTemDoencaRespiratoria; //Não Obrigatório
-        public bool StatusTemDoencaRespiratoria
-        {
+        private bool _statusTemDoencaRespiratoria;
+        /// <summary>
+        /// Marcador se o cidadão tem doença respiratoria.
+        /// </summary>
+        public bool StatusTemDoencaRespiratoria {
             get { return this._statusTemDoencaRespiratoria; }
             set { SetProperty(ref _statusTemDoencaRespiratoria, value); }
         }
 
-        //Campo statusTemHanseniase - Tipo boolean
-        private bool _statusTemHanseniase; //Não Obrigatório
-        public bool StatusTemHanseniase
-        {
+        private bool _statusTemHanseniase;
+        /// <summary>
+        /// Marcador se o cidadão tem hanseiase.
+        /// </summary>
+        public bool StatusTemHanseniase {
             get { return this._statusTemHanseniase; }
             set { SetProperty(ref _statusTemHanseniase, value); }
         }
 
-        //Campo statusTemHipertensaoArterial - Tipo boolean
-        private bool _statusTemHipertensaoArterial; //Não Obrigatório
-        public bool StatusTemHipertensaoArterial
-        {
+        private bool _statusTemHipertensaoArterial;
+        /// <summary>
+        /// Marcador se o cidadão tem hipertensão arterial.
+        /// </summary>
+        public bool StatusTemHipertensaoArterial {
             get { return this._statusTemHipertensaoArterial; }
             set { SetProperty(ref _statusTemHipertensaoArterial, value); }
         }
 
-        //Campo statusTemTeveCancer - Tipo boolean
-        private bool _statusTemTeveCancer; //Não Obrigatório
-        public bool StatusTemTeveCancer
-        {
+        private bool _statusTemTeveCancer;
+        /// <summary>
+        /// Marcador se o cidadão teve cancer.
+        /// </summary>
+        public bool StatusTemTeveCancer {
             get { return this._statusTemTeveCancer; }
             set { SetProperty(ref _statusTemTeveCancer, value); }
         }
 
-        //Campo statusTemTeveDoencasRins - Tipo boolean
-        private bool _statusTemTeveDoencasRins; //Não Obrigatório
-        public bool StatusTemTeveDoencasRins
-        {
+        private bool _statusTemTeveDoencasRins;
+        /// <summary>
+        /// Marcador se o cidadão teve doença nos rins.
+        /// </summary>
+        public bool StatusTemTeveDoencasRins {
             get { return this._statusTemTeveDoencasRins; }
             set { SetProperty(ref _statusTemTeveDoencasRins, value); }
         }
 
-        //Campo statusTemTuberculose - Tipo boolean
-        private bool _statusTemTuberculose; //Não Obrigatório
-        public bool StatusTemTuberculose
-        {
+        private bool _statusTemTuberculose;
+        /// <summary>
+        /// Marcador se o cidadão tem tuberculose.
+        /// </summary>
+        public bool StatusTemTuberculose {
             get { return this._statusTemTuberculose; }
             set { SetProperty(ref _statusTemTuberculose, value); }
         }
 
-        //Campo statusTeveAvcDerrame - Tipo boolean
-        private bool _statusTeveAvcDerrame; //Não Obrigatório
-        public bool StatusTeveAvcDerrame
-        {
+        private bool _statusTeveAvcDerrame;
+        /// <summary>
+        /// Marcador se o cidadão teve AVC.
+        /// </summary>
+        public bool StatusTeveAvcDerrame {
             get { return this._statusTeveAvcDerrame; }
             set { SetProperty(ref _statusTeveAvcDerrame, value); }
         }
 
-        //Campo statusTeveDoencaCardiaca - Tipo boolean
-        private bool _statusTeveDoencaCardiaca; //Não Obrigatório
-        public bool StatusTeveDoencaCardiaca
-        {
+        private bool _statusTeveDoencaCardiaca;
+        /// <summary>
+        /// Marcador se o cidadão teve doenã cardiaca.
+        /// </summary>
+        public bool StatusTeveDoencaCardiaca {
             get { return this._statusTeveDoencaCardiaca; }
             set { SetProperty(ref _statusTeveDoencaCardiaca, value); }
         }
 
-        //Campo statusTeveInfarto - Tipo boolean
-        private bool _statusTeveInfarto; //Não Obrigatório
-        public bool StatusTeveInfarto
-        {
+        private bool _statusTeveInfarto;
+        /// <summary>
+        /// Marcador se o cidadão teve infarto.
+        /// </summary>
+        public bool StatusTeveInfarto {
             get { return this._statusTeveInfarto; }
             set { SetProperty(ref _statusTeveInfarto, value); }
         }
 
-        //Campo statusTeveInternadoem12Meses - Tipo boolean
-        private bool _statusTeveInternadoem12Meses; //Não Obrigatório
-        public bool StatusTeveInternadoem12Meses
-        {
+        private bool _statusTeveInternadoem12Meses;
+        /// <summary>
+        /// Marcador se o cidadão estave instado em 12 meses.
+        /// </summary>
+        public bool StatusTeveInternadoem12Meses {
             get { return this._statusTeveInternadoem12Meses; }
             set { SetProperty(ref _statusTeveInternadoem12Meses, value); }
         }
 
-        //Campo statusUsaOutrasPraticasIntegrativasOuComplementares - Tipo boolean
-        private bool _statusUsaOutrasPraticasIntegrativasOuComplementares; //Não Obrigatório
-        public bool StatusUsaOutrasPraticasIntegrativasOuComplementares
-        {
+        private bool _statusUsaOutrasPraticasIntegrativasOuComplementares;
+        /// <summary>
+        /// Marcador se o cidadão utiliza outras práticas integrativas complementares.
+        /// </summary>
+        public bool StatusUsaOutrasPraticasIntegrativasOuComplementares {
             get { return this._statusUsaOutrasPraticasIntegrativasOuComplementares; }
             set { SetProperty(ref _statusUsaOutrasPraticasIntegrativasOuComplementares, value); }
         }
 
-        //Campo statusUsaPlantasMedicinais - Tipo boolean
-        private bool _statusUsaPlantasMedicinais; //Não Obrigatório
-        public bool StatusUsaPlantasMedicinais
-        {
+        private bool _statusUsaPlantasMedicinais;
+        /// <summary>
+        /// Marcador se o cidadão utiliza plantas medicinais.
+        /// </summary>
+        public bool StatusUsaPlantasMedicinais {
             get { return this._statusUsaPlantasMedicinais; }
             set { SetProperty(ref _statusUsaPlantasMedicinais, value); }
         }
 
-
-        //Campo statusDiagnosticoMental - Tipo boolean
-        private bool _statusDiagnosticoMental; //Não Obrigatório
-        public bool StatusDiagnosticoMental
-        {
+        private bool _statusDiagnosticoMental;
+        /// <summary>
+        /// Marcador que indica se o cidadão teve diagnóstico de problema mental.
+        /// </summary>
+        public bool StatusDiagnosticoMental {
             get { return this._statusDiagnosticoMental; }
             set { SetProperty(ref _statusDiagnosticoMental, value); }
         }
+        #endregion
 
-        //FIM CONDIÇÕES DE SAÚDE
-
-        //INÍCIO EM SITUAÇÃO DE RUA
-
-        //Campo grauParentescoFamiliarFrequentado - Tipo string
-        private string _grauParentescoFamiliarFrequentado; //Condicional
-        [MaxLength(100)] //Máximo 100 caracteres
-        public string GrauParentescoFamiliarFrequentado
-        {
+        #region Situação de rua
+        private string _grauParentescoFamiliarFrequentado;
+        /// <summary>
+        /// Grau de parentesco do familiar que frequenta.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false;
+        /// Não pode ser preenchido se o campo statusVisitaFamiliarFrequentemente = false
+        /// </summary>
+        [MaxLength(100)] 
+        public string GrauParentescoFamiliarFrequentado {
             get { return this._grauParentescoFamiliarFrequentado; }
             set { SetProperty(ref _grauParentescoFamiliarFrequentado, value); }
         }
 
-        //Campo higienePessoalSituacaoRua - Tipo List<Long>
-        private List<long> _higienePessoalSituacaoRua; //Condicional
-        [MaxLength(4)] //Máximo 4 códigos
-        public List<long> HigienePessoalSituacaoRua
-        {
+        private List<Models.AcessoHigiene> _higienePessoalSituacaoRua;
+        /// <summary>
+        /// Condições de higiene que o cidadão tem acesso.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false;
+        /// Requerido preenchimento de pelo menos um item se o campo statusTemAcessoHigienePessoalSituacaoRua = true.
+        /// </summary>
+        [OneToMany, MaxLength(4)] 
+        public List<Models.AcessoHigiene> HigienePessoalSituacaoRua {
             get { return this._higienePessoalSituacaoRua; }
             set { SetProperty(ref _higienePessoalSituacaoRua, value); }
         }
 
-        //Campo origemAlimentoSituacaoRua - Tipo List<Long>
-        private List<long> _origemAlimentoSituacaoRua; //Não obrigatório
-        [MaxLength(5)] //Máximo 5 códigos
-        public List<long> OrigemAlimentoSituacaoRua
-        {
+        private List<Models.OrigemAlimentacao> _origemAlimentoSituacaoRua;
+        /// <summary>
+        /// Origem da alimentação do cidadão em situação de rua.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false.
+        /// </summary>
+        [OneToMany, MaxLength(5)] 
+        public List<Models.OrigemAlimentacao> OrigemAlimentoSituacaoRua {
             get { return this._origemAlimentoSituacaoRua; }
             set { SetProperty(ref _origemAlimentoSituacaoRua, value); }
         }
 
-        //Campo outraInstituicaoQueAcompanha - Tipo string
-        private string _outraInstituicaoQueAcompanha; //Não Obrigatório
-        [MaxLength(100)] //Máximo 100 caracteres
-        public string OutraInstituicaoQueAcompanha
-        {
+        private string _outraInstituicaoQueAcompanha;
+        /// <summary>
+        /// Nome de outra instituição que acompanha o cidadão.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false;
+        /// Não pode ser preenchido se o campo statusAcompanhadoPorOutraInstituição = false.
+        /// </summary>
+        [MaxLength(100)] 
+        public string OutraInstituicaoQueAcompanha {
             get { return this._outraInstituicaoQueAcompanha; }
             set { SetProperty(ref _outraInstituicaoQueAcompanha, value); }
         }
 
-        //Campo quantidadeAlimentacoesAoDiaSituacaoRua - Tipo long
-        private long _quantidadeAlimentacoesAoDiaSituacaoRua; //Não Obrigatório
-        public long QuantidadeAlimentacoesAoDiaSituacaoRua
-        {
+        private long _quantidadeAlimentacoesAoDiaSituacaoRua;
+        /// <summary>
+        /// Código da quantidade de vezes que o cidadão se alimenta por dia.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false.
+        /// </summary>
+        public long QuantidadeAlimentacoesAoDiaSituacaoRua {
             get { return this._quantidadeAlimentacoesAoDiaSituacaoRua; }
             set { SetProperty(ref _quantidadeAlimentacoesAoDiaSituacaoRua, value); }
         }
 
-        //Campo statusAcompanhadoPorOutraInstituicao - Tipo boolean
-        private bool _statusAcompanhadoPorOutraInstituicao; //Não Obrigatório
-        public bool StatusAcompanhadoPorOutraInstituicao
-        {
+        private bool _statusAcompanhadoPorOutraInstituicao;
+        /// <summary>
+        /// Marcador que indica se o cidadão é acompanhado por outra instituição.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false.
+        /// </summary>
+        public bool StatusAcompanhadoPorOutraInstituicao {
             get { return this._statusAcompanhadoPorOutraInstituicao; }
             set { SetProperty(ref _statusAcompanhadoPorOutraInstituicao, value); }
         }
 
-        //Campo statusPossuiReferenciaFamiliar - Tipo boolean
-        private bool _statusPossuiReferenciaFamiliar; //Não Obrigatório
-        public bool StatusPossuiReferenciaFamiliar
-        {
+        private bool _statusPossuiReferenciaFamiliar;
+        /// <summary>
+        /// Marcador que indica se o cidadão possuiu alguma referência familiar.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false.
+        /// </summary>
+        public bool StatusPossuiReferenciaFamiliar {
             get { return this._statusPossuiReferenciaFamiliar; }
             set { SetProperty(ref _statusPossuiReferenciaFamiliar, value); }
         }
 
-        //Campo statusRecebeBeneficio - Tipo boolean
-        private bool _statusRecebeBeneficio; //Não Obrigatório
-        public bool StatusRecebeBeneficio
-        {
+        private bool _statusRecebeBeneficio;
+        /// <summary>
+        /// Marcador que indica se o cidadão recebe algum benefício.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false.
+        /// </summary>
+        public bool StatusRecebeBeneficio {
             get { return this._statusRecebeBeneficio; }
             set { SetProperty(ref _statusRecebeBeneficio, value); }
         }
 
-        //Campo statusSituacaoRua - Tipo boolean
-        private bool _statusSituacaoRua; //Obrigatório
+        private bool _statusSituacaoRua;
+        /// <summary>
+        /// Marcador que indica se o cidadão está em situação de rua.
+        /// </summary>
         [NotNull]
-        public bool StatusSituacaoRua
-        {
+        public bool StatusSituacaoRua {
             get { return this._statusSituacaoRua; }
             set { SetProperty(ref _statusSituacaoRua, value); }
         }
 
-        //Campo statusTemAcessoHigienePessoalSituacaoRua - Tipo boolean
-        private bool _statusTemAcessoHigienePessoalSituacaoRua; //Não Obrigatório
-        public bool StatusTemAcessoHigienePessoalSituacaoRua
-        {
+        private bool _statusTemAcessoHigienePessoalSituacaoRua;
+        /// <summary>
+        /// Marcador que indica se o cidadão tem acesso a higiene pessoal.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false
+        /// </summary>
+        public bool StatusTemAcessoHigienePessoalSituacaoRua {
             get { return this._statusTemAcessoHigienePessoalSituacaoRua; }
             set { SetProperty(ref _statusTemAcessoHigienePessoalSituacaoRua, value); }
         }
 
-        //Campo statusVisitaFamiliarFrequentemente - Tipo boolean
-        private bool _statusVisitaFamiliarFrequentemente; //Não Obrigatório
-        public bool StatusVisitaFamiliarFrequentemente
-        {
+        private bool _statusVisitaFamiliarFrequentemente;
+        /// <summary>
+        /// Marcador que indica se o cidadão visita algum familiar frequentemente.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false.
+        /// </summary>
+        public bool StatusVisitaFamiliarFrequentemente {
             get { return this._statusVisitaFamiliarFrequentemente; }
             set { SetProperty(ref _statusVisitaFamiliarFrequentemente, value); }
         }
 
-        //Campo tempoSituacaoRua - Tipo long
-        private long _tempoSituacaoRua; //Não Obrigatório
-        public long TempoSituacaoRua
-        {
+        private long _tempoSituacaoRua;
+        /// <summary>
+        /// Código do tempo que o cidadão está em situação de rua.
+        /// Não pode ser preenchido se o campo statusSituacaoRua = false.
+        /// </summary>
+        public long TempoSituacaoRua {
             get { return this._tempoSituacaoRua; }
             set { SetProperty(ref _tempoSituacaoRua, value); }
         }
+        #endregion
 
-
-        //FIM EM SITUAÇÃO DE RUA
-
-
-        //INÍCIO IDENTIFICAÇÃO USUÁRIO CIDADÃO
-
-        //Campo nomeSocial - Tipo string
-        private string _nomeSocial; //Não Obrigatório
-        [MaxLength(70)] //Máximo 70 caracteres
-        public string NomeSocial
-        {
+        #region Identificacao do usuário cidadao
+        private string _nomeSocial;
+        /// <summary>
+        /// Nome social do cidadão.
+        /// Somente texto e apóstrofo 
+        /// </summary>
+        [MaxLength(70)] 
+        public string NomeSocial {
             get { return this._nomeSocial; }
             set { SetProperty(ref _nomeSocial, value); }
         }
 
-        //Campo codigoIbgeMunicipioNascimento - Tipo string
-        private string _codigoIbgeMunicipioNascimento; //Condicional
-        [MaxLength(7)] //Mínimo 7 caracteres - Máximo 7 caracteres
-        public string CodigoIbgeMunicipioNascimento
-        {
+
+        private string _codigoIbgeMunicipioNascimento;
+        /// <summary>
+        /// Código IBGE do município.
+        /// Só pode ser preenchido se o campo nacionalidadeCidadao = 1 (Brasileiro). Neste caso é de preenchimento obrigatório.
+        /// </summary>
+        [MaxLength(7)] 
+        public string CodigoIbgeMunicipioNascimento {
             get { return this._codigoIbgeMunicipioNascimento; }
             set { SetProperty(ref _codigoIbgeMunicipioNascimento, value); }
         }
 
-        //Campo dataNascimentoCidadao - Tipo long
-        private long _dataNascimentoCidadao;  //Obrigatório
+        private long _dataNascimentoCidadao;
+        /// <summary>
+        /// Data de nascimento do cidadão no formato epoch time.
+        /// Não pode ser posterior a dataAtendimento ou mais anterior que 130 anos a partir da dataAtendimento.
+        /// </summary>
         [NotNull]
-        public long DataNascimentoCidadao
-        {
+        public long DataNascimentoCidadao {
             get { return this._dataNascimentoCidadao; }
             set { SetProperty(ref _dataNascimentoCidadao, value); }
         }
 
-        //Campo desconheceNomeMae - Tipo boolean
-        private bool _desconheceNomeMae; //Não Obrigatório
-        public bool DesconheceNomeMae
-        {
+        private bool _desconheceNomeMae;
+        /// <summary>
+        /// Marcador que indica que o cidadão desconhece o nome da mãe
+        /// </summary>
+        public bool DesconheceNomeMae {
             get { return this._desconheceNomeMae; }
             set { SetProperty(ref _desconheceNomeMae, value); }
         }
 
-        //Campo emailCidadao - Tipo string
-        private string _emailCidadao; //Não Obrigatório
-        [MaxLength(100)] //Mínimo 6 caracteres; Máximo 100 caracteres
-        public string EmailCidadao
-        {
+        private string _emailCidadao;
+        /// <summary>
+        /// E-mail do cidadão.
+        /// Requerido seguir o padrão endereco@domínio.extensao
+        /// </summary>
+        [MaxLength(100)] 
+        public string EmailCidadao {
             get { return this._emailCidadao; }
             set { SetProperty(ref _emailCidadao, value); }
         }
 
-
-        //Campo nacionalidadeCidadao - Tipo string
-        private Models.Nacionalidade _nacionalidadeCidadao; //Obrigatório
+        private Models.Nacionalidade _nacionalidadeCidadao;
+        /// <summary>
+        /// Indica se o cidadão é brasileiro, naturalizado ou estrangeiro.
+        /// </summary>
         [OneToOne, NotNull]
-        public Models.Nacionalidade NacionalidadeCidadao
-        {
+        public Models.Nacionalidade NacionalidadeCidadao {
             get { return this._nacionalidadeCidadao; }
             set { SetProperty(ref _nacionalidadeCidadao, value); }
         }
 
-        //Campo nomeCidadao - Tipo string
-        private string _nomeCidadao; //Obrigatório
-        [NotNull, MaxLength(70)] //Mínimo 3 caracteres; Máximo 70 caracteres
-        public string NomeCidadao
-        {
+        private string _nomeCidadao;
+        /// <summary>
+        /// Nome completo do cidadão.
+        /// As regras de validação de um nome estão descritas em Validar nome.
+        /// </summary>
+        [NotNull, MaxLength(70)]
+        public string NomeCidadao {
             get { return this._nomeCidadao; }
             set { SetProperty(ref _nomeCidadao, value); }
         }
 
-        //Campo nomeMaeCidadao - Tipo string
-        private string _nomeMaeCidadao; //Condicional
-        [MaxLength(70)] //Mínimo 3 caracteres; Máximo 70 caracteres
-        public string NomeMaeCidadao
-        {
+        private string _nomeMaeCidadao;
+        /// <summary>
+        /// Nome da mãe do cidadão.
+        /// As regras de validação de um nome estão descritas em Validar nome;
+        /// Não deve ser preenchido se o campo desconheceNomeMae = true.
+        /// </summary>
+        [MaxLength(70)] 
+        public string NomeMaeCidadao {
             get { return this._nomeMaeCidadao; }
             set { SetProperty(ref _nomeMaeCidadao, value); }
         }
 
-        //Campo cnsCidadao - Tipo string
-        private string _cnsCidadao; //Não Obrigatório
-        [MaxLength(15)] //Mínimo 15 caracteres; Máximo 15 caracteres
-        public string CnsCidadao
-        {
+        private string _cnsCidadao;
+        /// <summary>
+        /// CNS do cidadão.
+        /// Validado por algoritmo.
+        /// </summary>
+        [MaxLength(15)]
+        public string CnsCidadao {
             get { return this._cnsCidadao; }
             set { SetProperty(ref _cnsCidadao, value); }
         }
 
-        //Campo cnsResponsavelFamiliar - Tipo string
-        private string _cnsResponsavelFamiliar; //Não Obrigatório
-        [MaxLength(15)] //Mínimo 15 caracteres; Máximo 15 caracteres
-        public string CnsResponsavelFamiliar
-        {
+        private string _cnsResponsavelFamiliar;
+        /// <summary>
+        /// CNS do responsável do cidadão.
+        /// Validado por algoritmo;
+        /// Só pode ser preenchido se o campo statusEhResponsavel = false.
+        /// </summary>
+        [MaxLength(15)] 
+        public string CnsResponsavelFamiliar {
             get { return this._cnsResponsavelFamiliar; }
             set { SetProperty(ref _cnsResponsavelFamiliar, value); }
         }
 
-        //Campo numeroNisPisPasep - Tipo string
-        private string _numeroNisPisPasep; //Não Obrigatório
-        [MaxLength(11)] //Mínimo 11 caracteres; Máximo 11 caracteres
-        public string NumeroNisPisPasep
-        {
+        private string _telefoneCelular;
+        /// <summary>
+        /// Número de celular do cidadão.
+        /// Apenas números.
+        /// </summary>
+        [MaxLength(11)]
+        public string TelefoneCelular {
+            get { return this._telefoneCelular; }
+            set { SetProperty(ref _telefoneCelular, value); }
+        }
+
+        private string _numeroNisPisPasep;
+        /// <summary>
+        /// Número do NIS (PIS / PASEP) do cidadão.
+        /// Apenas números.
+        /// </summary>
+        [MaxLength(11)] 
+        public string NumeroNisPisPasep {
             get { return this._numeroNisPisPasep; }
             set { SetProperty(ref _numeroNisPisPasep, value); }
         }
 
-        //Campo paisNascimento - Tipo long
-        private long _paisNascimento; //Condicional
-        public long PaisNascimento
-        {
+        private Models.Pais _paisNascimento;
+        /// <summary>
+        /// Código do país de nascimento do cidadão.
+        /// Só pode ser preenchido se o campo nacionalidadeCidadao = 3(Estrangeiro).Neste caso o preenchimento é obrigatório;
+        /// Se o campo nacionalidadeCidadao for igual a 1 (Brasileira), este campo deve ser preenchido com 31 (BRASIL).
+        /// </summary>
+        [OneToOne]
+        public Models.Pais PaisNascimento {
             get { return this._paisNascimento; }
             set { SetProperty(ref _paisNascimento, value); }
         }
 
-        //Campo racaCorCidadao - Tipo long
         private Models.RacaCor _racaCorCidadao;
-        [OneToOne, NotNull] //Obrigatório
-        public Models.RacaCor RacaCorCidadao
-        {
+        /// <summary>
+        /// Raça / cor do cidadão.
+        /// </summary>
+        [OneToOne, NotNull] 
+        public Models.RacaCor RacaCorCidadao {
             get { return this._racaCorCidadao; }
-            set {
-                SetProperty(ref _racaCorCidadao, value);
-            }
+            set { SetProperty(ref _racaCorCidadao, value); }
         }
 
-        //Campo sexoCidadao - Tipo long
         private Models.Sexo _sexoCidadao;
-        [NotNull] //Obrigatório
-        public Models.Sexo SexoCidadao
-        {
+        /// <summary>
+        /// Sexo do cidadão.
+        /// </summary>
+        [OneToOne, NotNull]
+        public Models.Sexo SexoCidadao {
             get { return this._sexoCidadao; }
             set { SetProperty(ref _sexoCidadao, value); }
         }
 
-        //Campo statusEhResponsavel - Tipo boolean
-        private bool _statusEhResponsavel; //Não Obrigatório
-        public bool StatusEhResponsavel
-        {
+        private bool _statusEhResponsavel;
+        /// <summary>
+        /// Marcador que indica se o cidadão é responsável familiar.
+        /// </summary>
+        public bool StatusEhResponsavel {
             get { return this._statusEhResponsavel; }
-            set {
-                SetProperty(ref _statusEhResponsavel, value);
-                OnPropertyChanged("IsResponsavel");
-            }
+            set { SetProperty(ref _statusEhResponsavel, value); }
         }
 
-        //Campo etnia - Tipo long
-        private Models.Etnia _etnia; //Condicional
-        public Models.Etnia Etnia
-        {
+        private Models.Etnia _etnia;
+        /// <summary>
+        /// Etnia do cidadão.
+        /// Só deve ser preenchido se o campo racaCorCidadao = 5. Neste caso o preenchimento é obrigatório.
+        /// </summary>
+        [OneToOne]
+        public Models.Etnia Etnia {
             get { return this._etnia; }
             set { SetProperty(ref _etnia, value); }
         }
 
-        //Campo nomePaiCidadao - Tipo string
-        private string _nomePaiCidadao; //Condicional
-        [MaxLength(70)] //Mínimo 3 caracteres; Máximo 70 caracteres
-        public string NomePaiCidadao
-        {
+        private string _nomePaiCidadao;
+        /// <summary>
+        /// Nome do pai do cidadão.
+        /// As regras de validação de um nome estão descritas em Validar nome;
+        /// Não deve ser preenchido se o campo desconheceNomePai = true.Caso contrário, o preenchimento é obrigatório
+        /// </summary>
+        [MaxLength(70)]
+        public string NomePaiCidadao {
             get { return this._nomePaiCidadao; }
             set { SetProperty(ref _nomePaiCidadao, value); }
         }
 
-        //Campo desconheceNomePai - Tipo string
-        private bool _desconheceNomePai; //Não Obrigatório
-        public bool DesconheceNomePai
-        {
+        private bool _desconheceNomePai;
+        /// <summary>
+        /// Marcador que indica que o cidadão desconhece o nome do pai.
+        /// </summary>
+        public bool DesconheceNomePai {
             get { return this._desconheceNomePai; }
             set { SetProperty(ref _desconheceNomePai, value); }
         }
 
-        //Campo dtNaturalizacao - Tipo long
-        private long _dtNaturalizacao; //Condicional
-        public long DtNaturalizacao
-        {
+        private long _dtNaturalizacao;
+        /// <summary>
+        /// Data de naturalização do cidadão no formato epoch time.
+        /// Só deve ser preenchido se o campo nacionalidadeCidadao = 2.Neste caso, é de preenchimento obrigatório;
+        /// Não pode ser posterior a dataAtendimento;
+        /// Não pode ser anterior a dataNascimentoCidadao.
+        /// </summary>
+        public long DtNaturalizacao {
             get { return this._dtNaturalizacao; }
             set { SetProperty(ref _dtNaturalizacao, value); }
         }
 
-        //Campo portariaNaturalizacao - Tipo string
-        private string _portariaNaturalizacao; //Condicional
-        [MaxLength(16)] //Mínimo 0 caracteres; Máximo 16 caracteres
-        public string PortariaNaturalizacao
-        {
+        private string _portariaNaturalizacao;
+        /// <summary>
+        /// Portaria de naturalização do cidadão.
+        /// Só deve ser preenchido se o campo nacionalidadeCidadao = 2. Neste caso o preenchimento é obrigatório.
+        /// </summary>
+        [MaxLength(16)] 
+        public string PortariaNaturalizacao {
             get { return this._portariaNaturalizacao; }
             set { SetProperty(ref _portariaNaturalizacao, value); }
         }
 
-        //Campo dtEntradaBrasil - Tipo long
-        private long _dtEntradaBrasil; //Condicional
-        public long DtEntradaBrasil
-        {
+        private long _dtEntradaBrasil;
+        /// <summary>
+        /// Data em que o cidadão entrou no Brasil. 
+        /// Só deve ser preenchido se o campo nacionalidadeCidadao = 3.Neste caso o preenchimento é obrigatório;
+        /// Não pode ser posterior a dataAtendimento;
+        /// Não pode ser anterior a dataNascimentoCidadao.
+        /// </summary>
+        public long DtEntradaBrasil {
             get { return this._dtEntradaBrasil; }
             set { SetProperty(ref _dtEntradaBrasil, value); }
         }
 
-        //Campo microarea - Tipo string
-        private string _microarea; //Condicional
-        [MaxLength(2)] //Mínimo 2 caracteres; Máximo 2 caracteres
-        public string Microarea
-        {
+        private string _microarea;
+        /// <summary>
+        /// Microárea na qual o cidadão se encontra.
+        /// Não deve ser preenchido se o campo stForaArea = true. Caso contrário, o preenchimento é obrigatório.
+        /// </summary>
+        [MaxLength(2)]
+        public string Microarea {
             get { return this._microarea; }
             set { SetProperty(ref _microarea, value); }
         }
 
-        //Campo stForaArea - Tipo boolean
-        private bool _stForaArea; //Não Obrigatório
+        private bool _stForaArea;
+        /// <summary>
+        /// Marcador que indica que o cidadão está fora da área.
+        /// </summary>
         [OneToOne]
-        public bool StForaArea
-        {
+        public bool StForaArea {
             get { return this._stForaArea; }
-            set {
-                SetProperty(ref _stForaArea, value);
-            }
+            set { SetProperty(ref _stForaArea, value); }
         }
+        #endregion
 
-        //FIM IDENTIFICAÇÃO USUÁRIO CIDADÃO
-
-        //INÍCIO INFORMAÇÕES SÓCIO DEMOGRÁFICAS
-
-        //Campo deficienciasCidadao - Tipo List<Long>
-        private List<Models.DeficienciaCidadao> _deficienciasCidadao; //Condicional
-        [MaxLength(5)] //Mínimo 1 código; Máximo 5 códigos
-        public List<Models.DeficienciaCidadao> DeficienciasCidadao
-        {
+        #region Informações socio demograficas
+        private List<Models.DeficienciaCidadao> _deficienciasCidadao;
+        /// <summary>
+        /// Deficiências que o cidadão possui.
+        /// Requerido preenchimento de pelo menos um item se o campo statusTemAlgumaDeficiencia = true;
+        /// Não deve ser preenchido se o campo statusTemAlgumaDeficiencia = false.
+        /// </summary>
+        [OneToMany, MaxLength(5)] 
+        public List<Models.DeficienciaCidadao> DeficienciasCidadao {
             get { return this._deficienciasCidadao; }
             set { SetProperty(ref _deficienciasCidadao, value); }
         }
-
-        //Campo grauInstrucaoCidadao - Tipo long
-        private Models.CursoMaisElevado _grauInstrucaoCidadao; //Não Obrigatório
-        public Models.CursoMaisElevado GrauInstrucaoCidadao
-        {
+       
+        private Models.CursoMaisElevado _grauInstrucaoCidadao;
+        /// <summary>
+        /// Curso mais elevado que o cidadão frequenta ou frequentou.
+        /// </summary>
+        [OneToOne]
+        public Models.CursoMaisElevado GrauInstrucaoCidadao {
             get { return this._grauInstrucaoCidadao; }
             set { SetProperty(ref _grauInstrucaoCidadao, value); }
         }
 
-        //Campo ocupacaoCodigoCbo2002 - Tipo string
-        private string _ocupacaoCodigoCbo2002; //Não Obrigatório
-        [MaxLength(6)] //Mínimo 6 caracteres; //Máximo 6 caracteres
-        public string OcupacaoCodigoCbo2002
-        {
+        private string _ocupacaoCodigoCbo2002;
+        /// <summary>
+        /// Código do CBO que representa a ocupação do cidadão.
+        /// Deve ser um código de CBO válido.
+        /// </summary>
+        [MaxLength(6)] 
+        public string OcupacaoCodigoCbo2002 {
             get { return this._ocupacaoCodigoCbo2002; }
             set { SetProperty(ref _ocupacaoCodigoCbo2002, value); }
         }
 
-        //Campo orientacaoSexualCidadao - Tipo long
-        private Models.OrientacaoSexual _orientacaoSexualCidadao; //Não Obrigatório
-        public Models.OrientacaoSexual OrientacaoSexualCidadao
-        {
+        private Models.OrientacaoSexual _orientacaoSexualCidadao;
+        /// <summary>
+        /// Orientação sexual informada pelo cidadão. 
+        /// Não pode ser preenchido se o campo statusDesejaInformarOrientacaoSexual = false
+        /// </summary>
+        [OneToOne]
+        public Models.OrientacaoSexual OrientacaoSexualCidadao {
             get { return this._orientacaoSexualCidadao; }
             set { SetProperty(ref _orientacaoSexualCidadao, value); }
         }
 
-        //Campo povoComunidadeTradicional - Tipo string
-        private string _povoComunidadeTradicional; //Não Obrigatório
-        [MaxLength(100)] //Máximo 100 caracteres
-        public string PovoComunidadeTradicional
-        {
+        private string _povoComunidadeTradicional;
+        /// <summary>
+        /// Nome da comunidade tradicional que o cidadão pertence.
+        /// Não deve ser preenchido se o campo statusMembroPovoComunidadeTradicional = false.
+        /// </summary>
+        [MaxLength(100)] 
+        public string PovoComunidadeTradicional {
             get { return this._povoComunidadeTradicional; }
             set { SetProperty(ref _povoComunidadeTradicional, value); }
         }
 
-        //Campo relacaoParentescoCidadao - Tipo long
-        private Models.RelacaoParentesco _relacaoParentescoCidadao; //Não Obrigatório
-        public Models.RelacaoParentesco RelacaoParentescoCidadao
-        {
+        private Models.RelacaoParentesco _relacaoParentescoCidadao;
+        /// <summary>
+        /// Código da relação de parentesco com o responsável familiar.
+        /// Só pode ser preenchido se o campo statusEhResponsavel = false.
+        /// </summary>
+        [OneToOne]
+        public Models.RelacaoParentesco RelacaoParentescoCidadao {
             get { return this._relacaoParentescoCidadao; }
             set { SetProperty(ref _relacaoParentescoCidadao, value); }
         }
 
-        //Campo situacaoMercadoTrabalhoCidadao - Tipo long
-        private Models.SituacaoMercadoTrabalho _situacaoMercadoTrabalhoCidadao; //Não Obrigatório
-        public Models.SituacaoMercadoTrabalho SituacaoMercadoTrabalhoCidadao
-        {
+        private Models.SituacaoMercadoTrabalho _situacaoMercadoTrabalhoCidadao;
+        /// <summary>
+        /// Código da situação do cidadão no mercado de trabalho.
+        /// </summary>
+        [OneToOne]
+        public Models.SituacaoMercadoTrabalho SituacaoMercadoTrabalhoCidadao {
             get { return this._situacaoMercadoTrabalhoCidadao; }
             set { SetProperty(ref _situacaoMercadoTrabalhoCidadao, value); }
         }
 
-        //Campo statusDesejaInformarOrientacaoSexual - Tipo boolean
-        private bool _statusDesejaInformarOrientacaoSexual; //Não Obrigatório
-        public bool StatusDesejaInformarOrientacaoSexual
-        {
+        private bool _statusDesejaInformarOrientacaoSexual;
+        /// <summary>
+        /// Marcador que indica se o cidadão deseja informar sua orientação sexual.
+        /// </summary>
+        public bool StatusDesejaInformarOrientacaoSexual {
             get { return this._statusDesejaInformarOrientacaoSexual; }
             set { SetProperty(ref _statusDesejaInformarOrientacaoSexual, value); }
         }
-
-        //Campo statusFrequentaBenzedeira - Tipo boolean
-        private bool _statusFrequentaBenzedeira; //Não Obrigatório
-        public bool StatusFrequentaBenzedeira
-        {
+ 
+        private bool _statusFrequentaBenzedeira;
+        /// <summary>
+        /// Marcador que indica se o cidadão frequenta cuidador tradicional.
+        /// </summary>
+        public bool StatusFrequentaBenzedeira {
             get { return this._statusFrequentaBenzedeira; }
             set { SetProperty(ref _statusFrequentaBenzedeira, value); }
         }
 
-        //Campo statusFrequentaEscola - Tipo boolean
-        private bool _statusFrequentaEscola; //Obrigatório
+        private bool _statusFrequentaEscola;
+        /// <summary>
+        /// Marcador que indica se o cidadão frequenta escola ou creche.
+        /// </summary>
         [NotNull]
-        public bool StatusFrequentaEscola
-        {
+        public bool StatusFrequentaEscola {
             get { return this._statusFrequentaEscola; }
             set { SetProperty(ref _statusFrequentaEscola, value); }
         }
 
-        //Campo statusMembroPovoComunidadeTradicional - Tipo boolean
-        private bool _statusMembroPovoComunidadeTradicional; //Não Obrigatório
-        public bool StatusMembroPovoComunidadeTradicional
-        {
+        private bool _statusMembroPovoComunidadeTradicional;
+        /// <summary>
+        /// Marcador que indica se o cidadão é membro de um povo ou comunidade tradicional.
+        /// </summary>
+        public bool StatusMembroPovoComunidadeTradicional {
             get { return this._statusMembroPovoComunidadeTradicional; }
             set { SetProperty(ref _statusMembroPovoComunidadeTradicional, value); }
         }
 
-        //Campo statusParticipaGrupoComunitario - Tipo boolean
-        private bool _statusParticipaGrupoComunitario; //Não Obrigatório
-        public bool StatusParticipaGrupoComunitario
-        {
+        private bool _statusParticipaGrupoComunitario;
+        /// <summary>
+        /// Marcador que indica se o cidadão participa de algum grupo comunitário.
+        /// </summary>
+        public bool StatusParticipaGrupoComunitario {
             get { return this._statusParticipaGrupoComunitario; }
             set { SetProperty(ref _statusParticipaGrupoComunitario, value); }
         }
 
-        //Campo statusPossuiPlanoSaudePrivado - Tipo boolean
-        private bool _statusPossuiPlanoSaudePrivado; //Não Obrigatório
-        public bool StatusPossuiPlanoSaudePrivado
-        {
+        private bool _statusPossuiPlanoSaudePrivado;
+        /// <summary>
+        /// Marcador que indica se o cidadão possui plano de saúde privado.
+        /// </summary>
+        public bool StatusPossuiPlanoSaudePrivado {
             get { return this._statusPossuiPlanoSaudePrivado; }
             set { SetProperty(ref _statusPossuiPlanoSaudePrivado, value); }
         }
 
-        //Campo statusTemAlgumaDeficiencia - Tipo boolean
         private bool _statusTemAlgumaDeficiencia; //Obrigatório
+        /// <summary>
+        /// Marcador que indica se cidadão tem alguma deficiência.
+        /// </summary>
         [NotNull]
-        public bool StatusTemAlgumaDeficiencia
-        {
+        public bool StatusTemAlgumaDeficiencia {
             get { return this._statusTemAlgumaDeficiencia; }
             set { SetProperty(ref _statusTemAlgumaDeficiencia, value); }
         }
 
-        //Campo identidadeGeneroCidadao - Tipo long
-        private Models.IdentidadeGeneroCidadao _identidadeGeneroCidadao; //Não Obrigatório
-        public Models.IdentidadeGeneroCidadao IdentidadeGeneroCidadao
-        {
+        private Models.IdentidadeGeneroCidadao _identidadeGeneroCidadao;
+        /// <summary>
+        /// Identidade de gênero informada pelo cidadão. 
+        /// Não pode ser preenchido se o campo statusDesejaInformarIdentidadeGenero = false.
+        /// </summary>
+        [OneToOne]
+        public Models.IdentidadeGeneroCidadao IdentidadeGeneroCidadao {
             get { return this._identidadeGeneroCidadao; }
             set { SetProperty(ref _identidadeGeneroCidadao, value); }
         }
 
-        //Campo statusDesejaInformarIdentidadeGenero - Tipo boolean
-        private bool _statusDesejaInformarIdentidadeGenero; //Não Obrigatório
-        public bool StatusDesejaInformarIdentidadeGenero
-        {
+        private bool _statusDesejaInformarIdentidadeGenero;
+        /// <summary>
+        /// Marcador que indica se o cidadão deseja informar sua identidade de gênero.
+        /// </summary>
+        public bool StatusDesejaInformarIdentidadeGenero {
             get { return this._statusDesejaInformarIdentidadeGenero; }
             set { SetProperty(ref _statusDesejaInformarIdentidadeGenero, value); }
         }
 
-        //Campo responsavelPorCrianca - Tipo List<Long>
-        private List<Models.ResponsavelCrianca> _responsavelPorCrianca; //Não Obrigatório
-        [MaxLength(6)] //Mínimo 1; Máximo 6
-        public List<Models.ResponsavelCrianca> ResponsavelPorCrianca
-        {
+        private List<Models.ResponsavelCrianca> _responsavelPorCrianca;
+        /// <summary>
+        /// Código do responsável por crianças de até 9 anos.
+        /// Não pode ser preenchido se a dataNascimentoCidadao for anterior ou igual a 10 anos a partir da dataAtendimento.
+        /// </summary>
+        [OneToMany, MaxLength(6)] 
+        public List<Models.ResponsavelCrianca> ResponsavelPorCrianca {
             get { return this._responsavelPorCrianca; }
             set { SetProperty(ref _responsavelPorCrianca, value); }
         }
+        #endregion
 
-        //FIM INFORMAÇÕES SÓCIO DEMOGRÁFICAS
-
-        //INÍCIO SAÍDA CIDADÃO CADASTRO
-
-        //Campo motivoSaidaCidadao - Tipo long
-        private Models.MotivoSaida _motivoSaidaCidadao; //Não Obrigatório
-        public Models.MotivoSaida MotivoSaidaCidadao
-        {
+        #region Saida cidadão do cadastro
+        private Models.MotivoSaida _motivoSaidaCidadao;
+        /// <summary>
+        /// Motivo da saída do cidadão do cadastro.
+        /// </summary>
+        [OneToOne]
+        public Models.MotivoSaida MotivoSaidaCidadao {
             get { return this._motivoSaidaCidadao; }
             set { SetProperty(ref _motivoSaidaCidadao, value); }
         }
 
-        //Campo dataObito - Tipo long
-        private long _dataObito; //Condicional
-        public long DataObito
-        {
+        private long _dataObito;
+        /// <summary>
+        /// Dataa de óbito do cidadão no formato epoch time.
+        /// Só pode ser preenchido se o campo motivoSaidaCidadao = 135. Neste caso o preenchimento é obrigatório.
+        /// </summary>
+        public long DataObito {
             get { return this._dataObito; }
             set { SetProperty(ref _dataObito, value); }
         }
 
-        //Campo numeroDO - Tipo string
-        private string _numeroDO; //Condicional
-        [MaxLength(9)] //Mínimo 9 caracteres; Máximo 9 caracteres
-        public string NumeroDO
-        {
+        private string _numeroDO;
+        /// <summary>
+        /// Data de óbito do cidadão no formato epoch time.
+        /// Só pode ser preenchido se o campo motivoSaidaCidadao = 135.
+        /// </summary>
+        [MaxLength(9)]
+        public string NumeroDO {
             get { return this._numeroDO; }
             set { SetProperty(ref _numeroDO, value); }
         }
+        #endregion
 
-        //FIM SAÍDA CIDADÃO CADASTRO
-
-        //CARDINALIDADE RELAÇÃO FICHA HEADER
-
-        [OneToOne]
-        public FichaHeader Header
-        {
-            get;
-            set;
+        private bool _statusTermoRecusaCadastroIndividualAtencaoBasica;
+        /// <summary>
+        /// Marcador que indica se o termo de recusa foi assinalado.
+        /// </summary>
+        [NotNull]
+        public bool StatusTermoRecusaCadastroIndividualAtencaoBasica {
+            get { return this._statusTermoRecusaCadastroIndividualAtencaoBasica; }
+            set { SetProperty(ref _statusTermoRecusaCadastroIndividualAtencaoBasica, value); }
         }
 
+        private bool _fichaAtualizada; 
+        /// <summary>
+        /// 
+        /// </summary>
+        [NotNull]
+        public bool FichaAtualizada {
+            get { return this._fichaAtualizada; }
+            set { SetProperty(ref _fichaAtualizada, value); }
+        }
+
+        /// <summary>
+        /// Tipo de origem dos dados do registro.
+        /// </summary>
+        [NotNull, MaxLength(1)]
+        public int TpCdsOrigem { get; } = 3;
+
+        private string _uuid;
+        /// <summary>
+        /// Código UUID para identificar a ficha na base de dados nacional.
+        /// É recomendado concatenar o CNES na frente do UUID, de modo que os 7 dígitos (CNES) + 1 de hífen somados aos 36 (32 caracteres + 4 hífen) do UUID são a limitação de 44 bytes do campo. Formato canônico.
+        /// </summary>
+        [MaxLength(44)]
+        public string Uuid {
+            get { return this._uuid; }
+            set { SetProperty(ref _uuid, value); }
+        }
+
+        private string _uuidFichaOriginadora;
+        /// <summary>
+        /// Código UUID para identificar a ficha que deu origem ao cadastro do registro.
+        ///  Se for uma ficha de atualização, deve ser preenchido com o UUID da ficha que deu origem ao registro. Se for a ficha de cadastro, este campo deve ser igual ao campo uuid.
+        /// </summary>
+        [MaxLength(44)]
+        public string UuidFichaOriginadora {
+            get { return this._uuidFichaOriginadora; }
+            set { SetProperty(ref _uuidFichaOriginadora, value); }
+        }
+        
+        private FichaHeader _header;
+
+        [OneToOne]
+        public FichaHeader Header {
+            get { return this._header; }
+            set { SetProperty(ref _header, value); }
+        }
         //
 
     }

@@ -9,6 +9,9 @@ namespace gvn_ab_mobile.Behaviors {
     public class ValidatorSelectMultipleItems : Validator<Controls.SelectMultipleItems> {
         private Color DefaultColor { get; set; }
 
+        public int? MinLength { get; set; }
+        public int? MaxLength { get; set; }
+
         protected override void OnAttachedTo(Controls.SelectMultipleItems bindable) {
             this.DefaultColor = bindable.BackgroundColor;
             bindable.SelectedItemsChanged += OnIndexChanged;
@@ -22,7 +25,12 @@ namespace gvn_ab_mobile.Behaviors {
         }
 
         public override bool isValid(object input) {
-            return ((IEnumerable<object>)input)?.Any() ?? false;
+            var length = ((IEnumerable<object>)input)?.Count();
+
+            var isValid = !this.MinLength.HasValue || length >= this.MinLength;
+            isValid &= !this.MaxLength.HasValue || length <= this.MaxLength;
+
+            return isValid;
         } 
 
         public override bool Validate(object sender) {

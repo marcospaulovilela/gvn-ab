@@ -233,6 +233,11 @@ namespace gvn_ab_mobile.Models {
         public AleitamentoMaterno(string descricao) : base(descricao) { }
     }
 
+    public class OrigemAlimentacao : Models.EntidadeEnumerador {
+        public OrigemAlimentacao() { }
+        public OrigemAlimentacao(string descricao) : base(descricao) { }
+    }
+
     //
 
 }

@@ -1400,4 +1400,19 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
+    class DAOOrigemAlimentacao : DAO<Models.OrigemAlimentacao> {
+        public override int? CreateTable() {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.OrigemAlimentacao>() {
+                  new Models.OrigemAlimentacao("Restaurante popular") { Codigo = 37 },
+                  new Models.OrigemAlimentacao("Doação grupo religioso") { Codigo = 38 },
+                  new Models.OrigemAlimentacao("Doação restaurante") { Codigo = 39 },
+                  new Models.OrigemAlimentacao("Doação popular") { Codigo = 40 },
+                  new Models.OrigemAlimentacao("Outros") { Codigo = 41 }
+            });
+        }
+    }
+
 }

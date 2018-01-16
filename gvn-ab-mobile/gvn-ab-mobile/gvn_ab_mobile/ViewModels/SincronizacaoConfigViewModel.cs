@@ -57,6 +57,7 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAODeficienciaCidadao DAODeficienciaCidadao = new DAO.DAODeficienciaCidadao()) { DAODeficienciaCidadao.CreateTable();  }
             using (DAO.DAOAcessoHigiene DAOAcessoHigiene = new DAO.DAOAcessoHigiene()) { DAOAcessoHigiene.CreateTable(); }
             using (DAO.DAOQuantasVezesAlimentacao DAOQuantasVezesAlimentacao = new DAO.DAOQuantasVezesAlimentacao()) { DAOQuantasVezesAlimentacao.CreateTable();  }
+            using (DAO.DAOOrigemAlimentacao DAOOrigemAlimentacao = new DAO.DAOOrigemAlimentacao()) { DAOOrigemAlimentacao.CreateTable(); }
 
             using (DAO.DAOTurno DAOTurno = new DAO.DAOTurno()) { DAOTurno.CreateTable(); }
             using (DAO.DAOLocalDeAtendimento DAOLocalAtendimento = new DAO.DAOLocalDeAtendimento()) { DAOLocalAtendimento.CreateTable(); }
@@ -80,6 +81,9 @@ namespace gvn_ab_mobile.ViewModels {
 
             using (DAO.DAOAnimalNoDomicilio DAOAnimalNoDomicilio = new DAO.DAOAnimalNoDomicilio()) { DAOAnimalNoDomicilio.CreateTable(); }
             using (DAO.DAORendaFamiliar DAORendaFamiliar = new DAO.DAORendaFamiliar()) { DAORendaFamiliar.CreateTable(); }
+
+            using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) { DAOFichaCadastroIndividual.CreateTable(); }
+
         }
 
         private void SyncOfflineExecute() {
@@ -107,8 +111,9 @@ namespace gvn_ab_mobile.ViewModels {
                             DesSenha = "123456",
                             NomProfissional = "ADM Saude",
                             Cbos = new List<Models.Cbo>() {
-                                new Models.Cbo() { CodCbo = "225125", NomCbo="Médico clínico" },
-                                new Models.Cbo() { CodCbo = "223505", NomCbo = "Enfermeiro" }
+                                new Models.Cbo() { CodCbo = "352210", NomCbo="AGENTE DE SAÚDE PÚBLICA" },
+                                new Models.Cbo() { CodCbo = "225125", NomCbo="MÉDICO CLÍNICO" },
+                                new Models.Cbo() { CodCbo = "223505", NomCbo = "ENFERMEIRO" }
                             }
                         });
                     };
