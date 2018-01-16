@@ -66,7 +66,7 @@
 
                     <StackLayout IsVisible="{Binding HasDoencaCardiaca}">
                         <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <controls:SelectMultipleItems x:Name="CodDoencaCardiaca" Items="{Binding DoencasCardiacas}" SelectedItems="{Binding DoencasCardiacasSelecionadas}"  >
+                        <controls:SelectMultipleItems x:Name="CodDoencaCardiaca" Placeholder="Doenças cardíacas" Items="{Binding DoencasCardiacas}" SelectedItems="{Binding DoencasCardiacasSelecionadas}"  >
                             <controls:SelectMultipleItems.Behaviors>
                              <behaviors:ValidatorSelectMultipleItems />
                             </controls:SelectMultipleItems.Behaviors>
@@ -80,7 +80,7 @@
 
                     <StackLayout IsVisible="{Binding HasDoencaRins}">
                         <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <controls:SelectMultipleItems x:Name="CodDoencaRins" Items="{Binding ProblemasRins}" SelectedItems="{Binding ProblemasRinsSelecionados}"  >
+                        <controls:SelectMultipleItems x:Name="CodDoencaRins" Placeholder="Doenças renais" Items="{Binding ProblemasRins}" SelectedItems="{Binding ProblemasRinsSelecionados}"  >
                             <controls:SelectMultipleItems.Behaviors>
                                 <behaviors:ValidatorSelectMultipleItems />
                             </controls:SelectMultipleItems.Behaviors>
@@ -94,7 +94,7 @@
 
                     <StackLayout IsVisible="{Binding HasDoencaRespiratoria}">
                         <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <controls:SelectMultipleItems x:Name="CodDoencaRespiratoria" Items="{Binding DoencasRespiratorias}" SelectedItems="{Binding DoencasRespiratoriasSelecionadas}"  >
+                        <controls:SelectMultipleItems x:Name="CodDoencaRespiratoria" Placeholder="Doenças respiratórias"  Items="{Binding DoencasRespiratorias}" SelectedItems="{Binding DoencasRespiratoriasSelecionadas}"  >
                             <controls:SelectMultipleItems.Behaviors>
                                 <behaviors:ValidatorSelectMultipleItems />
                             </controls:SelectMultipleItems.Behaviors>

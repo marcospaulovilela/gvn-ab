@@ -1,0 +1,34 @@
+﻿<popup:PopupPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="gvn_ab_mobile.Controls.SelectMultipleItemsPopUp">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0" Margin="0">
+        <Frame Margin="30" Padding="10">
+            <StackLayout HorizontalOptions="Fill">
+                <Label Text="{Binding Placeholder}" TextColor="Black" FontSize="Medium" />
+                <ListView x:Name="ListViewBugado" ItemsSource="{Binding ItemsForListView}" ItemSelected="ListView_ItemSelected" VerticalOptions="Center">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>      
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label Text="{Binding toString}" FontSize="Small"  />
+                                    </StackLayout>
+                                    <Switch IsToggled="{Binding IsSelected}" Grid.Column="1" VerticalOptions="Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout>
+                    <Button Text="Finalizar" Command="{Binding Finalizar}" BorderWidth="0"  BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264" HorizontalOptions="End" VerticalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</popup:PopupPage>

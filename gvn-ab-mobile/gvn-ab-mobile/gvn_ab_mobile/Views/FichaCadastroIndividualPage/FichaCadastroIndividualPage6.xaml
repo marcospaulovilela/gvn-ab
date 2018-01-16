@@ -65,7 +65,7 @@
 
                 <StackLayout IsVisible="{Binding HasAcessoHigienePessoalSituacaoRua}">
                     <Label Text="Se sim, quais:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <controls:SelectMultipleItems x:Name="CodHigienePessoal" Items="{Binding HigienePessoal}" SelectedItems="{Binding HigienesSelecionadas}"  >
+                    <controls:SelectMultipleItems x:Name="CodHigienePessoal" Placeholder="Condições de higiene que o cidadão tem acesso."  Items="{Binding HigienePessoal}" SelectedItems="{Binding HigienesSelecionadas}"  >
                         <controls:SelectMultipleItems.Behaviors>
                             <behaviors:ValidatorSelectMultipleItems />
                         </controls:SelectMultipleItems.Behaviors>

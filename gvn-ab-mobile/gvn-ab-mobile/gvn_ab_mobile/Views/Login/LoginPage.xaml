@@ -56,6 +56,7 @@
                 </Grid>
 
                 <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
+                    <Button Text="TestModal"  Clicked="Button_ClickedAsync"  IsVisible="False" />
                     <Button Text="Entrar" BackgroundColor="#003264" Opacity="0.80" BorderColor="Black" BorderRadius="1" VerticalOptions="CenterAndExpand" BorderWidth="100" HorizontalOptions="Fill" TextColor="White">
                         <Button.Behaviors>
                             <behaviors:ButtonSubmitBehavior Command="{Binding Login}" Controls="Usuario|Senha" />

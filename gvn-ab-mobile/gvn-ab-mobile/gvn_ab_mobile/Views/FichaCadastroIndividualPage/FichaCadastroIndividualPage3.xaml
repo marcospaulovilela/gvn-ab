@@ -48,7 +48,7 @@
                 <StackLayout>
                     <Label Text="Crianças de 0 a 9 anos, com quem fica?:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                     <Picker x:Name="CodResponsavelCrianca" ItemsSource="{Binding ResponsaveisCriancas}" SelectedItem="{Binding ResponsavelCrianca}" Title="Responsável Criança" TextColor="Gray" HorizontalOptions="FillAndExpand">
-                        <controls:SelectMultipleItems x:Name="CodResponsavelPorCrianca" Items="{Binding ResponsavelCrianca}" SelectedItems="{Binding ResponsaveisCriancasSelecionadas}"  >
+                        <controls:SelectMultipleItems x:Name="CodResponsavelPorCrianca" Placeholder="Responsável por crianças de até 9 anos"  Items="{Binding ResponsavelCrianca}" SelectedItems="{Binding ResponsaveisCriancasSelecionadas}"  >
                             <controls:SelectMultipleItems.Behaviors>
                                 <behaviors:ValidatorSelectMultipleItems />
                             </controls:SelectMultipleItems.Behaviors>
@@ -116,7 +116,7 @@
                     
                     <StackLayout IsVisible="{Binding HasAlgumaDeficiencia}">
                         <Label Text="Se sim, quais?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <controls:SelectMultipleItems x:Name="CodDeficienciasCidadao" Items="{Binding DeficienciasCidadao}" SelectedItems="{Binding DeficienciasSelecionadas}"  >
+                        <controls:SelectMultipleItems x:Name="CodDeficienciasCidadao" Placeholder="Deficiências" Items="{Binding DeficienciasCidadao}" SelectedItems="{Binding DeficienciasSelecionadas}"  >
                             <controls:SelectMultipleItems.Behaviors>
                                 <behaviors:ValidatorSelectMultipleItems MinLength="1" MaxLength="5" />
                             </controls:SelectMultipleItems.Behaviors>
