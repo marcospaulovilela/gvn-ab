@@ -72,6 +72,12 @@ namespace gvn_ab_mobile.Models {
         public ConsideracaoPeso(string descricao) : base(descricao) { }
     }
 
+    public class QuantasVezesAlimentacao : Models.EntidadeEnumerador
+    {
+        public QuantasVezesAlimentacao() { }
+        public QuantasVezesAlimentacao(string descricao) : base(descricao) { }
+    }
+
     public class DoencaCardiaca : Models.EntidadeEnumerador {
         public DoencaCardiaca() { }
         public DoencaCardiaca(string descricao) : base(descricao) { }
@@ -175,11 +181,17 @@ namespace gvn_ab_mobile.Models {
         public RendaFamiliar(string descricao) : base(descricao) { }
     }
 
-    public class QuantasVezesAlimentacao : Models.EntidadeEnumerador
+    public class TipoDeLogradouro : Models.EntidadeEnumerador
     {
-        public QuantasVezesAlimentacao() { }
-        public QuantasVezesAlimentacao(string descricao) : base(descricao) { }
+        public TipoDeLogradouro() { }
+        public TipoDeLogradouro(string descricao) : base(descricao) { }
     }
+    public class TipoDeImovel : Models.EntidadeEnumerador
+    {
+        public TipoDeImovel() { }
+        public TipoDeImovel(string descricao) : base(descricao) { }
+    }
+
 
     //
 

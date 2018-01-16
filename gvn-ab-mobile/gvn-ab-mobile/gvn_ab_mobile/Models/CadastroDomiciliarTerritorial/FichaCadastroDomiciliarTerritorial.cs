@@ -90,9 +90,9 @@ namespace gvn_ab_mobile.Models
 
 
         //Campo tipoDeImovel - Tipo long
-        private long _tipoDeImovel; //Obrigatório
+        private Models.TipoDeImovel _tipoDeImovel; //Obrigatório
         [NotNull]
-        public long TipoDeImovel
+        public Models.TipoDeImovel TipoDeImovel
         {
             get { return this._tipoDeImovel; }
             set { SetProperty(ref _tipoDeImovel, value); }
@@ -133,9 +133,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo localizacao - Tipo long
-        private long _localizacao; //Obrigatório
+        private Models.LocalizacaoDaMoradia _localizacao; //Obrigatório
         [NotNull]
-        public long Localizacao
+        public Models.LocalizacaoDaMoradia Localizacao
         {
             get { return this._localizacao; }
             set { SetProperty(ref _localizacao, value); }
@@ -192,8 +192,8 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo tipoDomicilio - Tipo long
-        private long _tipoDomicilio; //Não Obrigatório
-        public long TipoDomicilio
+        private Models.TipoDeDomicilio _tipoDomicilio; //Não Obrigatório
+        public Models.TipoDeDomicilio TipoDomicilio
         {
             get { return this._tipoDomicilio; }
             set { SetProperty(ref _tipoDomicilio, value); }

@@ -85,7 +85,7 @@ namespace gvn_ab_mobile.Behaviors {
                 };
                 return cns.Equals(result);
 
-            } else if (cns[0] == '7' || cns[0] == '8    ' || cns[0] == '9') {
+            } else if (cns[0] == '7' || cns[0] == '8' || cns[0] == '9') {
                 long sum = 0;
                 for (int i = 0; i < 15; i++) {
                     sum += long.Parse(cns[i].ToString()) * (15 - i);

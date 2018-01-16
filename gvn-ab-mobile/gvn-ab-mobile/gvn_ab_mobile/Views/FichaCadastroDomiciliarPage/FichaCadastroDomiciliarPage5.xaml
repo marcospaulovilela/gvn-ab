@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              x:Class="gvn_ab_mobile.Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5"
              Title="Famílias">
     <ContentPage.Content>
@@ -40,7 +41,8 @@
                     <?SelectBox?>
                     <StackLayout>
                         <Label Text="Renda Familiar (Salário Mínimo):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Quantidade salários mínimos" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Picker x:Name="CodRendaFamiliar" ItemsSource="{Binding RendasFamiliares}" SelectedItem="{Binding RendaFamiliar}" HorizontalOptions="FillAndExpand" Title="Renda Familiar" Scale="1">
+                        </Picker>
                     </StackLayout>
 
                 </StackLayout>

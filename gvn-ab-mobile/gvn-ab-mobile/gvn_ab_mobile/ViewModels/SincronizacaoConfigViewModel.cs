@@ -65,6 +65,8 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAORacionalidadeSaude DAORacionalidadeSaude = new DAO.DAORacionalidadeSaude()) { DAORacionalidadeSaude.CreateTable(); }
             using (DAO.DAOAleitamentoMaterno DAOAleitamentoMaterno = new DAO.DAOAleitamentoMaterno()) { DAOAleitamentoMaterno.CreateTable(); }
 
+            using (DAO.DAOTipoDeImovel DAOTipoDeImovel = new DAO.DAOTipoDeImovel()) { DAOTipoDeImovel.CreateTable(); }
+            using (DAO.DAOTipoDeLogradouro DAOTipoDeLogradouro = new DAO.DAOTipoDeLogradouro()) { DAOTipoDeLogradouro.CreateTable(); }
             using (DAO.DAOSituacaoDeMoradia DAOSituacaoDeMoradia = new DAO.DAOSituacaoDeMoradia()) { DAOSituacaoDeMoradia.CreateTable(); }
             using (DAO.DAOTipoDeDomicilio DAOTipoDeDomicilio = new DAO.DAOTipoDeDomicilio()) { DAOTipoDeDomicilio.CreateTable(); }
             using (DAO.DAOTipoDeAcessoAoDomicilio DAOTipoDeAcessoAoDomicilio = new DAO.DAOTipoDeAcessoAoDomicilio()) { DAOTipoDeAcessoAoDomicilio.CreateTable(); }
