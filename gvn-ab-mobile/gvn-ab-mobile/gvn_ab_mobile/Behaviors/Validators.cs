@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.Behaviors {
     public class ValidatorEmpty : ValidatorEntryBehavior {
-
         public ValidatorEmpty() {
-            base.MaxLength = null;
+            base.Required = true;
         }
         
         public override bool isValid(object input) {
-            if (input == null) return false;
-            return !string.IsNullOrEmpty(((string)input));
+            return !string.IsNullOrEmpty((string)input);
         }
     }
 
@@ -77,7 +76,7 @@ namespace gvn_ab_mobile.Behaviors {
                 if (checkDigit == 10) {
                     sum += 2;
                     rest = sum % 11;
-                    checkDigit = 11 - rest;
+                    checkDigit = 11 - rest; 
 
                     result = $"{pis}001{checkDigit}";
                 } else {
@@ -85,24 +84,31 @@ namespace gvn_ab_mobile.Behaviors {
                 };
                 return cns.Equals(result);
 
-            } else if (cns[0] == '7' || cns[0] == '8    ' || cns[0] == '9') {
+            } else if (cns[0] == '7' || cns[0] == '8' || cns[0] == '9') {
                 long sum = 0;
                 for (int i = 0; i < 15; i++) {
                     sum += long.Parse(cns[i].ToString()) * (15 - i);
                 };
                 long rest = sum % 11;
                 return rest == 0;
-
             } else {
                 return false;
             };
         }
 
         public override bool isValid(object input) {
-            if (input == null) return false;
+            if (string.IsNullOrEmpty((string)input)) return true;
             string buffer = ((string)input);
             if (buffer.Length != 15) return false;
             return this.IsCns(buffer);
+        }
+    }
+
+    public class ValidatorEmail : ValidatorEntryBehavior {
+        public override bool isValid(object input) {
+            if (string.IsNullOrEmpty((string)input)) return true;
+
+            return Regex.IsMatch((string)input, @"([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
         }
     }
 }

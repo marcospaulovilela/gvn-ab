@@ -39,9 +39,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Behaviors\EntryMaxLengthBehavior.cs" />
+    <Compile Include="Behaviors\EntryNomeBehavior.cs" />
+    <Compile Include="Behaviors\EntryLengthBehavior.cs" />
     <Compile Include="Behaviors\Validator.cs" />
     <Compile Include="Behaviors\ButtonSubmitBehavior.cs" />
+    <Compile Include="Behaviors\ValidatorDatepickerBehavior.cs" />
     <Compile Include="Behaviors\ValidatorSelectMultipleItems .cs" />
     <Compile Include="Behaviors\ValidatorPickerBehavior.cs" />
     <Compile Include="Behaviors\ValidatorEntryBehavior.cs" />

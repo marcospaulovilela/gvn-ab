@@ -7,10 +7,8 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace gvn_ab_mobile.ViewModels
-{
-    public class FichaCadastroIndividualViewModel : BaseViewModel
-    {
+namespace gvn_ab_mobile.ViewModels {
+    public class FichaCadastroIndividualViewModel : BaseViewModel {
         private Page Page { get; set; }
 
         public ICommand Continuar { get; }
@@ -27,8 +25,7 @@ namespace gvn_ab_mobile.ViewModels
         public ObservableRangeCollection<Models.RacaCor> RacasCores { get; set; }
 
         private Models.Sexo _sexoCidadao;
-        public Models.Sexo SexoCidadao
-        {
+        public Models.Sexo SexoCidadao {
             get { return this._sexoCidadao; }
             set {
                 this.Ficha.SexoCidadao = value;
@@ -38,8 +35,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.Etnia _etnia; //Condicional
-        public Models.Etnia Etnia
-        {
+        public Models.Etnia Etnia {
             get { return this._etnia; }
             set {
                 this.Ficha.Etnia = value;
@@ -49,111 +45,92 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         Models.RacaCor _racaCorCidadao;
-        public Models.RacaCor RacaCorCidadao
-        {
+        public Models.RacaCor RacaCorCidadao {
             get { return this._racaCorCidadao; }
-            set
-            {
+            set {
                 this.Ficha.RacaCorCidadao = value;
 
                 SetProperty(ref _racaCorCidadao, value);
                 OnPropertyChanged("IsRacaCor5");
             }
         }
-        public bool IsRacaCor5
-        {
-            get
-            {
+        public bool IsRacaCor5 {
+            get {
                 return this.RacaCorCidadao?.Codigo == 5;
             }
         }
 
         private bool _statusEhResponsavel; //Não Obrigatório
-        public bool StatusEhResponsavel
-        {
+        public bool StatusEhResponsavel {
             get { return this._statusEhResponsavel; }
-            set
-            {
+            set {
                 this.Ficha.StatusEhResponsavel = value;
 
                 SetProperty(ref _statusEhResponsavel, value);
                 OnPropertyChanged("IsResponsavel");
             }
         }
-        public bool IsResponsavel
-        {
-            get
-            {
+        public bool IsResponsavel {
+            get {
                 return !this.StatusEhResponsavel;
             }
         }
 
         private bool _stForaArea;
-        public bool StForaArea
-        {
+        public bool StForaArea {
             get { return this._stForaArea; }
-            set
-            {
+            set {
                 this.Ficha.StForaArea = value;
+                this.Ficha.Microarea = value ? "FA" : string.Empty;
 
                 SetProperty(ref _stForaArea, value);
                 OnPropertyChanged("IsForaArea");
             }
         }
-        public bool IsForaArea
-        {
-            get
-            {
+        public bool IsForaArea {
+            get {
                 return !this.StForaArea;
             }
         }
 
         private bool _desconheceNomeMae; //Não Obrigatório
-        public bool DesconheceNomeMae
-        {
+        public bool DesconheceNomeMae {
             get { return this._desconheceNomeMae; }
-            set
-            {
+            set {
                 this.Ficha.DesconheceNomeMae = value;
+                this.Ficha.NomeMaeCidadao = string.Empty;
 
                 SetProperty(ref _desconheceNomeMae, value);
                 OnPropertyChanged("KnowsNomeMae");
             }
         }
-        public bool KnowsNomeMae
-        {
-            get
-            {
+        public bool KnowsNomeMae {
+            get {
                 return !this.DesconheceNomeMae;
             }
         }
 
         private bool _desconheceNomePai; //Não Obrigatório
-        public bool DesconheceNomePai
-        {
+        public bool DesconheceNomePai {
             get { return this._desconheceNomePai; }
-            set
-            {
+            set {
                 this.Ficha.DesconheceNomePai = value;
+                this.Ficha.NomePaiCidadao = string.Empty;
 
                 SetProperty(ref _desconheceNomePai, value);
                 OnPropertyChanged("KnowsNomePai");
             }
         }
-        public bool KnowsNomePai
-        {
-            get
-            {
+        public bool KnowsNomePai {
+            get {
                 return !this.DesconheceNomePai;
             }
         }
 
         Models.Nacionalidade _nacionalidadeCidadao;
-        public Models.Nacionalidade NacionalidadeCidadao
-        {
+        public Models.Nacionalidade NacionalidadeCidadao {
             get { return this._nacionalidadeCidadao; }
-            set
-            {
+            set {
                 this.Ficha.NacionalidadeCidadao = value;
 
                 SetProperty(ref _nacionalidadeCidadao, value);
@@ -162,22 +139,22 @@ namespace gvn_ab_mobile.ViewModels
                 OnPropertyChanged("IsNaturalizado");
             }
         }
-        public bool IsBrasileiro
-        {
-            get { return (this.NacionalidadeCidadao?.Codigo == 1); }
-            set
-            {
-                this.Ficha.PaisNascimento = 31;
+
+        public bool IsBrasileiro {
+            get {
+                return this.NacionalidadeCidadao?.Codigo == 1;
             }
 
         }
-        public bool IsEstrangeiro
-        {
-            get { return (this.NacionalidadeCidadao?.Codigo == 3); }
+        public bool IsEstrangeiro {
+            get {
+                return this.NacionalidadeCidadao?.Codigo == 3;
+            }
         }
-        public bool IsNaturalizado
-        {
-            get { return (this.NacionalidadeCidadao?.Codigo == 2); }
+        public bool IsNaturalizado {
+            get {
+                return this.NacionalidadeCidadao?.Codigo == 2;
+            }
         }
 
         public ObservableRangeCollection<Models.Nacionalidade> Nacionalidades { get; set; }
@@ -195,8 +172,7 @@ namespace gvn_ab_mobile.ViewModels
         public ObservableCollection<object> DeficienciasSelecionadas { get; } = new ObservableCollection<object>();
 
         private Models.RelacaoParentesco _relacaoParentescoCidadao; //Não Obrigatório
-        public Models.RelacaoParentesco RelacaoParentescoCidadao
-        {
+        public Models.RelacaoParentesco RelacaoParentescoCidadao {
             get { return this._relacaoParentescoCidadao; }
             set {
                 this.Ficha.RelacaoParentescoCidadao = value;
@@ -206,8 +182,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.CursoMaisElevado _grauInstrucaoCidadao; //Não Obrigatório
-        public Models.CursoMaisElevado GrauInstrucaoCidadao
-        {
+        public Models.CursoMaisElevado GrauInstrucaoCidadao {
             get { return this._grauInstrucaoCidadao; }
             set {
                 this.Ficha.GrauInstrucaoCidadao = value;
@@ -217,8 +192,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.SituacaoMercadoTrabalho _situacaoMercadoTrabalhoCidadao; //Não Obrigatório
-        public Models.SituacaoMercadoTrabalho SituacaoMercadoTrabalhoCidadao
-        {
+        public Models.SituacaoMercadoTrabalho SituacaoMercadoTrabalhoCidadao {
             get { return this._situacaoMercadoTrabalhoCidadao; }
             set {
                 this.Ficha.SituacaoMercadoTrabalhoCidadao = value;
@@ -228,8 +202,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.OrientacaoSexual _orientacaoSexualCidadao; //Não Obrigatório
-        public Models.OrientacaoSexual OrientacaoSexualCidadao
-        {
+        public Models.OrientacaoSexual OrientacaoSexualCidadao {
             get { return this._orientacaoSexualCidadao; }
             set {
                 this.Ficha.OrientacaoSexualCidadao = value;
@@ -239,8 +212,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.IdentidadeGeneroCidadao _identidadeGeneroCidadao; //Não Obrigatório
-        public Models.IdentidadeGeneroCidadao IdentidadeGeneroCidadao
-        {
+        public Models.IdentidadeGeneroCidadao IdentidadeGeneroCidadao {
             get { return this._identidadeGeneroCidadao; }
             set {
                 this.Ficha.IdentidadeGeneroCidadao = value;
@@ -250,81 +222,65 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private bool _statusMembroPovoComunidadeTradicional; //Não Obrigatório
-        public bool StatusMembroPovoComunidadeTradicional
-        {
+        public bool StatusMembroPovoComunidadeTradicional {
             get { return this._statusMembroPovoComunidadeTradicional; }
-            set
-            {
+            set {
                 this.Ficha.StatusMembroPovoComunidadeTradicional = value;
 
                 SetProperty(ref _statusMembroPovoComunidadeTradicional, value);
                 OnPropertyChanged("IsMembroPovoComunidadeTradicional");
             }
         }
-        public bool IsMembroPovoComunidadeTradicional
-        {
-            get
-            {
+        public bool IsMembroPovoComunidadeTradicional {
+            get {
                 return this.StatusMembroPovoComunidadeTradicional;
             }
         }
 
         private bool _statusDesejaInformarOrientacaoSexual; //Não Obrigatório
-        public bool StatusDesejaInformarOrientacaoSexual
-        {
+        public bool StatusDesejaInformarOrientacaoSexual {
             get { return this._statusDesejaInformarOrientacaoSexual; }
-            set
-            {
+            set {
                 this.Ficha.StatusDesejaInformarOrientacaoSexual = value;
 
                 SetProperty(ref _statusDesejaInformarOrientacaoSexual, value);
                 OnPropertyChanged("WantsInformarOrientacaoSexual");
             }
         }
-        public bool WantsInformarOrientacaoSexual
-        {
-            get
-            {
+        public bool WantsInformarOrientacaoSexual {
+            get {
                 return this.StatusDesejaInformarOrientacaoSexual;
             }
         }
 
         private bool _statusDesejaInformarIdentidadeGenero; //Não Obrigatório
-        public bool StatusDesejaInformarIdentidadeGenero
-        {
+        public bool StatusDesejaInformarIdentidadeGenero {
             get { return this._statusDesejaInformarIdentidadeGenero; }
-            set
-            {
+            set {
                 this.Ficha.StatusDesejaInformarIdentidadeGenero = value;
 
                 SetProperty(ref _statusDesejaInformarIdentidadeGenero, value);
                 OnPropertyChanged("WantsInformarIdentidadeGenero");
             }
         }
-        public bool WantsInformarIdentidadeGenero
-        {
-            get
-            {
+        public bool WantsInformarIdentidadeGenero {
+            get {
                 return this.StatusDesejaInformarIdentidadeGenero;
             }
         }
 
         private bool _statusTemAlgumaDeficiencia; //Obrigatório
-        public bool StatusTemAlgumaDeficiencia
-        {
+        public bool StatusTemAlgumaDeficiencia {
             get { return this._statusTemAlgumaDeficiencia; }
-            set
-            {
+            set {
                 this.Ficha.StatusTemAlgumaDeficiencia = value;
 
                 SetProperty(ref _statusTemAlgumaDeficiencia, value);
                 OnPropertyChanged("HasAlgumaDeficiencia");
             }
         }
-        public bool HasAlgumaDeficiencia
-        {
-            get
-            {
+        public bool HasAlgumaDeficiencia {
+            get {
                 return this.StatusTemAlgumaDeficiencia;
             }
         }
@@ -334,39 +290,31 @@ namespace gvn_ab_mobile.ViewModels
         public ObservableRangeCollection<Models.MotivoSaida> MotivosSaida { get; set; }
 
         private bool _statusDesejaSairDoCadastro; //Obrigatório
-        public bool StatusDesejaSairDoCadastro
-        {
+        public bool StatusDesejaSairDoCadastro {
             get { return this._statusDesejaSairDoCadastro; }
-            set
-            {
+            set {
                 SetProperty(ref _statusDesejaSairDoCadastro, value);
                 OnPropertyChanged("WantsSairDoCadastro");
             }
         }
-        public bool WantsSairDoCadastro
-        {
-            get
-            {
+        public bool WantsSairDoCadastro {
+            get {
                 return this.StatusDesejaSairDoCadastro;
             }
         }
 
         Models.MotivoSaida _motivoSaida;
-        public Models.MotivoSaida MotivoSaida
-        {
+        public Models.MotivoSaida MotivoSaida {
             get { return this._motivoSaida; }
-            set
-            {
+            set {
                 this.Ficha.MotivoSaidaCidadao = value;
 
                 SetProperty(ref _motivoSaida, value);
                 OnPropertyChanged("IsMotivoObito");
             }
         }
-        public bool IsMotivoObito
-        {
-            get
-            {
+        public bool IsMotivoObito {
+            get {
                 return this.MotivoSaida?.Codigo == 135;
             }
         }
@@ -383,121 +331,97 @@ namespace gvn_ab_mobile.ViewModels
         public ObservableCollection<object> DoencasRespiratoriasSelecionadas { get; } = new ObservableCollection<object>();
 
         private bool _statusEhGestante; //Não Obrigatório
-        public bool StatusEhGestante
-        {
+        public bool StatusEhGestante {
             get { return this._statusEhGestante; }
-            set
-            {
+            set {
                 this.Ficha.StatusEhGestante = value;
 
                 SetProperty(ref _statusEhGestante, value);
                 OnPropertyChanged("IsGestante");
             }
         }
-        public bool IsGestante
-        {
-            get
-            {
+        public bool IsGestante {
+            get {
                 return this.StatusEhGestante;
             }
         }
 
         private bool _statusDoencaCardiaca; //Não Obrigatório
-        public bool StatusDoencaCardiaca
-        {
+        public bool StatusDoencaCardiaca {
             get { return this._statusDoencaCardiaca; }
-            set
-            {
+            set {
                 this.Ficha.StatusTeveDoencaCardiaca = value;
 
                 SetProperty(ref _statusDoencaCardiaca, value);
                 OnPropertyChanged("HasDoencaCardiaca");
             }
         }
-        public bool HasDoencaCardiaca
-        {
-            get
-            {
+        public bool HasDoencaCardiaca {
+            get {
                 return this.StatusDoencaCardiaca;
             }
         }
 
         private bool _statusDoencaRins; //Não Obrigatório
-        public bool StatusDoencaRins
-        {
+        public bool StatusDoencaRins {
             get { return this._statusDoencaRins; }
-            set
-            {
+            set {
                 this.Ficha.StatusTemTeveDoencasRins = value;
 
                 SetProperty(ref _statusDoencaRins, value);
                 OnPropertyChanged("HasDoencaRins");
             }
         }
-        public bool HasDoencaRins
-        {
-            get
-            {
+        public bool HasDoencaRins {
+            get {
                 return this.StatusDoencaRins;
             }
         }
 
         private bool _statusDoencaRespiratoria; //Não Obrigatório
-        public bool StatusDoencaRespiratoria
-        {
+        public bool StatusDoencaRespiratoria {
             get { return this._statusDoencaRespiratoria; }
-            set
-            {
+            set {
                 this.Ficha.StatusTemDoencaRespiratoria = value;
 
                 SetProperty(ref _statusDoencaRespiratoria, value);
                 OnPropertyChanged("HasDoencaRespiratoria");
             }
         }
-        public bool HasDoencaRespiratoria
-        {
-            get
-            {
+        public bool HasDoencaRespiratoria {
+            get {
                 return this.StatusDoencaRespiratoria;
             }
         }
 
         private bool _statusTeveInternadoem12Meses; //Não Obrigatório
-        public bool StatusTeveInternadoEm12Meses
-        {
+        public bool StatusTeveInternadoEm12Meses {
             get { return this._statusTeveInternadoem12Meses; }
-            set
-            {
+            set {
                 this.Ficha.StatusTeveInternadoem12Meses = value;
 
                 SetProperty(ref _statusTeveInternadoem12Meses, value);
                 OnPropertyChanged("HasInternacaoEm12Meses");
             }
         }
-        public bool HasInternacaoEm12Meses
-        {
-            get
-            {
+        public bool HasInternacaoEm12Meses {
+            get {
                 return this.StatusTeveInternadoEm12Meses;
             }
         }
 
         private bool _statusUsaPlantasMedicinais; //Não Obrigatório
-        public bool StatusUsaPlantasMedicinais
-        {
+        public bool StatusUsaPlantasMedicinais {
             get { return this._statusUsaPlantasMedicinais; }
-            set
-            {
+            set {
                 this.Ficha.StatusUsaPlantasMedicinais = value;
 
                 SetProperty(ref _statusUsaPlantasMedicinais, value);
                 OnPropertyChanged("UsesPlantasMedicinais");
             }
         }
-        public bool UsesPlantasMedicinais
-        {
-            get
-            {
+        public bool UsesPlantasMedicinais {
+            get {
                 return this.StatusUsaPlantasMedicinais;
             }
         }
@@ -508,68 +432,55 @@ namespace gvn_ab_mobile.ViewModels
         public ObservableRangeCollection<Models.QuantasVezesAlimentacao> QuantasVezesAlimentacao { get; set; }
 
         private bool _statusSituacaoRua; //Obrigatório
-        public bool StatusSituacaoRua
-        {
+        public bool StatusSituacaoRua {
             get { return this._statusSituacaoRua; }
-            set
-            {
+            set {
                 this.Ficha.StatusSituacaoRua = value;
 
                 SetProperty(ref _statusSituacaoRua, value);
                 OnPropertyChanged("IsSituacaoRua");
             }
         }
-        public bool IsSituacaoRua
-        {
-            get
-            {
+        public bool IsSituacaoRua {
+            get {
                 return this.StatusSituacaoRua;
             }
         }
 
         private bool _statusAcompanhadoPorOutraInstituicao; //Não Obrigatório
-        public bool StatusAcompanhadoPorOutraInstituicao
-        {
+        public bool StatusAcompanhadoPorOutraInstituicao {
             get { return this._statusAcompanhadoPorOutraInstituicao; }
-            set
-            {
+            set {
                 this.Ficha.StatusAcompanhadoPorOutraInstituicao = value;
 
                 SetProperty(ref _statusAcompanhadoPorOutraInstituicao, value);
                 OnPropertyChanged("IsAcompanhadoPorOutraInstituicao");
             }
         }
-        public bool IsAcompanhadoPorOutraInstituicao
-        {
-            get
-            {
+        public bool IsAcompanhadoPorOutraInstituicao {
+            get {
                 return this.StatusAcompanhadoPorOutraInstituicao;
             }
         }
 
         private bool _statusVisitaFamiliarFrequentemente; //Não Obrigatório
-        public bool StatusVisitaFamiliarFrequentemente
-        {
+        public bool StatusVisitaFamiliarFrequentemente {
             get { return this._statusVisitaFamiliarFrequentemente; }
-            set
-            {
+            set {
                 this.Ficha.StatusVisitaFamiliarFrequentemente = value;
 
                 SetProperty(ref _statusVisitaFamiliarFrequentemente, value);
                 OnPropertyChanged("VisitsFamiliarFrequentemente");
             }
         }
-        public bool VisitsFamiliarFrequentemente
-        {
-            get
-            {
+        public bool VisitsFamiliarFrequentemente {
+            get {
                 return this.StatusVisitaFamiliarFrequentemente;
             }
         }
 
         private bool _statusTemAcessoHigienePessoalSituacaoRua; //Não Obrigatório
-        public bool StatusTemAcessoHigienePessoalSituacaoRua
-        {
+        public bool StatusTemAcessoHigienePessoalSituacaoRua {
             get { return this._statusTemAcessoHigienePessoalSituacaoRua; }
             set {
                 this.Ficha.StatusTemAcessoHigienePessoalSituacaoRua = value;
@@ -578,10 +489,8 @@ namespace gvn_ab_mobile.ViewModels
                 OnPropertyChanged("HasAcessoHigienePessoalSituacaoRua");
             }
         }
-        public bool HasAcessoHigienePessoalSituacaoRua
-        {
-            get
-            {
+        public bool HasAcessoHigienePessoalSituacaoRua {
+            get {
                 return this.StatusTemAcessoHigienePessoalSituacaoRua;
             }
         }
@@ -595,8 +504,7 @@ namespace gvn_ab_mobile.ViewModels
         }*/
 
 
-        public FichaCadastroIndividualViewModel(Page page)
-        {
+        public FichaCadastroIndividualViewModel(Page page) {
             this.Ficha = new Models.FichaCadastroIndividual();
             this.Page = page;
 
@@ -631,33 +539,23 @@ namespace gvn_ab_mobile.ViewModels
             this.QuantasVezesAlimentacao = new ObservableRangeCollection<Models.QuantasVezesAlimentacao>(new DAO.DAOQuantasVezesAlimentacao().Select());
         }
 
-        private async System.Threading.Tasks.Task ConcordarExecuteAsync()
-        {
+        private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
             await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
         }
 
-        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync()
-        {
+        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
             await this.Page.DisplayAlert("Fazer assinatura do cidadão", "", "Ok");
         }
 
-        private async System.Threading.Tasks.Task ContinuarExecuteAsync()
-        {
+        private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
             var CurrentPage = this.Page.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
-            if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2)
-            {
+            if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3)
-            {
+            } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4)
-            {
+            } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5)
-            {
+            } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
             };
         }
