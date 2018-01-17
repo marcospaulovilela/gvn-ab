@@ -49,8 +49,14 @@
     <Compile Include="Behaviors\ValidatorEntryBehavior.cs" />
     <Compile Include="Behaviors\Validators.cs" />
     <Compile Include="Config\ISQLiteConfig.cs" />
+    <Compile Include="Controls\PickerSearch.xaml.cs">
+      <DependentUpon>PickerSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SelectMultipleItems.xaml.cs">
       <DependentUpon>SelectMultipleItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PickerSearchPopUp.xaml.cs">
+      <DependentUpon>PickerSearchPopUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SelectMultipleItemsPopUp.xaml.cs">
       <DependentUpon>SelectMultipleItemsPopUp.xaml</DependentUpon>
@@ -407,6 +413,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\SelectMultipleItemsPopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\PickerSearch.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\PickerSearchPopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

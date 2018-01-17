@@ -14,6 +14,7 @@ namespace gvn_ab_mobile.Controls {
             InitializeComponent();
 
             this.BindingContext = viewModel;
+            this.CloseWhenBackgroundIsClicked = false;
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
