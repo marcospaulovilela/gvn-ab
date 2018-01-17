@@ -3,37 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gvn_ab_mobile.Controls.SelectMultipleItems">
     <ContentView.Content>
-
-        <StackLayout HorizontalOptions="FillAndExpand">
-            <StackLayout  HorizontalOptions="Fill" IsVisible="{Binding IsBusy}">
-                <ListView x:Name="ListViewBugado" ItemsSource="{Binding ItemsForListView}" ItemSelected="ListView_ItemSelected" VerticalOptions="Center">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid BackgroundColor="{Binding BackgroundColor}"> 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout VerticalOptions="CenterAndExpand">
-                                        <Label Text="{Binding toString}"  />
-                                    </StackLayout>
-                                    <Switch IsToggled="{Binding IsSelected}" Grid.Column="1" VerticalOptions="Center" />
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <ListView.Footer>
-                        <StackLayout>
-                            <Button Text="Terminar seleção" Command="{Binding Finalizar}" BackgroundColor="#003264" BorderColor="Red" BorderRadius="100" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
-                        </StackLayout>
-                    </ListView.Footer>
-                </ListView>
-            </StackLayout>
-
-            <StackLayout x:Name="LabelItems" HeightRequest="30">
-                <Label BackgroundColor="Transparent" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" TextColor="Gray" Text="{Binding Title}" />
-            </StackLayout>
+        <StackLayout x:Name="LabelItems" HeightRequest="30">
+            <Label BackgroundColor="Transparent" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" TextColor="Gray" Text="{Binding Title}" />
         </StackLayout>
     </ContentView.Content>
 </ContentView>
