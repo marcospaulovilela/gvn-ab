@@ -59,6 +59,7 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAOQuantasVezesAlimentacao DAOQuantasVezesAlimentacao = new DAO.DAOQuantasVezesAlimentacao()) { DAOQuantasVezesAlimentacao.CreateTable();  }
             using (DAO.DAOOrigemAlimentacao DAOOrigemAlimentacao = new DAO.DAOOrigemAlimentacao()) { DAOOrigemAlimentacao.CreateTable(); }
             using (DAO.DAOTempoSituacaoDeRua DAOTempoSituacaoDeRua = new DAO.DAOTempoSituacaoDeRua()) { DAOTempoSituacaoDeRua.CreateTable(); }
+            using (DAO.DAOMunicipios DAOMunicipios = new DAO.DAOMunicipios()) { DAOMunicipios.CreateTable(); }
 
             using (DAO.DAOTurno DAOTurno = new DAO.DAOTurno()) { DAOTurno.CreateTable(); }
             using (DAO.DAOLocalDeAtendimento DAOLocalAtendimento = new DAO.DAOLocalDeAtendimento()) { DAOLocalAtendimento.CreateTable(); }

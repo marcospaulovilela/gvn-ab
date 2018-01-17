@@ -45,6 +45,7 @@
     <Compile Include="Behaviors\Validator.cs" />
     <Compile Include="Behaviors\ButtonSubmitBehavior.cs" />
     <Compile Include="Behaviors\ValidatorDatepickerBehavior.cs" />
+    <Compile Include="Behaviors\ValidatorPickerSearchBehavior.cs" />
     <Compile Include="Behaviors\ValidatorSelectMultipleItems .cs" />
     <Compile Include="Behaviors\ValidatorPickerBehavior.cs" />
     <Compile Include="Behaviors\ValidatorEntryBehavior.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Models\EntidadeEncaminhamento.cs" />
     <Compile Include="Models\EntidadeEnumerador.cs" />
     <Compile Include="Models\EntidadeExames.cs" />
+    <Compile Include="Models\EntidadeMunicipios.cs" />
     <Compile Include="Models\Enumeradores.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Ocupacao.cs" />

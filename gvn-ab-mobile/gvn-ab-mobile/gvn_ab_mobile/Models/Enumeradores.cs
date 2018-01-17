@@ -111,6 +111,12 @@ namespace gvn_ab_mobile.Models {
         public TempoSituacaoDeRua(string descricao) : base(descricao) { }
     }
 
+    public class Municipios : Models.EntidadeMunicipios
+    {
+        public Municipios() { }
+        public Municipios(string descricao, string siglaUF) : base(descricao, siglaUF) { }
+    }
+
     //
 
     //Ficha Cadastro Domiciliar e Territorial

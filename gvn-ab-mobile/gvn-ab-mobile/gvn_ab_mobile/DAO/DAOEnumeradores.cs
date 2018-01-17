@@ -818,6 +818,28 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
+    class DAOMunicipios : DAO<Models.Municipios>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.Municipios>() {
+                new Models.Municipios("ABADIA DE GOIÁS", "GO") { Codigo = 5200050 },
+                new Models.Municipios("ABADIA DOS DOURADOS", "MG") { Codigo = 3100104 },
+                new Models.Municipios("ABADIÂNIA", "GO") { Codigo = 5200100 },
+                new Models.Municipios("ABAETÉ", "MG") { Codigo = 3100203 },
+                new Models.Municipios("ABAETETUBA", "PA") { Codigo = 1500107 },
+                new Models.Municipios("ABAIARA", "CE") { Codigo = 2300101 },
+                new Models.Municipios("ABAÍRA", "BA") { Codigo = 2900108 },
+                new Models.Municipios("ABARÉ", "BA") { Codigo = 2900207 },
+                new Models.Municipios("ABATIÁ", "PR") { Codigo = 4100103 },
+                new Models.Municipios("ABDON BATISTA", "SC") { Codigo = 4200051 },
+            });
+        }
+    }
+
     //Ficha Cadastro Domiciliar e Territorial
 
     class DAOUF : DAO<Models.UF>

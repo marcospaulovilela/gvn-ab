@@ -452,13 +452,13 @@ namespace gvn_ab_mobile.Models {
         }
 
 
-        private string _codigoIbgeMunicipioNascimento;
+        private Models.Municipios _codigoIbgeMunicipioNascimento;
         /// <summary>
         /// Código IBGE do município.
         /// Só pode ser preenchido se o campo nacionalidadeCidadao = 1 (Brasileiro). Neste caso é de preenchimento obrigatório.
         /// </summary>
         [MaxLength(7)] 
-        public string CodigoIbgeMunicipioNascimento {
+        public Models.Municipios CodigoIbgeMunicipioNascimento {
             get { return this._codigoIbgeMunicipioNascimento; }
             set { SetProperty(ref _codigoIbgeMunicipioNascimento, value); }
         }

@@ -11,10 +11,7 @@
                 <StackLayout Orientation="Horizontal" IsVisible="{Binding IsResponsavel}">
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Relação de Parentesco com o Responsável Familiar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodRelacaoParentesco" ItemsSource="{Binding RelacoesParentesco}" SelectedItem="{Binding RelacaoParentesco}" Title="Relação Parentesco" TextColor="Gray" HorizontalOptions="FillAndExpand">
-                            <Picker.Behaviors>
-                                <behaviors:ValidatorPickerBehavior />
-                            </Picker.Behaviors>
+                        <Picker x:Name="CodRelacaoParentesco" ItemsSource="{Binding RelacoesParentesco}" SelectedItem="{Binding RelacaoParentescoCidadao}" Title="Relação Parentesco" TextColor="Gray" HorizontalOptions="FillAndExpand">
                         </Picker>
                     </StackLayout>
                 </StackLayout>
@@ -47,13 +44,11 @@
 
                 <StackLayout>
                     <Label Text="Crianças de 0 a 9 anos, com quem fica?:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodResponsavelCrianca" ItemsSource="{Binding ResponsaveisCriancas}" SelectedItem="{Binding ResponsavelCrianca}" Title="Responsável Criança" TextColor="Gray" HorizontalOptions="FillAndExpand">
-                        <controls:SelectMultipleItems x:Name="CodResponsavelPorCrianca" Placeholder="Responsável por crianças de até 9 anos"  Items="{Binding ResponsavelCrianca}" SelectedItems="{Binding ResponsaveisCriancasSelecionadas}"  >
-                            <controls:SelectMultipleItems.Behaviors>
-                                <behaviors:ValidatorSelectMultipleItems />
-                            </controls:SelectMultipleItems.Behaviors>
-                        </controls:SelectMultipleItems>
-                    </Picker>
+                    <controls:SelectMultipleItems x:Name="CodResponsavelPorCrianca" Placeholder="Responsável por crianças de até 9 anos"  Items="{Binding ResponsaveisCriancas}" SelectedItems="{Binding ResponsaveisCriancasSelecionadas}"  >
+                        <controls:SelectMultipleItems.Behaviors>
+                            <behaviors:ValidatorSelectMultipleItems />
+                        </controls:SelectMultipleItems.Behaviors>
+                    </controls:SelectMultipleItems>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">

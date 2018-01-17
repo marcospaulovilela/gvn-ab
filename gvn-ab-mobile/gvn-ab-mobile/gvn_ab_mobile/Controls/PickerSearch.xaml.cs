@@ -48,6 +48,7 @@ namespace gvn_ab_mobile.Controls {
         public async Task FinalizarAsync(object selectedItem) {
             this.Control.SelectedItem = selectedItem;
             this.Title = this.Control.SelectedItem?.ToString() ?? "Selecione ...";
+            this.Control.InvokeEvenHandler();
 
             await PopupNavigation.PopAsync();
         }
