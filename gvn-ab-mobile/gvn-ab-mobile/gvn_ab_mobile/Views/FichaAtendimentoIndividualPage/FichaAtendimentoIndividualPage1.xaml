@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              x:Class="gvn_ab_mobile.Views.FichaAtendimentoIndividualPage.FichaAtendimentoIndividualPage1"
              Title="Ficha de Atendimento Individual">
     <ContentPage.Content>
@@ -8,15 +9,27 @@
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
 
-                    <StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Número Prontuário:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Num Prontuário" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Num Prontuário" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NumeroProntuario}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="30" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+
                     <?SelectBox?>
-                    <StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Turno:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Entry Placeholder="Turno" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Picker x:Name="CodTurno" ItemsSource="{Binding Turnos}" SelectedItem="{Binding Turno}" HorizontalOptions="FillAndExpand" Title="Turno" Scale="1">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
 
                 </StackLayout>
@@ -25,7 +38,11 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="CNS do Cidadão:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="CNS Cidadão" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="CNS Cidadão" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cns}">
+                            <Entry.Behaviors>
+                                <behaviors:ValidatorCns />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                 </StackLayout>
@@ -33,9 +50,13 @@
                 <StackLayout Orientation="Horizontal">
 
                     <?SelectBox?>
-                    <StackLayout HorizontalOptions="Fill">
+                    <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Sexo:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Sexo" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Picker x:Name="CodSexo" ItemsSource="{Binding Sexos}" SelectedItem="{Binding Sexo}" HorizontalOptions="FillAndExpand" Title="Sexo" Scale="1">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
 
                 </StackLayout>
@@ -44,7 +65,11 @@
 
                     <StackLayout HorizontalOptions="Fill">
                         <Label Text="Data de Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <DatePicker />
+                        <DatePicker Date="{Binding Ficha.DataNascimento}" >
+                            <DatePicker.Behaviors>
+                                <behaviors:ValidatorDatepickerBehavior />
+                            </DatePicker.Behaviors>
+                        </DatePicker>
                     </StackLayout>
 
                 </StackLayout>

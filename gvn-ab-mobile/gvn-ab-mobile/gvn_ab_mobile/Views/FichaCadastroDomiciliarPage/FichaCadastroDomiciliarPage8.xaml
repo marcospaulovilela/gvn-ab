@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              x:Class="gvn_ab_mobile.Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8"
              Title="Identificação do Responsável Técnico da Instituição de Permanência">
     <ContentPage.Content>
@@ -11,12 +12,20 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Nome:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Nome" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Nome" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
+                            <Entry.Behaviors>
+                                <behaviors:EntryNomeBehavior Required="true" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="CNS do Responsável:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="CNS" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="CNS" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
+                            <Entry.Behaviors>
+                                <behaviors:ValidatorCns />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                 </StackLayout>
@@ -25,12 +34,20 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Cargo na Instituição:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Cargo" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Cargo" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="100" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Telefone de Contato:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Telefone" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Telefone" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MinLength="10"  MaxLength="11" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                 </StackLayout>

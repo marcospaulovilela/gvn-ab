@@ -40,7 +40,7 @@
                         <Label Text="Microárea:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Start" TextColor="Black" />
                         <Entry Text="{Binding Ficha.Microarea}" Placeholder="Microárea" IsEnabled="{Binding IsForaArea}" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black">
                             <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="2" />
+                                <behaviors:EntryLengthBehavior MinLength="2"  MaxLength="2" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>

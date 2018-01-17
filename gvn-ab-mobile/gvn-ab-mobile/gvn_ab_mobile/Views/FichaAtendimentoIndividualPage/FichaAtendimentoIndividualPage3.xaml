@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
+             xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
              x:Class="gvn_ab_mobile.Views.FichaAtendimentoIndividualPage.FichaAtendimentoIndividualPage3"
              Title="Problema/Condição Avaliada">
     <ContentPage.Content>
@@ -8,112 +10,12 @@
             <StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Asma:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Desnutrição:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Diabetes:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="DPOC:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Hipertensão Arterial:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Obesidade:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Pré-Natal:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Puericultura:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Puerpério (até 42 dias):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Saúde Sexual e Reprodutiva:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tabagismo:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Usuário de Álcool:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Usuário de Outras Drogas:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-                
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Saúde Mental:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Reabilitação:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tuberculose:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Hanseníase:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Dengue:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="DST:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Câncer do Colo do Útero:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Câncer de Mama:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
-                </StackLayout>
-                
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Risco Cardiovascular:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" ></Switch>
+                    <Label Text="Condições Avaliadas:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <controls:SelectMultipleItems x:Name="CodCondicoesAvaliadas" Items="{Binding ListaCiapCondicoesAvaliadas}" SelectedItems="{Binding CondicoesSelecionadas}"  >
+                        <controls:SelectMultipleItems.Behaviors>
+                            <behaviors:ValidatorSelectMultipleItems />
+                        </controls:SelectMultipleItems.Behaviors>
+                    </controls:SelectMultipleItems>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">

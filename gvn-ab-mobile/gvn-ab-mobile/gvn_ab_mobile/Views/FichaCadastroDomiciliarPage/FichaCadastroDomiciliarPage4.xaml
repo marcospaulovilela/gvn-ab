@@ -36,7 +36,11 @@
 
                     <StackLayout IsVisible="{Binding HasAnimais}">
                         <Label Text="Quantos?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Num Animais" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.QuantosAnimaisNoDomicilio}"/>
+                        <Entry Placeholder="Num Animais" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.QuantosAnimaisNoDomicilio}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="2" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                 </StackLayout>

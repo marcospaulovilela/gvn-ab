@@ -358,12 +358,12 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _outraInstituicaoQueAcompanha, value); }
         }
 
-        private long _quantidadeAlimentacoesAoDiaSituacaoRua;
+        private Models.QuantasVezesAlimentacao _quantidadeAlimentacoesAoDiaSituacaoRua;
         /// <summary>
         /// Código da quantidade de vezes que o cidadão se alimenta por dia.
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
-        public long QuantidadeAlimentacoesAoDiaSituacaoRua {
+        public Models.QuantasVezesAlimentacao QuantidadeAlimentacoesAoDiaSituacaoRua {
             get { return this._quantidadeAlimentacoesAoDiaSituacaoRua; }
             set { SetProperty(ref _quantidadeAlimentacoesAoDiaSituacaoRua, value); }
         }
@@ -428,12 +428,12 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _statusVisitaFamiliarFrequentemente, value); }
         }
 
-        private long _tempoSituacaoRua;
+        private Models.TempoSituacaoDeRua _tempoSituacaoRua;
         /// <summary>
         /// Código do tempo que o cidadão está em situação de rua.
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
-        public long TempoSituacaoRua {
+        public Models.TempoSituacaoDeRua TempoSituacaoRua {
             get { return this._tempoSituacaoRua; }
             set { SetProperty(ref _tempoSituacaoRua, value); }
         }

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              x:Class="gvn_ab_mobile.Views.FichaAtendimentoIndividualPage.FichaAtendimentoIndividualPage2"
              Title="Atendimento Cidadão">
     <ContentPage.Content>
@@ -11,13 +12,21 @@
                     <?SelectBox?>
                     <StackLayout>
                         <Label Text="Local de Atendimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Local" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Picker x:Name="CodLocalAtendimento" ItemsSource="{Binding LocaisAtendimentos}" SelectedItem="{Binding LocalAtendimento}" HorizontalOptions="FillAndExpand" Title="Local Atendimento" Scale="1">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
 
                     <?SelectBox?>
                     <StackLayout>
                         <Label Text="Tipo de Atendimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Tipo" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Picker x:Name="CodTipoAtendimento" ItemsSource="{Binding TiposAtendimentos}" SelectedItem="{Binding TipoAtendimento}" HorizontalOptions="FillAndExpand" Title="Tipo Atendimento" Scale="1">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
 
                 </StackLayout>
@@ -27,13 +36,15 @@
                     <?SelectBox?>
                     <StackLayout>
                         <Label Text="Atenção Domiciliar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Atenção" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Picker x:Name="CodModalidadeAD" ItemsSource="{Binding ModalidadesAD}" SelectedItem="{Binding ModalidadeAD}" HorizontalOptions="FillAndExpand" Title="Modalidade AD" Scale="1">
+                        </Picker>
                     </StackLayout>
 
                     <?SelectBox?>
                     <StackLayout>
                         <Label Text="Racionalidade em Saúde:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Racionalidade em Saúde" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Picker x:Name="CodRacionalidadeSaude" ItemsSource="{Binding RacinalidadesSaude}" SelectedItem="{Binding RacionalidadeSaude}" HorizontalOptions="FillAndExpand" Title="Racionalidade Saúde" Scale="1">
+                        </Picker>
                     </StackLayout>
 
                 </StackLayout>
@@ -42,17 +53,21 @@
 
                     <StackLayout>
                         <Label Text="Perímetro Cefálico (cm):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Perímetro" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Perímetro" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.PerimetroCefalico}">
+                        <Entry.Behaviors>
+                            <behaviors:EntryDoubleBehavior />
+                        </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout>
                         <Label Text="Peso (kg):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Peso" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Peso" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.PesoAcompanhamentoNutricional}"/>
                     </StackLayout>
 
                     <StackLayout>
                         <Label Text="Altura (cm):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Altura" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Altura" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.AlturaAcompanhamentoNutricional}"/>
                     </StackLayout>
 
                 </StackLayout>
@@ -61,7 +76,7 @@
 
                     <StackLayout>
                         <Label Text="Vacinação em Dia?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Switch HorizontalOptions="Start" />
+                        <Switch IsToggled="{Binding Ficha.VacinaEmDia}" HorizontalOptions="Start" />
                     </StackLayout>
 
                 </StackLayout>
@@ -69,37 +84,46 @@
                 <StackLayout Orientation="Horizontal">
 
                     <?SelectBox?>
-                    <StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="CRIANÇA - Aleitamento Materno" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Aleitamento Materno" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Picker x:Name="CodAleitamentoMaterno" ItemsSource="{Binding AleitamentosMaternos}" SelectedItem="{Binding AleitamentoMaterno}" HorizontalOptions="FillAndExpand" Title="Aleitamento Materno" Scale="1">
+                        </Picker>
                     </StackLayout>
 
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" IsVisible="{Binding IsMulher}">
 
                     <StackLayout>
                         <Label Text="GESTANTE - Data DUM" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <DatePicker />
+                        <DatePicker Date="{Binding Ficha.DumDaGestante}"/>
                     </StackLayout>
 
                     <StackLayout>
                         <Label Text="Gravidez Planejada?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Switch HorizontalOptions="Center" />
+                        <Switch IsToggled="{Binding Ficha.StGravidezPlanejada}" HorizontalOptions="Center" />
                     </StackLayout>
 
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" IsVisible="{Binding IsMulher}">
 
                     <StackLayout>
                         <Label Text="Idade Gestacional (semanas)" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Idade Gestacional" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Idade Gestacional" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.IdadeGestacional}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="2" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout>
                         <Label Text="Gestas Prévias/Partos" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Gestas Prévias" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Gestas Prévias" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuGravidezPrevias}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="2" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                 </StackLayout>

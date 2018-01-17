@@ -13,15 +13,23 @@
                         <Label Text="Município:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Entry Placeholder="Município" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
                     </StackLayout>
-                    
+
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="CEP:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Entry Placeholder="CEP" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }"/>
+                        <Entry Placeholder="CEP" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="2" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="UF:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="UF" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Picker x:Name="CodUF" ItemsSource="{Binding Ufs}" SelectedItem="{Binding NumeroDneUf}" HorizontalOptions="FillAndExpand" Title="Sexo" Scale="1">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
                     
                 </StackLayout>
@@ -30,7 +38,12 @@
 
                     <StackLayout>
                         <Label Text="Bairro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Bairro" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Bairro}"/>
+                        <Entry Placeholder="Bairro" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Bairro}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="72"/>
+                                <behaviors:EntryNomeBehavior Required="true" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout>
@@ -44,7 +57,12 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand" >
                         <Label Text="Nome do Logradouro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Nome do Logradouro" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeLogradouro}"/>
+                        <Entry Placeholder="Nome do Logradouro" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeLogradouro}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="72"/>
+                                <behaviors:EntryNomeBehavior Required="true" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
                     
                 </StackLayout>
@@ -67,12 +85,20 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Complemento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Complemento" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Complemento}"/>
+                        <Entry Placeholder="Complemento" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Complemento}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="30"/>
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="PTO.Referência:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Pto.Referência" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.PontoReferencia}"/>
+                        <Entry Placeholder="Pto.Referência" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.PontoReferencia}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="40"/>
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                 </StackLayout>
@@ -81,7 +107,11 @@
 
                     <StackLayout IsVisible="{Binding IsForaArea}">
                         <Label Text="Microárea:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Microárea" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Microarea}"/>
+                        <Entry Placeholder="Microárea" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Microarea}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MinLength="2"  MaxLength="2" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout>
@@ -108,12 +138,20 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Telefone Residência:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Tel. Residência" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneResidencia}"/>
+                        <Entry Placeholder="Tel. Residência" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneResidencia}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MinLength="10"  MaxLength="11" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Telefone Contato:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Tel. Contato" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneContato}"/>
+                        <Entry Placeholder="Tel. Contato" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneContato}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MinLength="10"  MaxLength="11" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                 </StackLayout>

@@ -12,7 +12,11 @@
 
                     <StackLayout>
                         <Label Text="Número Prontuário Familiar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Num Prontuário" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Num Prontuário" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="30" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                 </StackLayout>
@@ -21,7 +25,11 @@
 
                     <StackLayout>
                         <Label Text="CNS do Responsável:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Entry Placeholder="CNS do Responsável" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="CNS do Responsável" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
+                            <Entry.Behaviors>
+                                <behaviors:ValidatorCns />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout>
@@ -35,7 +43,11 @@
 
                     <StackLayout>
                         <Label Text="Número de Membros da Família:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Num membros família" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Num membros família" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="2" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
                     
                     <?SelectBox?>

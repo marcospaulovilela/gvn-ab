@@ -9,14 +9,18 @@
         <StackLayout Padding="20, 30, 20, 20">
             <ScrollView HorizontalOptions="FillAndExpand" >
                 <StackLayout>
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal" IsVisible="{Binding IsMulher}">
                         <Label Text="Está gestante?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusEhGestante}"></Switch>
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding IsGestante}">
                         <Label Text="Se sim, qual a maternidade de referência?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Maternidade de Referência" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.MaternidadeDeReferencia}"/>
+                        <Entry Placeholder="Maternidade de Referência" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.MaternidadeDeReferencia}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="100" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout>
@@ -123,7 +127,11 @@
 
                     <StackLayout IsVisible="{Binding HasInternacaoEm12Meses}">
                         <Label Text="Se sim, por qual(is) causa(s)?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Causa(s)" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoCausaInternacaoEm12Meses}"/>
+                        <Entry Placeholder="Causa(s)" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoCausaInternacaoEm12Meses}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="100" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">
@@ -148,7 +156,11 @@
 
                     <StackLayout IsVisible="{Binding UsesPlantasMedicinais}">
                         <Label Text="Se sim, qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Plantas Medicinais utilizadas" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoPlantasMedicinaisUsadas}"/>
+                        <Entry Placeholder="Plantas Medicinais utilizadas" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoPlantasMedicinaisUsadas}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="100" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">

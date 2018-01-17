@@ -18,7 +18,7 @@ namespace gvn_ab_mobile.Views.FichaAtendimentoIndividualPage
         public FichaAtendimentoIndividualPage5(ViewModels.FichaAtendimentoIndividualViewModel viewModel)
         {
             InitializeComponent();
-            this.BindingContext = this.viewModel = new ViewModels.FichaAtendimentoIndividualViewModel(this);
+            this.BindingContext = this.viewModel = viewModel;
         }
     }
 }

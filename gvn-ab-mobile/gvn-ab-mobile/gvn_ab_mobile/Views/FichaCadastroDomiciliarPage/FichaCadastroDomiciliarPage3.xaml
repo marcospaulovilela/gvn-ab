@@ -13,7 +13,7 @@
                     <?SelectBox?>
                     <StackLayout IsVisible="{Binding HasTipoDomicilio}">
                         <Label Text="Situação de Moradia/Posse da Terra:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodSituacaoMoradia" ItemsSource="{Binding SituacoesDeMoradia}" SelectedItem="{Binding SituacaoMoradia}" HorizontalOptions="FillAndExpand" Title="Situação Moradia" Scale="1">
+                        <Picker x:Name="CodSituacaoMoradia" ItemsSource="{Binding SituacoesDeMoradia}" SelectedItem="{Binding SituacaoMoradiaPosseTerra}" HorizontalOptions="FillAndExpand" Title="Situação Moradia" Scale="1">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />
                             </Picker.Behaviors>
@@ -46,12 +46,20 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Número de Moradores:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Num Moradores" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuMoradores}"/>
+                        <Entry Placeholder="Num Moradores" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuMoradores}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="4" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Número de Cômodos:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Num Cômodos" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuComodos}"/>
+                        <Entry Placeholder="Num Cômodos" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuComodos}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="2" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                 </StackLayout>
@@ -77,7 +85,7 @@
                     <?SelectBox?>
                     <StackLayout IsVisible="{Binding IsRural}">
                         <Label Text="Em caso de Área de Produção Rural: Condição de Posse e Uso da Terra" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Picker x:Name="CodCondicaoPosseUsoTerra" ItemsSource="{Binding CondicoesPosseUsoTerra}" SelectedItem="{Binding CondicaoPosseUsoTerra}" HorizontalOptions="FillAndExpand" Title="Condição Posse e Uso da Terra" Scale="1">
+                        <Picker x:Name="CodCondicaoPosseUsoTerra" ItemsSource="{Binding CondicoesPosseUsoTerra}" SelectedItem="{Binding AreaProducaoRural}" HorizontalOptions="FillAndExpand" Title="Condição Posse e Uso da Terra" Scale="1">
                         </Picker>
                     </StackLayout>
 
@@ -88,7 +96,7 @@
                     <?SelectBox?>
                     <StackLayout IsVisible="{Binding HasTipoDomicilio}">
                         <Label Text="Material Predominante na Construção das Paredes Externas de seu Domicílio:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Picker x:Name="CodMaterialPredominanteConstrucao" ItemsSource="{Binding MateriaisPredominantesConstrucao}" SelectedItem="{Binding MaterialPredominantesContrucao}" HorizontalOptions="FillAndExpand" Title="Material Predominante Construção" Scale="1">
+                        <Picker x:Name="CodMaterialPredominanteConstrucao" ItemsSource="{Binding MateriaisPredominantesConstrucao}" SelectedItem="{Binding MaterialPredominanteParedesExtDomicilio}" HorizontalOptions="FillAndExpand" Title="Material Predominante Construção" Scale="1">
                         </Picker>
                     </StackLayout>
 
@@ -106,7 +114,7 @@
                     <?SelectBox?>
                     <StackLayout>
                         <Label Text="Água para Consumo no Domicílio:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Picker x:Name="CodAguaConsumoDomicilio" ItemsSource="{Binding AguaConsumoDomicilio}" SelectedItem="{Binding AguaConsumo}" HorizontalOptions="FillAndExpand" Title="Água para Consumo" Scale="1">
+                        <Picker x:Name="CodAguaConsumoDomicilio" ItemsSource="{Binding AguaConsumoDomicilios}" SelectedItem="{Binding AguaConsumoDomicilio}" HorizontalOptions="FillAndExpand" Title="Água para Consumo" Scale="1">
                         </Picker>
                     </StackLayout>
 
@@ -117,7 +125,7 @@
                     <?SelectBox?>
                     <StackLayout>
                         <Label Text="Forma de Escoamento do Banheiro ou Sanitário:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Picker x:Name="CodFormaEscoamentoBanheiroOuSanitario" ItemsSource="{Binding FormasEscoamentoBanheiroOuSanitario}" SelectedItem="{Binding FormaEscoamentoBanheiroOuSanitario}" HorizontalOptions="FillAndExpand" Title="Forma Escoamento" Scale="1">
+                        <Picker x:Name="CodFormaEscoamentoBanheiroOuSanitario" ItemsSource="{Binding FormasEscoamentoBanheiroOuSanitario}" SelectedItem="{Binding FormaEscoamentoBanheiro}" HorizontalOptions="FillAndExpand" Title="Forma Escoamento" Scale="1">
                         </Picker>
                     </StackLayout>
 

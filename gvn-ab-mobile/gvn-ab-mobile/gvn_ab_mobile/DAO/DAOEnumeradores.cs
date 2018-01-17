@@ -802,7 +802,62 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
+    class DAOTempoSituacaoDeRua : DAO<Models.TempoSituacaoDeRua>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.TempoSituacaoDeRua>() {
+                new Models.TempoSituacaoDeRua("Menos de 6 meses") { Codigo = 17 },
+                new Models.TempoSituacaoDeRua("6 a 12 meses") { Codigo = 18 },
+                new Models.TempoSituacaoDeRua("1 a 5 anos") { Codigo = 19 },
+                new Models.TempoSituacaoDeRua("Mais de 5 anos") { Codigo = 20 },
+            });
+        }
+    }
+
     //Ficha Cadastro Domiciliar e Territorial
+
+    class DAOUF : DAO<Models.UF>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.UF>() {
+                  new Models.UF("ACRE") { Codigo = 01 },
+                  new Models.UF("ALAGOAS") { Codigo = 02 },
+                  new Models.UF("AMAPÁ") { Codigo = 03 },
+                  new Models.UF("AMAZONAS") { Codigo = 04 },
+                  new Models.UF("BAHIA") { Codigo = 05 },
+                  new Models.UF("CEARÁ") { Codigo = 06 },
+                  new Models.UF("DISTRITO FEDERAL") { Codigo = 07 },
+                  new Models.UF("ESPIRITO SANTO") { Codigo = 08 },
+                  new Models.UF("GOIÁS") { Codigo = 10 },
+                  new Models.UF("MARANHÃO") { Codigo = 11 },
+                  new Models.UF("MATO GROSSO") { Codigo = 12 },
+                  new Models.UF("MATO GROSSO DO SUL") { Codigo = 13 },
+                  new Models.UF("MINAS GERAIS") { Codigo = 14 },
+                  new Models.UF("PARÁ") { Codigo = 15 },
+                  new Models.UF("PARAÍBA") { Codigo = 16 },
+                  new Models.UF("PARANÁ") { Codigo = 17 },
+                  new Models.UF("PERNAMBUCO") { Codigo = 18 },
+                  new Models.UF("PIAUÍ") { Codigo = 19 },
+                  new Models.UF("RIO DE JANEIRO") { Codigo = 20 },
+                  new Models.UF("RIO GRANDE DO NORTE") { Codigo = 21 },
+                  new Models.UF("RIO GRANDE DO SUL") { Codigo = 22 },
+                  new Models.UF("RONDÔNIA") { Codigo = 23 },
+                  new Models.UF("RORAIMA") { Codigo = 09 },
+                  new Models.UF("SANTA CATARINA") { Codigo = 25 },
+                  new Models.UF("SÃO PAULO") { Codigo = 26 },
+                  new Models.UF("SERGIPE") { Codigo = 27 },
+                  new Models.UF("TOCANTINS") { Codigo = 24 },
+            });
+        }
+    }
 
     class DAOTipoDeLogradouro : DAO<Models.TipoDeLogradouro>
     {
@@ -1411,6 +1466,40 @@ namespace gvn_ab_mobile.DAO {
                   new Models.OrigemAlimentacao("Doação restaurante") { Codigo = 39 },
                   new Models.OrigemAlimentacao("Doação popular") { Codigo = 40 },
                   new Models.OrigemAlimentacao("Outros") { Codigo = 41 }
+            });
+        }
+    }
+
+    class DAOListaCiapCondicaoAvaliada : DAO<Models.ListaCiapCondicaoAvaliada>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.ListaCiapCondicaoAvaliada>() {
+                  new Models.ListaCiapCondicaoAvaliada("Asma", "R96") { CodigoAB = "ABP009" },
+                  new Models.ListaCiapCondicaoAvaliada("Dengue", "A77") { CodigoAB = "ABP019" },
+                  new Models.ListaCiapCondicaoAvaliada("Desnutrição", "T91") { CodigoAB = "ABP008" },
+                  new Models.ListaCiapCondicaoAvaliada("Diabetes", "T90") { CodigoAB = "ABP006" },
+                  new Models.ListaCiapCondicaoAvaliada("DPOC", "R95") { CodigoAB = "ABP010" },
+                  new Models.ListaCiapCondicaoAvaliada("DST", "A78") { CodigoAB = "ABP020" },
+                  new Models.ListaCiapCondicaoAvaliada("Hanseníase", "A78") { CodigoAB = "ABP018" },
+                  new Models.ListaCiapCondicaoAvaliada("Hipertensão Arterial", "K86") { CodigoAB = "ABP005" },
+                  new Models.ListaCiapCondicaoAvaliada("Obesidade", "T82") { CodigoAB = "ABP007" },
+                  new Models.ListaCiapCondicaoAvaliada("Pré-natal", "W78") { CodigoAB = "ABP001" },
+                  new Models.ListaCiapCondicaoAvaliada("Puericultura", "A98") { CodigoAB = "ABP004" },
+                  new Models.ListaCiapCondicaoAvaliada("Puerpério (até 42 dias)", "W18") { CodigoAB = "ABP002" },
+                  new Models.ListaCiapCondicaoAvaliada("Rastreamento de Câncer de mama", "Não possui") { CodigoAB = "ABP023" },
+                  new Models.ListaCiapCondicaoAvaliada("Rastreamento de Câncer do colo do útero", "Não possui") { CodigoAB = "ABP022" },
+                  new Models.ListaCiapCondicaoAvaliada("Rastreamento de Risco cardiovascular", "K22") { CodigoAB = "ABP024" },
+                  new Models.ListaCiapCondicaoAvaliada("Reabilitação", "A57") { CodigoAB = "ABP015" },
+                  new Models.ListaCiapCondicaoAvaliada("Saúde Mental", "Não possui") { CodigoAB = "ABP014" },
+                  new Models.ListaCiapCondicaoAvaliada("Saúde Sexual e Reprodutiva", "Não possui") { CodigoAB = "ABP003" },
+                  new Models.ListaCiapCondicaoAvaliada("Tabagismo", "P17") { CodigoAB = "ABP011" },
+                  new Models.ListaCiapCondicaoAvaliada("Tuberculose", "A70") { CodigoAB = "ABP017" },
+                  new Models.ListaCiapCondicaoAvaliada("Usuário de álcool", "P16") { CodigoAB = "ABP012" },
+                  new Models.ListaCiapCondicaoAvaliada("Usuário de outras drogas", "P19") { CodigoAB = "ABP013" },
             });
         }
     }
