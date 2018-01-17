@@ -78,7 +78,9 @@
     <Compile Include="Models\CadastroDomiciliarTerritorial\FichaFamilia.cs" />
     <Compile Include="Models\AtendimentoIndividual\FichaOutrosSia.cs" />
     <Compile Include="Models\EntidadeCondicaoAvaliada.cs" />
+    <Compile Include="Models\EntidadeEncaminhamento.cs" />
     <Compile Include="Models\EntidadeEnumerador.cs" />
+    <Compile Include="Models\EntidadeExames.cs" />
     <Compile Include="Models\Enumeradores.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Ocupacao.cs" />

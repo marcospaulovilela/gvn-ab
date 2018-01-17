@@ -250,10 +250,29 @@ namespace gvn_ab_mobile.Models {
         public OrigemAlimentacao(string descricao) : base(descricao) { }
     }
 
+    public class Nasfs : Models.EntidadeEnumerador
+    {
+        public Nasfs() { }
+        public Nasfs(string descricao) : base(descricao) { }
+    }
+
     public class ListaCiapCondicaoAvaliada : Models.EntidadeCondicaoAvaliada
     {
         public ListaCiapCondicaoAvaliada() { }
         public ListaCiapCondicaoAvaliada(string descricaoAB, string ciap2Relacionada) : base(descricaoAB, ciap2Relacionada) { }
+    }
+
+    public class ListaExames : Models.EntidadeExames
+    {
+        public ListaExames() { }
+        public ListaExames(string descricaoAB, string codigoSIGTAP) : base(descricaoAB, codigoSIGTAP) { }
+    }
+
+    public class CondutaEncaminhamento : Models.EntidadeEncaminhamento
+    {
+        public CondutaEncaminhamento() { }
+        public CondutaEncaminhamento(string descricao) : base(descricao) { }
+        public CondutaEncaminhamento(string descricao, string observacao) : base(descricao, observacao) { }
     }
 
     //

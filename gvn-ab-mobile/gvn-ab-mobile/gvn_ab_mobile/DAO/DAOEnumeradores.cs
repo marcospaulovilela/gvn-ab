@@ -1470,6 +1470,45 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
+    class DAONasfs : DAO<Models.Nasfs>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.Nasfs>() {
+                  new Models.Nasfs("Avaliação / Diagnóstico") { Codigo = 1 },
+                  new Models.Nasfs("Procedimentos clínicos terapêuticos") { Codigo = 2 },
+                  new Models.Nasfs("Prescrição terapêutica") { Codigo = 3 },
+            });
+        }
+    }
+
+    class DAOCondutaEncaminhamento : DAO<Models.CondutaEncaminhamento>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.CondutaEncaminhamento>() {
+                  new Models.CondutaEncaminhamento("Retorno para consulta agendada") { Codigo = 1 },
+                  new Models.CondutaEncaminhamento("Retorno para cuidado continuado / programado") { Codigo = 2 },
+                  new Models.CondutaEncaminhamento("Agendamento para grupos") { Codigo = 12 },
+                  new Models.CondutaEncaminhamento("Agendamento para NASF") { Codigo = 3 },
+                  new Models.CondutaEncaminhamento("Alta do episódio") { Codigo = 9 },
+                  new Models.CondutaEncaminhamento("Encaminhamento interno no dia", "#ENCAMINHAMENTO") { Codigo = 11 },
+                  new Models.CondutaEncaminhamento("Encaminhamento para serviço especializado") { Codigo = 4 },
+                  new Models.CondutaEncaminhamento("Encaminhamento para CAPS") { Codigo = 5 },
+                  new Models.CondutaEncaminhamento("Encaminhamento para internação hospitalar") { Codigo = 6 },
+                  new Models.CondutaEncaminhamento("Encaminhamento para urgência") { Codigo = 7 },
+                  new Models.CondutaEncaminhamento("Encaminhamento para serviço de atenção domiciliar") { Codigo = 8 },
+                  new Models.CondutaEncaminhamento("Encaminhamento intersetorial") { Codigo = 10 },
+            });
+        }
+    }
+
     class DAOListaCiapCondicaoAvaliada : DAO<Models.ListaCiapCondicaoAvaliada>
     {
         public override int? CreateTable()
@@ -1500,6 +1539,41 @@ namespace gvn_ab_mobile.DAO {
                   new Models.ListaCiapCondicaoAvaliada("Tuberculose", "A70") { CodigoAB = "ABP017" },
                   new Models.ListaCiapCondicaoAvaliada("Usuário de álcool", "P16") { CodigoAB = "ABP012" },
                   new Models.ListaCiapCondicaoAvaliada("Usuário de outras drogas", "P19") { CodigoAB = "ABP013" },
+            });
+        }
+    }
+
+    class DAOListaExames : DAO<Models.ListaExames>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.ListaExames>() {
+                  new Models.ListaExames("Colesterol total", "02.02.01.029-5") { CodigoAB = "ABEX002" },
+                  new Models.ListaExames("Creatinina", "02.02.01.031-7") { CodigoAB = "ABEX003" },
+                  new Models.ListaExames("EAS / EQU", "02.02.05.001-7") { CodigoAB = "ABEX027" },
+                  new Models.ListaExames("Eletrocardiograma", "02.11.02.003-6") { CodigoAB = "ABEX004" },
+                  new Models.ListaExames("Espirometria", "02.02.02.035-5") { CodigoAB = "ABEX030" },
+                  new Models.ListaExames("Espirometria", "02.11.08.005-5") { CodigoAB = "ABEX005" },
+                  new Models.ListaExames("Exame de escarro", "02.02.08.011-0") { CodigoAB = "ABEX006" },
+                  new Models.ListaExames("Glicemia", "02.02.01.047-3") { CodigoAB = "ABEX026" },
+                  new Models.ListaExames("HDL", "02.02.01.027-9") { CodigoAB = "ABEX007" },
+                  new Models.ListaExames("Hemoglobina glicada", "02.02.01.050-3") { CodigoAB = "ABEX008" },
+                  new Models.ListaExames("Hemograma", "02.02.02.038-0") { CodigoAB = "ABEX028" },
+                  new Models.ListaExames("LDL", "02.02.01.028-7") { CodigoAB = "ABEX009" },
+                  new Models.ListaExames("Retinografia/Fundo de olho com oftalmologista", "Não possui") { CodigoAB = "ABEX013" },
+                  new Models.ListaExames("Sorologia de Sífilis (VDRL)", "02.02.03.111-0") { CodigoAB = "ABEX019" },
+                  new Models.ListaExames("Sorologia para Dengue", "02.02.03.090-3") { CodigoAB = "ABEX016" },
+                  new Models.ListaExames("Sorologia para HIV", "02.02.03.030-0") { CodigoAB = "ABEX018" },
+                  new Models.ListaExames("Teste indireto de antiglobulina humana (TIA)", "02.02.12.009-0") { CodigoAB = "ABEX031" },
+                  new Models.ListaExames("Teste da orelhinha", "02.11.07.014-9") { CodigoAB = "ABEX020" },
+                  new Models.ListaExames("Teste de gravidez", "02.02.06.021-7") { CodigoAB = "ABEX023" },
+                  new Models.ListaExames("Teste do olhinho", "Não possui") { CodigoAB = "ABEX022" },
+                  new Models.ListaExames("Teste do pezinho", "02.02.11.005-2") { CodigoAB = "ABEX021" },
+                  new Models.ListaExames("Ultrassonografia obstétrica", "02.05.02.014-3") { CodigoAB = "ABEX024" },
+                  new Models.ListaExames("Urocultura", "02.02.08.008-0") { CodigoAB = "ABEX029" },
             });
         }
     }

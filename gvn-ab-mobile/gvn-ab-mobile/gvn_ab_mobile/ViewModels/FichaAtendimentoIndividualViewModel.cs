@@ -122,6 +122,13 @@ namespace gvn_ab_mobile.ViewModels
         //USADO PAGE 3
         public ObservableRangeCollection<Models.ListaCiapCondicaoAvaliada> ListaCiapCondicoesAvaliadas { get; set; }
         public ObservableCollection<object> CondicoesSelecionadas { get; } = new ObservableCollection<object>();
+        public ObservableRangeCollection<Models.ListaExames> ListaExames { get; set; }
+        public ObservableCollection<object> ExamesSolicitadosSelecionados { get; } = new ObservableCollection<object>();
+        public ObservableCollection<object> ExamesAvaliadosSelecionados { get; } = new ObservableCollection<object>();
+        public ObservableRangeCollection<Models.Nasfs> Nasfs { get; set; }
+        public ObservableCollection<object> NasfsSelecionados { get; } = new ObservableCollection<object>();
+        public ObservableRangeCollection<Models.CondutaEncaminhamento> Encaminhamentos { get; set; }
+        public ObservableCollection<object> EncaminhamentosSelecionados { get; } = new ObservableCollection<object>();
 
         public FichaAtendimentoIndividualViewModel(Page page)
         {
@@ -140,6 +147,9 @@ namespace gvn_ab_mobile.ViewModels
             this.AleitamentosMaternos = new ObservableRangeCollection<Models.AleitamentoMaterno>(new DAO.DAOAleitamentoMaterno().Select());
 
             this.ListaCiapCondicoesAvaliadas = new ObservableRangeCollection<Models.ListaCiapCondicaoAvaliada>(new DAO.DAOListaCiapCondicaoAvaliada().Select());
+            this.ListaExames = new ObservableRangeCollection<Models.ListaExames>(new DAO.DAOListaExames().Select());
+            this.Nasfs = new ObservableRangeCollection<Models.Nasfs>(new DAO.DAONasfs().Select());
+            this.Encaminhamentos = new ObservableRangeCollection<Models.CondutaEncaminhamento>(new DAO.DAOCondutaEncaminhamento().Select());
         }
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync()
