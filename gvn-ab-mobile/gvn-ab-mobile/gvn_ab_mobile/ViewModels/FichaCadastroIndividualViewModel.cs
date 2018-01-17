@@ -31,6 +31,14 @@ namespace gvn_ab_mobile.ViewModels {
                 this.Ficha.SexoCidadao = value;
 
                 SetProperty(ref _sexoCidadao, value);
+                OnPropertyChanged("IsMulher");
+            }
+        }
+        public bool IsMulher
+        {
+            get
+            {
+                return this.SexoCidadao?.Codigo == 1;
             }
         }
 
@@ -430,6 +438,9 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableRangeCollection<Models.AcessoHigiene> HigienePessoal { get; set; }
         public ObservableCollection<object> HigienesSelecionadas { get; } = new ObservableCollection<object>();
         public ObservableRangeCollection<Models.QuantasVezesAlimentacao> QuantasVezesAlimentacao { get; set; }
+        public ObservableRangeCollection<Models.TempoSituacaoDeRua> TempoSituacoesDeRua { get; set; }
+        public ObservableRangeCollection<Models.OrigemAlimentacao> OrigemAlimentacao { get; set; }
+        public ObservableCollection<object> OrigensAlimentacaoSelecionadas { get; } = new ObservableCollection<object>();
 
         private bool _statusSituacaoRua; //Obrigatório
         public bool StatusSituacaoRua {
@@ -444,6 +455,28 @@ namespace gvn_ab_mobile.ViewModels {
         public bool IsSituacaoRua {
             get {
                 return this.StatusSituacaoRua;
+            }
+        }
+
+        private Models.TempoSituacaoDeRua _tempoSituacaoRua;
+        public Models.TempoSituacaoDeRua TempoSituacaoRua
+        {
+            get { return this._tempoSituacaoRua; }
+            set {
+                this.Ficha.TempoSituacaoRua = value;
+
+                SetProperty(ref _tempoSituacaoRua, value);
+            }
+        }
+
+        private Models.QuantasVezesAlimentacao _quantidadeAlimentacoesAoDiaSituacaoRua;
+        public Models.QuantasVezesAlimentacao QuantidadeAlimentacoesAoDiaSituacaoRua
+        {
+            get { return this._quantidadeAlimentacoesAoDiaSituacaoRua; }
+            set {
+                this.Ficha.QuantidadeAlimentacoesAoDiaSituacaoRua = value;
+
+                SetProperty(ref _quantidadeAlimentacoesAoDiaSituacaoRua, value);
             }
         }
 
@@ -537,6 +570,8 @@ namespace gvn_ab_mobile.ViewModels {
 
             this.HigienePessoal = new ObservableRangeCollection<Models.AcessoHigiene>(new DAO.DAOAcessoHigiene().Select());
             this.QuantasVezesAlimentacao = new ObservableRangeCollection<Models.QuantasVezesAlimentacao>(new DAO.DAOQuantasVezesAlimentacao().Select());
+            this.TempoSituacoesDeRua = new ObservableRangeCollection<Models.TempoSituacaoDeRua>(new DAO.DAOTempoSituacaoDeRua().Select());
+            this.OrigemAlimentacao = new ObservableRangeCollection<Models.OrigemAlimentacao>(new DAO.DAOOrigemAlimentacao().Select());
         }
 
         private async System.Threading.Tasks.Task ConcordarExecuteAsync() {

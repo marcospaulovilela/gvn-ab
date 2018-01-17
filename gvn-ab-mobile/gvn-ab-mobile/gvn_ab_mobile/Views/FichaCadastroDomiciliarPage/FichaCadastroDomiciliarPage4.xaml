@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
+             xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
              x:Class="gvn_ab_mobile.Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4"
              Title="Animais No Domicílio">
     <ContentPage.Content>
@@ -9,9 +11,9 @@
 
                 <StackLayout Orientation="Horizontal">
 
-                    <StackLayout>
+                    <StackLayout IsVisible="{Binding IsDomicilio}">
                         <Label Text="Existência de Animais no Domicílio:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Switch HorizontalOptions="Start"/>
+                        <Switch IsToggled="{Binding StAnimaisNoDomicilio}"  HorizontalOptions="Center" />
                     </StackLayout>
 
                 </StackLayout>
@@ -19,18 +21,26 @@
                 <StackLayout Orientation="Horizontal">
 
                     <?SelectBox?>
-                    <StackLayout>
+                    <StackLayout IsVisible="{Binding HasAnimais}">
                         <Label Text="Qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Entry Placeholder="Qual(is) Animal(is)" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <controls:SelectMultipleItems x:Name="CodAnimaisDomicilio" Items="{Binding AnimaisNoDomicilio}" SelectedItems="{Binding AnimaisSelecionados}"  >
+                            <controls:SelectMultipleItems.Behaviors>
+                                <behaviors:ValidatorSelectMultipleItems />
+                            </controls:SelectMultipleItems.Behaviors>
+                        </controls:SelectMultipleItems>
                     </StackLayout>
 
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
 
-                    <StackLayout>
+                    <StackLayout IsVisible="{Binding HasAnimais}">
                         <Label Text="Quantos?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Num Animais" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }"/>
+                        <Entry Placeholder="Num Animais" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.QuantosAnimaisNoDomicilio}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="2" />
+                            </Entry.Behaviors>
+                        </Entry>
                     </StackLayout>
 
                 </StackLayout>

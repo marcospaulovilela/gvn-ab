@@ -72,6 +72,12 @@ namespace gvn_ab_mobile.Models {
         public ConsideracaoPeso(string descricao) : base(descricao) { }
     }
 
+    public class QuantasVezesAlimentacao : Models.EntidadeEnumerador
+    {
+        public QuantasVezesAlimentacao() { }
+        public QuantasVezesAlimentacao(string descricao) : base(descricao) { }
+    }
+
     public class DoencaCardiaca : Models.EntidadeEnumerador {
         public DoencaCardiaca() { }
         public DoencaCardiaca(string descricao) : base(descricao) { }
@@ -99,9 +105,21 @@ namespace gvn_ab_mobile.Models {
         public DeficienciaCidadao(string descricao) : base(descricao) { }
     }
 
+    public class TempoSituacaoDeRua : Models.EntidadeEnumerador
+    {
+        public TempoSituacaoDeRua() { }
+        public TempoSituacaoDeRua(string descricao) : base(descricao) { }
+    }
+
     //
 
     //Ficha Cadastro Domiciliar e Territorial
+
+    public class UF : Models.EntidadeEnumerador
+    {
+        public UF() { }
+        public UF(string descricao) : base(descricao) { }
+    }
 
     public class SituacaoDeMoradia : Models.EntidadeEnumerador
     {
@@ -175,11 +193,17 @@ namespace gvn_ab_mobile.Models {
         public RendaFamiliar(string descricao) : base(descricao) { }
     }
 
-    public class QuantasVezesAlimentacao : Models.EntidadeEnumerador
+    public class TipoDeLogradouro : Models.EntidadeEnumerador
     {
-        public QuantasVezesAlimentacao() { }
-        public QuantasVezesAlimentacao(string descricao) : base(descricao) { }
+        public TipoDeLogradouro() { }
+        public TipoDeLogradouro(string descricao) : base(descricao) { }
     }
+    public class TipoDeImovel : Models.EntidadeEnumerador
+    {
+        public TipoDeImovel() { }
+        public TipoDeImovel(string descricao) : base(descricao) { }
+    }
+
 
     //
 
@@ -224,6 +248,12 @@ namespace gvn_ab_mobile.Models {
     public class OrigemAlimentacao : Models.EntidadeEnumerador {
         public OrigemAlimentacao() { }
         public OrigemAlimentacao(string descricao) : base(descricao) { }
+    }
+
+    public class ListaCiapCondicaoAvaliada : Models.EntidadeCondicaoAvaliada
+    {
+        public ListaCiapCondicaoAvaliada() { }
+        public ListaCiapCondicaoAvaliada(string descricaoAB, string ciap2Relacionada) : base(descricaoAB, ciap2Relacionada) { }
     }
 
     //

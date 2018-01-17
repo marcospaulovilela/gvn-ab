@@ -90,9 +90,9 @@ namespace gvn_ab_mobile.Models
 
 
         //Campo tipoDeImovel - Tipo long
-        private long _tipoDeImovel; //Obrigatório
+        private Models.TipoDeImovel _tipoDeImovel; //Obrigatório
         [NotNull]
-        public long TipoDeImovel
+        public Models.TipoDeImovel TipoDeImovel
         {
             get { return this._tipoDeImovel; }
             set { SetProperty(ref _tipoDeImovel, value); }
@@ -101,24 +101,24 @@ namespace gvn_ab_mobile.Models
         //INÍCIO CONDIÇÃO MORADIA
 
         //Campo abastecimentoAgua - Tipo long
-        private long _abastecimentoAgua; //Não Obrigatório
-        public long AbastecimentoAgua
+        private Models.AbastecimentoDeAgua _abastecimentoAgua; //Não Obrigatório
+        public Models.AbastecimentoDeAgua AbastecimentoAgua
         {
             get { return this._abastecimentoAgua; }
             set { SetProperty(ref _abastecimentoAgua, value); }
         }
 
         //Campo areaProducaoRural - Tipo long
-        private long _areaProducaoRural; //Condicional
-        public long AreaProducaoRural
+        private Models.CondicaoDePosseEUsoDaTerra _areaProducaoRural; //Condicional
+        public Models.CondicaoDePosseEUsoDaTerra AreaProducaoRural
         {
             get { return this._areaProducaoRural; }
             set { SetProperty(ref _areaProducaoRural, value); }
         }
 
         //Campo destinoLixo - Tipo long
-        private long _destinoLixo; //Não Obrigatório
-        public long DestinoLixo
+        private Models.DestinoDoLixo _destinoLixo; //Não Obrigatório
+        public Models.DestinoDoLixo DestinoLixo
         {
             get { return this._destinoLixo; }
             set { SetProperty(ref _destinoLixo, value); }
@@ -133,17 +133,17 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo localizacao - Tipo long
-        private long _localizacao; //Obrigatório
+        private Models.LocalizacaoDaMoradia _localizacao; //Obrigatório
         [NotNull]
-        public long Localizacao
+        public Models.LocalizacaoDaMoradia Localizacao
         {
             get { return this._localizacao; }
             set { SetProperty(ref _localizacao, value); }
         }
 
         //Campo materialPredominanteParedesExtDomicilio - Tipo long
-        private long _materialPredominanteParedesExtDomicilio; //Não Obrigatório
-        public long MaterialPredominanteParedesExtDomicilio
+        private Models.MaterialPredominanteNaConstrucao _materialPredominanteParedesExtDomicilio; //Não Obrigatório
+        public Models.MaterialPredominanteNaConstrucao MaterialPredominanteParedesExtDomicilio
         {
             get { return this._materialPredominanteParedesExtDomicilio; }
             set { SetProperty(ref _materialPredominanteParedesExtDomicilio, value); }
@@ -168,8 +168,8 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo situacaoMoradiaPosseTerra - Tipo long
-        private long _situacaoMoradiaPosseTerra; //Não Obrigatório
-        public long SituacaoMoradiaPosseTerra
+        private Models.SituacaoDeMoradia _situacaoMoradiaPosseTerra; //Não Obrigatório
+        public Models.SituacaoDeMoradia SituacaoMoradiaPosseTerra
         {
             get { return this._situacaoMoradiaPosseTerra; }
             set { SetProperty(ref _situacaoMoradiaPosseTerra, value); }
@@ -184,24 +184,24 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo tipoAcessoDomicilio - Tipo long
-        private long _tipoAcessoDomicilio; //Não Obrigatório
-        public long TipoAcessoDomicilio
+        private Models.TipoDeAcessoAoDomicilio _tipoAcessoDomicilio; //Não Obrigatório
+        public Models.TipoDeAcessoAoDomicilio TipoAcessoDomicilio
         {
             get { return this._tipoAcessoDomicilio; }
             set { SetProperty(ref _tipoAcessoDomicilio, value); }
         }
 
         //Campo tipoDomicilio - Tipo long
-        private long _tipoDomicilio; //Não Obrigatório
-        public long TipoDomicilio
+        private Models.TipoDeDomicilio _tipoDomicilio; //Não Obrigatório
+        public Models.TipoDeDomicilio TipoDomicilio
         {
             get { return this._tipoDomicilio; }
             set { SetProperty(ref _tipoDomicilio, value); }
         }
 
         //Campo aguaConsumoDomicilio - Tipo long
-        private long _aguaConsumoDomicilio; //Não Obrigatório
-        public long AguaConsumoDomicilio
+        private Models.AguaConsumoDomicilio _aguaConsumoDomicilio; //Não Obrigatório
+        public Models.AguaConsumoDomicilio AguaConsumoDomicilio
         {
             get { return this._aguaConsumoDomicilio; }
             set { SetProperty(ref _aguaConsumoDomicilio, value); }
@@ -266,9 +266,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo numeroDneUf - Tipo string
-        private string _numeroDneUf; //Obrigatório
+        private Models.UF _numeroDneUf; //Obrigatório
         [NotNull]
-        public string NumeroDneUf
+        public Models.UF NumeroDneUf
         {
             get { return this._numeroDneUf; }
             set { SetProperty(ref _numeroDneUf, value); }
@@ -293,9 +293,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo tipoLogradouroNumeroDne - Tipo string
-        private string _tipoLogradouroNumeroDne; //Obrigatório
+        private Models.TipoDeLogradouro _tipoLogradouroNumeroDne; //Obrigatório
         [NotNull]
-        public string TipoLogradouroNumeroDne
+        public Models.TipoDeLogradouro TipoLogradouroNumeroDne
         {
             get { return this._tipoLogradouroNumeroDne; }
             set { SetProperty(ref _tipoLogradouroNumeroDne, value); }

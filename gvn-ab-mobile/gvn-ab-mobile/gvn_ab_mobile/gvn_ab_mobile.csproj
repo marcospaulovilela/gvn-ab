@@ -39,6 +39,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviors\EntryDoubleBehavior.cs" />
     <Compile Include="Behaviors\EntryNomeBehavior.cs" />
     <Compile Include="Behaviors\EntryLengthBehavior.cs" />
     <Compile Include="Behaviors\Validator.cs" />
@@ -64,7 +65,6 @@
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DAOEnumeradores.cs" />
     <Compile Include="DAO\DAOFichaAtendimentoIndividual.cs" />
-    <Compile Include="DAO\DAOFichaAtendimentoIndividualChild.cs" />
     <Compile Include="DAO\DAOFichaCadastroDomiciliarTerritorial.cs" />
     <Compile Include="DAO\DAOFichaFamilia.cs" />
     <Compile Include="DAO\DAOFichaHeader.cs" />
@@ -79,11 +79,11 @@
     <Compile Include="Helpers\ObservableRangeCollection.cs" />
     <Compile Include="Helpers\RestAPI.cs" />
     <Compile Include="Models\AtendimentoIndividual\FichaAtendimentoIndividual.cs" />
-    <Compile Include="Models\AtendimentoIndividual\FichaAtendimentoIndividualChild.cs" />
     <Compile Include="Models\CadastroDomiciliarTerritorial\FichaCadastroDomiciliarTerritorial.cs" />
     <Compile Include="Models\CadastroIndividual\FichaCadastroIndividual.cs" />
     <Compile Include="Models\CadastroDomiciliarTerritorial\FichaFamilia.cs" />
     <Compile Include="Models\AtendimentoIndividual\FichaOutrosSia.cs" />
+    <Compile Include="Models\EntidadeCondicaoAvaliada.cs" />
     <Compile Include="Models\EntidadeEnumerador.cs" />
     <Compile Include="Models\Enumeradores.cs" />
     <Compile Include="Models\Estabelecimento.cs" />

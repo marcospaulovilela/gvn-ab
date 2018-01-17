@@ -58,6 +58,7 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAOAcessoHigiene DAOAcessoHigiene = new DAO.DAOAcessoHigiene()) { DAOAcessoHigiene.CreateTable(); }
             using (DAO.DAOQuantasVezesAlimentacao DAOQuantasVezesAlimentacao = new DAO.DAOQuantasVezesAlimentacao()) { DAOQuantasVezesAlimentacao.CreateTable();  }
             using (DAO.DAOOrigemAlimentacao DAOOrigemAlimentacao = new DAO.DAOOrigemAlimentacao()) { DAOOrigemAlimentacao.CreateTable(); }
+            using (DAO.DAOTempoSituacaoDeRua DAOTempoSituacaoDeRua = new DAO.DAOTempoSituacaoDeRua()) { DAOTempoSituacaoDeRua.CreateTable(); }
 
             using (DAO.DAOTurno DAOTurno = new DAO.DAOTurno()) { DAOTurno.CreateTable(); }
             using (DAO.DAOLocalDeAtendimento DAOLocalAtendimento = new DAO.DAOLocalDeAtendimento()) { DAOLocalAtendimento.CreateTable(); }
@@ -66,6 +67,9 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAORacionalidadeSaude DAORacionalidadeSaude = new DAO.DAORacionalidadeSaude()) { DAORacionalidadeSaude.CreateTable(); }
             using (DAO.DAOAleitamentoMaterno DAOAleitamentoMaterno = new DAO.DAOAleitamentoMaterno()) { DAOAleitamentoMaterno.CreateTable(); }
 
+            using (DAO.DAOUF DAOUF = new DAO.DAOUF()) { DAOUF.CreateTable(); }
+            using (DAO.DAOTipoDeImovel DAOTipoDeImovel = new DAO.DAOTipoDeImovel()) { DAOTipoDeImovel.CreateTable(); }
+            using (DAO.DAOTipoDeLogradouro DAOTipoDeLogradouro = new DAO.DAOTipoDeLogradouro()) { DAOTipoDeLogradouro.CreateTable(); }
             using (DAO.DAOSituacaoDeMoradia DAOSituacaoDeMoradia = new DAO.DAOSituacaoDeMoradia()) { DAOSituacaoDeMoradia.CreateTable(); }
             using (DAO.DAOTipoDeDomicilio DAOTipoDeDomicilio = new DAO.DAOTipoDeDomicilio()) { DAOTipoDeDomicilio.CreateTable(); }
             using (DAO.DAOTipoDeAcessoAoDomicilio DAOTipoDeAcessoAoDomicilio = new DAO.DAOTipoDeAcessoAoDomicilio()) { DAOTipoDeAcessoAoDomicilio.CreateTable(); }
@@ -79,6 +83,7 @@ namespace gvn_ab_mobile.ViewModels {
 
             using (DAO.DAOAnimalNoDomicilio DAOAnimalNoDomicilio = new DAO.DAOAnimalNoDomicilio()) { DAOAnimalNoDomicilio.CreateTable(); }
             using (DAO.DAORendaFamiliar DAORendaFamiliar = new DAO.DAORendaFamiliar()) { DAORendaFamiliar.CreateTable(); }
+            using (DAO.DAOListaCiapCondicaoAvaliada DAOListaCiapCondicaoAvaliada = new DAO.DAOListaCiapCondicaoAvaliada()) { DAOListaCiapCondicaoAvaliada.CreateTable(); }
 
             using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) { DAOFichaCadastroIndividual.CreateTable(); }
 

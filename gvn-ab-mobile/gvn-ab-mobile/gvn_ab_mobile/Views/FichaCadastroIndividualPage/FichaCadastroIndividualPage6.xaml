@@ -15,7 +15,8 @@
 
                 <StackLayout IsVisible="{Binding IsSituacaoRua}">
                     <Label Text="Se sim, qual o tempo de situação de rua?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Tempo Situação de Rua" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TempoSituacaoRua}"/>
+                    <Picker x:Name="CodTempoSituacaoRua" ItemsSource="{Binding TempoSituacoesDeRua}" SelectedItem="{Binding TempoSituacaoRua}" Title="Tempo Situação de Rua" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                    </Picker>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" IsVisible="{Binding IsSituacaoRua}">
@@ -30,12 +31,16 @@
 
                 <StackLayout IsVisible="{Binding IsSituacaoRua}">
                     <Label Text="Quantas vezes se alimenta ao dia?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodQuantasVezesAlimentacao"  ItemsSource="{Binding QuantasVezesAlimentacao}"  HorizontalOptions="FillAndExpand" Title="Número Refeições" />
+                    <Picker x:Name="CodQuantasVezesAlimentacao"  ItemsSource="{Binding QuantasVezesAlimentacao}" SelectedItem="{Binding QuantidadeAlimentacoesAoDiaSituacaoRua}"  HorizontalOptions="FillAndExpand" Title="Quantas Vezes se Alimenta ao Dia?" />
                 </StackLayout>
 
                 <StackLayout IsVisible="{Binding IsSituacaoRua}">
                     <Label Text="Qual a Origem da Alimentação?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Origem Alimentação" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.OrigemAlimentoSituacaoRua}"/>
+                    <controls:SelectMultipleItems x:Name="CodOrigemAlimentacao" Items="{Binding OrigemAlimentacao}" SelectedItems="{Binding OrigensAlimentacaoSelecionadas}"  >
+                        <controls:SelectMultipleItems.Behaviors>
+                            <behaviors:ValidatorSelectMultipleItems />
+                        </controls:SelectMultipleItems.Behaviors>
+                    </controls:SelectMultipleItems>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" IsVisible="{Binding IsSituacaoRua}">
@@ -45,7 +50,11 @@
 
                 <StackLayout IsVisible="{Binding IsAcompanhadoPorOutraInstituicao}">
                     <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Instituições" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.OutraInstituicaoQueAcompanha}"/>
+                    <Entry Placeholder="Instituições" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.OutraInstituicaoQueAcompanha}">
+                        <Entry.Behaviors>
+                            <behaviors:EntryLengthBehavior MaxLength="100" />
+                        </Entry.Behaviors>
+                    </Entry>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" IsVisible="{Binding IsSituacaoRua}">
@@ -55,7 +64,11 @@
 
                 <StackLayout IsVisible="{Binding VisitsFamiliarFrequentemente}">
                     <Label Text="Se sim, qual é o grau de parentesco:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Grau de Parentesco" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.GrauParentescoFamiliarFrequentado}"/>
+                    <Entry Placeholder="Grau de Parentesco" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.GrauParentescoFamiliarFrequentado}">
+                        <Entry.Behaviors>
+                            <behaviors:EntryLengthBehavior MaxLength="100" />
+                        </Entry.Behaviors>
+                    </Entry>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" IsVisible="{Binding IsSituacaoRua}">
