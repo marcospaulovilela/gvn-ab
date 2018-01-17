@@ -5,9 +5,9 @@
 	x:Class="gvn_ab_mobile.Controls.SelectMultipleItemsPopUp">
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0" Margin="0">
         <Frame Margin="30" Padding="10">
-            <StackLayout HorizontalOptions="Fill">
+            <StackLayout HorizontalOptions="Fill" HeightRequest="350">
                 <Label Text="{Binding Placeholder}" TextColor="Black" FontSize="Medium" />
-                <ListView x:Name="ListViewBugado" ItemsSource="{Binding ItemsForListView}" ItemSelected="ListView_ItemSelected" VerticalOptions="Center">
+                <ListView x:Name="ListViewBugado" HasUnevenRows="True" SeparatorVisibility="None" ItemsSource="{Binding ItemsForListView}" ItemSelected="ListView_ItemSelected" VerticalOptions="Center">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

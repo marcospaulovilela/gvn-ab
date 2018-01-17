@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
+             xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
              x:Class="gvn_ab_mobile.Views.Login.LoginPage2">
     <ContentPage.Content>
 
@@ -27,6 +28,9 @@
                                 <behaviors:ValidatorPickerBehavior />
                             </Picker.Behaviors>
                         </Picker>
+                        <StackLayout>
+                            <controls:PickerSearch Placeholder="Cbos"  Items="{Binding Profissional.Cbos}"/>
+                        </StackLayout>
                     </StackLayout>
 
                     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >

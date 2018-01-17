@@ -30,6 +30,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    
                     <Image Source="iconUsername.png" HeightRequest="30" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
                     <Entry x:Name="Usuario" Placeholder="Usúario" FontSize="Large" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.DesLogin}">
                         <Entry.Behaviors>
