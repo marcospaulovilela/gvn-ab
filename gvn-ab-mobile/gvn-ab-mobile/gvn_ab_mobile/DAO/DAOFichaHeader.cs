@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.DAO {
-    class DAOFichaHeader : DAO<Models.FichaHeader> {
+    class DAOFichaHeader : DAO<Models.FichaLotacaoHeader> {
     }
 }

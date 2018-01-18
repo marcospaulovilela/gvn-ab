@@ -274,7 +274,7 @@ namespace gvn_ab_mobile.Models {
         public ListaExames(string descricaoAB, string codigoSIGTAP) : base(descricaoAB, codigoSIGTAP) { }
     }
 
-    public class CondutaEncaminhamento : Models.EntidadeEncaminhamento
+    public class CondutaEncaminhamento : Models.EntidadeDescricaoObservacao
     {
         public CondutaEncaminhamento() { }
         public CondutaEncaminhamento(string descricao) : base(descricao) { }
@@ -283,4 +283,20 @@ namespace gvn_ab_mobile.Models {
 
     //
 
+    // Ficha Visita Domiciliar e Territorial
+
+    public class MotivoVisita : Models.EntidadeDescricaoObservacao
+    {
+        public MotivoVisita() { }
+        public MotivoVisita(string descricao) : base(descricao) { }
+        public MotivoVisita(string descricao, string observacao) : base(descricao, observacao) { }
+    }
+
+    public class Desfecho : Models.EntidadeEnumerador
+    {
+        public Desfecho() { }
+        public Desfecho(string descricao) : base(descricao) { }
+    }
+
+    //
 }

@@ -1600,4 +1600,69 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
+    //Ficha Visitar Domiciliar e Territorial
+
+    class DAOMotivoVisita : DAO<Models.MotivoVisita>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.MotivoVisita>() {
+                  new Models.MotivoVisita("Cadastramento / Atualização", "#TIPO_VISITA") { Codigo = 1 },
+                  new Models.MotivoVisita("Visita periódica", "#TIPO_VISITA") { Codigo = 29 },
+                  new Models.MotivoVisita("Consulta", "#BUSCA_ATIVA") { Codigo = 2 },
+                  new Models.MotivoVisita("Exame", "#BUSCA_ATIVA") { Codigo = 3 },
+                  new Models.MotivoVisita("Vacina") { Codigo = 4 },
+                  new Models.MotivoVisita("Condicionalidades do bolsa família", "#BUSCA_ATIVA") { Codigo = 30 },
+                  new Models.MotivoVisita("Gestante", "#ACOMPANHAMENTO") { Codigo = 5 },
+                  new Models.MotivoVisita("Puérpera", "#ACOMPANHAMENTO") { Codigo = 6 },
+                  new Models.MotivoVisita("Recém-nascido", "#ACOMPANHAMENTO") { Codigo = 7 },
+                  new Models.MotivoVisita("Criança", "#ACOMPANHAMENTO") { Codigo = 8 },
+                  new Models.MotivoVisita("Pessoa com desnutrição", "#ACOMPANHAMENTO") { Codigo = 9 },
+                  new Models.MotivoVisita("Pessoa em reabilitação ou com deficiência", "#ACOMPANHAMENTO") { Codigo = 10 },
+                  new Models.MotivoVisita("Pessoa com hipertensão", "#ACOMPANHAMENTO") { Codigo = 11 },
+                  new Models.MotivoVisita("Pessoa com diabetes", "#ACOMPANHAMENTO") { Codigo = 12 },
+                  new Models.MotivoVisita("Pessoa com asma", "#ACOMPANHAMENTO") { Codigo = 13 },
+                  new Models.MotivoVisita("Pessoa com DPOC / enfisema", "#ACOMPANHAMENTO") { Codigo = 14 },
+                  new Models.MotivoVisita("Pessoa com câncer", "#ACOMPANHAMENTO") { Codigo = 15 },
+                  new Models.MotivoVisita("Pessoa com outras doenças crônicas", "#ACOMPANHAMENTO") { Codigo = 16 },
+                  new Models.MotivoVisita("Pessoa com hanseníase", "#ACOMPANHAMENTO") { Codigo = 17 },
+                  new Models.MotivoVisita("Pessoa com tuberculose", "#ACOMPANHAMENTO") { Codigo = 18 },
+                  new Models.MotivoVisita("Sintomáticos respiratórios", "#ACOMPANHAMENTO") { Codigo = 32 },
+                  new Models.MotivoVisita("Tabagista", "#ACOMPANHAMENTO") { Codigo = 33 },
+                  new Models.MotivoVisita("Domiciliados / Acamados", "#ACOMPANHAMENTO") { Codigo = 19 },
+                  new Models.MotivoVisita("Condições de vulnerabilidade social", "#ACOMPANHAMENTO") { Codigo = 20 },
+                  new Models.MotivoVisita("Condicionalidades do bolsa família", "#ACOMPANHAMENTO") { Codigo = 21 },
+                  new Models.MotivoVisita("Saúde mental", "#ACOMPANHAMENTO") { Codigo = 22 },
+                  new Models.MotivoVisita("Usuário de álcool", "#ACOMPANHAMENTO") { Codigo = 23 },
+                  new Models.MotivoVisita("Usuário de outras drogas", "#ACOMPANHAMENTO") { Codigo = 24 },
+                  new Models.MotivoVisita("Ação educativa", "#CONTROLE_AMBIENTAL_E_VETORIAL") { Codigo = 34 },
+                  new Models.MotivoVisita("Imóvel com foco", "#CONTROLE_AMBIENTAL_E_VETORIAL") { Codigo = 35 },
+                  new Models.MotivoVisita("Ação mecânica", "#CONTROLE_AMBIENTAL_E_VETORIAL") { Codigo = 36 },
+                  new Models.MotivoVisita("Tratamento focal", "#CONTROLE_AMBIENTAL_E_VETORIAL") { Codigo = 37 },
+                  new Models.MotivoVisita("Egresso de internação", "#OUTROS") { Codigo = 25 },
+                  new Models.MotivoVisita("Convite para atividades coletivas / campanha de saúde", "#OUTROS") { Codigo = 27 },
+                  new Models.MotivoVisita("Orientação / Prevenção", "#OUTROS") { Codigo = 31 },
+                  new Models.MotivoVisita("Outros", "#OUTROS") { Codigo = 28 },
+            });
+        }
+    }
+
+    class DAODesfecho : DAO<Models.Desfecho>
+    {
+        public override int? CreateTable()
+        {
+            if (base.TableExists()) return 0;
+
+            base.CreateTable();
+            return base.Insert(new List<Models.Desfecho>() {
+                  new Models.Desfecho("Visita realizada") { Codigo = 1 },
+                  new Models.Desfecho("Visita recusada") { Codigo = 2 },
+                  new Models.Desfecho("Ausente") { Codigo = 3 },
+            });
+        }
+    }
+
 }

@@ -50,6 +50,11 @@ namespace gvn_ab_mobile.Views {
             await Navigation.PushAsync(new FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage1());
         }
 
+        async void OnVisitaDomiciliarClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FichaVisitaDomiciliarPage.FichaVisitaDomiciliarPage1());
+        }
+
         private void OnSairClicked(object sender, EventArgs e) {
             App.Current.MainPage = new NavigationPage(new Views.Login.LoginPage()) { BarBackgroundColor = Color.FromHex("#003264") };
         }

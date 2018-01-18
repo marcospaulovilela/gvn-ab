@@ -14,7 +14,7 @@
                 </StackLayout>
 
                 <StackLayout IsVisible="{Binding IsSituacaoRua}">
-                    <Label Text="Se sim, qual o tempo de situação de rua?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Label Text="Qual o tempo de situação de rua?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                     <Picker x:Name="CodTempoSituacaoRua" ItemsSource="{Binding TempoSituacoesDeRua}" SelectedItem="{Binding TempoSituacaoRua}" Title="Tempo Situação de Rua" TextColor="Gray" HorizontalOptions="FillAndExpand">
                     </Picker>
                 </StackLayout>
@@ -38,7 +38,7 @@
                     <Label Text="Qual a Origem da Alimentação?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                     <controls:SelectMultipleItems x:Name="CodOrigemAlimentacao" Items="{Binding OrigemAlimentacao}" SelectedItems="{Binding OrigensAlimentacaoSelecionadas}"  >
                         <controls:SelectMultipleItems.Behaviors>
-                            <behaviors:ValidatorSelectMultipleItems />
+                            <behaviors:ValidatorSelectMultipleItems MinLength="0" MaxLength="5" />
                         </controls:SelectMultipleItems.Behaviors>
                     </controls:SelectMultipleItems>
                 </StackLayout>
@@ -49,8 +49,8 @@
                 </StackLayout>
 
                 <StackLayout IsVisible="{Binding IsAcompanhadoPorOutraInstituicao}">
-                    <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Instituições" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.OutraInstituicaoQueAcompanha}">
+                    <Label Text="Qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Entry x:Name="OutraInstituicao" Placeholder="Instituições" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.OutraInstituicaoQueAcompanha}">
                         <Entry.Behaviors>
                             <behaviors:EntryLengthBehavior MaxLength="100" />
                         </Entry.Behaviors>
@@ -63,8 +63,8 @@
                 </StackLayout>
 
                 <StackLayout IsVisible="{Binding VisitsFamiliarFrequentemente}">
-                    <Label Text="Se sim, qual é o grau de parentesco:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Entry Placeholder="Grau de Parentesco" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.GrauParentescoFamiliarFrequentado}">
+                    <Label Text="Qual é o grau de parentesco:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Entry x:Name="GrauParentescoFamiliarFrequentado" Placeholder="Grau de Parentesco" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.GrauParentescoFamiliarFrequentado}">
                         <Entry.Behaviors>
                             <behaviors:EntryLengthBehavior MaxLength="100" />
                         </Entry.Behaviors>
@@ -77,14 +77,22 @@
                 </StackLayout>
 
                 <StackLayout IsVisible="{Binding HasAcessoHigienePessoalSituacaoRua}">
-                    <Label Text="Se sim, quais:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Label Text="Qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                     <controls:SelectMultipleItems x:Name="CodHigienePessoal" Placeholder="Condições de higiene que o cidadão tem acesso."  Items="{Binding HigienePessoal}" SelectedItems="{Binding HigienesSelecionadas}"  >
                         <controls:SelectMultipleItems.Behaviors>
-                            <behaviors:ValidatorSelectMultipleItems />
+                            <behaviors:ValidatorSelectMultipleItems MinLength="0" MaxLength="4" />
                         </controls:SelectMultipleItems.Behaviors>
                     </controls:SelectMultipleItems>
                 </StackLayout>
 
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodOrigemAlimentacao|OutraInstituicao|GrauParentescoFamiliarFrequentado|CodHigienePessoal" />
+                        </Button.Behaviors>
+                    </Button>
+                </StackLayout>
+                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

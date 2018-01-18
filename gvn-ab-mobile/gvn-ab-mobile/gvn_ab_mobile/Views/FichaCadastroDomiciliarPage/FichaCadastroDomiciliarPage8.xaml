@@ -12,7 +12,7 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Nome:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Nome" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
+                        <Entry x:Name="NomeResponsavel" Placeholder="Nome" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
                             <Entry.Behaviors>
                                 <behaviors:EntryNomeBehavior Required="true" />
                             </Entry.Behaviors>
@@ -51,11 +51,14 @@
                     </StackLayout>
 
                 </StackLayout>
-                
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
-                </StackLayout>
 
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="NomeResponsavel" />
+                        </Button.Behaviors>
+                    </Button>
+                </StackLayout>
 
             </StackLayout>
         </ScrollView>

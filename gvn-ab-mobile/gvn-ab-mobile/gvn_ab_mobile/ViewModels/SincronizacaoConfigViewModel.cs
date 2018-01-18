@@ -60,14 +60,7 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAOOrigemAlimentacao DAOOrigemAlimentacao = new DAO.DAOOrigemAlimentacao()) { DAOOrigemAlimentacao.CreateTable(); }
             using (DAO.DAOTempoSituacaoDeRua DAOTempoSituacaoDeRua = new DAO.DAOTempoSituacaoDeRua()) { DAOTempoSituacaoDeRua.CreateTable(); }
             using (DAO.DAOMunicipios DAOMunicipios = new DAO.DAOMunicipios()) { DAOMunicipios.CreateTable(); }
-
-            using (DAO.DAOTurno DAOTurno = new DAO.DAOTurno()) { DAOTurno.CreateTable(); }
-            using (DAO.DAOLocalDeAtendimento DAOLocalAtendimento = new DAO.DAOLocalDeAtendimento()) { DAOLocalAtendimento.CreateTable(); }
-            using (DAO.DAOTipoDeAtendimento DAOTipoAtendimento = new DAO.DAOTipoDeAtendimento()) { DAOTipoAtendimento.CreateTable(); }
-            using (DAO.DAOModalidadeAD DAOModalidadeAD = new DAO.DAOModalidadeAD()) { DAOModalidadeAD.CreateTable(); }
-            using (DAO.DAORacionalidadeSaude DAORacionalidadeSaude = new DAO.DAORacionalidadeSaude()) { DAORacionalidadeSaude.CreateTable(); }
-            using (DAO.DAOAleitamentoMaterno DAOAleitamentoMaterno = new DAO.DAOAleitamentoMaterno()) { DAOAleitamentoMaterno.CreateTable(); }
-
+            
             using (DAO.DAOUF DAOUF = new DAO.DAOUF()) { DAOUF.CreateTable(); }
             using (DAO.DAOTipoDeImovel DAOTipoDeImovel = new DAO.DAOTipoDeImovel()) { DAOTipoDeImovel.CreateTable(); }
             using (DAO.DAOTipoDeLogradouro DAOTipoDeLogradouro = new DAO.DAOTipoDeLogradouro()) { DAOTipoDeLogradouro.CreateTable(); }
@@ -81,13 +74,22 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAOAguaConsumoDomicilio DAOAguaConsumoDomicilio = new DAO.DAOAguaConsumoDomicilio()) { DAOAguaConsumoDomicilio.CreateTable(); }
             using (DAO.DAOFormaDeEscoamentoDoBanheiroOuSanitario DAOFormaDeEscoamentoDoBanheiroOuSanitario = new DAO.DAOFormaDeEscoamentoDoBanheiroOuSanitario()) { DAOFormaDeEscoamentoDoBanheiroOuSanitario.CreateTable(); }
             using (DAO.DAODestinoDoLixo DAODestinoDoLixo = new DAO.DAODestinoDoLixo()) { DAODestinoDoLixo.CreateTable(); }
-
             using (DAO.DAOAnimalNoDomicilio DAOAnimalNoDomicilio = new DAO.DAOAnimalNoDomicilio()) { DAOAnimalNoDomicilio.CreateTable(); }
             using (DAO.DAORendaFamiliar DAORendaFamiliar = new DAO.DAORendaFamiliar()) { DAORendaFamiliar.CreateTable(); }
-            using (DAO.DAOListaCiapCondicaoAvaliada DAOListaCiapCondicaoAvaliada = new DAO.DAOListaCiapCondicaoAvaliada()) { DAOListaCiapCondicaoAvaliada.CreateTable(); }
-            using (DAO.DAOListaExames DAOListaExames = new DAO.DAOListaExames()) { DAOListaExames.CreateTable(); }
-            using (DAO.DAONasfs DAONasfs = new DAO.DAONasfs()) { DAONasfs.CreateTable(); }
-            using (DAO.DAOCondutaEncaminhamento DAOCondutaEncaminhamento = new DAO.DAOCondutaEncaminhamento()) { DAOCondutaEncaminhamento.CreateTable(); }
+
+            //using (DAO.DAOListaCiapCondicaoAvaliada DAOListaCiapCondicaoAvaliada = new DAO.DAOListaCiapCondicaoAvaliada()) { DAOListaCiapCondicaoAvaliada.CreateTable(); }
+            //using (DAO.DAOListaExames DAOListaExames = new DAO.DAOListaExames()) { DAOListaExames.CreateTable(); }
+            //using (DAO.DAONasfs DAONasfs = new DAO.DAONasfs()) { DAONasfs.CreateTable(); }
+            //using (DAO.DAOCondutaEncaminhamento DAOCondutaEncaminhamento = new DAO.DAOCondutaEncaminhamento()) { DAOCondutaEncaminhamento.CreateTable(); }
+            //using (DAO.DAOTurno DAOTurno = new DAO.DAOTurno()) { DAOTurno.CreateTable(); }
+            //using (DAO.DAOLocalDeAtendimento DAOLocalAtendimento = new DAO.DAOLocalDeAtendimento()) { DAOLocalAtendimento.CreateTable(); }
+            //using (DAO.DAOTipoDeAtendimento DAOTipoAtendimento = new DAO.DAOTipoDeAtendimento()) { DAOTipoAtendimento.CreateTable(); }
+            //using (DAO.DAOModalidadeAD DAOModalidadeAD = new DAO.DAOModalidadeAD()) { DAOModalidadeAD.CreateTable(); }
+            //using (DAO.DAORacionalidadeSaude DAORacionalidadeSaude = new DAO.DAORacionalidadeSaude()) { DAORacionalidadeSaude.CreateTable(); }
+            //using (DAO.DAOAleitamentoMaterno DAOAleitamentoMaterno = new DAO.DAOAleitamentoMaterno()) { DAOAleitamentoMaterno.CreateTable(); }
+
+            using (DAO.DAODesfecho DAODesfecho = new DAO.DAODesfecho()) { DAODesfecho.CreateTable(); }
+            using (DAO.DAOMotivoVisita DAOMotivoVisita = new DAO.DAOMotivoVisita()) { DAOMotivoVisita.CreateTable(); }
 
             using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) { DAOFichaCadastroIndividual.CreateTable(); }
 

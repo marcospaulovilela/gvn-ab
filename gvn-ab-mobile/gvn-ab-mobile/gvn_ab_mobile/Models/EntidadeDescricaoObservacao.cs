@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.Models
 {
-    public abstract class EntidadeEncaminhamento : Helpers.ObservableObject
+    public abstract class EntidadeDescricaoObservacao : Helpers.ObservableObject
     {
-        public EntidadeEncaminhamento() { }
+        public EntidadeDescricaoObservacao() { }
 
-        public EntidadeEncaminhamento(string descricao)
+        public EntidadeDescricaoObservacao(string descricao)
         {
             this.Descricao = descricao;
-            this.Observacao = "";
+            this.Observacoes = "";
         }
 
-        public EntidadeEncaminhamento(string descricao, string observacao)
+        public EntidadeDescricaoObservacao(string descricao, string observacoes)
         {
             this.Descricao = descricao;
-            this.Observacao = observacao;
+            this.Observacoes = observacoes;
         }
 
         private long? _codigo;
@@ -39,11 +39,11 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _descricao, value); }
         }
 
-        private string _observacao;
-        public string Observacao
+        private string _observacoes;
+        public string Observacoes
         {
-            get { return this._observacao; }
-            set { SetProperty(ref _observacao, value); }
+            get { return this._observacoes; }
+            set { SetProperty(ref _observacoes, value); }
         }
 
         public override string ToString()

@@ -230,9 +230,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo codigoIbgeMunicipio - Tipo string
-        private string _codigoIbgeMunicipio; //Obrigatório
+        private Models.Municipios _codigoIbgeMunicipio; //Obrigatório
         [NotNull, MaxLength(7)] //Mínimo 7 caracteres; Máximo 7 caracteres
-        public string CodigoIbgeMunicipio
+        public Models.Municipios CodigoIbgeMunicipio
         {
             get { return this._codigoIbgeMunicipio; }
             set { SetProperty(ref _codigoIbgeMunicipio, value); }
@@ -397,7 +397,7 @@ namespace gvn_ab_mobile.Models
         //CARDINALIDADE RELAÇÃO FICHA HEADER
 
         [OneToOne]
-        public FichaHeader Header
+        public FichaLotacaoHeader Header
         {
             get;
             set;

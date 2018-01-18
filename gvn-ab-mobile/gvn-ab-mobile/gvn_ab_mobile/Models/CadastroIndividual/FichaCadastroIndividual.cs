@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using SQLite;
 using SQLiteNetExtensions.Attributes;
@@ -463,13 +464,13 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _codigoIbgeMunicipioNascimento, value); }
         }
 
-        private long _dataNascimentoCidadao;
+        private DateTime _dataNascimentoCidadao;
         /// <summary>
         /// Data de nascimento do cidadão no formato epoch time.
         /// Não pode ser posterior a dataAtendimento ou mais anterior que 130 anos a partir da dataAtendimento.
         /// </summary>
         [NotNull]
-        public long DataNascimentoCidadao {
+        public DateTime DataNascimentoCidadao {
             get { return this._dataNascimentoCidadao; }
             set { SetProperty(ref _dataNascimentoCidadao, value); }
         }
@@ -645,14 +646,14 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _desconheceNomePai, value); }
         }
 
-        private long _dtNaturalizacao;
+        private DateTime _dtNaturalizacao;
         /// <summary>
         /// Data de naturalização do cidadão no formato epoch time.
         /// Só deve ser preenchido se o campo nacionalidadeCidadao = 2.Neste caso, é de preenchimento obrigatório;
         /// Não pode ser posterior a dataAtendimento;
         /// Não pode ser anterior a dataNascimentoCidadao.
         /// </summary>
-        public long DtNaturalizacao {
+        public DateTime DtNaturalizacao {
             get { return this._dtNaturalizacao; }
             set { SetProperty(ref _dtNaturalizacao, value); }
         }
@@ -668,14 +669,14 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _portariaNaturalizacao, value); }
         }
 
-        private long _dtEntradaBrasil;
+        private DateTime _dtEntradaBrasil;
         /// <summary>
         /// Data em que o cidadão entrou no Brasil. 
         /// Só deve ser preenchido se o campo nacionalidadeCidadao = 3.Neste caso o preenchimento é obrigatório;
         /// Não pode ser posterior a dataAtendimento;
         /// Não pode ser anterior a dataNascimentoCidadao.
         /// </summary>
-        public long DtEntradaBrasil {
+        public DateTime DtEntradaBrasil {
             get { return this._dtEntradaBrasil; }
             set { SetProperty(ref _dtEntradaBrasil, value); }
         }
@@ -887,12 +888,12 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _motivoSaidaCidadao, value); }
         }
 
-        private long _dataObito;
+        private DateTime _dataObito;
         /// <summary>
         /// Dataa de óbito do cidadão no formato epoch time.
         /// Só pode ser preenchido se o campo motivoSaidaCidadao = 135. Neste caso o preenchimento é obrigatório.
         /// </summary>
-        public long DataObito {
+        public DateTime DataObito {
             get { return this._dataObito; }
             set { SetProperty(ref _dataObito, value); }
         }
@@ -957,10 +958,10 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _uuidFichaOriginadora, value); }
         }
         
-        private FichaHeader _header;
+        private FichaLotacaoHeader _header;
 
         [OneToOne]
-        public FichaHeader Header {
+        public FichaLotacaoHeader Header {
             get { return this._header; }
             set { SetProperty(ref _header, value); }
         }

@@ -1,8 +1,12 @@
-﻿using SQLite;
+﻿using System;
+using System.Collections.Generic;
+
+using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models
 {
-    public class FichaHeader : Helpers.ObservableObject
+    public class FichaLotacaoHeader : Helpers.ObservableObject
     {
 
         //Campo ID - Tipo long

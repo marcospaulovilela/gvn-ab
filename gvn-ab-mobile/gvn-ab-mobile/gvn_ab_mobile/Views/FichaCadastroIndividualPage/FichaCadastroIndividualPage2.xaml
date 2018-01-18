@@ -110,7 +110,7 @@
                 </StackLayout>
 
                 <StackLayout HorizontalOptions="FillAndExpand">
-                    <Label Text="Número Nis (Pis/Pasep):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                    <Label Text="Número NIS (PIS/PASEP):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                     <Entry x:Name="NumPisPasep" Placeholder="Número" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NumeroNisPisPasep}">
                         <Entry.Behaviors>
                             <behaviors:EntryLengthBehavior MaxLength="11" MinLength="11" />
@@ -165,7 +165,7 @@
 
                     <StackLayout>
                         <Label Text="Município de Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <controls:PickerSearch x:Name="CodMunicipio" Placeholder="Municipios de nascimento"  Items="{Binding Municipios}" SelectedItem="{Binding CodigoIbgeMunicipioNascimento}">
+                        <controls:PickerSearch x:Name="CodMunicipio" Placeholder="Municipio de nascimento"  Items="{Binding Municipios}" SelectedItem="{Binding CodigoIbgeMunicipioNascimento}">
                             <controls:PickerSearch.Behaviors>
                                 <behaviors:ValidatorPickerSearchBehavior Required="true"/>
                             </controls:PickerSearch.Behaviors>

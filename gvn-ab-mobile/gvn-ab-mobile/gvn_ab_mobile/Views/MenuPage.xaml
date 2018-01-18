@@ -20,7 +20,7 @@
                 <StackLayout Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
                     <Button Clicked="OnCadastroIndividualClicked" Text="Cadastro Individual" IsVisible="{Binding CboCadastroIndividual}" Image="iconPessoas" BackgroundColor="#003264" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
                     <Button Clicked="OnCadastroDomiciliarClicked" Text="Cadastro Domiciliar" Image="iconCasas" BackgroundColor="#003264" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
-                    <Button Clicked="OnAtendimentoIndividualClicked" Text="Atendimento Individual" Image="iconMedico" BackgroundColor="#003264" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+                    <Button Clicked="OnVisitaDomiciliarClicked" Text="Visita Domiciliar" Image="iconMedico" BackgroundColor="#003264" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
                 </StackLayout>
 
                 <StackLayout Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">

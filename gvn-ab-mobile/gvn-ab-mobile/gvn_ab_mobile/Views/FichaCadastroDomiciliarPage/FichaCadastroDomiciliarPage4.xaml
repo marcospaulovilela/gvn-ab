@@ -11,6 +11,14 @@
 
                 <StackLayout Orientation="Horizontal">
 
+                    <StackLayout IsVisible="{Binding IsNotDomicilio}">
+                        <Label Text="Tipo de Imóvel não é Domicílio, aperte em Continuar." FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                    </StackLayout>
+
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal">
+
                     <StackLayout IsVisible="{Binding IsDomicilio}">
                         <Label Text="Existência de Animais no Domicílio:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Switch IsToggled="{Binding StAnimaisNoDomicilio}"  HorizontalOptions="Center" />
@@ -36,7 +44,7 @@
 
                     <StackLayout IsVisible="{Binding HasAnimais}">
                         <Label Text="Quantos?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Num Animais" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.QuantosAnimaisNoDomicilio}">
+                        <Entry x:Name="NumAnimais" Placeholder="Num Animais" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.QuantosAnimaisNoDomicilio}">
                             <Entry.Behaviors>
                                 <behaviors:EntryLengthBehavior MaxLength="2" />
                             </Entry.Behaviors>
@@ -46,7 +54,11 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
+                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodAnimaisDomicilio|NumAnimais" />
+                        </Button.Behaviors>
+                    </Button>
                 </StackLayout>
 
             </StackLayout>
