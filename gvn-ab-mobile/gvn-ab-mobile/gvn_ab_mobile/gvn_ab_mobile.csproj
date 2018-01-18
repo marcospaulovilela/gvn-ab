@@ -45,6 +45,7 @@
     <Compile Include="Behaviors\Validator.cs" />
     <Compile Include="Behaviors\ButtonSubmitBehavior.cs" />
     <Compile Include="Behaviors\ValidatorDatepickerBehavior.cs" />
+    <Compile Include="Behaviors\ValidatorPickerSearchBehavior.cs" />
     <Compile Include="Behaviors\ValidatorSelectMultipleItems .cs" />
     <Compile Include="Behaviors\ValidatorPickerBehavior.cs" />
     <Compile Include="Behaviors\ValidatorEntryBehavior.cs" />
@@ -88,17 +89,23 @@
     <Compile Include="Models\CadastroDomiciliarTerritorial\FichaFamilia.cs" />
     <Compile Include="Models\AtendimentoIndividual\FichaOutrosSia.cs" />
     <Compile Include="Models\EntidadeCondicaoAvaliada.cs" />
+    <Compile Include="Models\EntidadeDescricaoObservacao.cs" />
     <Compile Include="Models\EntidadeEnumerador.cs" />
+    <Compile Include="Models\EntidadeExames.cs" />
+    <Compile Include="Models\EntidadeMunicipios.cs" />
     <Compile Include="Models\Enumeradores.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
+    <Compile Include="Models\Header\FichaUnicaLotacaoHeader.cs" />
     <Compile Include="Models\Ocupacao.cs" />
-    <Compile Include="Models\FichaHeader.cs" />
+    <Compile Include="Models\Header\FichaLotacaoHeader.cs" />
     <Compile Include="Models\Cbo.cs" />
     <Compile Include="Models\SincronizacaoConfig.cs" />
     <Compile Include="Models\Profissional.cs" />
+    <Compile Include="Models\VisitarDomiciliarTerritorial\FichaVisitaDomiciliarTerritorial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FichaAtendimentoIndividualViewModel.cs" />
     <Compile Include="ViewModels\FichaCadastroDomiciliarViewModel.cs" />
+    <Compile Include="ViewModels\FichaVisitaDomiciliarViewModel.cs" />
     <Compile Include="ViewModels\SincronizacaoConfigViewModel.cs" />
     <Compile Include="ViewModels\FichaCadastroIndividualViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -169,9 +176,6 @@
     </Compile>
     <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage6.xaml.cs">
       <DependentUpon>FichaCadastroIndividualPage6.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ItemFamilia.xaml.cs">
-      <DependentUpon>ItemFamilia.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\LoginPage2.xaml.cs">
       <DependentUpon>LoginPage2.xaml</DependentUpon>
@@ -432,18 +436,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\PickerSearchPopUp.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Controls\TableGrid.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\ItemFamilia.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

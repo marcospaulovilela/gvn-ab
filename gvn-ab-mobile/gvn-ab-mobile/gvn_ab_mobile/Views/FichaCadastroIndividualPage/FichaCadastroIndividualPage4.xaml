@@ -23,20 +23,28 @@
 
                 <StackLayout IsVisible="{Binding IsMotivoObito}">
                     <Label Text="Obito:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                    <DatePicker  Date="{Binding Ficha.DataObito}" />
+                    <DatePicker x:Name="DataObito"  Date="{Binding Ficha.DataObito}" >
+                        <DatePicker.Behaviors>
+                            <behaviors:ValidatorDatepickerBehavior />
+                        </DatePicker.Behaviors>
+                    </DatePicker>
                 </StackLayout>
 
                 <StackLayout IsVisible="{Binding IsMotivoObito}">
                     <Label Text="Número da D.O:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Row="3" Grid.Column="2" TextColor="Black" />
-                    <Entry Placeholder="" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.NumeroDO}">
+                    <Entry x:Name="NumDO" Placeholder="Num DO" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.NumeroDO}">
                         <Entry.Behaviors>
-                            <behaviors:EntryLengthBehavior MinLength="9"  MaxLength="9" />
+                            <behaviors:EntryLengthBehavior MinLength="9"  MaxLength="9" Required="true" />
                         </Entry.Behaviors>
                     </Entry>
                 </StackLayout>
-                
+
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
+                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="DataObito|NumDO" />
+                        </Button.Behaviors>
+                    </Button>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

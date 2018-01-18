@@ -86,7 +86,7 @@ namespace gvn_ab_mobile.Models
         //CARDINALIDADE RELAÇÃO FICHA HEADER
 
         [OneToMany]
-        public List<FichaHeader> Headers
+        public List<FichaLotacaoHeader> Headers
         {
             get;
             set;

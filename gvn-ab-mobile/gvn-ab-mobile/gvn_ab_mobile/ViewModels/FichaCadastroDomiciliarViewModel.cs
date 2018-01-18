@@ -28,6 +28,19 @@ namespace gvn_ab_mobile.ViewModels
         public ObservableRangeCollection<Models.UF> UFs { get; set; }
         public ObservableRangeCollection<Models.TipoDeLogradouro> TiposLogradouros { get; set;  }
         public ObservableRangeCollection<Models.TipoDeImovel> TiposImoveis { get; set; }
+        public ObservableRangeCollection<Models.Municipios> Municipios { get; set; }
+
+        private Models.Municipios _codigoIbgeMunicipio;
+        public Models.Municipios CodigoIbgeMunicipio
+        {
+            get { return this._codigoIbgeMunicipio; }
+            set
+            {
+
+                this.Ficha.CodigoIbgeMunicipio = value;
+                SetProperty(ref _codigoIbgeMunicipio, value);
+            }
+        }
 
         private Models.UF _numeroDneUf; //Obrigatório
         public Models.UF NumeroDneUf
@@ -99,6 +112,8 @@ namespace gvn_ab_mobile.ViewModels
                 SetProperty(ref _tipoDeImovel, value);
                 OnPropertyChanged("HasTipoDomicilio");
                 OnPropertyChanged("IsDomicilio");
+                OnPropertyChanged("IsNotDomicilio");
+                OnPropertyChanged("HasTipoDomicilioAndIsRural");
             }
         }
         public bool HasTipoDomicilio
@@ -114,6 +129,13 @@ namespace gvn_ab_mobile.ViewModels
             get
             {
                 return this.TipoDeImovel?.Codigo == 1;
+            }
+        }
+        public bool IsNotDomicilio
+        {
+            get
+            {
+                return !(this.TipoDeImovel?.Codigo == 1);
             }
         }
 
@@ -149,6 +171,7 @@ namespace gvn_ab_mobile.ViewModels
 
                 SetProperty(ref _localizacao, value);
                 OnPropertyChanged("IsRural");
+                OnPropertyChanged("HasTipoDomicilioAndIsRural");
             }
         }
         public bool IsRural
@@ -263,6 +286,14 @@ namespace gvn_ab_mobile.ViewModels
         public ObservableRangeCollection<Models.RendaFamiliar> RendasFamiliares { get; set; }
 
 
+        public bool HasTipoDomicilioAndIsRural
+        {
+            get
+            {
+                return ((this.HasTipoDomicilio == true) && ( this.IsRural == true));
+            }
+        }
+
         public FichaCadastroDomiciliarViewModel(Page page)
         {
             this.Ficha = new Models.FichaCadastroDomiciliarTerritorial();
@@ -276,6 +307,7 @@ namespace gvn_ab_mobile.ViewModels
             this.ConcordarInstituicaoPermanencia = new Command(async () => await ConcordarInstituicaoPermanenciaExecuteAsync());
             this.NaoConcordarInstituicaoPermanencia = new Command(async () => await NaoConcordarInstituicaoPermanenciaExecuteAsync());
 
+            this.Municipios = new ObservableRangeCollection<Models.Municipios>(new DAO.DAOMunicipios().Select());
             this.UFs = new ObservableRangeCollection<Models.UF>(new DAO.DAOUF().Select());
             this.TiposLogradouros = new ObservableRangeCollection<Models.TipoDeLogradouro>(new DAO.DAOTipoDeLogradouro().Select());
             this.TiposImoveis = new ObservableRangeCollection<Models.TipoDeImovel>(new DAO.DAOTipoDeImovel().Select());

@@ -5,44 +5,35 @@
              xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
              x:Class="gvn_ab_mobile.Views.Login.LoginPage2">
     <ContentPage.Content>
-        <StackLayout>
+
+        <StackLayout VerticalOptions="FillAndExpand" Padding="15, 100, 15, 100" Spacing="50">
+            <StackLayout></StackLayout>
             <StackLayout>
-                <controls:TableGrid Title="Cbos" Items="{Binding Teste}" ItemPage="gvn_ab_mobile.Views.ItemFamilia" ItemType="gvn_ab_mobile.Models.Cbo" />
+                <Image Source="logoGoverna.png" />
+                <Label Text="Saude" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
+                <Label Text="Atenção Basica" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
             </StackLayout>
 
-            <StackLayout IsVisible="False">
-                <Grid Padding="20, 30, 20, 20" RowSpacing="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="20" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <StackLayout Grid.Row="0">
-                        <Image Source="logoGoverna.png" />
-                        <Label Text="Saude" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
-                        <Label Text="Atenção Basica" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Label Text="C.B.O. do profissional: "  FontSize="Medium"/>
+                    <Picker x:Name="Cbo" ItemsSource="{Binding Profissional.Cbos}" SelectedItem="{Binding Cbo}" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker.Behaviors>
+                            <behaviors:ValidatorPickerBehavior />
+                        </Picker.Behaviors>
+                    </Picker>
+                    <StackLayout IsVisible="False">
+                        <controls:PickerSearch Placeholder="Cbos"  Items="{Binding Profissional.Cbos}"/>
                     </StackLayout>
+                </StackLayout>
 
-                    <StackLayout Grid.Row="2">
-                        <StackLayout>
-                            <Label Text="C.B.O. do profissional: "  FontSize="Medium"/>
-                            <Picker x:Name="Cbo" ItemsSource="{Binding Profissional.Cbos}" SelectedItem="{Binding Cbo}" TextColor="Gray" HorizontalOptions="FillAndExpand">
-                                <Picker.Behaviors>
-                                    <behaviors:ValidatorPickerBehavior />
-                                </Picker.Behaviors>
-                            </Picker>
-                        </StackLayout>
-
-                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
-                            <Button Text="Entrar" BackgroundColor="#003264" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="White"  VerticalOptions="Center">
-                                <Button.Behaviors>
-                                    <behaviors:ButtonSubmitBehavior Command="{Binding CboSelect}" Controls="Cbo" />
-                                </Button.Behaviors>
-                            </Button>
-                        </StackLayout>
-                    </StackLayout>
-                </Grid>
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
+                    <Button Text="Entrar" BackgroundColor="#003264" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="White"  VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding CboSelect}" Controls="Cbo" />
+                        </Button.Behaviors>
+                    </Button>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

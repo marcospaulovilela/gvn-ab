@@ -15,8 +15,8 @@
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding IsGestante}">
-                        <Label Text="Se sim, qual a maternidade de referência?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Maternidade de Referência" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.MaternidadeDeReferencia}">
+                        <Label Text="Qual a maternidade de referência?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Entry x:Name="NomeMaternidade" Placeholder="Maternidade de Referência" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.MaternidadeDeReferencia}">
                             <Entry.Behaviors>
                                 <behaviors:EntryLengthBehavior MaxLength="100" />
                             </Entry.Behaviors>
@@ -69,10 +69,10 @@
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding HasDoencaCardiaca}">
-                        <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Label Text="Qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <controls:SelectMultipleItems x:Name="CodDoencaCardiaca" Placeholder="Doenças cardíacas" Items="{Binding DoencasCardiacas}" SelectedItems="{Binding DoencasCardiacasSelecionadas}"  >
                             <controls:SelectMultipleItems.Behaviors>
-                             <behaviors:ValidatorSelectMultipleItems />
+                                <behaviors:ValidatorSelectMultipleItems MinLength="0" MaxLength="3" />
                             </controls:SelectMultipleItems.Behaviors>
                         </controls:SelectMultipleItems>
                     </StackLayout>
@@ -83,10 +83,10 @@
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding HasDoencaRins}">
-                        <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Label Text="Qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <controls:SelectMultipleItems x:Name="CodDoencaRins" Placeholder="Doenças renais" Items="{Binding ProblemasRins}" SelectedItems="{Binding ProblemasRinsSelecionados}"  >
                             <controls:SelectMultipleItems.Behaviors>
-                                <behaviors:ValidatorSelectMultipleItems />
+                                <behaviors:ValidatorSelectMultipleItems MinLength="0" MaxLength="3" />
                             </controls:SelectMultipleItems.Behaviors>
                         </controls:SelectMultipleItems>
                     </StackLayout>
@@ -97,10 +97,10 @@
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding HasDoencaRespiratoria}">
-                        <Label Text="Se sim, indique qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Label Text="Qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <controls:SelectMultipleItems x:Name="CodDoencaRespiratoria" Placeholder="Doenças respiratórias"  Items="{Binding DoencasRespiratorias}" SelectedItems="{Binding DoencasRespiratoriasSelecionadas}"  >
                             <controls:SelectMultipleItems.Behaviors>
-                                <behaviors:ValidatorSelectMultipleItems />
+                                <behaviors:ValidatorSelectMultipleItems MinLength="0" MaxLength="4" />
                             </controls:SelectMultipleItems.Behaviors>
                         </controls:SelectMultipleItems>
                     </StackLayout>
@@ -126,8 +126,8 @@
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding HasInternacaoEm12Meses}">
-                        <Label Text="Se sim, por qual(is) causa(s)?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Causa(s)" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoCausaInternacaoEm12Meses}">
+                        <Label Text="Por qual(is) causa(s)?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Entry x:Name="CausaInternacao" Placeholder="Causa(s)" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoCausaInternacaoEm12Meses}">
                             <Entry.Behaviors>
                                 <behaviors:EntryLengthBehavior MaxLength="100" />
                             </Entry.Behaviors>
@@ -155,8 +155,8 @@
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding UsesPlantasMedicinais}">
-                        <Label Text="Se sim, qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Plantas Medicinais utilizadas" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoPlantasMedicinaisUsadas}">
+                        <Label Text="Qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Entry x:Name="PlantasMedicinais" Placeholder="Plantas Medicinais utilizadas" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoPlantasMedicinaisUsadas}">
                             <Entry.Behaviors>
                                 <behaviors:EntryLengthBehavior MaxLength="100" />
                             </Entry.Behaviors>
@@ -169,7 +169,11 @@
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                        <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
+                        <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                            <Button.Behaviors>
+                                <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodDoencaCardiaca|CodDoencaRins|CodDoencaRespiratoria|CausaInternacao|PlantasMedicinais" />
+                            </Button.Behaviors>
+                        </Button>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

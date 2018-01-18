@@ -111,6 +111,12 @@ namespace gvn_ab_mobile.Models {
         public TempoSituacaoDeRua(string descricao) : base(descricao) { }
     }
 
+    public class Municipios : Models.EntidadeMunicipios
+    {
+        public Municipios() { }
+        public Municipios(string descricao, string siglaUF) : base(descricao, siglaUF) { }
+    }
+
     //
 
     //Ficha Cadastro Domiciliar e Territorial
@@ -250,12 +256,47 @@ namespace gvn_ab_mobile.Models {
         public OrigemAlimentacao(string descricao) : base(descricao) { }
     }
 
+    public class Nasfs : Models.EntidadeEnumerador
+    {
+        public Nasfs() { }
+        public Nasfs(string descricao) : base(descricao) { }
+    }
+
     public class ListaCiapCondicaoAvaliada : Models.EntidadeCondicaoAvaliada
     {
         public ListaCiapCondicaoAvaliada() { }
         public ListaCiapCondicaoAvaliada(string descricaoAB, string ciap2Relacionada) : base(descricaoAB, ciap2Relacionada) { }
     }
 
+    public class ListaExames : Models.EntidadeExames
+    {
+        public ListaExames() { }
+        public ListaExames(string descricaoAB, string codigoSIGTAP) : base(descricaoAB, codigoSIGTAP) { }
+    }
+
+    public class CondutaEncaminhamento : Models.EntidadeDescricaoObservacao
+    {
+        public CondutaEncaminhamento() { }
+        public CondutaEncaminhamento(string descricao) : base(descricao) { }
+        public CondutaEncaminhamento(string descricao, string observacao) : base(descricao, observacao) { }
+    }
+
     //
 
+    // Ficha Visita Domiciliar e Territorial
+
+    public class MotivoVisita : Models.EntidadeDescricaoObservacao
+    {
+        public MotivoVisita() { }
+        public MotivoVisita(string descricao) : base(descricao) { }
+        public MotivoVisita(string descricao, string observacao) : base(descricao, observacao) { }
+    }
+
+    public class Desfecho : Models.EntidadeEnumerador
+    {
+        public Desfecho() { }
+        public Desfecho(string descricao) : base(descricao) { }
+    }
+
+    //
 }

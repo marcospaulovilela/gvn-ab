@@ -38,15 +38,12 @@
                     <StackLayout>
                         <Label Text="Tipo de Domicílio:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                         <Picker x:Name="CodTipoDomicilio" ItemsSource="{Binding TiposDeDomicilio}" SelectedItem="{Binding TipoDomicilio}" HorizontalOptions="FillAndExpand" Title="Tipo Domicílio" Scale="1">
-                            <Picker.Behaviors>
-                                <behaviors:ValidatorPickerBehavior />
-                            </Picker.Behaviors>
                         </Picker>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Número de Moradores:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Num Moradores" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuMoradores}">
+                        <Entry x:Name="NumMoradores" Placeholder="Num Moradores" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuMoradores}">
                             <Entry.Behaviors>
                                 <behaviors:EntryLengthBehavior MaxLength="4" />
                             </Entry.Behaviors>
@@ -55,7 +52,7 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Número de Cômodos:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Num Cômodos" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuComodos}">
+                        <Entry x:Name="NumComodos" Placeholder="Num Cômodos" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuComodos}">
                             <Entry.Behaviors>
                                 <behaviors:EntryLengthBehavior MaxLength="2" />
                             </Entry.Behaviors>
@@ -83,7 +80,7 @@
                 <StackLayout Orientation="Horizontal">
 
                     <?SelectBox?>
-                    <StackLayout IsVisible="{Binding IsRural}">
+                    <StackLayout IsVisible="{Binding HasTipoDomicilioAndIsRural}">
                         <Label Text="Em caso de Área de Produção Rural: Condição de Posse e Uso da Terra" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                         <Picker x:Name="CodCondicaoPosseUsoTerra" ItemsSource="{Binding CondicoesPosseUsoTerra}" SelectedItem="{Binding AreaProducaoRural}" HorizontalOptions="FillAndExpand" Title="Condição Posse e Uso da Terra" Scale="1">
                         </Picker>
@@ -143,7 +140,11 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
+                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodSituacaoMoradia|CodLocalizacao|CodTipoDomicilio|NumMoradores|NumComodos|CodTipoAcessoDomicilio|CodCondicaoPosseUsoTerra" />
+                        </Button.Behaviors>
+                    </Button>
                 </StackLayout>
 
             </StackLayout>

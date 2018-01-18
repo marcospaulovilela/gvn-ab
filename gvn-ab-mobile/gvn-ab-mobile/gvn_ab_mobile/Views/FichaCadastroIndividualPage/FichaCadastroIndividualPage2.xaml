@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="WhiteSmoke"
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2"
+             xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
              xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              Title="Identificação do Cidadão">
     <ContentPage.Content>
@@ -11,7 +12,7 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="CNS do Cidadão:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Entry Placeholder="CNS do Cidadao" Keyboard="Numeric"  FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsCidadao}">
+                        <Entry x:Name="CodCns" Placeholder="CNS do Cidadao" Keyboard="Numeric"  FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsCidadao}">
                             <Entry.Behaviors>
                                 <behaviors:ValidatorCns />
                             </Entry.Behaviors>
@@ -23,11 +24,11 @@
                         <Switch HorizontalOptions="Center" IsToggled="{Binding StatusEhResponsavel}"></Switch>
                     </StackLayout>
                 </StackLayout>
-                
+
                 <StackLayout Orientation="Horizontal">
                     <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsResponsavel}">
                         <Label Text="CNS do Responsável Familiar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="CNS do Responsável Familiar" Keyboard="Numeric"  FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsResponsavelFamiliar}">
+                        <Entry x:Name="CodCnsResponsavel" Placeholder="CNS do Responsável Familiar" Keyboard="Numeric"  FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsResponsavelFamiliar}">
                             <Entry.Behaviors>
                                 <behaviors:ValidatorCns />
                             </Entry.Behaviors>
@@ -38,9 +39,9 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Microárea:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Start" TextColor="Black" />
-                        <Entry Text="{Binding Ficha.Microarea}" Placeholder="Microárea" IsEnabled="{Binding IsForaArea}" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black">
+                        <Entry x:Name="CodMicroarea" Text="{Binding Ficha.Microarea}" Placeholder="Microárea" IsEnabled="{Binding IsForaArea}" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black">
                             <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MinLength="2"  MaxLength="2" />
+                                <behaviors:EntryLengthBehavior MinLength="2"  MaxLength="2" Required="true" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
@@ -52,7 +53,7 @@
 
                 <StackLayout>
                     <Label Text="Nome do Cidadão:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
-                    <Entry x:Name="NomeCidadao" Placeholder="Nome do Cidadao" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.NomeCidadao}">
+                    <Entry x:Name="NomCidadao" Placeholder="Nome do Cidadao" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.NomeCidadao}">
                         <Entry.Behaviors>
                             <behaviors:EntryNomeBehavior Required="true" />
                         </Entry.Behaviors>
@@ -62,16 +63,16 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout HorizontalOptions="FillAndExpand" >
                         <Label Text="Nome Social:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Nome Social" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeSocial}">
+                        <Entry x:Name="NomSocialCidadao" Placeholder="Nome Social" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeSocial}">
                             <Entry.Behaviors>
-                                <behaviors:EntryNomeBehavior />
+                                <behaviors:EntryNomeBehavior MinLength="0" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
 
                     <StackLayout >
                         <Label Text="Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <DatePicker  Date="{Binding Ficha.DataNascimentoCidadao}">
+                        <DatePicker Date="{Binding Ficha.DataNascimentoCidadao}">
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />
                             </DatePicker.Behaviors>
@@ -101,16 +102,16 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsRacaCor5}">
                     <Label Text="Etnia:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                    <Picker x:Name="CodEtnia"  ItemsSource="{Binding Etnias}" SelectedItem="{Binding Etnia}"  HorizontalOptions="FillAndExpand" Title="Etnia">
+                    <Picker x:Name="CodEtnia" ItemsSource="{Binding Etnias}" SelectedItem="{Binding Etnia}"  HorizontalOptions="FillAndExpand" Title="Etnia">
                         <Picker.Behaviors>
                             <behaviors:ValidatorPickerBehavior />
                         </Picker.Behaviors>
                     </Picker>
                 </StackLayout>
-                
+
                 <StackLayout HorizontalOptions="FillAndExpand">
-                    <Label Text="Número Nis (Pis/Pasep):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                    <Entry Placeholder="Número" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NumeroNisPisPasep}">
+                    <Label Text="Número NIS (PIS/PASEP):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                    <Entry x:Name="NumPisPasep" Placeholder="Número" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NumeroNisPisPasep}">
                         <Entry.Behaviors>
                             <behaviors:EntryLengthBehavior MaxLength="11" MinLength="11" />
                         </Entry.Behaviors>
@@ -120,7 +121,7 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding KnowsNomeMae}">
                         <Label Text="Nome Completo da Mãe:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Nome Mãe" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeMaeCidadao}">
+                        <Entry x:Name="NomMae" Placeholder="Nome Mãe" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeMaeCidadao}">
                             <Entry.Behaviors>
                                 <behaviors:EntryNomeBehavior Required="true" />
                             </Entry.Behaviors>
@@ -136,8 +137,8 @@
 
                 <StackLayout Orientation="Horizontal">
                     <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding KnowsNomePai}">
-                        <Label Text="Nome Completo da Pai:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Nome Pai" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomePaiCidadao}">
+                        <Label Text="Nome Completo do Pai:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Entry x:Name="NomPai" Placeholder="Nome Pai" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomePaiCidadao}">
                             <Entry.Behaviors>
                                 <behaviors:EntryNomeBehavior Required="true" />
                             </Entry.Behaviors>
@@ -153,17 +154,39 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label Text="Nacionalidade:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                    <Picker x:Name="CodNacionalidade"  ItemsSource="{Binding Nacionalidades}" SelectedItem="{Binding NacionalidadeCidadao}"  HorizontalOptions="FillAndExpand"  Title="Nacionalidade"/>
+                    <Picker x:Name="CodNacionalidade"  ItemsSource="{Binding Nacionalidades}" SelectedItem="{Binding NacionalidadeCidadao}"  HorizontalOptions="FillAndExpand"  Title="Nacionalidade">
+                        <Picker.Behaviors>
+                            <behaviors:ValidatorPickerBehavior />
+                        </Picker.Behaviors>
+                    </Picker>
                 </StackLayout>
-                
+
+                <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsBrasileiro}">
+
+                    <StackLayout>
+                        <Label Text="Município de Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <controls:PickerSearch x:Name="CodMunicipio" Placeholder="Municipio de nascimento"  Items="{Binding Municipios}" SelectedItem="{Binding CodigoIbgeMunicipioNascimento}">
+                            <controls:PickerSearch.Behaviors>
+                                <behaviors:ValidatorPickerSearchBehavior Required="true"/>
+                            </controls:PickerSearch.Behaviors>
+                        </controls:PickerSearch>
+                    </StackLayout>
+
+                </StackLayout>
+
                 <StackLayout Orientation="Horizontal">
                     <StackLayout IsVisible="{Binding IsEstrangeiro}">
                         <Label Text="Entrada no Brasil:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <DatePicker Date="{Binding Ficha.DtEntradaBrasil}"  />
+                        <DatePicker Date="{Binding Ficha.DtEntradaBrasil}"  >
+                            <DatePicker.Behaviors>
+                                <behaviors:ValidatorDatepickerBehavior />
+                            </DatePicker.Behaviors>
+                        </DatePicker>
                     </StackLayout>
+
                     <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsEstrangeiro}">
                         <Label Text="País de Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodPaisNascimento"  ItemsSource="{Binding Paises}"  HorizontalOptions="FillAndExpand" Title="Pais">
+                        <Picker x:Name="CodPaisNascimento"  ItemsSource="{Binding Paises}"  SelectedItem="{Binding PaisNascimento}" HorizontalOptions="FillAndExpand" Title="Pais">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />
                             </Picker.Behaviors>
@@ -174,20 +197,25 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout IsVisible="{Binding IsNaturalizado}" >
                         <Label Text="Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <DatePicker  Date="{Binding Ficha.DtNaturalizacao}"  />
+                        <DatePicker  Date="{Binding Ficha.DtNaturalizacao}" >
+                            <DatePicker.Behaviors>
+                                <behaviors:ValidatorDatepickerBehavior />
+                            </DatePicker.Behaviors>
+                        </DatePicker>
                     </StackLayout>
+
                     <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsNaturalizado}">
                         <Label Text="Portaria de Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Portaria de naturalização" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.PortariaNaturalizacao}">
+                        <Entry x:Name="DesPortariaNaturalizacao" Placeholder="Portaria de naturalização" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.PortariaNaturalizacao}">
                             <Entry.Behaviors>
                                 <behaviors:EntryLengthBehavior MaxLength="16"  Required="true" />
                             </Entry.Behaviors>
                         </Entry>
-                    </StackLayout>                   
+                    </StackLayout>
                 </StackLayout>
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label Text="Telefone celular:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                    <Entry Placeholder="Telefone celular" Keyboard="Telephone" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneCelular}">
+                    <Entry Placeholder="Telefone celular" x:Name="NumTelefone" Keyboard="Telephone" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneCelular}">
                         <Entry.Behaviors>
                             <behaviors:EntryLengthBehavior MinLength="10" MaxLength="11" />
                         </Entry.Behaviors>
@@ -195,14 +223,18 @@
                 </StackLayout>
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label Text="E-mail:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                    <Entry Placeholder="E-mail" Keyboard="Email" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.EmailCidadao}">
+                    <Entry Placeholder="E-mail" x:Name="DesEmail" Keyboard="Email" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.EmailCidadao}">
                         <Entry.Behaviors>
                             <behaviors:ValidatorEmail MinLength="6" MaxLength="100" />
                         </Entry.Behaviors>
                     </Entry>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
+                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodCns|CodCnsResponsavel|CodMicroarea|NomCidadao|NomSocialCidadao|CodSexo|CodRacaCor|CodEtnia|NumPisPasep|NomMae|NomPai|CodNacionalidade|CodMunicipio|CodPaisNascimento|DesPortariaNaturalizacao|NumTelefone|DesEmail" />
+                        </Button.Behaviors>
+                    </Button>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

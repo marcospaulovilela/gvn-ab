@@ -5,67 +5,63 @@
              x:Class="gvn_ab_mobile.Views.Login.LoginPage">
     <ContentPage.Content>
 
-        <StackLayout>
-            <Grid Padding="20, 30, 20, 20" RowSpacing="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+        <StackLayout VerticalOptions="FillAndExpand" Padding="15, 100, 15, 100" Spacing="50">
+            <StackLayout></StackLayout>
+            <StackLayout>
+                <Image Source="logoGoverna.png" />
+                <Label Text="Saude" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
+                <Label Text="Atenção Basica" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
+            </StackLayout>
 
-                <StackLayout Grid.Row="0">
-                    <Image Source="logoGoverna.png" />
-                    <Label Text="Saude" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
-                    <Label Text="Atenção Basica" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
-                </StackLayout>    
-                
-                <Grid Grid.Row="2" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Padding="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <Image Source="iconUsername.png" HeightRequest="30" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Entry x:Name="Usuario" Placeholder="Usúario" FontSize="Large" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.DesLogin}">
-                        <Entry.Behaviors>
-                            <behaviors:ValidatorEmpty />
-                        </Entry.Behaviors>
-                    </Entry>
-                </Grid>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Padding="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                <Grid Grid.Row="3" HorizontalOptions="Fill" Padding="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="iconPassword.png" HeightRequest="30" VerticalOptions="Center" />
-                    <Entry x:Name="Senha" Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.DesSenha}">
-                        <Entry.Behaviors>
-                            <behaviors:ValidatorEmpty />
-                        </Entry.Behaviors>
-                    </Entry>
-                </Grid>
+                        <Image Source="iconUsername.png" HeightRequest="30" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                        <Entry x:Name="Usuario" Placeholder="Usúario" FontSize="Large" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.DesLogin}">
+                            <Entry.Behaviors>
+                                <behaviors:ValidatorEmpty />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Grid>
 
-                <StackLayout Grid.Row="4" Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
-                    <Button Text="TestModal"  Clicked="Button_ClickedAsync"  IsVisible="False" />
-                    <Button Text="Entrar" BackgroundColor="#003264" Opacity="0.80" BorderColor="Black" BorderRadius="1" VerticalOptions="CenterAndExpand" BorderWidth="100" HorizontalOptions="Fill" TextColor="White">
-                        <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Login}" Controls="Usuario|Senha" />
-                        </Button.Behaviors>
-                    </Button>
-                    <Button Text="Sync" IsVisible="True"  BackgroundColor="#003264" Opacity="0.80" BorderColor="Black" VerticalOptions="CenterAndExpand" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" Command="{Binding Sincronizar}" />
+                    <Grid HorizontalOptions="Fill" Padding="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="iconPassword.png" HeightRequest="30" VerticalOptions="Center" />
+                        <Entry x:Name="Senha" Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.DesSenha}">
+                            <Entry.Behaviors>
+                                <behaviors:ValidatorEmpty />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Grid>
+
+                    <StackLayout Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
+                        <Button Text="TestModal"  Clicked="Button_ClickedAsync"  IsVisible="False" />
+                        <Button Text="Entrar" BackgroundColor="#003264" Opacity="0.80" BorderColor="Black" BorderRadius="1" VerticalOptions="CenterAndExpand" BorderWidth="100" HorizontalOptions="Fill" TextColor="White">
+                            <Button.Behaviors>
+                                <behaviors:ButtonSubmitBehavior Command="{Binding Login}" Controls="Usuario|Senha" />
+                            </Button.Behaviors>
+                        </Button>
+                        <Button Text="Sync" IsVisible="True"  BackgroundColor="#003264" Opacity="0.80" BorderColor="Black" VerticalOptions="CenterAndExpand" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" Command="{Binding Sincronizar}" />
+                    </StackLayout>
                 </StackLayout>
-            </Grid>
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
