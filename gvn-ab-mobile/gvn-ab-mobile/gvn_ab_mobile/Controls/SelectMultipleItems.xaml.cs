@@ -68,8 +68,8 @@ namespace gvn_ab_mobile.Controls {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SelectMultipleItems : ContentView {
-        public static readonly BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(IEnumerable<object>), typeof(SelectMultipleItemsViewModel), null, BindingMode.TwoWay, propertyChanged: OnItemsSourceChanged);
-        public static readonly BindableProperty SelectedItemsProperty = BindableProperty.Create(nameof(SelectedItems), typeof(ObservableCollection<object>), typeof(SelectMultipleItemsViewModel), null, BindingMode.Default);
+        public static readonly BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(IEnumerable<object>), typeof(SelectMultipleItems), null, BindingMode.TwoWay, propertyChanged: OnItemsSourceChanged);
+        public static readonly BindableProperty SelectedItemsProperty = BindableProperty.Create(nameof(SelectedItems), typeof(ObservableCollection<object>), typeof(SelectMultipleItems), null, BindingMode.Default);
 
         public event EventHandler SelectedItemsChanged;
         public void InvokeEvenHandler() {

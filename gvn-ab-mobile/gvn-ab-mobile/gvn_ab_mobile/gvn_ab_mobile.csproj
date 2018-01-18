@@ -50,6 +50,9 @@
     <Compile Include="Behaviors\ValidatorEntryBehavior.cs" />
     <Compile Include="Behaviors\Validators.cs" />
     <Compile Include="Config\ISQLiteConfig.cs" />
+    <Compile Include="Controls\TableGrid.xaml.cs">
+      <DependentUpon>TableGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PickerSearch.xaml.cs">
       <DependentUpon>PickerSearch.xaml</DependentUpon>
     </Compile>
@@ -62,6 +65,7 @@
     <Compile Include="Controls\SelectMultipleItemsPopUp.xaml.cs">
       <DependentUpon>SelectMultipleItemsPopUp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TableGridPage.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\DAOEnumeradores.cs" />
     <Compile Include="DAO\DAOFichaAtendimentoIndividual.cs" />
@@ -165,6 +169,9 @@
     </Compile>
     <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage6.xaml.cs">
       <DependentUpon>FichaCadastroIndividualPage6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemFamilia.xaml.cs">
+      <DependentUpon>ItemFamilia.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\LoginPage2.xaml.cs">
       <DependentUpon>LoginPage2.xaml</DependentUpon>
@@ -425,6 +432,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\PickerSearchPopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\TableGrid.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ItemFamilia.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

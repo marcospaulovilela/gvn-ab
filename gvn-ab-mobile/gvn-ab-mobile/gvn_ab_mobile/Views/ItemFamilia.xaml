@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TableGrid:TableGridPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:TableGrid="clr-namespace:gvn_ab_mobile.Controls;assembly=Rg.Plugins.Popup"
+             x:Class="gvn_ab_mobile.Views.ItemFamilia">
+    <StackLayout>
+        <Button Text="Salvar" BorderWidth="0" Command="{Binding Save}"  BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264" HorizontalOptions="End" VerticalOptions="Center"/>
+        <Button Text="Cancelar" BorderWidth="0" Command="{Binding Cancel}"  BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264" HorizontalOptions="End" VerticalOptions="Center"/>
+
+        <Entry Text="{Binding Item.CodCbo}"></Entry>
+        <Entry Text="{Binding Item.NomCbo}"></Entry>
+        
+    </StackLayout>
+</TableGrid:TableGridPage>

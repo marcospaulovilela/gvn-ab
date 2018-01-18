@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -14,6 +15,7 @@ namespace gvn_ab_mobile.ViewModels {
 
         public Models.Profissional Profissional { get; set; }
         public Models.Cbo Cbo { get; set; }
+        public ObservableCollection<object> Teste { get; set; }
 
         public LoginViewModel(Page page) {
             this.Profissional = new Models.Profissional() {
@@ -28,6 +30,8 @@ namespace gvn_ab_mobile.ViewModels {
             });
 
             this.Sincronizar = new Command(async () => await SincronizarExecuteAsync());
+
+            this.Teste = new ObservableCollection<object>();
         }
 
         private async Task LoginExecuteAsync() {
