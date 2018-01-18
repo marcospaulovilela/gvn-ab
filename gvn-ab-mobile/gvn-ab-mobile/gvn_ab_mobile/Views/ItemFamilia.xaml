@@ -9,6 +9,6 @@
 
         <Entry Text="{Binding Item.CodCbo}"></Entry>
         <Entry Text="{Binding Item.NomCbo}"></Entry>
-        
+
     </StackLayout>
 </TableGrid:TableGridPage>

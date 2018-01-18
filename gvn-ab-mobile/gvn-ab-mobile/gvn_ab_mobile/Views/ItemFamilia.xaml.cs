@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace gvn_ab_mobile.Views{
+namespace gvn_ab_mobile.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemFamilia : gvn_ab_mobile.Controls.TableGridPage {
 

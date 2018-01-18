@@ -12,7 +12,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace gvn_ab_mobile.Controls {
-
     public class TableGridItem : Helpers.ObservableObject {
         public ICommand Edit { get; }
         public ICommand Delete { get; }
@@ -48,7 +47,7 @@ namespace gvn_ab_mobile.Controls {
         private async Task AddExecuteAsync() {
             var item = System.Activator.CreateInstance(Type.GetType(this.Control.ItemType));
             var page = (TableGridPage)System.Activator.CreateInstance(Type.GetType(this.Control.ItemPage), this, item);
-            
+
             await this.Control.Navigation.PushModalAsync(page);
         }
 
@@ -85,12 +84,12 @@ namespace gvn_ab_mobile.Controls {
 
         public string ItemType { get; set; }
         public string ItemPage { get; set; }
-            
+
         public ICommand Add { get; }
 
         public ObservableCollection<object> Items {
             get { return (ObservableCollection<object>)GetValue(ItemsProperty); }
-            set { SetValue(ItemsProperty, value); } 
+            set { SetValue(ItemsProperty, value); }
         }
 
         public static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue) {
