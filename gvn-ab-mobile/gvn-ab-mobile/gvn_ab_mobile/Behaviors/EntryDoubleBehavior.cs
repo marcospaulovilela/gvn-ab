@@ -6,30 +6,22 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace gvn_ab_mobile.Behaviors
-{
-    public class EntryDoubleBehavior : EntryLengthBehavior
-    {
-        public EntryDoubleBehavior()
-        {
+namespace gvn_ab_mobile.Behaviors {
+    public class EntryDoubleBehavior : EntryLengthBehavior {
+        public EntryDoubleBehavior() {
             base.MinLength = 0;
             base.MaxLength = 6;
         }
 
-        protected override void OnAttachedTo(Entry bindable)
-        {
-            base.OnAttachedTo(bindable);
+        protected override void OnAttachedTo(Entry bindable) {
             bindable.TextChanged += OnEntryTextChanged;
         }
 
-        protected override void OnDetachingFrom(Entry bindable)
-        {
-            base.OnDetachingFrom(bindable);
+        protected override void OnDetachingFrom(Entry bindable) {
             bindable.TextChanged -= OnEntryTextChanged;
         }
 
-        protected override void OnEntryTextChanged(object sender, TextChangedEventArgs e)
-        {
+        protected override void OnEntryTextChanged(object sender, TextChangedEventArgs e) {
             var entry = (Entry)sender;
             base.OnEntryTextChanged(entry, e);
 

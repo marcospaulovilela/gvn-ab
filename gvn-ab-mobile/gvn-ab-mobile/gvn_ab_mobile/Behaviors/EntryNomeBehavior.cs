@@ -14,12 +14,10 @@ namespace gvn_ab_mobile.Behaviors {
         }
 
         protected override void OnAttachedTo(Entry bindable) {
-            base.OnAttachedTo(bindable);
             bindable.TextChanged += OnEntryTextChanged;
         }
 
         protected override void OnDetachingFrom(Entry bindable) {
-            base.OnDetachingFrom(bindable);
             bindable.TextChanged -= OnEntryTextChanged;
         }
 
@@ -27,7 +25,14 @@ namespace gvn_ab_mobile.Behaviors {
             var entry = (Entry)sender;
             base.OnEntryTextChanged(entry, e);
 
-            entry.Text = new Regex("[^a-zA-Z ']").Replace(entry.Text, "");
+            var buffer = entry.Text;
+            
+            buffer = new Regex("[^a-zA-Z ']").Replace(entry.Text, "");
+            for (; buffer.IndexOf("  ") != -1; buffer = buffer.Replace("  ", " ")) ;
+
+            buffer = buffer.ToUpper();
+
+            entry.Text = buffer;
         }
     }
 }
