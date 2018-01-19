@@ -33,8 +33,8 @@ namespace gvn_ab_mobile.Models
         //INÍCIO FICHA FAMÍLIA
 
         //Campo dataNascimentoResponsavel - Tipo long
-        private long _dataNascimentoResponsavel; //Não Obrigatório
-        public long DataNascimentoResponsavel
+        private DateTime _dataNascimentoResponsavel; //Não Obrigatório
+        public DateTime DataNascimentoResponsavel
         {
             get { return this._dataNascimentoResponsavel; }
             set { SetProperty(ref _dataNascimentoResponsavel, value); }
@@ -68,16 +68,16 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo rendaFamiliar - Tipo long
-        private long _rendaFamiliar; //Não Obrigatório
-        public long RendaFamiliar
+        private Models.RendaFamiliar _rendaFamiliar; //Não Obrigatório
+        public Models.RendaFamiliar RendaFamiliar
         {
             get { return this._rendaFamiliar; }
             set { SetProperty(ref _rendaFamiliar, value); }
         }
 
         //Campo rendaFamiliar - Tipo long
-        private long _resideDesde; //Não Obrigatório
-        public long ResideDesde
+        private DateTime _resideDesde; //Não Obrigatório
+        public DateTime ResideDesde
         {
             get { return this._resideDesde; }
             set { SetProperty(ref _resideDesde, value); }
@@ -92,6 +92,17 @@ namespace gvn_ab_mobile.Models
         }
 
         //FIM FICHA FAMÍLIA
+
+        public override string ToString()
+        {
+            return $"Número Prontuário: {this.NumeroProntuario} - " +
+                $"CNS do Responsável: {this.NumeroCnsResponsavel} - " +
+                $"Data de Nascimento do Responsável: {this.DataNascimentoResponsavel} - " +
+                $"Número de membros da Família: {this.NumeroMembrosFamilia} - " +
+                $"Renda Familiar: {this.RendaFamiliar?.Descricao} - " +
+                $"Reside desde: {this.ResideDesde} - " +
+                $"Mudou-se: {this.StMudanca}";
+        }
 
     }
 }

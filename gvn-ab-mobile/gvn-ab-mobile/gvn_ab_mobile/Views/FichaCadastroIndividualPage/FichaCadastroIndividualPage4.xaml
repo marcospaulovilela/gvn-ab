@@ -21,7 +21,7 @@
                     </StackLayout>
                 </StackLayout>
 
-                <StackLayout IsVisible="{Binding IsMotivoObito}">
+                <StackLayout IsVisible="{Binding WantsSairDoCadastroAndIsMotivoObito}">
                     <Label Text="Obito:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                     <DatePicker x:Name="DataObito"  Date="{Binding Ficha.DataObito}" >
                         <DatePicker.Behaviors>
@@ -30,9 +30,9 @@
                     </DatePicker>
                 </StackLayout>
 
-                <StackLayout IsVisible="{Binding IsMotivoObito}">
+                <StackLayout IsVisible="{Binding WantsSairDoCadastroAndIsMotivoObito}">
                     <Label Text="Número da D.O:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Row="3" Grid.Column="2" TextColor="Black" />
-                    <Entry x:Name="NumDO" Placeholder="Num DO" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.NumeroDO}">
+                    <Entry Placeholder="Num DO" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.NumeroDO}">
                         <Entry.Behaviors>
                             <behaviors:EntryLengthBehavior MinLength="9"  MaxLength="9" Required="true" />
                         </Entry.Behaviors>
@@ -42,7 +42,7 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
                     <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="DataObito|NumDO" />
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="DataObito" />
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>

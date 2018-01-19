@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
              xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
              x:Class="gvn_ab_mobile.Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5"
              Title="Famílias">
@@ -8,69 +9,8 @@
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
             <StackLayout>
 
-                <StackLayout Orientation="Horizontal">
-
-                    <StackLayout>
-                        <Label Text="Número Prontuário Familiar:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Num Prontuário" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
-                            <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="30" />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </StackLayout>
-
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-
-                    <StackLayout>
-                        <Label Text="CNS do Responsável:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Entry Placeholder="CNS do Responsável" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
-                            <Entry.Behaviors>
-                                <behaviors:ValidatorCns />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </StackLayout>
-
-                    <StackLayout>
-                        <Label Text="Data de Nascimento do Responsável:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <DatePicker  />
-                    </StackLayout>
-
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-
-                    <StackLayout>
-                        <Label Text="Número de Membros da Família:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry Placeholder="Num membros família" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding }">
-                            <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="2" />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </StackLayout>
-                    
-                    <?SelectBox?>
-                    <StackLayout>
-                        <Label Text="Renda Familiar (Salário Mínimo):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Picker x:Name="CodRendaFamiliar" ItemsSource="{Binding RendasFamiliares}" SelectedItem="{Binding RendaFamiliar}" HorizontalOptions="FillAndExpand" Title="Renda Familiar" Scale="1">
-                        </Picker>
-                    </StackLayout>
-
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-
-                    <StackLayout>
-                        <Label Text="Reside Desde:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <DatePicker/>
-                    </StackLayout>
-
-                    <StackLayout HorizontalOptions="CenterAndExpand">
-                        <Label Text="Mudou-se:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Switch HorizontalOptions="Start"/>
-                    </StackLayout>
-
+                <StackLayout>
+                    <controls:TableGrid Title="Famílias" Items="{Binding Teste}" ItemPage="gvn_ab_mobile.Views.FamiliaRow" ItemType="gvn_ab_mobile.Models.FichaFamilia" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TableGrid:TableGridPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:TableGrid="clr-namespace:gvn_ab_mobile.Controls;assembly=Rg.Plugins.Popup"
+             xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
+             xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
+             x:Class="gvn_ab_mobile.Views.FamiliaRow">
+    <StackLayout>
+        <Button Text="Salvar" BorderWidth="0" Command="{Binding Save}"  BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264" HorizontalOptions="End" VerticalOptions="Center"/>
+        <Button Text="Cancelar" BorderWidth="0" Command="{Binding Cancel}"  BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264" HorizontalOptions="End" VerticalOptions="Center"/>
+
+        <StackLayout>
+            <Label Text="Número Prontuário Familiar:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+            <Entry Placeholder="Num Prontuário" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Item.NumeroProntuario}">
+                <Entry.Behaviors>
+                    <behaviors:EntryLengthBehavior MaxLength="30" />
+                </Entry.Behaviors>
+            </Entry>
+        </StackLayout>
+
+
+        <StackLayout>
+            <Label Text="CNS do Responsável:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+            <Entry Placeholder="CNS do Responsável" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Item.NumeroCnsResponsavel}">
+                <Entry.Behaviors>
+                    <behaviors:ValidatorCns />
+                </Entry.Behaviors>
+            </Entry>
+        </StackLayout>
+
+        <StackLayout>
+            <Label Text="Data de Nascimento do Responsável:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <DatePicker Date="{Binding Item.DataNascimentoResponsavel}" />
+        </StackLayout>
+
+        <StackLayout>
+            <Label Text="Número de Membros da Família:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <Entry Placeholder="Num membros família" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Item.NumeroMembrosFamilia}">
+                <Entry.Behaviors>
+                    <behaviors:EntryLengthBehavior MaxLength="2" />
+                </Entry.Behaviors>
+            </Entry>
+        </StackLayout>
+
+        <?SelectBox?>
+        <StackLayout>
+            <Label Text="Renda Familiar (Salário Mínimo):" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <Picker x:Name="CodRendaFamiliar" ItemsSource="{Binding RendasFamiliares}" SelectedItem="{Binding Item.RendaFamiliar}" HorizontalOptions="FillAndExpand" Title="Renda Familiar" Scale="1">
+            </Picker>
+        </StackLayout>
+
+        <StackLayout>
+            <Label Text="Reside Desde:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <DatePicker Date="{Binding Item.ResideDesde}" />
+        </StackLayout>
+
+        <StackLayout>
+            <Label Text="Mudou-se:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+            <Switch IsToggled="{Binding Item.StMudanca}" HorizontalOptions="Start"/>
+        </StackLayout>
+
+    </StackLayout>
+</TableGrid:TableGridPage>

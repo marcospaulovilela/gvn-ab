@@ -23,6 +23,8 @@ namespace gvn_ab_mobile.ViewModels
 
         public Models.FichaCadastroDomiciliarTerritorial Ficha { get; set; }
 
+        public ObservableCollection<object> Teste { get; set; }
+
         //USADO PAGE 2
 
         public ObservableRangeCollection<Models.UF> UFs { get; set; }
@@ -181,6 +183,13 @@ namespace gvn_ab_mobile.ViewModels
                 return this.Localizacao?.Codigo == 84;
             }
         }
+        public bool HasTipoDomicilioAndIsRural
+        {
+            get
+            {
+                return ((this.HasTipoDomicilio == true) && (this.IsRural == true));
+            }
+        }
 
         private Models.TipoDeAcessoAoDomicilio _tipoAcessoDomicilio; //Não Obrigatório
         public Models.TipoDeAcessoAoDomicilio TipoAcessoDomicilio
@@ -282,17 +291,9 @@ namespace gvn_ab_mobile.ViewModels
             }
         }
 
+
         //USADO PAGE 5
         public ObservableRangeCollection<Models.RendaFamiliar> RendasFamiliares { get; set; }
-
-
-        public bool HasTipoDomicilioAndIsRural
-        {
-            get
-            {
-                return ((this.HasTipoDomicilio == true) && ( this.IsRural == true));
-            }
-        }
 
         public FichaCadastroDomiciliarViewModel(Page page)
         {
@@ -326,6 +327,8 @@ namespace gvn_ab_mobile.ViewModels
             this.AnimaisNoDomicilio = new ObservableRangeCollection<Models.AnimalNoDomicilio>(new DAO.DAOAnimalNoDomicilio().Select());
 
             this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());
+
+            this.Teste = new ObservableCollection<object>();
         }
 
         private async System.Threading.Tasks.Task ConcordarExecuteAsync()

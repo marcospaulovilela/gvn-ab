@@ -22,7 +22,7 @@ namespace gvn_ab_mobile.Models {
         /// Não deve ser preenchido se o campo statusTeveInternadoem12Meses = false.
         /// </summary>
         [MaxLength(100)]
-        public string DescricaoCausalnternacaoEm12Meses {
+        public string DescricaoCausaInternacaoEm12Meses {
             get { return this._descricaoCausaInternacaoEm12Meses; }
             set { SetProperty(ref _descricaoCausaInternacaoEm12Meses, value); }
         }

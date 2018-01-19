@@ -42,6 +42,7 @@ namespace gvn_ab_mobile.Controls {
             this.Control = control;
             this.ItemsForListView = new ObservableCollection<TableGridItem>();
             this.Add = new Command(async () => await this.AddExecuteAsync());
+
         }
 
         private async Task AddExecuteAsync() {

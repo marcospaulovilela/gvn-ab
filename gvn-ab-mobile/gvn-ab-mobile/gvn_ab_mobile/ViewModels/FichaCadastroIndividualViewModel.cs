@@ -172,8 +172,14 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         public bool IsBrasileiro {
-            get {
+            get
+            {
                 return this.NacionalidadeCidadao?.Codigo == 1;
+            }
+            set
+            {
+                this.Ficha.PaisNascimento.Codigo = 31;
+                this.Ficha.PaisNascimento.Descricao = "Brasil";
             }
 
         }
@@ -326,6 +332,7 @@ namespace gvn_ab_mobile.ViewModels {
             set {
                 SetProperty(ref _statusDesejaSairDoCadastro, value);
                 OnPropertyChanged("WantsSairDoCadastro");
+                OnPropertyChanged("WantsSairDoCadastroAndIsMotivoObito");
             }
         }
         public bool WantsSairDoCadastro {
@@ -342,11 +349,19 @@ namespace gvn_ab_mobile.ViewModels {
 
                 SetProperty(ref _motivoSaida, value);
                 OnPropertyChanged("IsMotivoObito");
+                OnPropertyChanged("WantsSairDoCadastroAndIsMotivoObito");
             }
         }
         public bool IsMotivoObito {
             get {
                 return this.MotivoSaida?.Codigo == 135;
+            }
+        }
+        public bool WantsSairDoCadastroAndIsMotivoObito
+        {
+            get
+            {
+                return ((this.WantsSairDoCadastro == true) && (this.IsMotivoObito == true));
             }
         }
 
@@ -457,6 +472,24 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
+        private bool _outrasCondicoesDeSaude;
+        public bool OutrasCondicoesDeSaude
+        {
+            get { return this._outrasCondicoesDeSaude; }
+            set
+            {
+                SetProperty(ref _outrasCondicoesDeSaude, value);
+                OnPropertyChanged("HasOutrasCondicoesDeSaude");
+            }
+        }
+        public bool HasOutrasCondicoesDeSaude
+        {
+            get
+            {
+                return this.OutrasCondicoesDeSaude == true;
+            }
+        }
+
         //USADO PAGE 6
         public ObservableRangeCollection<Models.AcessoHigiene> HigienePessoal { get; set; }
         public ObservableCollection<object> HigienesSelecionadas { get; } = new ObservableCollection<object>();
@@ -473,6 +506,9 @@ namespace gvn_ab_mobile.ViewModels {
 
                 SetProperty(ref _statusSituacaoRua, value);
                 OnPropertyChanged("IsSituacaoRua");
+                OnPropertyChanged("IsSituacaoRuaAndVisitsFamiliarFrequentemente");
+                OnPropertyChanged("IsSituacaoRuaAndHasAcessoHigienePessoalSituacaoRua");
+                OnPropertyChanged("IsSituacaoRuaAndIsAcompanhadoPorOutraInstituicao");
             }
         }
         public bool IsSituacaoRua {
@@ -511,11 +547,19 @@ namespace gvn_ab_mobile.ViewModels {
 
                 SetProperty(ref _statusAcompanhadoPorOutraInstituicao, value);
                 OnPropertyChanged("IsAcompanhadoPorOutraInstituicao");
+                OnPropertyChanged("IsSituacaoRuaAndIsAcompanhadoPorOutraInstituicao");
             }
         }
         public bool IsAcompanhadoPorOutraInstituicao {
             get {
                 return this.StatusAcompanhadoPorOutraInstituicao;
+            }
+        }
+        public bool IsSituacaoRuaAndIsAcompanhadoPorOutraInstituicao
+        {
+            get
+            {
+                return ((this.IsSituacaoRua == true) && (this.IsAcompanhadoPorOutraInstituicao == true));
             }
         }
 
@@ -527,11 +571,19 @@ namespace gvn_ab_mobile.ViewModels {
 
                 SetProperty(ref _statusVisitaFamiliarFrequentemente, value);
                 OnPropertyChanged("VisitsFamiliarFrequentemente");
+                OnPropertyChanged("IsSituacaoRuaAndVisitsFamiliarFrequentemente");
             }
         }
         public bool VisitsFamiliarFrequentemente {
             get {
                 return this.StatusVisitaFamiliarFrequentemente;
+            }
+        }
+        public bool IsSituacaoRuaAndVisitsFamiliarFrequentemente
+        {
+            get
+            {
+                return ((this.IsSituacaoRua == true) && ( this.VisitsFamiliarFrequentemente == true));
             }
         }
 
@@ -543,11 +595,19 @@ namespace gvn_ab_mobile.ViewModels {
 
                 SetProperty(ref _statusTemAcessoHigienePessoalSituacaoRua, value);
                 OnPropertyChanged("HasAcessoHigienePessoalSituacaoRua");
+                OnPropertyChanged("IsSituacaoRuaAndHasAcessoHigienePessoalSituacaoRua");
             }
         }
         public bool HasAcessoHigienePessoalSituacaoRua {
             get {
                 return this.StatusTemAcessoHigienePessoalSituacaoRua;
+            }
+        }
+        public bool IsSituacaoRuaAndHasAcessoHigienePessoalSituacaoRua
+        {
+            get
+            {
+                return ((this.IsSituacaoRua == true) && (this.HasAcessoHigienePessoalSituacaoRua == true));
             }
         }
 
