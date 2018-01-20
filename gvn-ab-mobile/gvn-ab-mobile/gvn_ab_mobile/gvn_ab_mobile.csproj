@@ -77,6 +77,7 @@
     <Compile Include="DAO\DAOFichaOutrosSia.cs" />
     <Compile Include="DAO\DAOEstabelecimento.cs" />
     <Compile Include="DAO\DAOCbo.cs" />
+    <Compile Include="DAO\DAOOcupacao.cs" />
     <Compile Include="DAO\DAOSincronizacaoConfig.cs" />
     <Compile Include="DAO\DAOProfissional.cs" />
     <Compile Include="DAO\DAOFichaCadastroIndividual.cs" />
