@@ -19,7 +19,7 @@
                 
                 <StackLayout Orientation="Horizontal">
 
-                    <StackLayout IsVisible="{Binding IsDomicilio}">
+                    <StackLayout Orientation="Horizontal" IsVisible="{Binding IsDomicilio}">
                         <Label Text="Existência de Animais no Domicílio:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Switch IsToggled="{Binding StAnimaisNoDomicilio}"  HorizontalOptions="Center" />
                     </StackLayout>

@@ -6,9 +6,9 @@
              x:Class="gvn_ab_mobile.Views.Login.LoginPage2">
     <ContentPage.Content>
         <StackLayout>
-            <!--<StackLayout>
+            <StackLayout>
                 <controls:TableGrid Title="Cbos" Items="{Binding Teste}" ItemPage="gvn_ab_mobile.Views.ItemFamilia" ItemType="gvn_ab_mobile.Models.Cbo" />
-            </StackLayout>-->
+            </StackLayout>
 
             <StackLayout VerticalOptions="FillAndExpand" Padding="15, 50, 15, 100" Spacing="50" IsVisible="True">
                 <StackLayout>

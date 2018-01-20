@@ -116,6 +116,9 @@
     <Compile Include="Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FamiliaRow.xaml.cs">
+      <DependentUpon>FamiliaRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FichaAtendimentoIndividualPage\FichaAtendimentoIndividualPage1.xaml.cs">
       <DependentUpon>FichaAtendimentoIndividualPage1.xaml</DependentUpon>
     </Compile>
@@ -460,6 +463,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\FichaVisitaDomiciliarPage\FichaVisitaDomiciliarPage1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FamiliaRow.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

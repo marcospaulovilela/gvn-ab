@@ -72,7 +72,7 @@
 
                     <StackLayout >
                         <Label Text="Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <DatePicker Date="{Binding Ficha.DataNascimentoCidadao}">
+                        <DatePicker x:Name="DataNascimento" Date="{Binding Ficha.DataNascimentoCidadao}">
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />
                             </DatePicker.Behaviors>
@@ -111,7 +111,7 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label Text="Número NIS (PIS/PASEP):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                    <Entry x:Name="NumPisPasep" Placeholder="Número" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NumeroNisPisPasep}">
+                    <Entry x:Name="NumPisPasep" Keyboard="Numeric" Placeholder="Número NIS(PIS/PASEP)" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NumeroNisPisPasep}">
                         <Entry.Behaviors>
                             <behaviors:EntryLengthBehavior MaxLength="11" MinLength="11" />
                         </Entry.Behaviors>
@@ -176,7 +176,7 @@
 
                 <StackLayout Orientation="Horizontal">
                     <StackLayout IsVisible="{Binding IsEstrangeiro}">
-                        <Label Text="Entrada no Brasil:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Label Text="Data de Entrada no Brasil:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <DatePicker Date="{Binding Ficha.DtEntradaBrasil}"  >
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />
@@ -196,7 +196,7 @@
 
                 <StackLayout Orientation="Horizontal">
                     <StackLayout IsVisible="{Binding IsNaturalizado}" >
-                        <Label Text="Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Label Text="Data de Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <DatePicker  Date="{Binding Ficha.DtNaturalizacao}" >
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />
@@ -232,7 +232,7 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
                     <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodCns|CodCnsResponsavel|CodMicroarea|NomCidadao|NomSocialCidadao|CodSexo|CodRacaCor|CodEtnia|NumPisPasep|NomMae|NomPai|CodNacionalidade|CodMunicipio|CodPaisNascimento|DesPortariaNaturalizacao|NumTelefone|DesEmail" />
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodCns|CodCnsResponsavel|CodMicroarea|NomCidadao|NomSocialCidadao|DataNascimento|CodSexo|CodRacaCor|CodEtnia|NumPisPasep|NomMae|NomPai|CodNacionalidade|CodMunicipio|CodPaisNascimento|DesPortariaNaturalizacao|NumTelefone|DesEmail" />
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>
