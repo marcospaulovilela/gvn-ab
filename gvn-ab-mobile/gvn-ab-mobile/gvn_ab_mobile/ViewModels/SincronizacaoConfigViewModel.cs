@@ -283,7 +283,7 @@ namespace gvn_ab_mobile.ViewModels {
                     var TaskGetLogradouro = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Logradouro.ashx?codUnidade={this.Estabelecimento.CodUnidade}").GetAsync<Models.Logradouro>();
                     var TaskGetTipoLogradouro = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/TipoLogradouro.ashx").GetAsync<Models.TipoLogradouro>();
 
-                    this.CargaDados();
+                    this.CargaDados ();
                     
                     using (DAO.DAOEstabelecimento DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
                         DAOEstabelecimento.CreateTable();
@@ -307,11 +307,11 @@ namespace gvn_ab_mobile.ViewModels {
                     };
                     #endregion
 
-                    #region Ocupacoes
+                    #region Ocupacoes   
                     var ocupacoes = await TaskGetOcupacoes;
                     using (DAO.DAOOcupacao DAOOcupacao = new DAO.DAOOcupacao()) {
                         DAOOcupacao.CreateTable();
-                        DAOOcupacao.Insert(ocupacoes);
+                        var result = DAOOcupacao.Insert(ocupacoes);
                     };
                     #endregion
 
@@ -319,7 +319,7 @@ namespace gvn_ab_mobile.ViewModels {
                     var UFs = await TaskGetUnidadeFederal;
                     using (DAO.DAOUnidadeFederal DAOUnidadeFederal = new DAO.DAOUnidadeFederal()) {
                         DAOUnidadeFederal.CreateTable();
-                        DAOUnidadeFederal.Insert(UFs);
+                        var result = DAOUnidadeFederal.Insert(UFs);
                     };
                     #endregion
 
@@ -327,7 +327,7 @@ namespace gvn_ab_mobile.ViewModels {
                     var Municipios = await TaskGetMunicipio;
                     using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio()) {
                         DAOMunicipio.CreateTable();
-                        DAOMunicipio.Insert(Municipios);
+                        var result = DAOMunicipio.Insert(Municipios);
                     };
                     #endregion
 
@@ -335,7 +335,7 @@ namespace gvn_ab_mobile.ViewModels {
                     var Logradouros = await TaskGetLogradouro;
                     using (DAO.DAOLogradouro DAOLogradouro = new DAO.DAOLogradouro()) {
                         DAOLogradouro.CreateTable();
-                        DAOLogradouro.Insert(Logradouros);
+                        var result = DAOLogradouro.Insert(Logradouros);
                     };
                     #endregion
 

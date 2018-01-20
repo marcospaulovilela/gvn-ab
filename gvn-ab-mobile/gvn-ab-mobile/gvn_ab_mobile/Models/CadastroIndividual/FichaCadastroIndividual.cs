@@ -6,6 +6,12 @@ using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models {
     public class FichaCadastroIndividual : Helpers.ObservableObject {
+        public FichaCadastroIndividual() {
+            this.StatusSituacaoRua = true;
+            this.DataNascimentoCidadao = DateTime.Now;
+        }
+
+
         //Campo ID - Tipo long
         private long? _id;
         [PrimaryKey, AutoIncrement] //Chave Primária com incremento automático
@@ -645,14 +651,14 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _desconheceNomePai, value); }
         }
 
-        private DateTime _dtNaturalizacao;
+        private DateTime? _dtNaturalizacao;
         /// <summary>
         /// Data de naturalização do cidadão no formato epoch time.
         /// Só deve ser preenchido se o campo nacionalidadeCidadao = 2.Neste caso, é de preenchimento obrigatório;
         /// Não pode ser posterior a dataAtendimento;
         /// Não pode ser anterior a dataNascimentoCidadao.
         /// </summary>
-        public DateTime DtNaturalizacao {
+        public DateTime? DtNaturalizacao {
             get { return this._dtNaturalizacao; }
             set { SetProperty(ref _dtNaturalizacao, value); }
         }
@@ -668,14 +674,14 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _portariaNaturalizacao, value); }
         }
 
-        private DateTime _dtEntradaBrasil;
+        private DateTime? _dtEntradaBrasil;
         /// <summary>
         /// Data em que o cidadão entrou no Brasil. 
         /// Só deve ser preenchido se o campo nacionalidadeCidadao = 3.Neste caso o preenchimento é obrigatório;
         /// Não pode ser posterior a dataAtendimento;
         /// Não pode ser anterior a dataNascimentoCidadao.
         /// </summary>
-        public DateTime DtEntradaBrasil {
+        public DateTime? DtEntradaBrasil {
             get { return this._dtEntradaBrasil; }
             set { SetProperty(ref _dtEntradaBrasil, value); }
         }
@@ -725,15 +731,15 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _grauInstrucaoCidadao, value); }
         }
 
-        private string _ocupacaoCodigoCbo2002;
+        private Models.Ocupacao ocupacao;
         /// <summary>
         /// Código do CBO que representa a ocupação do cidadão.
         /// Deve ser um código de CBO válido.
         /// </summary>
-        [MaxLength(6)] 
-        public string OcupacaoCodigoCbo2002 {
-            get { return this._ocupacaoCodigoCbo2002; }
-            set { SetProperty(ref _ocupacaoCodigoCbo2002, value); }
+        [OneToOne]
+        public Models.Ocupacao Ocupacao{
+            get { return this.ocupacao; }
+            set { SetProperty(ref ocupacao, value); }
         }
 
         private Models.OrientacaoSexual _orientacaoSexualCidadao;
@@ -887,12 +893,12 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _motivoSaidaCidadao, value); }
         }
 
-        private DateTime _dataObito;
+        private DateTime? _dataObito;
         /// <summary>
         /// Dataa de óbito do cidadão no formato epoch time.
         /// Só pode ser preenchido se o campo motivoSaidaCidadao = 135. Neste caso o preenchimento é obrigatório.
         /// </summary>
-        public DateTime DataObito {
+        public DateTime? DataObito {
             get { return this._dataObito; }
             set { SetProperty(ref _dataObito, value); }
         }

@@ -12,6 +12,11 @@ namespace gvn_ab_mobile.DAO {
             return base.CreateTable();
         }
 
+        public List<Models.Municipio> GetByCodUnidadeFederal(long? CodUnidadeFederal) {
+            var result = base.Select("SELECT * FROM [Municipio] WHERE [CodUnidadeFederal] = ?", CodUnidadeFederal);
+            return result;
+        }
+
         public override int? Insert(Municipio obj) {
             if (obj == null) return null;
             try {
@@ -19,7 +24,7 @@ namespace gvn_ab_mobile.DAO {
                 var cmd = connection.CreateCommand(cmdText, obj.CodMunicipio, obj.NomMunicipio, obj.CodUnidadeFederal);
                 return cmd.ExecuteNonQuery();
             } catch(Exception e) {
-                return null;
+                throw e;
             };
         }
 
@@ -29,14 +34,18 @@ namespace gvn_ab_mobile.DAO {
                 StringBuilder cmdText = new StringBuilder("INSERT INTO Municipio (CodMunicipio, NomMunicipio, CodUnidadeFederal) values ");
                 
                 foreach(var o in obj) {
-                    cmdText.Append($"('{o.CodMunicipio}', '{o.NomMunicipio}', '{o.CodUnidadeFederal}'),");
+                    cmdText.Append($"('{o.CodMunicipio}', '{o.NomMunicipio.Replace("'", "''")}', '{o.CodUnidadeFederal}'),");
                 }
                 cmdText[cmdText.Length - 1] = ' ';
 
                 var cmd = connection.CreateCommand(cmdText.ToString());
-                return cmd.ExecuteNonQuery();
+                var result = cmd.ExecuteNonQuery();
+
+                this.connection.Commit();
+                return result;
+
             } catch (Exception e) {
-                return null;
+                throw e;
             };
         }
 

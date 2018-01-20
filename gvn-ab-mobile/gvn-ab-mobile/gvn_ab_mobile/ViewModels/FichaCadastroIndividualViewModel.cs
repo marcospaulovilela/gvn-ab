@@ -23,22 +23,34 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableRangeCollection<Models.Pais> Paises { get; set; }
         public ObservableRangeCollection<Models.Etnia> Etnias { get; set; }
         public ObservableRangeCollection<Models.RacaCor> RacasCores { get; set; }
+        public ObservableRangeCollection<Models.UnidadeFederal> UFs { get; set; }
         public ObservableRangeCollection<Models.Municipio> Municipios { get; set; }
 
+        private Models.UnidadeFederal uf;
+        public Models.UnidadeFederal UF {
+            get { return this.uf; }
+            set {
+                SetProperty(ref uf, value);
+
+                this.Municipio = null;
+                using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio()) {
+                    this.Municipios.Clear();
+                    this.Municipios.AddRange(DAOMunicipio.GetByCodUnidadeFederal(value.CodUnidadeFederal));
+                };
+            }
+
+        }
         private Models.Municipio municipio;
-        public Models.Municipio Municipio
-        {
+        public Models.Municipio Municipio {
             get { return this.municipio; }
             set {
-
                 this.Ficha.MunicipioNascimento = value;
                 SetProperty(ref municipio, value);
             }
         }
 
         private Models.Pais _paisNascimento;
-        public Models.Pais PaisNascimento
-        {
+        public Models.Pais PaisNascimento {
             get { return this._paisNascimento; }
             set {
                 this.Ficha.PaisNascimento = value;
@@ -57,10 +69,8 @@ namespace gvn_ab_mobile.ViewModels {
                 OnPropertyChanged("IsMulher");
             }
         }
-        public bool IsMulher
-        {
-            get
-            {
+        public bool IsMulher {
+            get {
                 return this.SexoCidadao?.Codigo == 1;
             }
         }
@@ -96,6 +106,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusEhResponsavel; }
             set {
                 this.Ficha.StatusEhResponsavel = value;
+                this.Ficha.CnsResponsavelFamiliar = string.Empty;
 
                 SetProperty(ref _statusEhResponsavel, value);
                 OnPropertyChanged("IsResponsavel");
@@ -164,6 +175,12 @@ namespace gvn_ab_mobile.ViewModels {
             set {
                 this.Ficha.NacionalidadeCidadao = value;
 
+                this.UF = null;
+                this.Ficha.MunicipioNascimento = null;
+                this.Ficha.DtNaturalizacao = this.Ficha.DtEntradaBrasil = null;
+                this.Ficha.PortariaNaturalizacao  = string.Empty;
+                this.Ficha.PaisNascimento = null;
+
                 SetProperty(ref _nacionalidadeCidadao, value);
                 OnPropertyChanged("IsBrasileiro");
                 OnPropertyChanged("IsEstrangeiro");
@@ -172,12 +189,10 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         public bool IsBrasileiro {
-            get
-            {
+            get {
                 return this.NacionalidadeCidadao?.Codigo == 1;
             }
-            set
-            {
+            set {
                 this.Ficha.PaisNascimento.Codigo = 31;
                 this.Ficha.PaisNascimento.Descricao = "Brasil";
             }
@@ -263,6 +278,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusMembroPovoComunidadeTradicional; }
             set {
                 this.Ficha.StatusMembroPovoComunidadeTradicional = value;
+                this.Ficha.PovoComunidadeTradicional = string.Empty;
 
                 SetProperty(ref _statusMembroPovoComunidadeTradicional, value);
                 OnPropertyChanged("IsMembroPovoComunidadeTradicional");
@@ -279,6 +295,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusDesejaInformarOrientacaoSexual; }
             set {
                 this.Ficha.StatusDesejaInformarOrientacaoSexual = value;
+                this.Ficha.OrientacaoSexualCidadao = null;
 
                 SetProperty(ref _statusDesejaInformarOrientacaoSexual, value);
                 OnPropertyChanged("WantsInformarOrientacaoSexual");
@@ -295,6 +312,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusDesejaInformarIdentidadeGenero; }
             set {
                 this.Ficha.StatusDesejaInformarIdentidadeGenero = value;
+                this.Ficha.IdentidadeGeneroCidadao = null;
 
                 SetProperty(ref _statusDesejaInformarIdentidadeGenero, value);
                 OnPropertyChanged("WantsInformarIdentidadeGenero");
@@ -311,6 +329,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusTemAlgumaDeficiencia; }
             set {
                 this.Ficha.StatusTemAlgumaDeficiencia = value;
+                this.DeficienciasSelecionadas.Clear();
 
                 SetProperty(ref _statusTemAlgumaDeficiencia, value);
                 OnPropertyChanged("HasAlgumaDeficiencia");
@@ -322,15 +341,19 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-
         // USADO PAGE 4
         public ObservableRangeCollection<Models.MotivoSaida> MotivosSaida { get; set; }
 
-        private bool _statusDesejaSairDoCadastro; //Obrigatório
+        private bool _statusDesejaSairDoCadastro;
         public bool StatusDesejaSairDoCadastro {
             get { return this._statusDesejaSairDoCadastro; }
             set {
                 SetProperty(ref _statusDesejaSairDoCadastro, value);
+
+                this.MotivoSaida = null;
+                this.Ficha.DataObito = null;
+                this.Ficha.NumeroDO = null;
+                
                 OnPropertyChanged("WantsSairDoCadastro");
                 OnPropertyChanged("WantsSairDoCadastroAndIsMotivoObito");
             }
@@ -357,10 +380,8 @@ namespace gvn_ab_mobile.ViewModels {
                 return this.MotivoSaida?.Codigo == 135;
             }
         }
-        public bool WantsSairDoCadastroAndIsMotivoObito
-        {
-            get
-            {
+        public bool WantsSairDoCadastroAndIsMotivoObito {
+            get {
                 return ((this.WantsSairDoCadastro == true) && (this.IsMotivoObito == true));
             }
         }
@@ -398,6 +419,8 @@ namespace gvn_ab_mobile.ViewModels {
             set {
                 this.Ficha.StatusTeveDoencaCardiaca = value;
 
+                this.DoencasCardiacasSelecionadas.Clear();
+
                 SetProperty(ref _statusDoencaCardiaca, value);
                 OnPropertyChanged("HasDoencaCardiaca");
             }
@@ -414,6 +437,8 @@ namespace gvn_ab_mobile.ViewModels {
             set {
                 this.Ficha.StatusTemTeveDoencasRins = value;
 
+                this.ProblemasRinsSelecionados.Clear();
+
                 SetProperty(ref _statusDoencaRins, value);
                 OnPropertyChanged("HasDoencaRins");
             }
@@ -429,6 +454,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusDoencaRespiratoria; }
             set {
                 this.Ficha.StatusTemDoencaRespiratoria = value;
+                this.DoencasRespiratoriasSelecionadas.Clear();
 
                 SetProperty(ref _statusDoencaRespiratoria, value);
                 OnPropertyChanged("HasDoencaRespiratoria");
@@ -445,6 +471,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusTeveInternadoem12Meses; }
             set {
                 this.Ficha.StatusTeveInternadoem12Meses = value;
+                this.Ficha.DescricaoCausaInternacaoEm12Meses = string.Empty;
 
                 SetProperty(ref _statusTeveInternadoem12Meses, value);
                 OnPropertyChanged("HasInternacaoEm12Meses");
@@ -461,6 +488,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusUsaPlantasMedicinais; }
             set {
                 this.Ficha.StatusUsaPlantasMedicinais = value;
+                this.Ficha.DescricaoPlantasMedicinaisUsadas = string.Empty;
 
                 SetProperty(ref _statusUsaPlantasMedicinais, value);
                 OnPropertyChanged("UsesPlantasMedicinais");
@@ -473,19 +501,20 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private bool _outrasCondicoesDeSaude;
-        public bool OutrasCondicoesDeSaude
-        {
+        public bool OutrasCondicoesDeSaude {
             get { return this._outrasCondicoesDeSaude; }
-            set
-            {
+            set {
                 SetProperty(ref _outrasCondicoesDeSaude, value);
+
+                this.Ficha.DescricaoOutraCondicao1 = string.Empty;
+                this.Ficha.DescricaoOutraCondicao2 = string.Empty;
+                this.Ficha.DescricaoOutraCondicao3 = string.Empty;
+
                 OnPropertyChanged("HasOutrasCondicoesDeSaude");
             }
         }
-        public bool HasOutrasCondicoesDeSaude
-        {
-            get
-            {
+        public bool HasOutrasCondicoesDeSaude {
+            get {
                 return this.OutrasCondicoesDeSaude == true;
             }
         }
@@ -498,11 +527,20 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableRangeCollection<Models.OrigemAlimentacao> OrigemAlimentacao { get; set; }
         public ObservableCollection<object> OrigensAlimentacaoSelecionadas { get; } = new ObservableCollection<object>();
 
-        private bool _statusSituacaoRua; //Obrigatório
+        private bool _statusSituacaoRua = true; //Obrigatório
         public bool StatusSituacaoRua {
             get { return this._statusSituacaoRua; }
             set {
                 this.Ficha.StatusSituacaoRua = value;
+
+                this.TempoSituacaoRua = null;
+                this.Ficha.StatusRecebeBeneficio = false;
+                this.Ficha.StatusPossuiReferenciaFamiliar = false;
+                this.QuantidadeAlimentacoesAoDiaSituacaoRua = null;
+                this.OrigensAlimentacaoSelecionadas.Clear();
+                this.StatusAcompanhadoPorOutraInstituicao = false;
+                this.StatusVisitaFamiliarFrequentemente = false;
+                this.StatusTemAcessoHigienePessoalSituacaoRua = false;
 
                 SetProperty(ref _statusSituacaoRua, value);
                 OnPropertyChanged("IsSituacaoRua");
@@ -518,8 +556,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private Models.TempoSituacaoDeRua _tempoSituacaoRua;
-        public Models.TempoSituacaoDeRua TempoSituacaoRua
-        {
+        public Models.TempoSituacaoDeRua TempoSituacaoRua {
             get { return this._tempoSituacaoRua; }
             set {
                 this.Ficha.TempoSituacaoRua = value;
@@ -529,8 +566,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private Models.QuantasVezesAlimentacao _quantidadeAlimentacoesAoDiaSituacaoRua;
-        public Models.QuantasVezesAlimentacao QuantidadeAlimentacoesAoDiaSituacaoRua
-        {
+        public Models.QuantasVezesAlimentacao QuantidadeAlimentacoesAoDiaSituacaoRua {
             get { return this._quantidadeAlimentacoesAoDiaSituacaoRua; }
             set {
                 this.Ficha.QuantidadeAlimentacoesAoDiaSituacaoRua = value;
@@ -544,6 +580,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusAcompanhadoPorOutraInstituicao; }
             set {
                 this.Ficha.StatusAcompanhadoPorOutraInstituicao = value;
+                this.Ficha.OutraInstituicaoQueAcompanha = string.Empty;
 
                 SetProperty(ref _statusAcompanhadoPorOutraInstituicao, value);
                 OnPropertyChanged("IsAcompanhadoPorOutraInstituicao");
@@ -555,10 +592,8 @@ namespace gvn_ab_mobile.ViewModels {
                 return this.StatusAcompanhadoPorOutraInstituicao;
             }
         }
-        public bool IsSituacaoRuaAndIsAcompanhadoPorOutraInstituicao
-        {
-            get
-            {
+        public bool IsSituacaoRuaAndIsAcompanhadoPorOutraInstituicao {
+            get {
                 return ((this.IsSituacaoRua == true) && (this.IsAcompanhadoPorOutraInstituicao == true));
             }
         }
@@ -568,6 +603,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusVisitaFamiliarFrequentemente; }
             set {
                 this.Ficha.StatusVisitaFamiliarFrequentemente = value;
+                this.Ficha.GrauParentescoFamiliarFrequentado = string.Empty;
 
                 SetProperty(ref _statusVisitaFamiliarFrequentemente, value);
                 OnPropertyChanged("VisitsFamiliarFrequentemente");
@@ -579,11 +615,9 @@ namespace gvn_ab_mobile.ViewModels {
                 return this.StatusVisitaFamiliarFrequentemente;
             }
         }
-        public bool IsSituacaoRuaAndVisitsFamiliarFrequentemente
-        {
-            get
-            {
-                return ((this.IsSituacaoRua == true) && ( this.VisitsFamiliarFrequentemente == true));
+        public bool IsSituacaoRuaAndVisitsFamiliarFrequentemente {
+            get {
+                return ((this.IsSituacaoRua == true) && (this.VisitsFamiliarFrequentemente == true));
             }
         }
 
@@ -592,6 +626,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._statusTemAcessoHigienePessoalSituacaoRua; }
             set {
                 this.Ficha.StatusTemAcessoHigienePessoalSituacaoRua = value;
+                this.HigienesSelecionadas.Clear();
 
                 SetProperty(ref _statusTemAcessoHigienePessoalSituacaoRua, value);
                 OnPropertyChanged("HasAcessoHigienePessoalSituacaoRua");
@@ -603,22 +638,11 @@ namespace gvn_ab_mobile.ViewModels {
                 return this.StatusTemAcessoHigienePessoalSituacaoRua;
             }
         }
-        public bool IsSituacaoRuaAndHasAcessoHigienePessoalSituacaoRua
-        {
-            get
-            {
+        public bool IsSituacaoRuaAndHasAcessoHigienePessoalSituacaoRua {
+            get {
                 return ((this.IsSituacaoRua == true) && (this.HasAcessoHigienePessoalSituacaoRua == true));
             }
         }
-
-        /*public bool ShowOutraInstituicaoQueAcompanha
-        {
-            get
-            {
-                return (IsSituacaoRua && IsAcompanhadoPorOutraInstituicao);
-            }
-        }*/
-
 
         public FichaCadastroIndividualViewModel(Page page) {
             this.Ficha = new Models.FichaCadastroIndividual();
@@ -629,15 +653,17 @@ namespace gvn_ab_mobile.ViewModels {
             this.Concordar = new Command(async () => await ConcordarExecuteAsync());
             this.NaoConcordar = new Command(async () => await NaoConcordarExecuteAsync());
 
+
             this.Sexos = new ObservableRangeCollection<Models.Sexo>(new DAO.DAOSexo().Select()); //traz todos os sexos na base.
             this.Paises = new ObservableRangeCollection<Models.Pais>(new DAO.DAOPais().Select());
             this.Etnias = new ObservableRangeCollection<Models.Etnia>(new DAO.DAOEtnia().Select());
             this.RacasCores = new ObservableRangeCollection<Models.RacaCor>(new DAO.DAORacaCor().Select());
             this.Nacionalidades = new ObservableRangeCollection<Models.Nacionalidade>(new DAO.DAONacionalidade().Select());
-            this.Municipios = new ObservableRangeCollection<Models.Municipio>(new DAO.DAOMunicipio().Select());
+            this.UFs = new ObservableRangeCollection<Models.UnidadeFederal>(new DAO.DAOUnidadeFederal().Select());
+            this.Municipios = new ObservableRangeCollection<Models.Municipio>();
 
             this.CursosMaisElevados = new ObservableRangeCollection<Models.CursoMaisElevado>(new DAO.DAOCursoMaisElevado().Select());
-            //this.Ocupacoes = new ObservableRangeCollection<Models.Ocupacao>(); //MAPEAR OS CBOS ..... AINDA TEM Q SER FEITO
+            this.Ocupacoes = new ObservableRangeCollection<Models.Ocupacao>(new DAO.DAOOcupacao().Select());
             this.ResponsaveisCriancas = new ObservableRangeCollection<Models.ResponsavelCrianca>(new DAO.DAOResponsavelCrianca().Select());
             this.SituacoesMercadoTrabalho = new ObservableRangeCollection<Models.SituacaoMercadoTrabalho>(new DAO.DAOSituacaoMercadoTrabalho().Select());
             this.IdentidadeGeneroCidadaos = new ObservableRangeCollection<Models.IdentidadeGeneroCidadao>(new DAO.DAOIdentidadeGeneroCidadao().Select());
@@ -671,11 +697,22 @@ namespace gvn_ab_mobile.ViewModels {
             if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3) {
+                //passa informaços da model para a entidade
+                this.Ficha.ResponsavelPorCrianca = this.ResponsaveisCriancasSelecionadas.Select(o => (Models.ResponsavelCrianca)o).ToList();
+                this.Ficha.DeficienciasCidadao = this.DeficienciasSelecionadas.Select(o => (Models.DeficienciaCidadao)o).ToList();
+
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5) {
+
+                this.Ficha.DoencaCardiaca = this.DoencasRespiratoriasSelecionadas.Select(o => (Models.DoencaCardiaca)o).ToList();
+                this.Ficha.DoencaRins = this.ProblemasRinsSelecionados.Select(o => (Models.ProblemaRins)o).ToList();
+
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
+            } else if (CurrentPage is Views.FichaAtendimentoIndividualPage.FichaAtendimentoIndividualPage6) {
+                this.Ficha.OrigemAlimentoSituacaoRua = this.OrigensAlimentacaoSelecionadas.Select(o => (Models.OrigemAlimentacao)o).ToList();
+                this.Ficha.HigienePessoalSituacaoRua = this.HigienesSelecionadas.Select(o => (Models.AcessoHigiene)o).ToList();
             };
         }
     }

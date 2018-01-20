@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace gvn_ab_mobile.Views.FichaCadastroIndividualPage
-{
+namespace gvn_ab_mobile.Views.FichaCadastroIndividualPage {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FichaCadastroIndividualPage3 : ContentPage
-    {
+    public partial class FichaCadastroIndividualPage3 : ContentPage {
         ViewModels.FichaCadastroIndividualViewModel viewModel;
 
-        public FichaCadastroIndividualPage3(ViewModels.FichaCadastroIndividualViewModel viewModel)
-        {
+        public FichaCadastroIndividualPage3(ViewModels.FichaCadastroIndividualViewModel viewModel) {
             InitializeComponent();
             this.BindingContext = this.viewModel = viewModel;
         }

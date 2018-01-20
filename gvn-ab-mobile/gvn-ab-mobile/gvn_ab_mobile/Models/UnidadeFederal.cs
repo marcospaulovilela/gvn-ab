@@ -24,7 +24,7 @@ namespace gvn_ab_mobile.Models {
         }
 
         public override string ToString() {
-            return $" {this.SglUnidadeFederal} ";
+            return $" {this.NomUnidadeFederal}  -  {this.SglUnidadeFederal} ";
         }
     }
 }

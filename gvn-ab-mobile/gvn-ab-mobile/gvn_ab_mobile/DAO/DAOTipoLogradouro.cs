@@ -29,12 +29,16 @@ namespace gvn_ab_mobile.DAO {
                 StringBuilder cmdText = new StringBuilder("INSERT INTO TipoLogradouro (CodTipoLogradouro, NomTipoLogradouro) values ");
                 
                 foreach(var o in obj) {
-                    cmdText.Append($"('{o.CodTipoLogradouro}', '{o.NomTipoLogradouro}'),");
+                    cmdText.Append($"('{o.CodTipoLogradouro}', '{o.NomTipoLogradouro.Replace("'", "\'")}'),");
                 }
                 cmdText[cmdText.Length - 1] = ' ';
 
                 var cmd = connection.CreateCommand(cmdText.ToString());
-                return cmd.ExecuteNonQuery();
+                var result = cmd.ExecuteNonQuery();
+
+                this.connection.Commit();
+                return result;
+
             } catch (Exception e) {
                 return null;
             };
