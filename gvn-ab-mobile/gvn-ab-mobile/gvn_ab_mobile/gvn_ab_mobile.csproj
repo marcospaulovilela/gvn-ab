@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="Controls\TableGridPage.cs" />
     <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\DAOEquipe.cs" />
     <Compile Include="DAO\DAOEnumeradores.cs" />
     <Compile Include="DAO\DAOFichaAtendimentoIndividual.cs" />
     <Compile Include="DAO\DAOFichaCadastroDomiciliarTerritorial.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Models\Enumeradores.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Header\FichaUnicaLotacaoHeader.cs" />
+    <Compile Include="Models\Equipe.cs" />
     <Compile Include="Models\Ocupacao.cs" />
     <Compile Include="Models\Header\FichaLotacaoHeader.cs" />
     <Compile Include="Models\Cbo.cs" />

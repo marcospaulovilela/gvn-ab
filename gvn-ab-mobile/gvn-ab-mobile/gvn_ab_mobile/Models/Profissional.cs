@@ -12,11 +12,18 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref id, value); }
         }
 
-        private string codProfissional;
+        private string cpfProfissional;
         [MaxLength(11), NotNull]
-        public string CodProfissional {
-            get { return this.codProfissional; }
-            set { SetProperty(ref codProfissional, value); }
+        public string CpfProfissional {
+            get { return this.cpfProfissional; }
+            set { SetProperty(ref cpfProfissional, value); }
+        }
+
+        private string cnsProfissional;
+        [MaxLength(15), NotNull]
+        public string CnsProfissional {
+            get { return this.cnsProfissional; }
+            set { SetProperty(ref cnsProfissional, value); }
         }
 
         private string desLogin;
@@ -48,7 +55,7 @@ namespace gvn_ab_mobile.Models {
         }
         
         public override string ToString() {
-            return $"{this.codProfissional} - {this.nomProfissional}";
+            return $"{this.cpfProfissional} - {this.nomProfissional}";
         }
     }
 }

@@ -13,9 +13,24 @@ namespace gvn_ab_mobile.ViewModels {
         public ICommand CboSelect { get; private set; }
         public ICommand Sincronizar { get; private set; }
 
+        public bool SelectCbo { get; set; } = true;
         public Models.Profissional Profissional { get; set; }
-        public Models.Cbo Cbo { get; set; }
-        public ObservableCollection<object> Teste { get; set; }
+
+        private Models.Cbo cbo;
+        public Models.Cbo Cbo {
+            get { return this.cbo; }
+            set {
+                SetProperty(ref cbo, value);
+            }
+        }
+
+        private Models.Equipe equipe;
+        public Models.Equipe Equipe {
+            get { return this.equipe; }
+            set {
+                SetProperty(ref equipe, value);
+            }
+        }
 
         public LoginViewModel(Page page) {
             this.Profissional = new Models.Profissional() {
@@ -25,29 +40,36 @@ namespace gvn_ab_mobile.ViewModels {
             this.Page = page;
 
             this.Login = new Command(async () => await LoginExecuteAsync());
-            this.CboSelect = new Command(() => App.Current.MainPage = new NavigationPage(new Views.MenuPage(this.Profissional, this.Cbo)) {
-                BarBackgroundColor = Color.FromHex("#003264")
-            });
+            this.CboSelect = new Command(() => CallMenu());
 
             this.Sincronizar = new Command(async () => await SincronizarExecuteAsync());
+        }
 
-            this.Teste = new ObservableCollection<object>();
+        private void CallMenu() {
+            App.Current.MainPage = new NavigationPage(new Views.MenuPage(this.Profissional, this.Cbo, this.Equipe)) {
+                BarBackgroundColor = Color.FromHex("#003264")
+            };
         }
 
         private async Task LoginExecuteAsync() {
-            
+
             try {
                 using (var objDao = new DAO.DAOProfissional()) {
-                    var CpfUser = objDao.GetProfissionalByDesLogin(this.Profissional.DesLogin);
-                    this.Profissional = CpfUser;
+                    var user = objDao.GetProfissionalByDesLogin(this.Profissional.DesLogin);
+                    this.Profissional = user;
 
-                    if (CpfUser != null && CpfUser.DesSenha == this.Profissional.DesSenha) { //SERIO??? BRINCADEIRA SEGURANÇA FAZER DIREITO DEPOIS.....
+                    if (user != null && user.DesSenha == this.Profissional.DesSenha) { //SERIO??? BRINCADEIRA SEGURANÇA FAZER DIREITO DEPOIS.....
                         if (this.Profissional.Cbos?.Count() == 0) {
                             await this.Page.DisplayAlert("Erro de usuario", "Usuario não possui nenhum CBO vinculado.", "Ok");
                         } else if (this.Profissional.Cbos?.Count() == 1) {
+                            this.SelectCbo = false;
+                            this.Cbo = this.Profissional.Cbos.First();
 
-                            App.Current.MainPage = new NavigationPage(new Views.MenuPage(this.Profissional, this.Cbo = this.Profissional.Cbos.First())) {
-                                BarBackgroundColor = Color.FromHex("#003264")
+                            if (this.Cbo?.Equipes?.Count == 1) {
+                                this.Equipe = this.Cbo.Equipes.First();
+                                CallMenu();
+                            } else {
+                                await this.Page.Navigation.PushAsync(new Views.Login.LoginPage2(this));
                             };
                         } else {
                             await this.Page.Navigation.PushAsync(new Views.Login.LoginPage2(this));
@@ -57,7 +79,7 @@ namespace gvn_ab_mobile.ViewModels {
                         await this.Page.DisplayAlert("Erro de login", "Usuario ou senha invalidos", "Ok");
                     };
                 };
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.Diagnostics.Debug.WriteLine(e);
             }
         }

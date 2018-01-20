@@ -5,29 +5,30 @@
              x:Class="gvn_ab_mobile.Views.MenuPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout VerticalOptions="FillAndExpand" Spacing="50">
-                <StackLayout BackgroundColor="#003264" HorizontalOptions="FillAndExpand">
-                    <Label Text="{Binding Profissional.NomProfissional}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" TextColor="White" />
-                    <Label Text="{Binding Cbo.NomCbo}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" TextColor="White" />
+            <StackLayout VerticalOptions="FillAndExpand" Padding="10, 15, 10, 0">
+                <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding Profissional.NomProfissional}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#003264" />
+                    <Label Text="{Binding Cbo.NomCbo}" FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#003264" />
+                    <Label Text="{Binding Equipe.DesEquipe}" FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#003264" />
                 </StackLayout>
+                <BoxView HeightRequest=".3" BackgroundColor="#003264"/>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0, 25, 0, 0" Spacing="50">
 
-                <StackLayout>
-                    <Image Source="logoGoverna.png" />
-                    <Label Text="Saude" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
-                    <Label Text="Fichas" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
-                </StackLayout>
-
-                <StackLayout VerticalOptions="FillAndExpand" Spacing="25">
-                    <StackLayout Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
-                        <Button Clicked="OnCadastroIndividualClicked" Text="Cadastro Individual" IsVisible="{Binding CboCadastroIndividual}" Image="iconPessoas" BackgroundColor="#003264" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
-                        <Button Clicked="OnCadastroDomiciliarClicked" Text="Cadastro Domiciliar" Image="iconCasas" BackgroundColor="#003264" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
-                        <Button Clicked="OnVisitaDomiciliarClicked" Text="Visita Domiciliar" Image="iconMedico" BackgroundColor="#003264" Opacity="0.80"  BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <StackLayout Spacing="5" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Button Text="Cadastro Individual" HorizontalOptions="Center" ContentLayout="Top,0" IsEnabled="{Binding CboCadastroIndividual}" Image="iconIndividuo" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264"  Clicked="OnCadastroIndividualClicked"  />
+                            <Button Text="Cadastro Domiciliar" HorizontalOptions="Center" ContentLayout="Top,0" IsEnabled="{Binding CboCadastroDomiciliar}" Image="iconCasa" BackgroundColor="Transparent" BorderColor="#003264" TextColor="#003264" Clicked="OnCadastroDomiciliarClicked" />
+                        </StackLayout>
+                        <StackLayout Spacing="5" HorizontalOptions="Center" Orientation="Horizontal">
+                            <Button HorizontalOptions="Center" Text="Visita Domiciliar" ContentLayout="Top,0" IsEnabled="{Binding CboVisitaDomiciliar}" Image="iconVisita" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264" Clicked="OnVisitaDomiciliarClicked" />
+                        </StackLayout>
                     </StackLayout>
 
-                    <StackLayout Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
-                        <Button Text="ENVIAR" IsVisible="{Binding usuario.Root}" BackgroundColor="#003264" Opacity="0.80" BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
-                        <Button Text="Sair" Clicked="OnSairClicked" BackgroundColor="#003264" Opacity="0.80" BorderColor="White" BorderRadius="1" HorizontalOptions="Fill" TextColor="White" />
+                    <StackLayout Spacing="12" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                        <Button Text="Enviar fichas" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="#003264" />
+                        <Button Text="Sair" Clicked="OnSairClicked" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="#003264" />
                     </StackLayout>
+
                 </StackLayout>
             </StackLayout>
         </ScrollView>

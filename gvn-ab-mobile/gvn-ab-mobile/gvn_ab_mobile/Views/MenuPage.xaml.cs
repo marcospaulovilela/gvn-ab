@@ -10,32 +10,40 @@ using Xamarin.Forms.Xaml;
 namespace gvn_ab_mobile.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuPage : ContentPage {
-        public Models.Cbo Cbo { get; set; }
         public Models.Profissional Profissional { get; set; }
+        public Models.Cbo Cbo { get; set; }
+        public Models.Equipe Equipe { get; set; }
 
         public bool CboCadastroIndividual {
             get {
                 string[] CbosAltorizados = new string[] { "322205", "322210", "322230", "322245", "322250", "322405", "322415", "322425", "322430", "352210", "515105", "515120", "515125", "515130", "515140", "515305", "515310", "422110" };
-                return CbosAltorizados.Any(o => o.Equals(this.Cbo.CodCbo));
+                return true || CbosAltorizados.Any(o => o.Equals(this.Cbo.CodCbo));
             }
         }
 
-        public MenuPage(Models.Profissional profissional, Models.Cbo cbo) {
-            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
-            InitializeComponent();
-
-            this.Cbo = cbo;
-            this.Profissional = profissional;
-
-            this.BindingContext = this;
+        public bool CboCadastroDomiciliar {
+            get {
+                string[] CbosAltorizados = new string[] { "322205", "322210", "322230", "322245", "322250", "322405", "322415", "322425", "322430", "352210", "515105", "515120", "515125", "515130", "515140", "515305", "515310", "422110" };
+                return true ||  CbosAltorizados.Any(o => o.Equals(this.Cbo.CodCbo));
+            }
         }
 
-        public MenuPage(Models.Profissional Usuario) {
+        public bool CboVisitaDomiciliar {
+            get {
+                string[] CbosAltorizados = new string[] { "515105", "515120", "515310", "515140" };
+                return true || CbosAltorizados.Any(o => o.Equals(this.Cbo.CodCbo));
+            }
+        }
+
+        public MenuPage(Models.Profissional profissional, Models.Cbo cbo, Models.Equipe equipe) {
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
 
+            this.Profissional = profissional;
+            this.Cbo = cbo;
+            this.Equipe = equipe;
+
             this.BindingContext = this;
-            this.Profissional = Usuario;
         }
 
         async void OnAtendimentoIndividualClicked(object sender, EventArgs e) {
@@ -50,8 +58,7 @@ namespace gvn_ab_mobile.Views {
             await Navigation.PushAsync(new FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage1());
         }
 
-        async void OnVisitaDomiciliarClicked(object sender, EventArgs e)
-        {
+        async void OnVisitaDomiciliarClicked(object sender, EventArgs e) {
             await Navigation.PushAsync(new FichaVisitaDomiciliarPage.FichaVisitaDomiciliarPage1());
         }
 

@@ -46,7 +46,7 @@ namespace gvn_ab_mobile.Models {
         }
 
         ///
-        private string _DesVersao;
+        private string _DesVersao = "v2.2";
         [NotNull]
         public string DesVersao {
             get { return this._DesVersao; }

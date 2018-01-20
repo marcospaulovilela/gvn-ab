@@ -5,15 +5,14 @@
              x:Class="gvn_ab_mobile.Views.Login.LoginPage">
     <ContentPage.Content>
 
-        <StackLayout VerticalOptions="FillAndExpand" Padding="15, 100, 15, 100" Spacing="50">
-            <StackLayout></StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand" Padding="15, 50, 15, 100" Spacing="50">
             <StackLayout>
                 <Image Source="logoGoverna.png" />
                 <Label Text="Saude" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
                 <Label Text="Atenção Basica" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
             </StackLayout>
 
-            <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="CenterAndExpand">
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                     <Grid HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Padding="5">
                         <Grid.RowDefinitions>
@@ -26,10 +25,9 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Source="iconUsername.png" HeightRequest="30" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                        <Entry x:Name="Usuario" Placeholder="Usúario" FontSize="Large" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.DesLogin}">
+                        <Entry x:Name="Usuario" Placeholder="Usúario" FontSize="Large" PlaceholderColor="Gray"  HorizontalTextAlignment="Center"  BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.DesLogin}">
                             <Entry.Behaviors>
-                                <!--<behaviors:ValidatorEmpty />-->
-                                <behaviors:EntryNomeBehavior />
+                                <behaviors:ValidatorEmpty />
                             </Entry.Behaviors>
                         </Entry>
                     </Grid>
@@ -44,7 +42,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Image Source="iconPassword.png" HeightRequest="30" VerticalOptions="Center" />
-                        <Entry x:Name="Senha" Placeholder="Senha" FontSize="Large" IsPassword="True" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.DesSenha}">
+                        <Entry x:Name="Senha" Placeholder="Senha" FontSize="Large" IsPassword="True" HorizontalTextAlignment="Center" PlaceholderColor="Gray" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" Grid.Row="0" Grid.Column="1" Text="{Binding Profissional.DesSenha}">
                             <Entry.Behaviors>
                                 <behaviors:ValidatorEmpty />
                             </Entry.Behaviors>
@@ -52,13 +50,12 @@
                     </Grid>
 
                     <StackLayout Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
-                        <Button Text="TestModal"  Clicked="Button_ClickedAsync"  IsVisible="False" />
-                        <Button Text="Entrar" BackgroundColor="#003264" Opacity="0.80" BorderColor="Black" BorderRadius="1" VerticalOptions="CenterAndExpand" BorderWidth="100" HorizontalOptions="Fill" TextColor="White">
+                        <Button Text="Entrar" BackgroundColor="Transparent" TextColor="#003264" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
                             <Button.Behaviors>
                                 <behaviors:ButtonSubmitBehavior Command="{Binding Login}" Controls="Usuario|Senha" />
                             </Button.Behaviors>
                         </Button>
-                        <Button Text="Sync" IsVisible="True"  BackgroundColor="#003264" Opacity="0.80" BorderColor="Black" VerticalOptions="CenterAndExpand" BorderRadius="1" BorderWidth="100" HorizontalOptions="Fill" TextColor="White" Command="{Binding Sincronizar}" />
+                        <Button Text="Sync" IsVisible="True" TextColor="#003264" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" Command="{Binding Sincronizar}" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

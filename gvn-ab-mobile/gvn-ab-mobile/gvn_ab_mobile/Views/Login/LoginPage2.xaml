@@ -10,31 +10,36 @@
                 <controls:TableGrid Title="Cbos" Items="{Binding Teste}" ItemPage="gvn_ab_mobile.Views.ItemFamilia" ItemType="gvn_ab_mobile.Models.Cbo" />
             </StackLayout>-->
 
-            <StackLayout VerticalOptions="FillAndExpand" Padding="15, 100, 15, 100" Spacing="50" IsVisible="True">
-                <StackLayout></StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand" Padding="15, 50, 15, 100" Spacing="50" IsVisible="True">
                 <StackLayout>
                     <Image Source="logoGoverna.png" />
                     <Label Text="Saude" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
                     <Label Text="Atenção Basica" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
                 </StackLayout>
 
-                <StackLayout VerticalOptions="CenterAndExpand">
-                    <StackLayout>
+                <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                         <Label Text="C.B.O. do profissional: "  FontSize="Medium"/>
-                        <Picker x:Name="Cbo" ItemsSource="{Binding Profissional.Cbos}" SelectedItem="{Binding Cbo}" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                        <Picker x:Name="Cbo" IsEnabled="{Binding SelectCbo}" ItemsSource="{Binding Profissional.Cbos}" SelectedItem="{Binding Cbo}" TextColor="Gray" HorizontalOptions="FillAndExpand">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />
                             </Picker.Behaviors>
                         </Picker>
-                        <StackLayout IsVisible="False">
-                            <controls:PickerSearch Placeholder="Cbos"  Items="{Binding Profissional.Cbos}"/>
-                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <Label Text="I.N.E. do profissional: "  FontSize="Medium"/>
+                        <Picker x:Name="Ine" ItemsSource="{Binding Cbo.Equipes}" SelectedItem="{Binding Equipe}" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
+                        </Picker>
                     </StackLayout>
 
                     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
-                        <Button Text="Entrar" BackgroundColor="#003264" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="White"  VerticalOptions="Center">
+                        <Button Text="Entrar" BackgroundColor="Transparent" TextColor="#003264" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
                             <Button.Behaviors>
-                                <behaviors:ButtonSubmitBehavior Command="{Binding CboSelect}" Controls="Cbo" />
+                                <behaviors:ButtonSubmitBehavior Command="{Binding CboSelect}" Controls="Cbo|Ine" />
                             </Button.Behaviors>
                         </Button>
                     </StackLayout>

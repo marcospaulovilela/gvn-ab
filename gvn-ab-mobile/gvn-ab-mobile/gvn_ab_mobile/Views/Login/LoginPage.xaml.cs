@@ -16,11 +16,5 @@ namespace gvn_ab_mobile.Views.Login {
 
             this.BindingContext = this.viewModel = new ViewModels.LoginViewModel(this);
         }
-
-        private async System.Threading.Tasks.Task Button_ClickedAsync(object sender, System.EventArgs e) {
-            var a = new gvn_ab_mobile.Views.PagePopUp();
-            
-            await PopupNavigation.PushAsync(a);
-        }
     }
 }

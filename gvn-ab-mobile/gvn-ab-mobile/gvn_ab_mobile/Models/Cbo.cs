@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace gvn_ab_mobile.Models {
     public class Cbo : Helpers.ObservableObject {
-
         private long? _id;
         [PrimaryKey, AutoIncrement]
         public long? Id {
@@ -31,6 +30,13 @@ namespace gvn_ab_mobile.Models {
         public string NomCbo {
             get { return this.nomCbo; }
             set { SetProperty(ref nomCbo, value); }
+        }
+
+        private List<Models.Equipe> equipes;
+        [OneToMany("CodCboEquipe", null, CascadeOperations = CascadeOperation.All)] 
+        public List<Models.Equipe> Equipes {
+            get { return this.equipes; }
+            set { SetProperty(ref this.equipes, value); }
         }
 
         public override string ToString() {

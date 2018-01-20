@@ -16,6 +16,13 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref codUnidade, value); }
         }
 
+        private string impCnes;
+        [NotNull, Unique]
+        public string ImpCnes {
+            get { return this.impCnes; }
+            set { SetProperty(ref impCnes, value); }
+        }
+
         private string desNomFantasia;
         [NotNull, Unique]
         public string DesNomFantasia {

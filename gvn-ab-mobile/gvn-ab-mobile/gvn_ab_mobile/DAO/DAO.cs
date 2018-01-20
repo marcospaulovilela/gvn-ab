@@ -88,15 +88,18 @@ namespace gvn_ab_mobile.DAO {
             return scan;
         }
 
-        public T Select(long id) {
-            return this.connection.Get<T>(id);
+        public T Select(long? id) {
+            var obj = this.connection.Get<T>(id);
+            this.connection?.GetChildren<T>(obj);
+
+            return obj;
         }
 
         public List<T> Select(string query, params object[] parameters) {
             List<T> result = this.connection?.Query<T>(query, parameters);
             if (result == null) return null;
 
-            result.ForEach(o => this.connection?.GetChildren<T>(o));
+            result.ForEach(o => this.connection?.GetChildren<T>(o, true));
             return result;
         }
 
