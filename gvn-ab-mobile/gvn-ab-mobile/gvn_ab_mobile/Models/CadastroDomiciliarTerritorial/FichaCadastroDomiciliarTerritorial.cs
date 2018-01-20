@@ -230,12 +230,12 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo codigoIbgeMunicipio - Tipo string
-        private Models.Municipios _codigoIbgeMunicipio; //Obrigatório
-        [NotNull, MaxLength(7)] //Mínimo 7 caracteres; Máximo 7 caracteres
-        public Models.Municipios CodigoIbgeMunicipio
+        private Models.Municipio municipio; //Obrigatório
+        [NotNull] //Mínimo 7 caracteres; Máximo 7 caracteres
+        public Models.Municipio Municipio
         {
-            get { return this._codigoIbgeMunicipio; }
-            set { SetProperty(ref _codigoIbgeMunicipio, value); }
+            get { return this.municipio; }
+            set { SetProperty(ref municipio, value); }
         }
 
         //Campo complemento - Tipo string
@@ -266,12 +266,12 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo numeroDneUf - Tipo string
-        private Models.UF _numeroDneUf; //Obrigatório
+        private Models.UnidadeFederal unidadeFederal; //Obrigatório
         [NotNull]
-        public Models.UF NumeroDneUf
+        public Models.UnidadeFederal UnidadeFederal
         {
-            get { return this._numeroDneUf; }
-            set { SetProperty(ref _numeroDneUf, value); }
+            get { return this.unidadeFederal; }
+            set { SetProperty(ref unidadeFederal, value); }
         }
 
         //Campo telefoneContato - Tipo string
@@ -293,9 +293,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo tipoLogradouroNumeroDne - Tipo string
-        private Models.TipoDeLogradouro _tipoLogradouroNumeroDne; //Obrigatório
+        private Models.TipoLogradouro _tipoLogradouroNumeroDne; //Obrigatório
         [NotNull]
-        public Models.TipoDeLogradouro TipoLogradouroNumeroDne
+        public Models.TipoLogradouro TipoLogradouroNumeroDne
         {
             get { return this._tipoLogradouroNumeroDne; }
             set { SetProperty(ref _tipoLogradouroNumeroDne, value); }

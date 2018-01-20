@@ -8,9 +8,9 @@ namespace gvn_ab_mobile.DAO {
     public abstract class DAO<T> : IDisposable
         where T : new () {
 
-        private static string dbName = "gvn-ab-2.db3";
+        private static string dbName = "gvn-ab-5.db3";
      
-        private SQLiteConnection connection;
+        protected SQLiteConnection connection;
 
         public DAO() {
             gvn_ab_mobile.Config.ISQLiteConfig config = Xamarin.Forms.DependencyService.Get<gvn_ab_mobile.Config.ISQLiteConfig>();

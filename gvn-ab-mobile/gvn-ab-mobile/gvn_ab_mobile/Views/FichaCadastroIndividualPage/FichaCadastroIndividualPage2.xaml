@@ -196,7 +196,7 @@
 
                 <StackLayout Orientation="Horizontal">
                     <StackLayout IsVisible="{Binding IsNaturalizado}" >
-                        <Label Text="Data de Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Label Text="Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <DatePicker  Date="{Binding Ficha.DtNaturalizacao}" >
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />

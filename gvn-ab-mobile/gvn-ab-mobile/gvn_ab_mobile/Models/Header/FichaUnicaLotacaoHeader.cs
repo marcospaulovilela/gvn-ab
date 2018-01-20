@@ -66,12 +66,12 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo codigoIbgeMunicipio - Tipo string
-        private Models.Municipios _codigoIbgeMunicipio; //Obrigatório
+        private Models.Municipio municipio; //Obrigatório
         [NotNull]
-        public Models.Municipios CodigoIbgeMunicipio
+        public Models.Municipio Minicipio
         {
-            get { return this._codigoIbgeMunicipio; }
-            set { SetProperty(ref _codigoIbgeMunicipio, value); }
+            get { return this.municipio; }
+            set { SetProperty(ref municipio, value); }
         }
 
         //FIM FICHA UNICA LOTACAO HEADER

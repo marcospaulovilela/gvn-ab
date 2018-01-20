@@ -7,10 +7,8 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace gvn_ab_mobile.ViewModels
-{
-    public class FichaCadastroDomiciliarViewModel : BaseViewModel
-    {
+namespace gvn_ab_mobile.ViewModels {
+    public class FichaCadastroDomiciliarViewModel : BaseViewModel {
         private Page Page { get; set; }
 
         public ICommand Continuar { get; }
@@ -27,37 +25,32 @@ namespace gvn_ab_mobile.ViewModels
 
         //USADO PAGE 2
 
-        public ObservableRangeCollection<Models.UF> UFs { get; set; }
-        public ObservableRangeCollection<Models.TipoDeLogradouro> TiposLogradouros { get; set;  }
+        public ObservableRangeCollection<Models.UnidadeFederal> UFs { get; set; }
+        public ObservableRangeCollection<Models.TipoLogradouro> TiposLogradouros { get; set; }
         public ObservableRangeCollection<Models.TipoDeImovel> TiposImoveis { get; set; }
-        public ObservableRangeCollection<Models.Municipios> Municipios { get; set; }
+        public ObservableRangeCollection<Models.Municipio> Municipios { get; set; }
 
-        private Models.Municipios _codigoIbgeMunicipio;
-        public Models.Municipios CodigoIbgeMunicipio
-        {
+        private Models.Municipio _codigoIbgeMunicipio;
+        public Models.Municipio CodigoIbgeMunicipio {
             get { return this._codigoIbgeMunicipio; }
-            set
-            {
-
-                this.Ficha.CodigoIbgeMunicipio = value;
+            set {
+                this.Ficha.Municipio = value;
                 SetProperty(ref _codigoIbgeMunicipio, value);
             }
         }
 
-        private Models.UF _numeroDneUf; //Obrigatório
-        public Models.UF NumeroDneUf
-        {
-            get { return this._numeroDneUf; }
+        private Models.UnidadeFederal unidadeFederal; //Obrigatório
+        public Models.UnidadeFederal UnidadeFederal {
+            get { return this.unidadeFederal; }
             set {
-                this.Ficha.NumeroDneUf = value;
+                this.Ficha.UnidadeFederal = value;
 
-                SetProperty(ref _numeroDneUf, value);
+                SetProperty(ref unidadeFederal, value);
             }
         }
 
         private bool _stSemNumero; //Não Obrigatório
-        public bool StSemNumero
-        {
+        public bool StSemNumero {
             get { return this._stSemNumero; }
             set {
                 this.Ficha.StSemNumero = value;
@@ -66,17 +59,14 @@ namespace gvn_ab_mobile.ViewModels
                 OnPropertyChanged("HasNumero");
             }
         }
-        public bool HasNumero
-        {
-            get
-            {
+        public bool HasNumero {
+            get {
                 return !this.StSemNumero;
             }
         }
 
         private bool _stForaArea; //Não Obrigatório
-        public bool StForaArea
-        {
+        public bool StForaArea {
             get { return this._stForaArea; }
             set {
                 this.Ficha.StForaArea = value;
@@ -85,17 +75,14 @@ namespace gvn_ab_mobile.ViewModels
                 OnPropertyChanged("IsForaArea");
             }
         }
-        public bool IsForaArea
-        {
-            get
-            {
+        public bool IsForaArea {
+            get {
                 return !this.StForaArea;
             }
         }
 
-        private Models.TipoDeLogradouro _tipoLogradouroNumeroDne; //Obrigatório
-        public Models.TipoDeLogradouro TipoLogradouroNumeroDne
-        {
+        private Models.TipoLogradouro _tipoLogradouroNumeroDne; //Obrigatório
+        public Models.TipoLogradouro TipoLogradouroNumeroDne {
             get { return this._tipoLogradouroNumeroDne; }
             set {
                 this.Ficha.TipoLogradouroNumeroDne = value;
@@ -105,8 +92,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.TipoDeImovel _tipoDeImovel; //Obrigatório
-        public Models.TipoDeImovel TipoDeImovel
-        {
+        public Models.TipoDeImovel TipoDeImovel {
             get { return this._tipoDeImovel; }
             set {
                 this.Ficha.TipoDeImovel = value;
@@ -118,25 +104,19 @@ namespace gvn_ab_mobile.ViewModels
                 OnPropertyChanged("HasTipoDomicilioAndIsRural");
             }
         }
-        public bool HasTipoDomicilio
-        {
-            get
-            {
+        public bool HasTipoDomicilio {
+            get {
                 return !((this.TipoDeImovel?.Codigo == 7) || (this.TipoDeImovel?.Codigo == 8) || (this.TipoDeImovel?.Codigo == 9)
                     || (this.TipoDeImovel?.Codigo == 10) || (this.TipoDeImovel?.Codigo == 11));
             }
         }
-        public bool IsDomicilio
-        {
-            get
-            {
+        public bool IsDomicilio {
+            get {
                 return this.TipoDeImovel?.Codigo == 1;
             }
         }
-        public bool IsNotDomicilio
-        {
-            get
-            {
+        public bool IsNotDomicilio {
+            get {
                 return !(this.TipoDeImovel?.Codigo == 1);
             }
         }
@@ -154,8 +134,7 @@ namespace gvn_ab_mobile.ViewModels
         public ObservableRangeCollection<Models.DestinoDoLixo> DestinosLixo { get; set; }
 
         private Models.SituacaoDeMoradia _situacaoMoradiaPosseTerra; //Não Obrigatório
-        public Models.SituacaoDeMoradia SituacaoMoradiaPosseTerra
-        {
+        public Models.SituacaoDeMoradia SituacaoMoradiaPosseTerra {
             get { return this._situacaoMoradiaPosseTerra; }
             set {
                 this.Ficha.SituacaoMoradiaPosseTerra = value;
@@ -165,8 +144,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.LocalizacaoDaMoradia _localizacao; //Obrigatório
-        public Models.LocalizacaoDaMoradia Localizacao
-        {
+        public Models.LocalizacaoDaMoradia Localizacao {
             get { return this._localizacao; }
             set {
                 this.Ficha.Localizacao = value;
@@ -176,24 +154,19 @@ namespace gvn_ab_mobile.ViewModels
                 OnPropertyChanged("HasTipoDomicilioAndIsRural");
             }
         }
-        public bool IsRural
-        {
-            get
-            {
+        public bool IsRural {
+            get {
                 return this.Localizacao?.Codigo == 84;
             }
         }
-        public bool HasTipoDomicilioAndIsRural
-        {
-            get
-            {
+        public bool HasTipoDomicilioAndIsRural {
+            get {
                 return ((this.HasTipoDomicilio == true) && (this.IsRural == true));
             }
         }
 
         private Models.TipoDeAcessoAoDomicilio _tipoAcessoDomicilio; //Não Obrigatório
-        public Models.TipoDeAcessoAoDomicilio TipoAcessoDomicilio
-        {
+        public Models.TipoDeAcessoAoDomicilio TipoAcessoDomicilio {
             get { return this._tipoAcessoDomicilio; }
             set {
                 this.Ficha.TipoAcessoDomicilio = value;
@@ -203,8 +176,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.CondicaoDePosseEUsoDaTerra _areaProducaoRural; //Condicional
-        public Models.CondicaoDePosseEUsoDaTerra AreaProducaoRural
-        {
+        public Models.CondicaoDePosseEUsoDaTerra AreaProducaoRural {
             get { return this._areaProducaoRural; }
             set {
                 this.Ficha.AreaProducaoRural = value;
@@ -214,8 +186,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.MaterialPredominanteNaConstrucao _materialPredominanteParedesExtDomicilio; //Não Obrigatório
-        public Models.MaterialPredominanteNaConstrucao MaterialPredominanteParedesExtDomicilio
-        {
+        public Models.MaterialPredominanteNaConstrucao MaterialPredominanteParedesExtDomicilio {
             get { return this._materialPredominanteParedesExtDomicilio; }
             set {
                 this.Ficha.MaterialPredominanteParedesExtDomicilio = value;
@@ -225,8 +196,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.AbastecimentoDeAgua _abastecimentoAgua; //Não Obrigatório
-        public Models.AbastecimentoDeAgua AbastecimentoAgua
-        {
+        public Models.AbastecimentoDeAgua AbastecimentoAgua {
             get { return this._abastecimentoAgua; }
             set {
                 this.Ficha.AbastecimentoAgua = value;
@@ -236,8 +206,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.AguaConsumoDomicilio _aguaConsumoDomicilio; //Não Obrigatório
-        public Models.AguaConsumoDomicilio AguaConsumoDomicilio
-        {
+        public Models.AguaConsumoDomicilio AguaConsumoDomicilio {
             get { return this._aguaConsumoDomicilio; }
             set {
                 this.AguaConsumoDomicilio = value;
@@ -247,8 +216,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private long _formaEscoamentoBanheiro; //Não Obrigatório
-        public long FormaEscoamentoBanheiro
-        {
+        public long FormaEscoamentoBanheiro {
             get { return this._formaEscoamentoBanheiro; }
             set {
                 this.Ficha.FormaEscoamentoBanheiro = value;
@@ -258,8 +226,7 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.DestinoDoLixo _destinoLixo; //Não Obrigatório
-        public Models.DestinoDoLixo DestinoLixo
-        {
+        public Models.DestinoDoLixo DestinoLixo {
             get { return this._destinoLixo; }
             set {
                 this.Ficha.DestinoLixo = value;
@@ -273,8 +240,7 @@ namespace gvn_ab_mobile.ViewModels
         public ObservableCollection<object> AnimaisSelecionados { get; } = new ObservableCollection<object>();
 
         private bool _stAnimaisNoDomicilio; //Condicional
-        public bool StAnimaisNoDomicilio
-        {
+        public bool StAnimaisNoDomicilio {
             get { return this._stAnimaisNoDomicilio; }
             set {
                 this.Ficha.StAnimaisNoDomicilio = value;
@@ -283,10 +249,8 @@ namespace gvn_ab_mobile.ViewModels
                 OnPropertyChanged("HasAnimais");
             }
         }
-        public bool HasAnimais
-        {
-            get
-            {
+        public bool HasAnimais {
+            get {
                 return this.StAnimaisNoDomicilio;
             }
         }
@@ -295,8 +259,7 @@ namespace gvn_ab_mobile.ViewModels
         //USADO PAGE 5
         public ObservableRangeCollection<Models.RendaFamiliar> RendasFamiliares { get; set; }
 
-        public FichaCadastroDomiciliarViewModel(Page page)
-        {
+        public FichaCadastroDomiciliarViewModel(Page page) {
             this.Ficha = new Models.FichaCadastroDomiciliarTerritorial();
             this.Page = page;
 
@@ -308,9 +271,9 @@ namespace gvn_ab_mobile.ViewModels
             this.ConcordarInstituicaoPermanencia = new Command(async () => await ConcordarInstituicaoPermanenciaExecuteAsync());
             this.NaoConcordarInstituicaoPermanencia = new Command(async () => await NaoConcordarInstituicaoPermanenciaExecuteAsync());
 
-            this.Municipios = new ObservableRangeCollection<Models.Municipios>(new DAO.DAOMunicipios().Select());
-            this.UFs = new ObservableRangeCollection<Models.UF>(new DAO.DAOUF().Select());
-            this.TiposLogradouros = new ObservableRangeCollection<Models.TipoDeLogradouro>(new DAO.DAOTipoDeLogradouro().Select());
+            this.Municipios = new ObservableRangeCollection<Models.Municipio>(new DAO.DAOMunicipio().Select());
+            this.UFs = new ObservableRangeCollection<Models.UnidadeFederal>(new DAO.DAOUnidadeFederal().Select());
+            this.TiposLogradouros = new ObservableRangeCollection<Models.TipoLogradouro>(new DAO.DAOTipoLogradouro().Select());
             this.TiposImoveis = new ObservableRangeCollection<Models.TipoDeImovel>(new DAO.DAOTipoDeImovel().Select());
 
             this.SituacoesDeMoradia = new ObservableRangeCollection<Models.SituacaoDeMoradia>(new DAO.DAOSituacaoDeMoradia().Select());
@@ -331,47 +294,33 @@ namespace gvn_ab_mobile.ViewModels
             this.Teste = new ObservableCollection<object>();
         }
 
-        private async System.Threading.Tasks.Task ConcordarExecuteAsync()
-        {
+        private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
             await this.Page.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2(this));
         }
 
-        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync()
-        {
+        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
             await this.Page.DisplayAlert("Fazer assinatura do cidadão", "", "Ok");
         }
 
-        private async System.Threading.Tasks.Task ConcordarInstituicaoPermanenciaExecuteAsync()
-        {
+        private async System.Threading.Tasks.Task ConcordarInstituicaoPermanenciaExecuteAsync() {
             await this.Page.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage7(this));
         }
 
-        private async System.Threading.Tasks.Task NaoConcordarInstituicaoPermanenciaExecuteAsync()
-        {
+        private async System.Threading.Tasks.Task NaoConcordarInstituicaoPermanenciaExecuteAsync() {
             await this.Page.DisplayAlert("Fazer assinatura do cidadão", "", "Ok");
         }
 
-        private async System.Threading.Tasks.Task ContinuarExecuteAsync()
-        {
+        private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
             var CurrentPage = this.Page.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
-            if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2)
-            {
+            if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3)
-            {
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4)
-            {
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5)
-            {
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage7)
-            {
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage7) {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8(this));
             };
         }

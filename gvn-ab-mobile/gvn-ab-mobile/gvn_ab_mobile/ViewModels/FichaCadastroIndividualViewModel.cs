@@ -23,16 +23,16 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableRangeCollection<Models.Pais> Paises { get; set; }
         public ObservableRangeCollection<Models.Etnia> Etnias { get; set; }
         public ObservableRangeCollection<Models.RacaCor> RacasCores { get; set; }
-        public ObservableRangeCollection<Models.Municipios> Municipios { get; set; }
+        public ObservableRangeCollection<Models.Municipio> Municipios { get; set; }
 
-        private Models.Municipios _codigoIbgeMunicipioNascimento;
-        public Models.Municipios CodigoIbgeMunicipioNascimento
+        private Models.Municipio municipio;
+        public Models.Municipio Municipio
         {
-            get { return this._codigoIbgeMunicipioNascimento; }
+            get { return this.municipio; }
             set {
 
-                this.Ficha.CodigoIbgeMunicipioNascimento = value;
-                SetProperty(ref _codigoIbgeMunicipioNascimento, value);
+                this.Ficha.MunicipioNascimento = value;
+                SetProperty(ref municipio, value);
             }
         }
 
@@ -634,7 +634,7 @@ namespace gvn_ab_mobile.ViewModels {
             this.Etnias = new ObservableRangeCollection<Models.Etnia>(new DAO.DAOEtnia().Select());
             this.RacasCores = new ObservableRangeCollection<Models.RacaCor>(new DAO.DAORacaCor().Select());
             this.Nacionalidades = new ObservableRangeCollection<Models.Nacionalidade>(new DAO.DAONacionalidade().Select());
-            this.Municipios = new ObservableRangeCollection<Models.Municipios>(new DAO.DAOMunicipios().Select());
+            this.Municipios = new ObservableRangeCollection<Models.Municipio>(new DAO.DAOMunicipio().Select());
 
             this.CursosMaisElevados = new ObservableRangeCollection<Models.CursoMaisElevado>(new DAO.DAOCursoMaisElevado().Select());
             //this.Ocupacoes = new ObservableRangeCollection<Models.Ocupacao>(); //MAPEAR OS CBOS ..... AINDA TEM Q SER FEITO
