@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="Controls\TableGridPage.cs" />
     <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\DAOFichaUnicaLotacaoHeader.cs" />
     <Compile Include="DAO\DAOEquipe.cs" />
     <Compile Include="DAO\DAOEnumeradores.cs" />
     <Compile Include="DAO\DAOFichaAtendimentoIndividual.cs" />
@@ -98,7 +99,6 @@
     <Compile Include="Models\EntidadeDescricaoObservacao.cs" />
     <Compile Include="Models\EntidadeEnumerador.cs" />
     <Compile Include="Models\EntidadeExames.cs" />
-    <Compile Include="Models\EntidadeMunicipios.cs" />
     <Compile Include="Models\Enumeradores.cs" />
     <Compile Include="Models\TipoLogradouro.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
@@ -117,6 +117,7 @@
     <Compile Include="ViewModels\FichaAtendimentoIndividualViewModel.cs" />
     <Compile Include="ViewModels\FichaCadastroDomiciliarViewModel.cs" />
     <Compile Include="ViewModels\FichaVisitaDomiciliarViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\SincronizacaoConfigViewModel.cs" />
     <Compile Include="ViewModels\FichaCadastroIndividualViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

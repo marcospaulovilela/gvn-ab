@@ -8,7 +8,7 @@ namespace gvn_ab_mobile.Models {
     public class FichaCadastroIndividual : Helpers.ObservableObject {
         public FichaCadastroIndividual() {
             this.StatusSituacaoRua = true;
-            this.DataNascimentoCidadao = DateTime.Now;
+            this.DataObito = this.DtNaturalizacao= this.DtEntradaBrasil = this.DataNascimentoCidadao = DateTime.Now;
         }
 
 
@@ -122,12 +122,13 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _maternidadeDeReferencia, value); }
         }
 
-        
+
+        private long? SituacaoPesoId { get; set; }
         private Models.ConsideracaoPeso _situacaoPeso;
         /// <summary>
         /// //Situação referente ao peso corporal.
         /// </summary>
-        [OneToOne]
+        [OneToOne("SituacaoPesoId")]
         public Models.ConsideracaoPeso SituacaoPeso {
             get { return this._situacaoPeso; }
             set { SetProperty(ref _situacaoPeso, value); }
@@ -365,11 +366,13 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _outraInstituicaoQueAcompanha, value); }
         }
 
+        public long? QuantidadeAlimentacoesAoDiaSituacaoRuaId { get; set; }
         private Models.QuantasVezesAlimentacao _quantidadeAlimentacoesAoDiaSituacaoRua;
         /// <summary>
         /// Código da quantidade de vezes que o cidadão se alimenta por dia.
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
+        [OneToOne("QuantidadeAlimentacoesAoDiaSituacaoRuaId")]
         public Models.QuantasVezesAlimentacao QuantidadeAlimentacoesAoDiaSituacaoRua {
             get { return this._quantidadeAlimentacoesAoDiaSituacaoRua; }
             set { SetProperty(ref _quantidadeAlimentacoesAoDiaSituacaoRua, value); }
@@ -435,11 +438,13 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _statusVisitaFamiliarFrequentemente, value); }
         }
 
+        public long? TempoSituacaoRuaId { get; set; }
         private Models.TempoSituacaoDeRua _tempoSituacaoRua;
         /// <summary>
         /// Código do tempo que o cidadão está em situação de rua.
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
+        [OneToOne("TempoSituacaoRuaId")]
         public Models.TempoSituacaoDeRua TempoSituacaoRua {
             get { return this._tempoSituacaoRua; }
             set { SetProperty(ref _tempoSituacaoRua, value); }
@@ -459,11 +464,13 @@ namespace gvn_ab_mobile.Models {
         }
 
 
+        public long? MunicipioNascimentoId { get; set; }
         private Models.Municipio Municipio;
         /// <summary>
         /// Código IBGE do município.
         /// Só pode ser preenchido se o campo nacionalidadeCidadao = 1 (Brasileiro). Neste caso é de preenchimento obrigatório.
         /// </summary>
+        [OneToOne("MunicipioNascimentoId")]
         public Models.Municipio MunicipioNascimento {
             get { return this.Municipio; }
             set { SetProperty(ref Municipio, value); }
@@ -500,11 +507,12 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _emailCidadao, value); }
         }
 
+        public long? NacionalidadeCidadaoId { get; set; }
         private Models.Nacionalidade _nacionalidadeCidadao;
         /// <summary>
         /// Indica se o cidadão é brasileiro, naturalizado ou estrangeiro.
         /// </summary>
-        [OneToOne, NotNull]
+        [OneToOne("NacionalidadeCidadaoId"), NotNull]
         public Models.Nacionalidade NacionalidadeCidadao {
             get { return this._nacionalidadeCidadao; }
             set { SetProperty(ref _nacionalidadeCidadao, value); }
@@ -578,33 +586,36 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _numeroNisPisPasep, value); }
         }
 
+        public long? PaisNascimentoId { get; set; }
         private Models.Pais _paisNascimento;
         /// <summary>
         /// Código do país de nascimento do cidadão.
         /// Só pode ser preenchido se o campo nacionalidadeCidadao = 3(Estrangeiro).Neste caso o preenchimento é obrigatório;
         /// Se o campo nacionalidadeCidadao for igual a 1 (Brasileira), este campo deve ser preenchido com 31 (BRASIL).
         /// </summary>
-        [OneToOne]
+        [OneToOne("PaisNascimentoId")]
         public Models.Pais PaisNascimento {
             get { return this._paisNascimento; }
             set { SetProperty(ref _paisNascimento, value); }
         }
 
+        public long? RacaCorCidadaoId { get; set; }
         private Models.RacaCor _racaCorCidadao;
         /// <summary>
         /// Raça / cor do cidadão.
         /// </summary>
-        [OneToOne, NotNull] 
+        [OneToOne("RacaCorCidadaoId"), NotNull] 
         public Models.RacaCor RacaCorCidadao {
             get { return this._racaCorCidadao; }
             set { SetProperty(ref _racaCorCidadao, value); }
         }
 
+        public long? SexoCidadaoId { get; set; }
         private Models.Sexo _sexoCidadao;
         /// <summary>
         /// Sexo do cidadão.
         /// </summary>
-        [OneToOne, NotNull]
+        [OneToOne("SexoCidadaoId"), NotNull]
         public Models.Sexo SexoCidadao {
             get { return this._sexoCidadao; }
             set { SetProperty(ref _sexoCidadao, value); }
@@ -619,12 +630,14 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _statusEhResponsavel, value); }
         }
 
+
+        public long? EtniaId { get; set; }
         private Models.Etnia _etnia;
         /// <summary>
         /// Etnia do cidadão.
         /// Só deve ser preenchido se o campo racaCorCidadao = 5. Neste caso o preenchimento é obrigatório.
         /// </summary>
-        [OneToOne]
+        [OneToOne("EtniaId")]
         public Models.Etnia Etnia {
             get { return this._etnia; }
             set { SetProperty(ref _etnia, value); }
@@ -701,7 +714,6 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica que o cidadão está fora da área.
         /// </summary>
-        [OneToOne]
         public bool StForaArea {
             get { return this._stForaArea; }
             set { SetProperty(ref _stForaArea, value); }
@@ -720,34 +732,37 @@ namespace gvn_ab_mobile.Models {
             get { return this._deficienciasCidadao; }
             set { SetProperty(ref _deficienciasCidadao, value); }
         }
-       
+
+        public long? GrauInstrucaoCidadaoId { get; set; }
         private Models.CursoMaisElevado _grauInstrucaoCidadao;
         /// <summary>
         /// Curso mais elevado que o cidadão frequenta ou frequentou.
         /// </summary>
-        [OneToOne]
+        [OneToOne("GrauInstrucaoCidadaoId")]
         public Models.CursoMaisElevado GrauInstrucaoCidadao {
             get { return this._grauInstrucaoCidadao; }
             set { SetProperty(ref _grauInstrucaoCidadao, value); }
         }
 
+        public string OcupacaoId { get; set; }
         private Models.Ocupacao ocupacao;
         /// <summary>
         /// Código do CBO que representa a ocupação do cidadão.
         /// Deve ser um código de CBO válido.
         /// </summary>
-        [OneToOne]
+        [OneToOne("OcupacaoId")]
         public Models.Ocupacao Ocupacao{
             get { return this.ocupacao; }
             set { SetProperty(ref ocupacao, value); }
         }
 
+        public long? OrientacaoSexualCidadaoId { get; set; }
         private Models.OrientacaoSexual _orientacaoSexualCidadao;
         /// <summary>
         /// Orientação sexual informada pelo cidadão. 
         /// Não pode ser preenchido se o campo statusDesejaInformarOrientacaoSexual = false
         /// </summary>
-        [OneToOne]
+        [OneToOne("OrientacaoSexualCidadaoId")]
         public Models.OrientacaoSexual OrientacaoSexualCidadao {
             get { return this._orientacaoSexualCidadao; }
             set { SetProperty(ref _orientacaoSexualCidadao, value); }
@@ -764,22 +779,24 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _povoComunidadeTradicional, value); }
         }
 
+        public long? RelacaoParentescoCidadaoId { get; set; }
         private Models.RelacaoParentesco _relacaoParentescoCidadao;
         /// <summary>
         /// Código da relação de parentesco com o responsável familiar.
         /// Só pode ser preenchido se o campo statusEhResponsavel = false.
         /// </summary>
-        [OneToOne]
+        [OneToOne("RelacaoParentescoCidadaoId")]
         public Models.RelacaoParentesco RelacaoParentescoCidadao {
             get { return this._relacaoParentescoCidadao; }
             set { SetProperty(ref _relacaoParentescoCidadao, value); }
         }
 
+        public long? SituacaoMercadoTrabalhoCidadaoId { get; set; }
         private Models.SituacaoMercadoTrabalho _situacaoMercadoTrabalhoCidadao;
         /// <summary>
         /// Código da situação do cidadão no mercado de trabalho.
         /// </summary>
-        [OneToOne]
+        [OneToOne("SituacaoMercadoTrabalhoCidadaoId")]
         public Models.SituacaoMercadoTrabalho SituacaoMercadoTrabalhoCidadao {
             get { return this._situacaoMercadoTrabalhoCidadao; }
             set { SetProperty(ref _situacaoMercadoTrabalhoCidadao, value); }
@@ -850,12 +867,13 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref _statusTemAlgumaDeficiencia, value); }
         }
 
+        public long? IdentidadeGeneroCidadaoId { get; set; }
         private Models.IdentidadeGeneroCidadao _identidadeGeneroCidadao;
         /// <summary>
         /// Identidade de gênero informada pelo cidadão. 
         /// Não pode ser preenchido se o campo statusDesejaInformarIdentidadeGenero = false.
         /// </summary>
-        [OneToOne]
+        [OneToOne("IdentidadeGeneroCidadaoId")]
         public Models.IdentidadeGeneroCidadao IdentidadeGeneroCidadao {
             get { return this._identidadeGeneroCidadao; }
             set { SetProperty(ref _identidadeGeneroCidadao, value); }
@@ -883,11 +901,12 @@ namespace gvn_ab_mobile.Models {
         #endregion
 
         #region Saida cidadão do cadastro
+        public long? MotivoSaidaCidadaoId { get; set; }
         private Models.MotivoSaida _motivoSaidaCidadao;
         /// <summary>
         /// Motivo da saída do cidadão do cadastro.
         /// </summary>
-        [OneToOne]
+        [OneToOne("MotivoSaidaCidadaoId")]
         public Models.MotivoSaida MotivoSaidaCidadao {
             get { return this._motivoSaidaCidadao; }
             set { SetProperty(ref _motivoSaidaCidadao, value); }
@@ -962,11 +981,11 @@ namespace gvn_ab_mobile.Models {
             get { return this._uuidFichaOriginadora; }
             set { SetProperty(ref _uuidFichaOriginadora, value); }
         }
-        
-        private FichaLotacaoHeader _header;
 
-        [OneToOne]
-        public FichaLotacaoHeader Header {
+        public long? HeaderId { get; set; }
+        private FichaUnicaLotacaoHeader _header;
+        [OneToOne("HeaderId")]
+        public FichaUnicaLotacaoHeader Header {
             get { return this._header; }
             set { SetProperty(ref _header, value); }
         }

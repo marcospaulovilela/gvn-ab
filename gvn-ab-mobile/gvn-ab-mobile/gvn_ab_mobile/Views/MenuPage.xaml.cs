@@ -10,40 +10,26 @@ using Xamarin.Forms.Xaml;
 namespace gvn_ab_mobile.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuPage : ContentPage {
-        public Models.Profissional Profissional { get; set; }
-        public Models.Cbo Cbo { get; set; }
-        public Models.Equipe Equipe { get; set; }
 
-        public bool CboCadastroIndividual {
-            get {
-                string[] CbosAltorizados = new string[] { "322205", "322210", "322230", "322245", "322250", "322405", "322415", "322425", "322430", "352210", "515105", "515120", "515125", "515130", "515140", "515305", "515310", "422110" };
-                return true || CbosAltorizados.Any(o => o.Equals(this.Cbo.CodCbo));
-            }
-        }
+        public ViewModels.MenuViewModel ViewModel { get; set; }
 
-        public bool CboCadastroDomiciliar {
-            get {
-                string[] CbosAltorizados = new string[] { "322205", "322210", "322230", "322245", "322250", "322405", "322415", "322425", "322430", "352210", "515105", "515120", "515125", "515130", "515140", "515305", "515310", "422110" };
-                return true ||  CbosAltorizados.Any(o => o.Equals(this.Cbo.CodCbo));
-            }
-        }
+        protected override void OnAppearing() {
+            using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) {
+                var Fichas = DAOFichaCadastroIndividual.Select();
 
-        public bool CboVisitaDomiciliar {
-            get {
-                string[] CbosAltorizados = new string[] { "515105", "515120", "515310", "515140" };
-                return true || CbosAltorizados.Any(o => o.Equals(this.Cbo.CodCbo));
-            }
+                if (this.ViewModel.HasFichas = Fichas.Any()) {
+                    this.ViewModel.SendText = $"Enviar fichas ({Fichas.Count()})";
+                } else {
+                    this.ViewModel.SendText = "Enviar fichas";
+                }
+            };
         }
 
         public MenuPage(Models.Profissional profissional, Models.Cbo cbo, Models.Equipe equipe) {
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-
-            this.Profissional = profissional;
-            this.Cbo = cbo;
-            this.Equipe = equipe;
-
-            this.BindingContext = this;
+            
+            this.BindingContext = this.ViewModel = new ViewModels.MenuViewModel(this, profissional, cbo, equipe);
         }
 
         async void OnAtendimentoIndividualClicked(object sender, EventArgs e) {
@@ -51,7 +37,7 @@ namespace gvn_ab_mobile.Views {
         }
 
         async void OnCadastroIndividualClicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new FichaCadastroIndividualPage.FichaCadastroIndividualPage1());
+            await Navigation.PushAsync(new FichaCadastroIndividualPage.FichaCadastroIndividualPage1(new ViewModels.FichaCadastroIndividualViewModel(this)));
         }
 
         async void OnCadastroDomiciliarClicked(object sender, EventArgs e) {

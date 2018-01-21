@@ -67,8 +67,8 @@ namespace gvn_ab_mobile.Models
 
         //Campo codigoIbgeMunicipio - Tipo string
         private Models.Municipio municipio; //Obrigatório
-        [NotNull]
-        public Models.Municipio Minicipio
+        [OneToOne]
+        public Models.Municipio Municipio
         {
             get { return this.municipio; }
             set { SetProperty(ref municipio, value); }

@@ -39,17 +39,11 @@ namespace gvn_ab_mobile.ViewModels {
         private void CargaDados() {
             //CRIA OS ENUMERADORES E SALVA OS VALORES PADROES DO ESUS
 
-            this.Title = "Criando enumeradores sexo";
             using (DAO.DAOSexo DAOSexo = new DAO.DAOSexo()) { DAOSexo.CreateTable(); }
-            this.Title = "Criando enumeradores pais";
             using (DAO.DAOPais DAOPais = new DAO.DAOPais()) { DAOPais.CreateTable(); }
-            this.Title = "Criando enumeradores raça/cor";
             using (DAO.DAORacaCor DAORacaCor = new DAO.DAORacaCor()) { DAORacaCor.CreateTable(); }
-            this.Title = "Criando enumeradores etinia";
             using (DAO.DAOEtnia DAOEtnia = new DAO.DAOEtnia()) { DAOEtnia.CreateTable(); }
-            this.Title = "Criando enumeradores orientação sexual";
             using (DAO.DAOOrientacaoSexual DAOOrientacaoSexual = new DAO.DAOOrientacaoSexual()) { DAOOrientacaoSexual.CreateTable(); }
-            this.Title = "";
             using (DAO.DAOCursoMaisElevado DAOCursoMaisElevado = new DAO.DAOCursoMaisElevado()) { DAOCursoMaisElevado.CreateTable(); }
             using (DAO.DAORelacaoParentesco DAORelacaoParentesco = new DAO.DAORelacaoParentesco()) { DAORelacaoParentesco.CreateTable(); }
             using (DAO.DAOResponsavelCrianca DAOResponsavelCrianca = new DAO.DAOResponsavelCrianca()) { DAOResponsavelCrianca.CreateTable(); }
@@ -95,7 +89,15 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAODesfecho DAODesfecho = new DAO.DAODesfecho()) { DAODesfecho.CreateTable(); }
             using (DAO.DAOMotivoVisita DAOMotivoVisita = new DAO.DAOMotivoVisita()) { DAOMotivoVisita.CreateTable(); }
 
-            //using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) { DAOFichaCadastroIndividual.CreateTable(); }
+            using (DAO.DAOOcupacao DAOOcupacao = new DAO.DAOOcupacao()) { DAOOcupacao.CreateTable(); };
+            using (DAO.DAOUnidadeFederal DAOUnidadeFederal = new DAO.DAOUnidadeFederal()) { DAOUnidadeFederal.CreateTable(); };
+            using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio()) { DAOMunicipio.CreateTable(); };
+            using (DAO.DAOLogradouro DAOLogradouro = new DAO.DAOLogradouro()) { DAOLogradouro.CreateTable(); };
+            using (DAO.DAOTipoLogradouro DAOTipoLogradouro = new DAO.DAOTipoLogradouro()) { DAOTipoLogradouro.CreateTable(); };
+
+
+            using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader()) { DAOFichaUnicaLotacaoHeader.CreateTable(); }
+            using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) { DAOFichaCadastroIndividual.CreateTable(); }
 
         }
 
@@ -169,7 +171,6 @@ namespace gvn_ab_mobile.ViewModels {
                     };
 
                     using (DAO.DAOOcupacao DAOOcupacao = new DAO.DAOOcupacao()) {
-                        DAOOcupacao.CreateTable();
                         DAOOcupacao.Insert(ocupacoes);
                     };
                     #endregion
@@ -183,7 +184,6 @@ namespace gvn_ab_mobile.ViewModels {
                         }
                     };
                     using (DAO.DAOUnidadeFederal DAOUnidadeFederal = new DAO.DAOUnidadeFederal()) {
-                        DAOUnidadeFederal.CreateTable();
                         DAOUnidadeFederal.Insert(UFs);
                     };
                     #endregion
@@ -197,7 +197,6 @@ namespace gvn_ab_mobile.ViewModels {
                         }
                     };
                     using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio()) {
-                        DAOMunicipio.CreateTable();
                         DAOMunicipio.Insert(Municipios);
                     };
                     #endregion
@@ -211,7 +210,6 @@ namespace gvn_ab_mobile.ViewModels {
                         }
                     };
                     using (DAO.DAOLogradouro DAOLogradouro = new DAO.DAOLogradouro()) {
-                        DAOLogradouro.CreateTable();
                         DAOLogradouro.Insert(Logradouros);
                     };
                     #endregion
@@ -224,7 +222,6 @@ namespace gvn_ab_mobile.ViewModels {
                         }
                     };
                     using (DAO.DAOTipoLogradouro DAOTipoLogradouro = new DAO.DAOTipoLogradouro()) {
-                        DAOTipoLogradouro.CreateTable();
                         DAOTipoLogradouro.Insert(TiposLogradouro);
                     };
                     #endregion
@@ -310,7 +307,6 @@ namespace gvn_ab_mobile.ViewModels {
                     #region Ocupacoes   
                     var ocupacoes = await TaskGetOcupacoes;
                     using (DAO.DAOOcupacao DAOOcupacao = new DAO.DAOOcupacao()) {
-                        DAOOcupacao.CreateTable();
                         var result = DAOOcupacao.Insert(ocupacoes);
                     };
                     #endregion
@@ -318,7 +314,6 @@ namespace gvn_ab_mobile.ViewModels {
                     #region UFs
                     var UFs = await TaskGetUnidadeFederal;
                     using (DAO.DAOUnidadeFederal DAOUnidadeFederal = new DAO.DAOUnidadeFederal()) {
-                        DAOUnidadeFederal.CreateTable();
                         var result = DAOUnidadeFederal.Insert(UFs);
                     };
                     #endregion
@@ -326,7 +321,6 @@ namespace gvn_ab_mobile.ViewModels {
                     #region Municipios
                     var Municipios = await TaskGetMunicipio;
                     using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio()) {
-                        DAOMunicipio.CreateTable();
                         var result = DAOMunicipio.Insert(Municipios);
                     };
                     #endregion
@@ -334,7 +328,6 @@ namespace gvn_ab_mobile.ViewModels {
                     #region Logradouros
                     var Logradouros = await TaskGetLogradouro;
                     using (DAO.DAOLogradouro DAOLogradouro = new DAO.DAOLogradouro()) {
-                        DAOLogradouro.CreateTable();
                         var result = DAOLogradouro.Insert(Logradouros);
                     };
                     #endregion
@@ -342,7 +335,6 @@ namespace gvn_ab_mobile.ViewModels {
                     #region TipoLogradouro
                     var TiposLogradouro = await TaskGetTipoLogradouro;
                     using (DAO.DAOTipoLogradouro DAOTipoLogradouro = new DAO.DAOTipoLogradouro()) {
-                        DAOTipoLogradouro.CreateTable();
                         DAOTipoLogradouro.Insert(TiposLogradouro);
                     };
                     #endregion

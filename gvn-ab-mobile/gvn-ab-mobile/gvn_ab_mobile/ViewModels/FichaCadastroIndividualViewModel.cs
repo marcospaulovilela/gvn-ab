@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace gvn_ab_mobile.ViewModels {
     public class FichaCadastroIndividualViewModel : BaseViewModel {
-        private Page Page { get; set; }
+        private Views.MenuPage MenuPage { get; set; }
 
         public ICommand Continuar { get; }
 
@@ -174,12 +174,6 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._nacionalidadeCidadao; }
             set {
                 this.Ficha.NacionalidadeCidadao = value;
-
-                this.UF = null;
-                this.Ficha.MunicipioNascimento = null;
-                this.Ficha.DtNaturalizacao = this.Ficha.DtEntradaBrasil = null;
-                this.Ficha.PortariaNaturalizacao  = string.Empty;
-                this.Ficha.PaisNascimento = null;
 
                 SetProperty(ref _nacionalidadeCidadao, value);
                 OnPropertyChanged("IsBrasileiro");
@@ -351,9 +345,8 @@ namespace gvn_ab_mobile.ViewModels {
                 SetProperty(ref _statusDesejaSairDoCadastro, value);
 
                 this.MotivoSaida = null;
-                this.Ficha.DataObito = null;
                 this.Ficha.NumeroDO = null;
-                
+
                 OnPropertyChanged("WantsSairDoCadastro");
                 OnPropertyChanged("WantsSairDoCadastroAndIsMotivoObito");
             }
@@ -644,9 +637,9 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-        public FichaCadastroIndividualViewModel(Page page) {
+        public FichaCadastroIndividualViewModel(Views.MenuPage page) {
             this.Ficha = new Models.FichaCadastroIndividual();
-            this.Page = page;
+            this.MenuPage = page;
 
             this.Continuar = new Command(async () => await ContinuarExecuteAsync());
 
@@ -685,34 +678,51 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
-            await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
+            await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
         }
 
         private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
-            await this.Page.DisplayAlert("Fazer assinatura do cidadão", "", "Ok");
+            await this.MenuPage.DisplayAlert("Fazer assinatura do cidadão", "", "Ok");
         }
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
-            var CurrentPage = this.Page.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
+            var CurrentPage = this.MenuPage.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
             if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2) {
-                await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3) {
                 //passa informaços da model para a entidade
                 this.Ficha.ResponsavelPorCrianca = this.ResponsaveisCriancasSelecionadas.Select(o => (Models.ResponsavelCrianca)o).ToList();
                 this.Ficha.DeficienciasCidadao = this.DeficienciasSelecionadas.Select(o => (Models.DeficienciaCidadao)o).ToList();
 
-                await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4(this));
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4) {
-                await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5) {
 
                 this.Ficha.DoencaCardiaca = this.DoencasRespiratoriasSelecionadas.Select(o => (Models.DoencaCardiaca)o).ToList();
                 this.Ficha.DoencaRins = this.ProblemasRinsSelecionados.Select(o => (Models.ProblemaRins)o).ToList();
 
-                await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
-            } else if (CurrentPage is Views.FichaAtendimentoIndividualPage.FichaAtendimentoIndividualPage6) {
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
+            } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6) {
                 this.Ficha.OrigemAlimentoSituacaoRua = this.OrigensAlimentacaoSelecionadas.Select(o => (Models.OrigemAlimentacao)o).ToList();
                 this.Ficha.HigienePessoalSituacaoRua = this.HigienesSelecionadas.Select(o => (Models.AcessoHigiene)o).ToList();
+
+                using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) {
+                    try {
+                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader() {
+                            Cbo = this.MenuPage.ViewModel.Cbo.CodCbo,
+                            CnsProfissional = this.MenuPage.ViewModel.Profissional.CnsProfissional,
+                            Cnes = this.MenuPage.ViewModel.Estabelecimento.ImpCnes,
+                            Ine = this.MenuPage.ViewModel.Equipe.CodEquipe,
+                            DataAtendimento = DateTime.Now
+                        };
+
+                        DAOFichaCadastroIndividual.Insert(this.Ficha);
+                        await this.MenuPage.Navigation.PopToRootAsync();
+                    } catch(Exception e) {
+                        System.Diagnostics.Debug.WriteLine(e);
+                    };
+                };
             };
         }
     }

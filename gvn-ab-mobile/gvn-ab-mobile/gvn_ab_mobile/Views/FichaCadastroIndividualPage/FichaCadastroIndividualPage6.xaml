@@ -83,7 +83,7 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                    <Button Text="SALVAR" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
                             <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodOrigemAlimentacao|OutraInstituicao|GrauParentescoFamiliarFrequentado|CodHigienePessoal" />
                         </Button.Behaviors>

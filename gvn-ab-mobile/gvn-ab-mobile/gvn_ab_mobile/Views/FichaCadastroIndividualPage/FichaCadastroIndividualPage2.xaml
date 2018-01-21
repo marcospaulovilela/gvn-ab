@@ -170,7 +170,7 @@
                     
                     <StackLayout>
                         <Label Text="Município de Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <controls:PickerSearch x:Name="CodMunicipio" Placeholder="Municipio de nascimento"  Items="{Binding Municipios}" SelectedItem="{Binding CodigoIbgeMunicipioNascimento}">
+                        <controls:PickerSearch x:Name="CodMunicipio" Placeholder="Municipio de nascimento"  Items="{Binding Municipios}" SelectedItem="{Binding Municipio}">
                             <controls:PickerSearch.Behaviors>
                                 <behaviors:ValidatorPickerSearchBehavior Required="true"/>
                             </controls:PickerSearch.Behaviors>
@@ -218,6 +218,7 @@
                         </Entry>
                     </StackLayout>
                 </StackLayout>
+                
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label Text="Telefone celular:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                     <Entry Placeholder="Telefone celular" x:Name="NumTelefone" Keyboard="Telephone" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneCelular}">
