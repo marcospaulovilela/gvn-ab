@@ -49,6 +49,8 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
             // save all on next
             await SaveSignatureAsync(true);
 
+            //await StreamToBase64Async();
+
             await Navigation.PushAsync(new ConfirmacaoPage());
         }
 
@@ -91,7 +93,7 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
             IsBusy = false;
         }
 
-        private void StreamToBase64()
+        private async Task StreamToBase64Async()
         {
 
             var pd = App.Current.TermoDeRecusa;
