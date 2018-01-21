@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:signature="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+             xmlns:converters="clr-namespace:gvn_ab_mobile.Converters"
+             x:Class="gvn_ab_mobile.Views.AssinaturaTermoRecusa.AssinaturaPage"
+             Title="Termo de Recusa"
+             Padding="12">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NegateConverter x:Key="Negate" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid ColumnSpacing="12" RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- contents -->
+        <StackLayout Grid.ColumnSpan="2" Spacing="12">
+
+            <Label Text="{Binding NomeRG, StringFormat='Eu, {0}, gozando de plena consciência dos meus atos, recuso este cadastro, mesmo que isso facilite o acompanhamento a minha saúde e de meus familiares. Estou ciente de que esta recusa não implicará o não atendimento na unidade de saúde.'}"
+                       LineBreakMode="WordWrap" />
+
+            <signature:SignaturePadView x:Name="signaturePad"
+                                        HeightRequest="250"
+                                        BackgroundColor="#FBFBFB"
+                                        SignatureLineColor="DarkGray" StrokeColor="Black" StrokeWidth="2"
+                                        CaptionText="Assine acima desta linha" CaptionTextColor="DarkGray"
+                                        ClearText="Limpar Assinatura" ClearTextColor="DarkGray"
+                                        PromptText="" />
+
+        </StackLayout>
+
+        <!-- navigation -->
+        <Button Text="&lt; Voltar" Clicked="OnBackClicked"
+                IsEnabled="{Binding IsBusy, Converter={StaticResource Negate}}"
+                Grid.Row="1" Grid.Column="0" />
+        <Button Text="Continuar &gt;" Clicked="OnNextClicked"
+                IsEnabled="{Binding IsBusy, Converter={StaticResource Negate}}"
+                Grid.Row="1" Grid.Column="1" />
+
+    </Grid>
+
+</ContentPage>

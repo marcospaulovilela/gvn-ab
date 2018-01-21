@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              BackgroundColor="WhiteSmoke"
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2"
              xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
@@ -72,7 +73,7 @@
 
                     <StackLayout >
                         <Label Text="Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <DatePicker x:Name="DataNascimento" Date="{Binding Ficha.DataNascimentoCidadao}">
+                        <DatePicker x:Name="DataNascimento" Date="{Binding DataNascimentoCidadao}" MinimumDate="{Binding PropertyMinimumDate}" MaximumDate="{x:Static sys:DateTime.Now}" >
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />
                             </DatePicker.Behaviors>
@@ -102,11 +103,11 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsRacaCor5}">
                     <Label Text="Etnia:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                    <Picker x:Name="CodEtnia" ItemsSource="{Binding Etnias}" SelectedItem="{Binding Etnia}"  HorizontalOptions="FillAndExpand" Title="Etnia">
-                        <Picker.Behaviors>
-                            <behaviors:ValidatorPickerBehavior />
-                        </Picker.Behaviors>
-                    </Picker>
+                    <controls:PickerSearch  x:Name="CodEtnia" Placeholder="Etnia" Items="{Binding Etnias}" SelectedItem="{Binding Etnia}"  HorizontalOptions="FillAndExpand">
+                        <controls:PickerSearch.Behaviors>
+                            <behaviors:ValidatorPickerSearchBehavior Required="true"/>
+                        </controls:PickerSearch.Behaviors>
+                    </controls:PickerSearch>
                 </StackLayout>
 
                 <StackLayout HorizontalOptions="FillAndExpand">
@@ -119,6 +120,13 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
+
+                    <?CHECKBOX?>
+                    <StackLayout>
+                        <Label Text="Desconhece Nome da Mãe:" FontSize="Small" BackgroundColor="Transparent" TextColor="Black" />
+                        <Switch HorizontalOptions="Center" IsToggled="{Binding DesconheceNomeMae}"/>
+                    </StackLayout>
+
                     <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding KnowsNomeMae}">
                         <Label Text="Nome Completo da Mãe:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Entry x:Name="NomMae" Placeholder="Nome Mãe" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeMaeCidadao}">
@@ -128,14 +136,16 @@
                         </Entry>
                     </StackLayout>
 
-                    <?CHECKBOX?>
-                    <StackLayout>
-                        <Label Text="Desconhece Nome da Mãe:" FontSize="Small" BackgroundColor="Transparent" TextColor="Black" />
-                        <Switch HorizontalOptions="Center" IsToggled="{Binding DesconheceNomeMae}"/>
-                    </StackLayout>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
+
+                    <?CHECKBOX?>
+                    <StackLayout>
+                        <Label Text="Desconhece Nome do Pai:" FontSize="Small" BackgroundColor="Transparent" TextColor="Black" />
+                        <Switch HorizontalOptions="Center" IsToggled="{Binding DesconheceNomePai}"/>
+                    </StackLayout>
+                    
                     <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding KnowsNomePai}">
                         <Label Text="Nome Completo do Pai:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Entry x:Name="NomPai" Placeholder="Nome Pai" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomePaiCidadao}">
@@ -145,11 +155,6 @@
                         </Entry>
                     </StackLayout>
 
-                    <?CHECKBOX?>
-                    <StackLayout>
-                        <Label Text="Desconhece Nome do Pai:" FontSize="Small" BackgroundColor="Transparent" TextColor="Black" />
-                        <Switch HorizontalOptions="Center" IsToggled="{Binding DesconheceNomePai}"/>
-                    </StackLayout>
                 </StackLayout>
 
                 <StackLayout HorizontalOptions="FillAndExpand">
@@ -197,7 +202,7 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout IsVisible="{Binding IsNaturalizado}" >
                         <Label Text="Data de Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <DatePicker  Date="{Binding Ficha.DtNaturalizacao}" >
+                        <DatePicker  Date="{Binding Ficha.DtNaturalizacao}" MinimumDate="{Binding PropertyMinimumDateNaturalizacao}" MaximumDate="{x:Static sys:DateTime.Now}" >
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />
                             </DatePicker.Behaviors>

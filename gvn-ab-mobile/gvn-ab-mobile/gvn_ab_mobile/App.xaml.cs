@@ -9,6 +9,8 @@ namespace gvn_ab_mobile {
         public App() {
             InitializeComponent();
 
+            RestartWizard();
+
             SetMainPage();
         }
 
@@ -16,6 +18,22 @@ namespace gvn_ab_mobile {
             Current.MainPage = new NavigationPage(new Views.Login.LoginPage()) {
                 BarBackgroundColor = Color.FromHex("#003264")
             };
+        }
+
+        private Models.AssinaturaTermoRecusa.TermoDeRecusaModel termoDeRecusa;
+        public Models.AssinaturaTermoRecusa.TermoDeRecusaModel TermoDeRecusa => termoDeRecusa;
+
+        public static new App Current => ((App)Application.Current);
+
+        public void RestartWizard()
+        {
+            termoDeRecusa = new Models.AssinaturaTermoRecusa.TermoDeRecusaModel();
+
+        }
+
+        public void CompleteWizard()
+        {
+            MainPage = new NavigationPage(new Views.Login.LoginPage());
         }
     }
 }

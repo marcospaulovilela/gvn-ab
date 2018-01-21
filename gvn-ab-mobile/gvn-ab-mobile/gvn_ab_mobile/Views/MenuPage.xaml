@@ -18,9 +18,7 @@
                         <StackLayout Spacing="5" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                             <Button Text="Cadastro Individual" HorizontalOptions="Center" ContentLayout="Top,0" IsEnabled="{Binding CboCadastroIndividual}" Image="iconIndividuo" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264"  Clicked="OnCadastroIndividualClicked"  />
                             <Button Text="Cadastro Domiciliar" HorizontalOptions="Center" ContentLayout="Top,0" IsEnabled="{Binding CboCadastroDomiciliar}" Image="iconCasa" BackgroundColor="Transparent" BorderColor="#003264" TextColor="#003264" Clicked="OnCadastroDomiciliarClicked" />
-                        </StackLayout>
-                        <StackLayout Spacing="5" HorizontalOptions="Center" Orientation="Horizontal">
-                            <Button HorizontalOptions="Center" Text="Visita Domiciliar" ContentLayout="Top,0" IsEnabled="{Binding CboVisitaDomiciliar}" Image="iconVisita" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264" Clicked="OnVisitaDomiciliarClicked" />
+                            <Button Text="Visita Domiciliar" HorizontalOptions="Center"  ContentLayout="Top,0" IsEnabled="{Binding CboVisitaDomiciliar}" Image="iconVisita" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264" Clicked="OnVisitaDomiciliarClicked" />
                         </StackLayout>
                     </StackLayout>
 

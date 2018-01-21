@@ -1,4 +1,5 @@
 ﻿using gvn_ab_mobile.Helpers;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,6 +16,8 @@ namespace gvn_ab_mobile.ViewModels {
 
         public ICommand Concordar { get; }
         public ICommand NaoConcordar { get; }
+
+        public ICommand SalvarFicha { get; }
 
         public Models.FichaCadastroIndividual Ficha { get; set; }
 
@@ -55,6 +58,7 @@ namespace gvn_ab_mobile.ViewModels {
 
                 SetProperty(ref _sexoCidadao, value);
                 OnPropertyChanged("IsMulher");
+                OnPropertyChanged("IsMulherAndHasIdadeGravida");
             }
         }
         public bool IsMulher
@@ -62,6 +66,53 @@ namespace gvn_ab_mobile.ViewModels {
             get
             {
                 return this.SexoCidadao?.Codigo == 1;
+            }
+        }
+        public bool IsMulherAndHasIdadeGravida
+        {
+            get
+            {
+                System.DateTime data1 = DateTime.Now;
+                System.DateTime data2 = this.Ficha.DataNascimentoCidadao;
+                System.TimeSpan dataDiff = data1 - data2;
+                double totalDays = dataDiff.TotalDays;
+
+                return !((this.IsMulher == false) || ((totalDays < (9.0*365)) || (totalDays > (60.0*365))));
+            }
+        }
+
+        public DateTime PropertyMinimumDate
+        {
+            get
+            {
+                return DateTime.Now.AddYears(-130);
+            }
+        }
+
+        public DateTime PropertyMinimumDateNaturalizacao
+        {
+            get
+            {
+                DateTime data = DateTime.Now;
+                int year = data.Year - this.Ficha.DataNascimentoCidadao.Year;
+
+                if (data.Day != this.Ficha.DataNascimentoCidadao.Day)
+                    data = data.AddDays(-((data.Day - this.Ficha.DataNascimentoCidadao.Day)));
+
+                return data.AddYears(-year);
+            }
+        }
+
+        private DateTime _dataNascimentoCidadao;
+        public DateTime DataNascimentoCidadao
+        {
+            get { return this._dataNascimentoCidadao; }
+            set {
+                this.Ficha.DataNascimentoCidadao = value;
+
+                SetProperty(ref _dataNascimentoCidadao, value);
+                OnPropertyChanged("IsMulherAndHasIdadeGravida");
+                OnPropertyChanged("PropertyMinimumDateNaturalizacao");
             }
         }
 
@@ -619,7 +670,6 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }*/
 
-
         public FichaCadastroIndividualViewModel(Page page) {
             this.Ficha = new Models.FichaCadastroIndividual();
             this.Page = page;
@@ -628,6 +678,8 @@ namespace gvn_ab_mobile.ViewModels {
 
             this.Concordar = new Command(async () => await ConcordarExecuteAsync());
             this.NaoConcordar = new Command(async () => await NaoConcordarExecuteAsync());
+
+            this.SalvarFicha = new Command(async () => await SalvarFichaAsync());
 
             this.Sexos = new ObservableRangeCollection<Models.Sexo>(new DAO.DAOSexo().Select()); //traz todos os sexos na base.
             this.Paises = new ObservableRangeCollection<Models.Pais>(new DAO.DAOPais().Select());
@@ -656,6 +708,10 @@ namespace gvn_ab_mobile.ViewModels {
             this.QuantasVezesAlimentacao = new ObservableRangeCollection<Models.QuantasVezesAlimentacao>(new DAO.DAOQuantasVezesAlimentacao().Select());
             this.TempoSituacoesDeRua = new ObservableRangeCollection<Models.TempoSituacaoDeRua>(new DAO.DAOTempoSituacaoDeRua().Select());
             this.OrigemAlimentacao = new ObservableRangeCollection<Models.OrigemAlimentacao>(new DAO.DAOOrigemAlimentacao().Select());
+
+            //Valor Default para o Switch Situação de Rua
+            this.StatusSituacaoRua = true;
+
         }
 
         private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
@@ -663,7 +719,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
-            await this.Page.DisplayAlert("Fazer assinatura do cidadão", "", "Ok");
+            await this.Page.Navigation.PushAsync(new Views.AssinaturaTermoRecusa.TermoDeRecusaPage());
         }
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
@@ -678,5 +734,11 @@ namespace gvn_ab_mobile.ViewModels {
                 await this.Page.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
             };
         }
+
+        private async System.Threading.Tasks.Task SalvarFichaAsync()
+        {
+            //await this.Page.Navigation.PushAsync(new Views.AssinaturaTermoRecusa.AssinaturaMainPage());
+        }
+
     }
 }

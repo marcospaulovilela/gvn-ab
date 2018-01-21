@@ -10,13 +10,7 @@
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Está em situação de rua?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusSituacaoRua}"></Switch>
-                </StackLayout>
-
-                <StackLayout IsVisible="{Binding IsSituacaoRua}">
-                    <Label Text="Qual o tempo de situação de rua?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodTempoSituacaoRua" ItemsSource="{Binding TempoSituacoesDeRua}" SelectedItem="{Binding TempoSituacaoRua}" Title="Tempo Situação de Rua" TextColor="Gray" HorizontalOptions="FillAndExpand">
-                    </Picker>
+                    <Switch HorizontalOptions="Center" IsToggled="{Binding StatusSituacaoRua}"></Switch>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" IsVisible="{Binding IsSituacaoRua}">
@@ -27,20 +21,6 @@
                 <StackLayout Orientation="Horizontal" IsVisible="{Binding IsSituacaoRua}">
                     <Label Text="Possui Referência Familiar?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                     <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StatusPossuiReferenciaFamiliar}"></Switch>
-                </StackLayout>
-
-                <StackLayout IsVisible="{Binding IsSituacaoRua}">
-                    <Label Text="Quantas vezes se alimenta ao dia?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <Picker x:Name="CodQuantasVezesAlimentacao"  ItemsSource="{Binding QuantasVezesAlimentacao}" SelectedItem="{Binding QuantidadeAlimentacoesAoDiaSituacaoRua}"  HorizontalOptions="FillAndExpand" Title="Quantas Vezes se Alimenta ao Dia?" />
-                </StackLayout>
-
-                <StackLayout IsVisible="{Binding IsSituacaoRua}">
-                    <Label Text="Qual a Origem da Alimentação?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                    <controls:SelectMultipleItems x:Name="CodOrigemAlimentacao" Items="{Binding OrigemAlimentacao}" SelectedItems="{Binding OrigensAlimentacaoSelecionadas}"  >
-                        <controls:SelectMultipleItems.Behaviors>
-                            <behaviors:ValidatorSelectMultipleItems MinLength="0" MaxLength="5" />
-                        </controls:SelectMultipleItems.Behaviors>
-                    </controls:SelectMultipleItems>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" IsVisible="{Binding IsSituacaoRua}">
@@ -85,10 +65,30 @@
                     </controls:SelectMultipleItems>
                 </StackLayout>
 
+                <StackLayout IsVisible="{Binding IsSituacaoRua}">
+                    <Label Text="Qual o tempo de situação de rua?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Picker x:Name="CodTempoSituacaoRua" ItemsSource="{Binding TempoSituacoesDeRua}" SelectedItem="{Binding TempoSituacaoRua}" Title="Tempo Situação de Rua" TextColor="Gray" HorizontalOptions="FillAndExpand">
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding IsSituacaoRua}">
+                    <Label Text="Quantas vezes se alimenta ao dia?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <Picker x:Name="CodQuantasVezesAlimentacao"  ItemsSource="{Binding QuantasVezesAlimentacao}" SelectedItem="{Binding QuantidadeAlimentacoesAoDiaSituacaoRua}"  HorizontalOptions="FillAndExpand" Title="Quantas Vezes se Alimenta ao Dia?" />
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding IsSituacaoRua}">
+                    <Label Text="Qual a Origem da Alimentação?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                    <controls:SelectMultipleItems x:Name="CodOrigemAlimentacao" Items="{Binding OrigemAlimentacao}" SelectedItems="{Binding OrigensAlimentacaoSelecionadas}"  >
+                        <controls:SelectMultipleItems.Behaviors>
+                            <behaviors:ValidatorSelectMultipleItems MinLength="0" MaxLength="5" />
+                        </controls:SelectMultipleItems.Behaviors>
+                    </controls:SelectMultipleItems>
+                </StackLayout>
+
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                    <Button Text="Salvar Ficha" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodOrigemAlimentacao|OutraInstituicao|GrauParentescoFamiliarFrequentado|CodHigienePessoal" />
+                            <behaviors:ButtonSubmitBehavior Command="{Binding SalvarFicha}" Controls="CodOrigemAlimentacao|OutraInstituicao|GrauParentescoFamiliarFrequentado|CodHigienePessoal" />
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>

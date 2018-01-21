@@ -5,6 +5,9 @@ using SQLite;
 using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models {
+
+    [Table("FichasCadastroIndividual")]
+
     public class FichaCadastroIndividual : Helpers.ObservableObject {
         //Campo ID - Tipo long
         private long? _id;
@@ -959,8 +962,6 @@ namespace gvn_ab_mobile.Models {
         }
         
         private FichaLotacaoHeader _header;
-
-        [OneToOne]
         public FichaLotacaoHeader Header {
             get { return this._header; }
             set { SetProperty(ref _header, value); }

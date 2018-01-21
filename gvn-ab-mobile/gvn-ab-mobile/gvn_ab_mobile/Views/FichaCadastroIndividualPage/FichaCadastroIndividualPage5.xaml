@@ -9,7 +9,7 @@
         <StackLayout Padding="20, 30, 20, 20">
             <ScrollView HorizontalOptions="FillAndExpand" >
                 <StackLayout>
-                    <StackLayout Orientation="Horizontal" IsVisible="{Binding IsMulher}">
+                    <StackLayout Orientation="Horizontal" IsVisible="{Binding IsMulherAndHasIdadeGravida}">
                         <Label Text="Está gestante?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusEhGestante}"></Switch>
                     </StackLayout>
