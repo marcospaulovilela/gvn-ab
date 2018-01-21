@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="Controls\TableGridPage.cs" />
     <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\DAOFichaVisitaDomiciliar.cs" />
     <Compile Include="DAO\DAOFichaUnicaLotacaoHeader.cs" />
     <Compile Include="DAO\DAOEquipe.cs" />
     <Compile Include="DAO\DAOEnumeradores.cs" />

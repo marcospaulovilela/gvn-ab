@@ -11,11 +11,11 @@ using gvn_ab_mobile.Views.FichaVisitaDomiciliarPage;
 namespace gvn_ab_mobile.Views.FichaVisitaDomiciliarPage {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FichaVisitaDomiciliarPage1 : ContentPage {
-        ViewModels.FichaVisitaDomiciliarViewModel viewModel;
+        ViewModels.FichaVisitaDomiciliarViewModel ViewModel { get; set; }
 
-        public FichaVisitaDomiciliarPage1() {
+        public FichaVisitaDomiciliarPage1(ViewModels.FichaVisitaDomiciliarViewModel viewModel) {
             InitializeComponent();
-            this.BindingContext = this.viewModel = new ViewModels.FichaVisitaDomiciliarViewModel(this);
+            this.BindingContext = this.ViewModel = viewModel;
         }
     }
 }

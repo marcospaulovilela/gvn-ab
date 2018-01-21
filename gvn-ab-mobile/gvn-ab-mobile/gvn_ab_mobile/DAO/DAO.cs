@@ -26,9 +26,12 @@ namespace gvn_ab_mobile.DAO {
         }
 
         public bool TableExists() {
+            this.DropTable();
+
             const string cmdText = "SELECT name FROM sqlite_master WHERE type='table' AND name=?";
             var cmd = connection.CreateCommand(cmdText, typeof(T).Name);
-            return cmd.ExecuteScalar<string>() != null;
+            var result = cmd.ExecuteScalar<string>() != null;
+            return result;
         }
         
         /// <summary>

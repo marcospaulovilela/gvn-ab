@@ -65,7 +65,7 @@
                         <Label Text="Nome Social:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Entry x:Name="NomSocialCidadao" Placeholder="Nome Social" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeSocial}">
                             <Entry.Behaviors>
-                                <behaviors:EntryNomeBehavior MinLength="0" />
+                                <behaviors:EntryNomeBehavior ValidacaoNomeEsus="false"  MinLength="0" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>

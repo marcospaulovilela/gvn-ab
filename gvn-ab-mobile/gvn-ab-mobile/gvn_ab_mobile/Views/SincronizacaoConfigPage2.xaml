@@ -22,6 +22,7 @@
                         </Picker>
                     </StackLayout>
 
+                    
                     <StackLayout >
                         <Label Text="Versão: "  FontSize="Medium"/>
                         <Picker x:Name="Versao" TextColor="Gray" HorizontalOptions="FillAndExpand" IsEnabled="False" SelectedIndex="1">
