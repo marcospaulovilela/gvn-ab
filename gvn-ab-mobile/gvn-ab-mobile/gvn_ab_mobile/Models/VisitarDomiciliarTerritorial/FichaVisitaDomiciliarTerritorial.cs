@@ -38,20 +38,23 @@ namespace gvn_ab_mobile.Models
         [NotNull, MaxLength(1)]
         public int TpCdsOrigem { get; } = 3;
 
+
+        public long? HeaderId { get; set; }
         //CAMPO HEADERTRANSPORT
         private FichaUnicaLotacaoHeader _header;
 
-        [NotNull,OneToOne]
+        [NotNull,OneToOne("HeaderId")]
         public FichaUnicaLotacaoHeader Header
         {
             get { return this._header; }
             set { SetProperty(ref _header, value); }
         }
 
+        public long? TurnoId { get; set; }
         //CAMPO TURNO
         //Campo turno - Tipo long
         private Models.Turno _turno; //Obrigatório
-        [NotNull]
+        [OneToOne("TurnoId"), NotNull]
         public Models.Turno Turno
         {
             get { return this._turno; }
@@ -85,9 +88,10 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _dtNascimento, value); }
         }
 
+        public long? SexoId { get; set; }
         //Campo sexo - Tipo long
         private Models.Sexo _sexo; //Obrigatório
-        [NotNull]
+        [OneToOne("SexoId"), NotNull]
         public Models.Sexo Sexo
         {
             get { return this._sexo; }
@@ -104,14 +108,17 @@ namespace gvn_ab_mobile.Models
 
         //CAMPO motivosVisita
         private List<Models.MotivoVisita> _motivosVisita;
+        [OneToMany]
         public List<Models.MotivoVisita> MotivosVisita
         {
             get { return this._motivosVisita; }
             set { SetProperty(ref _motivosVisita, value); }
         }
 
+        public long? DesfechoId { get; set; }
         //CAMPO desfecho
         private Models.Desfecho _desfecho;
+        [OneToOne("DesfechoId")]
         public Models.Desfecho Desfecho
         {
             get { return this._desfecho; }
@@ -135,9 +142,11 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _stForaArea, value); }
         }
 
+
+        public long? TipoDeImovelId { get; set; }
         //Campo tipoDeImovel - Tipo long
         private Models.TipoDeImovel _tipoDeImovel; //Obrigatório
-        [NotNull]
+        [OneToOne("TipoDeImovelId"), NotNull]
         public Models.TipoDeImovel TipoDeImovel
         {
             get { return this._tipoDeImovel; }

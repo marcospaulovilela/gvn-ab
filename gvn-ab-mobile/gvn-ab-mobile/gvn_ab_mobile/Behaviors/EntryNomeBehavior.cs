@@ -13,6 +13,8 @@ namespace gvn_ab_mobile.Behaviors {
             base.MaxLength = 70;
         }
 
+        public bool ValidacaoNomeEsus { get; set; } = true;
+
         protected override void OnAttachedTo(Entry bindable) {
             bindable.TextChanged += OnEntryTextChanged;
         }
@@ -22,8 +24,12 @@ namespace gvn_ab_mobile.Behaviors {
         }
 
         public override bool isValid(object input) {
-            var text = (string)input;
+            if (!ValidacaoNomeEsus) return true;
+
+            var text = ((string)input);
             if (string.IsNullOrEmpty(text)) return false;
+
+            text = text.Trim();
 
             var textSplited = text.Split(' ');
             if (textSplited.Length == 1) return false;

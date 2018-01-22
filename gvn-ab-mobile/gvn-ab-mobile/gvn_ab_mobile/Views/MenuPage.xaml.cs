@@ -14,11 +14,15 @@ namespace gvn_ab_mobile.Views {
         public ViewModels.MenuViewModel ViewModel { get; set; }
 
         protected override void OnAppearing() {
-            using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) {
-                var Fichas = DAOFichaCadastroIndividual.Select();
+            using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) 
+            using (DAO.DAOFichaVisitaDomiciliar DAOFichaVisitaDomiciliar = new DAO.DAOFichaVisitaDomiciliar()) {
+                var FichasCadastroIndividual = DAOFichaCadastroIndividual.Select();
+                var FichasVisitaDomociliar = DAOFichaVisitaDomiciliar.Select();
 
-                if (this.ViewModel.HasFichas = Fichas.Any()) {
-                    this.ViewModel.SendText = $"Enviar fichas ({Fichas.Count()})";
+                var nFichas = FichasCadastroIndividual.Count + FichasVisitaDomociliar.Count;
+
+                if (this.ViewModel.HasFichas = nFichas > 0) {
+                    this.ViewModel.SendText = $"Enviar fichas ({nFichas})";
                 } else {
                     this.ViewModel.SendText = "Enviar fichas";
                 }
@@ -45,10 +49,10 @@ namespace gvn_ab_mobile.Views {
         }
 
         async void OnVisitaDomiciliarClicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new FichaVisitaDomiciliarPage.FichaVisitaDomiciliarPage1());
+            await Navigation.PushAsync(new FichaVisitaDomiciliarPage.FichaVisitaDomiciliarPage1(new ViewModels.FichaVisitaDomiciliarViewModel(this)));
         }
 
-        private void OnSairClicked(object sender, EventArgs e) {
+        private void OnSairClicked(object sender, EventArgs e) {    
             App.Current.MainPage = new NavigationPage(new Views.Login.LoginPage()) { BarBackgroundColor = Color.FromHex("#003264") };
         }
     }

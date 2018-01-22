@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -755,30 +756,40 @@ namespace gvn_ab_mobile.ViewModels {
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5) {
 
-                this.Ficha.DoencaCardiaca = this.DoencasRespiratoriasSelecionadas.Select(o => (Models.DoencaCardiaca)o).ToList();
+                this.Ficha.DoencaCardiaca = this.DoencasCardiacasSelecionadas.Select(o => (Models.DoencaCardiaca)o).ToList();
                 this.Ficha.DoencaRins = this.ProblemasRinsSelecionados.Select(o => (Models.ProblemaRins)o).ToList();
+                this.Ficha.DoencaRespiratoria  = this.DoencasRespiratoriasSelecionadas.Select(o => (Models.DoencaRespiratoria)o).ToList();
 
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6) {
-                this.Ficha.OrigemAlimentoSituacaoRua = this.OrigensAlimentacaoSelecionadas.Select(o => (Models.OrigemAlimentacao)o).ToList();
-                this.Ficha.HigienePessoalSituacaoRua = this.HigienesSelecionadas.Select(o => (Models.AcessoHigiene)o).ToList();
+                this.IsBusy = true;
+                #pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+                Task.Run(async () => {
+                    this.Ficha.OrigemAlimentoSituacaoRua = this.OrigensAlimentacaoSelecionadas.Select(o => (Models.OrigemAlimentacao)o).ToList();
+                    this.Ficha.HigienePessoalSituacaoRua = this.HigienesSelecionadas.Select(o => (Models.AcessoHigiene)o).ToList();
 
-                using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) {
-                    try {
-                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader() {
-                            Cbo = this.MenuPage.ViewModel.Cbo.CodCbo,
-                            CnsProfissional = this.MenuPage.ViewModel.Profissional.CnsProfissional,
-                            Cnes = this.MenuPage.ViewModel.Estabelecimento.ImpCnes,
-                            Ine = this.MenuPage.ViewModel.Equipe.CodEquipe,
-                            DataAtendimento = DateTime.Now
+                    using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader())
+                    using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) {
+                        try {
+                            this.Ficha.Header = new Models.FichaUnicaLotacaoHeader() {
+                                Cbo = this.MenuPage.ViewModel.Cbo.CodCbo,
+                                CnsProfissional = this.MenuPage.ViewModel.Profissional.CnsProfissional,
+                                Cnes = this.MenuPage.ViewModel.Estabelecimento.ImpCnes,
+                                Ine = this.MenuPage.ViewModel.Equipe.CodEquipe,
+                                DataAtendimento = DateTime.Now
+                            };
+
+                            DAOFichaUnicaLotacaoHeader.Insert(this.Ficha.Header);
+                            DAOFichaCadastroIndividual.Insert(this.Ficha);
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.MenuPage.Navigation.PopToRootAsync());
+                        } catch (Exception e) {
+                            System.Diagnostics.Debug.WriteLine(e);
+                        } finally {
+                            this.IsBusy = false;
                         };
-
-                        DAOFichaCadastroIndividual.Insert(this.Ficha);
-                        await this.MenuPage.Navigation.PopToRootAsync();
-                    } catch(Exception e) {
-                        System.Diagnostics.Debug.WriteLine(e);
                     };
-                };
+                });
+                #pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
             };
         }
 

@@ -69,7 +69,7 @@ namespace gvn_ab_mobile.Controls {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SelectMultipleItems : ContentView {
         public static readonly BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(IEnumerable<object>), typeof(SelectMultipleItems), null, BindingMode.TwoWay, propertyChanged: OnItemsSourceChanged);
-        public static readonly BindableProperty SelectedItemsProperty = BindableProperty.Create(nameof(SelectedItems), typeof(ObservableCollection<object>), typeof(SelectMultipleItems), null, BindingMode.Default);
+        public static readonly BindableProperty SelectedItemsProperty = BindableProperty.Create(nameof(SelectedItems), typeof(ObservableCollection<object>), typeof(SelectMultipleItems), null, BindingMode.TwoWay, propertyChanged: OnSelectedItemsChanged);
 
         public event EventHandler SelectedItemsChanged;
         public void InvokeEvenHandler() {
@@ -87,25 +87,35 @@ namespace gvn_ab_mobile.Controls {
         static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue) {
             var self = ((SelectMultipleItems)bindable);
 
-            self.viewModel.ItemsForListView?.AddRange(self.Items?.Select(obj => new SelectItem() {
-                Data = obj,
-                IsSelected = false
+            self.ViewModel.ItemsForListView?.Clear();
+            self.ViewModel.ItemsForListView?.AddRange(self.Items?.Select(o => new SelectItem() {
+                Data = o,
+                IsSelected = self.SelectedItems?.Contains(o) ?? false
             }));
+
+            self.ViewModel.Title = self.SelectedItems?.Any() ?? false ? string.Join(", ", self.SelectedItems) : "Selecione ...";
+        }
+
+        static void OnSelectedItemsChanged(BindableObject bindable, object oldValue, object newValue) {
+            var self = ((SelectMultipleItems)bindable);
+
+            self.ViewModel.Title = self.SelectedItems?.Any() ?? false ? string.Join(", ", self.SelectedItems) : "Selecione ...";
+            self.InvokeEvenHandler();
         }
 
         public string Placeholder {
-            get { return this.viewModel.Placeholder; }
-            set { this.viewModel.Placeholder = value; }
+            get { return this.ViewModel.Placeholder; }
+            set { this.ViewModel.Placeholder = value; }
         }
 
-        private SelectMultipleItemsViewModel viewModel;
+        private SelectMultipleItemsViewModel ViewModel { get; set; }
         public SelectMultipleItems() {
             InitializeComponent();
 
-            this.Content.BindingContext = this.viewModel = new SelectMultipleItemsViewModel(this);
+            this.Content.BindingContext = this.ViewModel = new SelectMultipleItemsViewModel(this);
             this.LabelItems.GestureRecognizers.Add(new TapGestureRecognizer {
                 Command = new Command(async () => {
-                    await PopupNavigation.PushAsync(new SelectMultipleItemsPopUp(this.viewModel));
+                    await PopupNavigation.PushAsync(new SelectMultipleItemsPopUp(this.ViewModel));
                 })
             });
         }

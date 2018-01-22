@@ -79,15 +79,19 @@ namespace gvn_ab_mobile.ViewModels {
             //using (DAO.DAOListaExames DAOListaExames = new DAO.DAOListaExames()) { DAOListaExames.CreateTable(); }
             //using (DAO.DAONasfs DAONasfs = new DAO.DAONasfs()) { DAONasfs.CreateTable(); }
             //using (DAO.DAOCondutaEncaminhamento DAOCondutaEncaminhamento = new DAO.DAOCondutaEncaminhamento()) { DAOCondutaEncaminhamento.CreateTable(); }
-            //using (DAO.DAOTurno DAOTurno = new DAO.DAOTurno()) { DAOTurno.CreateTable(); }
+
             //using (DAO.DAOLocalDeAtendimento DAOLocalAtendimento = new DAO.DAOLocalDeAtendimento()) { DAOLocalAtendimento.CreateTable(); }
             //using (DAO.DAOTipoDeAtendimento DAOTipoAtendimento = new DAO.DAOTipoDeAtendimento()) { DAOTipoAtendimento.CreateTable(); }
             //using (DAO.DAOModalidadeAD DAOModalidadeAD = new DAO.DAOModalidadeAD()) { DAOModalidadeAD.CreateTable(); }
             //using (DAO.DAORacionalidadeSaude DAORacionalidadeSaude = new DAO.DAORacionalidadeSaude()) { DAORacionalidadeSaude.CreateTable(); }
             //using (DAO.DAOAleitamentoMaterno DAOAleitamentoMaterno = new DAO.DAOAleitamentoMaterno()) { DAOAleitamentoMaterno.CreateTable(); }
 
+            using (DAO.DAOTurno DAOTurno = new DAO.DAOTurno()) { DAOTurno.CreateTable(); }
             using (DAO.DAODesfecho DAODesfecho = new DAO.DAODesfecho()) { DAODesfecho.CreateTable(); }
             using (DAO.DAOMotivoVisita DAOMotivoVisita = new DAO.DAOMotivoVisita()) { DAOMotivoVisita.CreateTable(); }
+
+
+
 
             using (DAO.DAOOcupacao DAOOcupacao = new DAO.DAOOcupacao()) { DAOOcupacao.CreateTable(); };
             using (DAO.DAOUnidadeFederal DAOUnidadeFederal = new DAO.DAOUnidadeFederal()) { DAOUnidadeFederal.CreateTable(); };
@@ -98,6 +102,7 @@ namespace gvn_ab_mobile.ViewModels {
 
             using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader()) { DAOFichaUnicaLotacaoHeader.CreateTable(); }
             using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) { DAOFichaCadastroIndividual.CreateTable(); }
+            using (DAO.DAOFichaVisitaDomiciliar DAOFichaVisitaDomiciliar = new DAO.DAOFichaVisitaDomiciliar()) { DAOFichaVisitaDomiciliar.CreateTable(); }
 
         }
 
