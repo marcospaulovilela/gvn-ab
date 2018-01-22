@@ -11,11 +11,11 @@ using gvn_ab_mobile.Views.FichaCadastroIndividualPage;
 namespace gvn_ab_mobile.Views.FichaCadastroIndividualPage {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FichaCadastroIndividualPage1 : ContentPage {
-        ViewModels.FichaCadastroIndividualViewModel viewModel;
+        ViewModels.FichaCadastroIndividualViewModel ViewModel { get; set; }
 
-        public FichaCadastroIndividualPage1() {
+        public FichaCadastroIndividualPage1(ViewModels.FichaCadastroIndividualViewModel viewModel) {
             InitializeComponent();
-            this.BindingContext = this.viewModel = new ViewModels.FichaCadastroIndividualViewModel(this);
+            this.BindingContext = this.ViewModel = viewModel;
         }
     }
 }

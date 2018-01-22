@@ -110,22 +110,10 @@ namespace gvn_ab_mobile.Models {
         public TempoSituacaoDeRua() { }
         public TempoSituacaoDeRua(string descricao) : base(descricao) { }
     }
-
-    public class Municipios : Models.EntidadeMunicipios
-    {
-        public Municipios() { }
-        public Municipios(string descricao, string siglaUF) : base(descricao, siglaUF) { }
-    }
-
+    
     //
 
     //Ficha Cadastro Domiciliar e Territorial
-
-    public class UF : Models.EntidadeEnumerador
-    {
-        public UF() { }
-        public UF(string descricao) : base(descricao) { }
-    }
 
     public class SituacaoDeMoradia : Models.EntidadeEnumerador
     {
@@ -198,12 +186,7 @@ namespace gvn_ab_mobile.Models {
         public RendaFamiliar() { }
         public RendaFamiliar(string descricao) : base(descricao) { }
     }
-
-    public class TipoDeLogradouro : Models.EntidadeEnumerador
-    {
-        public TipoDeLogradouro() { }
-        public TipoDeLogradouro(string descricao) : base(descricao) { }
-    }
+    
     public class TipoDeImovel : Models.EntidadeEnumerador
     {
         public TipoDeImovel() { }

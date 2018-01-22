@@ -14,17 +14,22 @@
                 <BoxView HeightRequest=".3" BackgroundColor="#003264"/>
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0, 25, 0, 0" Spacing="50">
 
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="10">
-                        <StackLayout Spacing="5" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                            <Button Text="Cadastro Individual" HorizontalOptions="Center" ContentLayout="Top,0" IsEnabled="{Binding CboCadastroIndividual}" Image="iconIndividuo" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264"  Clicked="OnCadastroIndividualClicked"  />
-                            <Button Text="Cadastro Domiciliar" HorizontalOptions="Center" ContentLayout="Top,0" IsEnabled="{Binding CboCadastroDomiciliar}" Image="iconCasa" BackgroundColor="Transparent" BorderColor="#003264" TextColor="#003264" Clicked="OnCadastroDomiciliarClicked" />
-                            <Button Text="Visita Domiciliar" HorizontalOptions="Center"  ContentLayout="Top,0" IsEnabled="{Binding CboVisitaDomiciliar}" Image="iconVisita" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264" Clicked="OnVisitaDomiciliarClicked" />
+                    <StackLayout  VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <StackLayout Spacing="5" HorizontalOptions="Center" Orientation="Horizontal">
+                            <Button Text="Cadastro Individual" WidthRequest="150" HorizontalOptions="CenterAndExpand" ContentLayout="Top,0" IsEnabled="{Binding CboCadastroIndividual}" Image="iconIndividuo" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264"  Clicked="OnCadastroIndividualClicked"  />
+                            <Button Text="Cadastro Domiciliar" WidthRequest="150" HorizontalOptions="CenterAndExpand" ContentLayout="Top,0" IsEnabled="{Binding CboCadastroDomiciliar}" Image="iconCasa" BackgroundColor="Transparent" BorderColor="#003264" TextColor="#003264" Clicked="OnCadastroDomiciliarClicked" />
+                        </StackLayout>
+                        <StackLayout Spacing="5" HorizontalOptions="Center" Orientation="Horizontal">
+                            <Button HorizontalOptions="Center" WidthRequest="150" Text="Visita Domiciliar" ContentLayout="Top,0" IsEnabled="{Binding CboVisitaDomiciliar}" Image="iconVisita" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264" Clicked="OnVisitaDomiciliarClicked" />
                         </StackLayout>
                     </StackLayout>
-
-                    <StackLayout Spacing="12" HorizontalOptions="FillAndExpand" VerticalOptions="End">
-                        <Button Text="Enviar fichas" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="#003264" />
-                        <Button Text="Sair" Clicked="OnSairClicked" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="#003264" />
+                    <BoxView HeightRequest=".3" BackgroundColor="#003264"/>
+                    <StackLayout Spacing="12" HorizontalOptions="FillAndExpand" VerticalOptions="End" Orientation="Horizontal">
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                            <Button Text="{Binding SendText}" IsEnabled="{Binding HasFichas}"  WidthRequest="150" ContentLayout="Top,0" Image="iconUpload1" BackgroundColor="Transparent" BorderColor="#003264" TextColor="#003264"/>
+                        </StackLayout>
+                        
+                        <Button Text="Sair" Clicked="OnSairClicked"  WidthRequest="150" HorizontalOptions="CenterAndExpand" ContentLayout="Top,0" Image="iconLogout" BackgroundColor="Transparent" BorderColor="#003264" TextColor="#003264"/>
                     </StackLayout>
 
                 </StackLayout>

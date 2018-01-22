@@ -55,8 +55,8 @@ namespace gvn_ab_mobile.Controls {
     }
 
    public partial class PickerSearch : ContentView{
-        public static readonly BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(IEnumerable<object>), typeof(SelectMultipleItemsViewModel), null, BindingMode.TwoWay , propertyChanged: OnItemsSourceChanged);
-        public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(SelectMultipleItemsViewModel), null, BindingMode.Default);
+        public static readonly BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(IEnumerable<object>), typeof(SelectMultipleItemsViewModel), null, BindingMode.TwoWay, propertyChanged: OnItemsSourceChanged);
+        public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(SelectMultipleItemsViewModel), null, BindingMode.TwoWay, propertyChanged: OnSelectedItemChanged);
 
         public event EventHandler SelectedItemChanged;
         public void InvokeEvenHandler() {
@@ -74,6 +74,12 @@ namespace gvn_ab_mobile.Controls {
             var value = ((IEnumerable<object>)newValue);
             self.viewModel.Items = value.ToList();
         }
+
+        static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue) {
+            var self = ((PickerSearch)bindable);
+            self.viewModel.Title = self.SelectedItem?.ToString() ?? "Selecione ...";
+        }
+
         public object SelectedItem {
             get { return (object)GetValue(SelectedItemProperty); }
             set { SetValue(SelectedItemProperty, value); }

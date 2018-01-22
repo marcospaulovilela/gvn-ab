@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,9 @@ namespace gvn_ab_mobile.Models
             get { return this._descricao; }
             set { SetProperty(ref _descricao, value); }
         }
+
+        [ForeignKey(typeof(FichaCadastroIndividual))]
+        public long? FichaCadastroIndividualId { get; set; }
 
         public override string ToString()
         {

@@ -21,10 +21,31 @@ namespace gvn_ab_mobile.Behaviors {
             bindable.TextChanged -= OnEntryTextChanged;
         }
 
+        public override bool isValid(object input) {
+            var text = (string)input;
+            if (string.IsNullOrEmpty(text)) return false;
+
+            var textSplited = text.Split(' ');
+            if (textSplited.Length == 1) return false;
+
+            for(int i = 1; i< textSplited.Length; i++) {
+                if(textSplited[i].Length == 1 && textSplited[i] != "E" && textSplited[i] != "Y") {
+                    return false;
+                };
+            };
+
+            if (textSplited[0].Length == 1 && textSplited[1].Length == 1) return false;
+
+            if(textSplited.Length == 2 && (textSplited[0].Length == 2 && textSplited[1].Length == 2)) return false;
+
+            return true;
+
+
+        }
+
         protected override void OnEntryTextChanged(object sender, TextChangedEventArgs e) {
             var entry = (Entry)sender;
-            base.OnEntryTextChanged(entry, e);
-
+            
             var buffer = entry.Text;
             
             buffer = new Regex("[^a-zA-Z ']").Replace(entry.Text, "");
@@ -33,6 +54,8 @@ namespace gvn_ab_mobile.Behaviors {
             buffer = buffer.ToUpper();
 
             entry.Text = buffer;
+
+            base.OnEntryTextChanged(entry, e);
         }
     }
 }

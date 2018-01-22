@@ -6,9 +6,44 @@ using System.Threading.Tasks;
 
 namespace gvn_ab_mobile.DAO {
 
+    abstract class DAOEnumerador<T> : DAO<T> 
+    where T : Models.EntidadeEnumerador, new() {
+        public override int? Insert(T obj) {
+            if (obj == null) return null;
+            try {
+                string cmdText = $"INSERT INTO {typeof(T).Name} (Codigo, Descricao) values (?, ?)";
+                var cmd = connection.CreateCommand(cmdText, obj.Codigo, obj.Descricao);
+                return cmd.ExecuteNonQuery();
+            } catch (Exception e) {
+                return null;
+            };
+        }
+
+        public override int? Insert(IEnumerable<T> obj) {
+            if (obj == null || !obj.Any()) return null;
+            try {
+                StringBuilder cmdText = new StringBuilder($"INSERT INTO {typeof(T).Name} (Codigo, Descricao) values ");
+
+                foreach (var o in obj) {
+                    cmdText.Append($"('{o.Codigo}', '{o.Descricao.Replace("'", "\'")}'),");
+                }
+                cmdText[cmdText.Length - 1] = ' ';
+
+                var cmd = connection.CreateCommand(cmdText.ToString());
+                var result = cmd.ExecuteNonQuery();
+
+                this.connection.Commit();
+                
+                return result;
+            } catch (Exception e) {
+                return null;
+            };
+        }
+    }
+
     //Ficha Cadastro Individual
 
-    class DAOPais : DAO<Models.Pais>
+    class DAOPais : DAOEnumerador<Models.Pais>
     {
         public override int? CreateTable()
         {
@@ -263,7 +298,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAORacaCor : DAO<Models.RacaCor> {
+    class DAORacaCor : DAOEnumerador<Models.RacaCor> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -279,7 +314,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOEtnia : DAO<Models.Etnia> {
+    class DAOEtnia : DAOEnumerador<Models.Etnia> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -553,7 +588,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOOrientacaoSexual : DAO<Models.OrientacaoSexual> {
+    class DAOOrientacaoSexual : DAOEnumerador<Models.OrientacaoSexual> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -567,7 +602,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOIdentidadeGeneroCidadao : DAO<Models.IdentidadeGeneroCidadao> {
+    class DAOIdentidadeGeneroCidadao : DAOEnumerador<Models.IdentidadeGeneroCidadao> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -581,7 +616,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOCursoMaisElevado : DAO<Models.CursoMaisElevado> {
+    class DAOCursoMaisElevado : DAOEnumerador<Models.CursoMaisElevado> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -606,7 +641,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAORelacaoParentesco : DAO<Models.RelacaoParentesco> {
+    class DAORelacaoParentesco : DAOEnumerador<Models.RelacaoParentesco> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -626,7 +661,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOResponsavelCrianca : DAO<Models.ResponsavelCrianca> {
+    class DAOResponsavelCrianca : DAOEnumerador<Models.ResponsavelCrianca> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -643,7 +678,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOSexo : DAO<Models.Sexo> {
+    class DAOSexo : DAOEnumerador<Models.Sexo> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -656,7 +691,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOMotivoSaida : DAO<Models.MotivoSaida> {
+    class DAOMotivoSaida : DAOEnumerador<Models.MotivoSaida> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -668,7 +703,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAONacionalidade : DAO<Models.Nacionalidade> {
+    class DAONacionalidade : DAOEnumerador<Models.Nacionalidade> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -681,7 +716,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOSituacaoMercadoTrabalho : DAO<Models.SituacaoMercadoTrabalho> {
+    class DAOSituacaoMercadoTrabalho : DAOEnumerador<Models.SituacaoMercadoTrabalho> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -701,7 +736,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOConsideracaoPeso : DAO<Models.ConsideracaoPeso> {
+    class DAOConsideracaoPeso : DAOEnumerador<Models.ConsideracaoPeso> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -714,7 +749,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAODoencaCardiaca : DAO<Models.DoencaCardiaca> {
+    class DAODoencaCardiaca : DAOEnumerador<Models.DoencaCardiaca> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -727,7 +762,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOProblemaRins : DAO<Models.ProblemaRins> {
+    class DAOProblemaRins : DAOEnumerador<Models.ProblemaRins> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -740,7 +775,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAODoencaRespiratoria : DAO<Models.DoencaRespiratoria> {
+    class DAODoencaRespiratoria : DAOEnumerador<Models.DoencaRespiratoria> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -754,7 +789,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOAcessoHigiene : DAO<Models.AcessoHigiene>
+    class DAOAcessoHigiene : DAOEnumerador<Models.AcessoHigiene>
     {
         public override int? CreateTable()
         {
@@ -770,7 +805,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAODeficienciaCidadao : DAO<Models.DeficienciaCidadao>
+    class DAODeficienciaCidadao : DAOEnumerador<Models.DeficienciaCidadao>
     {
         public override int? CreateTable()
         {
@@ -787,7 +822,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOQuantasVezesAlimentacao : DAO<Models.QuantasVezesAlimentacao>
+    class DAOQuantasVezesAlimentacao : DAOEnumerador<Models.QuantasVezesAlimentacao>
     {
         public override int? CreateTable()
         {
@@ -802,7 +837,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOTempoSituacaoDeRua : DAO<Models.TempoSituacaoDeRua>
+    class DAOTempoSituacaoDeRua : DAOEnumerador<Models.TempoSituacaoDeRua>
     {
         public override int? CreateTable()
         {
@@ -817,364 +852,8 @@ namespace gvn_ab_mobile.DAO {
             });
         }
     }
-
-    class DAOMunicipios : DAO<Models.Municipios>
-    {
-        public override int? CreateTable()
-        {
-            if (base.TableExists()) return 0;
-
-            base.CreateTable();
-            return base.Insert(new List<Models.Municipios>() {
-                new Models.Municipios("ABADIA DE GOIÁS", "GO") { Codigo = 5200050 },
-                new Models.Municipios("ABADIA DOS DOURADOS", "MG") { Codigo = 3100104 },
-                new Models.Municipios("ABADIÂNIA", "GO") { Codigo = 5200100 },
-                new Models.Municipios("ABAETÉ", "MG") { Codigo = 3100203 },
-                new Models.Municipios("ABAETETUBA", "PA") { Codigo = 1500107 },
-                new Models.Municipios("ABAIARA", "CE") { Codigo = 2300101 },
-                new Models.Municipios("ABAÍRA", "BA") { Codigo = 2900108 },
-                new Models.Municipios("ABARÉ", "BA") { Codigo = 2900207 },
-                new Models.Municipios("ABATIÁ", "PR") { Codigo = 4100103 },
-                new Models.Municipios("ABDON BATISTA", "SC") { Codigo = 4200051 },
-            });
-        }
-    }
-
-    //Ficha Cadastro Domiciliar e Territorial
-
-    class DAOUF : DAO<Models.UF>
-    {
-        public override int? CreateTable()
-        {
-            if (base.TableExists()) return 0;
-
-            base.CreateTable();
-            return base.Insert(new List<Models.UF>() {
-                  new Models.UF("ACRE") { Codigo = 01 },
-                  new Models.UF("ALAGOAS") { Codigo = 02 },
-                  new Models.UF("AMAPÁ") { Codigo = 03 },
-                  new Models.UF("AMAZONAS") { Codigo = 04 },
-                  new Models.UF("BAHIA") { Codigo = 05 },
-                  new Models.UF("CEARÁ") { Codigo = 06 },
-                  new Models.UF("DISTRITO FEDERAL") { Codigo = 07 },
-                  new Models.UF("ESPIRITO SANTO") { Codigo = 08 },
-                  new Models.UF("GOIÁS") { Codigo = 10 },
-                  new Models.UF("MARANHÃO") { Codigo = 11 },
-                  new Models.UF("MATO GROSSO") { Codigo = 12 },
-                  new Models.UF("MATO GROSSO DO SUL") { Codigo = 13 },
-                  new Models.UF("MINAS GERAIS") { Codigo = 14 },
-                  new Models.UF("PARÁ") { Codigo = 15 },
-                  new Models.UF("PARAÍBA") { Codigo = 16 },
-                  new Models.UF("PARANÁ") { Codigo = 17 },
-                  new Models.UF("PERNAMBUCO") { Codigo = 18 },
-                  new Models.UF("PIAUÍ") { Codigo = 19 },
-                  new Models.UF("RIO DE JANEIRO") { Codigo = 20 },
-                  new Models.UF("RIO GRANDE DO NORTE") { Codigo = 21 },
-                  new Models.UF("RIO GRANDE DO SUL") { Codigo = 22 },
-                  new Models.UF("RONDÔNIA") { Codigo = 23 },
-                  new Models.UF("RORAIMA") { Codigo = 09 },
-                  new Models.UF("SANTA CATARINA") { Codigo = 25 },
-                  new Models.UF("SÃO PAULO") { Codigo = 26 },
-                  new Models.UF("SERGIPE") { Codigo = 27 },
-                  new Models.UF("TOCANTINS") { Codigo = 24 },
-            });
-        }
-    }
-
-    class DAOTipoDeLogradouro : DAO<Models.TipoDeLogradouro>
-    {
-        public override int? CreateTable()
-        {
-            if (base.TableExists()) return 0;
-
-            base.CreateTable();
-            return base.Insert(new List<Models.TipoDeLogradouro>() {
-                new Models.TipoDeLogradouro("ACESSO") { Codigo = 001 },
-                new Models.TipoDeLogradouro("ADRO") { Codigo = 002 },
-                new Models.TipoDeLogradouro("ALAMEDA") { Codigo = 004 },
-                new Models.TipoDeLogradouro("ALTO") { Codigo = 005 },
-                new Models.TipoDeLogradouro("ATALHO") { Codigo = 007 },
-                new Models.TipoDeLogradouro("AVENIDA") { Codigo = 008 },
-                new Models.TipoDeLogradouro("BALNEÁRIO") { Codigo = 009 },
-                new Models.TipoDeLogradouro("BELVEDERE") { Codigo = 010 },
-                new Models.TipoDeLogradouro("BECO") { Codigo = 011 },
-                new Models.TipoDeLogradouro("BLOCO") { Codigo = 12 },
-                new Models.TipoDeLogradouro("BOSQUE") { Codigo = 013 },
-                new Models.TipoDeLogradouro("BOULEVARD") { Codigo = 014 },
-                new Models.TipoDeLogradouro("BAIXA") { Codigo = 015 },
-                new Models.TipoDeLogradouro("CAIS") { Codigo = 016 },
-                new Models.TipoDeLogradouro("CAMINHO") { Codigo = 017 },
-                new Models.TipoDeLogradouro("CHAPADÃO") { Codigo = 019 },
-                new Models.TipoDeLogradouro("CONJUNTO") { Codigo = 020 },
-                new Models.TipoDeLogradouro("COLÔNIA") { Codigo = 021 },
-                new Models.TipoDeLogradouro("CORREDOR") { Codigo = 022 },
-                new Models.TipoDeLogradouro("CAMPO") { Codigo = 023 },
-                new Models.TipoDeLogradouro("CÓRREGO") { Codigo = 024 },
-                new Models.TipoDeLogradouro("DESVIO") { Codigo = 027 },
-                new Models.TipoDeLogradouro("DISTRITO") { Codigo = 028 },
-                new Models.TipoDeLogradouro("ESCADA") { Codigo = 030 },
-                new Models.TipoDeLogradouro("ESTRADA") { Codigo = 031 },
-                new Models.TipoDeLogradouro("ESTAÇÃO") { Codigo = 032 },
-                new Models.TipoDeLogradouro("ESTÁDIO") { Codigo = 033 },
-                new Models.TipoDeLogradouro("FAVELA") { Codigo = 036 },
-                new Models.TipoDeLogradouro("FAZENDA") { Codigo = 037 },
-                new Models.TipoDeLogradouro("FERROVIA") { Codigo = 038 },
-                new Models.TipoDeLogradouro("FONTE") { Codigo = 039 },
-                new Models.TipoDeLogradouro("FEIRA") { Codigo = 040 },
-                new Models.TipoDeLogradouro("FORTE") { Codigo = 043 },
-                new Models.TipoDeLogradouro("GALERIA") { Codigo = 045 },
-                new Models.TipoDeLogradouro("GRANJA") { Codigo = 046 },
-                new Models.TipoDeLogradouro("ILHA") { Codigo = 050 },
-                new Models.TipoDeLogradouro("JARDIM") { Codigo = 052 },
-                new Models.TipoDeLogradouro("LADEIRA") { Codigo = 053 },
-                new Models.TipoDeLogradouro("LARGO") { Codigo = 054 },
-                new Models.TipoDeLogradouro("LAGOA") { Codigo = 055 },
-                new Models.TipoDeLogradouro("LOTEAMENTO") { Codigo = 056 },
-                new Models.TipoDeLogradouro("MORRO") { Codigo = 059 },
-                new Models.TipoDeLogradouro("MONTE") { Codigo = 060 },
-                new Models.TipoDeLogradouro("PARALELA") { Codigo = 062 },
-                new Models.TipoDeLogradouro("PASSEIO") { Codigo = 063 },
-                new Models.TipoDeLogradouro("PÁTIO") { Codigo = 064 },
-                new Models.TipoDeLogradouro("PRAÇA") { Codigo = 065 },
-                new Models.TipoDeLogradouro("PARADA") { Codigo = 067 },
-                new Models.TipoDeLogradouro("PRAIA") { Codigo = 070 },
-                new Models.TipoDeLogradouro("PROLONGAMENTO") { Codigo = 071 },
-                new Models.TipoDeLogradouro("PARQUE") { Codigo = 072 },
-                new Models.TipoDeLogradouro("PASSARELA") { Codigo = 073 },
-                new Models.TipoDeLogradouro("PASSAGEM") { Codigo = 074 },
-                new Models.TipoDeLogradouro("PONTE") { Codigo = 076 },
-                new Models.TipoDeLogradouro("QUADRA") { Codigo = 077 },
-                new Models.TipoDeLogradouro("QUINTA") { Codigo = 079 },
-                new Models.TipoDeLogradouro("RUA") { Codigo = 081 },
-                new Models.TipoDeLogradouro("RAMAL") { Codigo = 082 },
-                new Models.TipoDeLogradouro("RECANTO") { Codigo = 087 },
-                new Models.TipoDeLogradouro("RETIRO") { Codigo = 088 },
-                new Models.TipoDeLogradouro("RETA") { Codigo = 089 },
-                new Models.TipoDeLogradouro("RODOVIA") { Codigo = 090 },
-                new Models.TipoDeLogradouro("RETORNO") { Codigo = 091 },
-                new Models.TipoDeLogradouro("SÍTIO") { Codigo = 092 },
-                new Models.TipoDeLogradouro("SERVIDÃO") { Codigo = 094 },
-                new Models.TipoDeLogradouro("SETOR") { Codigo = 095 },
-                new Models.TipoDeLogradouro("SUBIDA") { Codigo = 096 },
-                new Models.TipoDeLogradouro("TRINCHEIRA") { Codigo = 097 },
-                new Models.TipoDeLogradouro("TERMINAL") { Codigo = 098 },
-                new Models.TipoDeLogradouro("TREVO") { Codigo = 099 },
-                new Models.TipoDeLogradouro("TRAVESSA") { Codigo = 100 },
-                new Models.TipoDeLogradouro("VIA") { Codigo = 101 },
-                new Models.TipoDeLogradouro("VIADUTO") { Codigo = 103 },
-                new Models.TipoDeLogradouro("VILA") { Codigo = 104 },
-                new Models.TipoDeLogradouro("VIELA") { Codigo = 105 },
-                new Models.TipoDeLogradouro("VALE") { Codigo = 106 },
-                new Models.TipoDeLogradouro("ZIGUE-ZAGUE") { Codigo = 108 },
-                new Models.TipoDeLogradouro("TRECHO") { Codigo = 452 },
-                new Models.TipoDeLogradouro("VEREDA") { Codigo = 453 },
-                new Models.TipoDeLogradouro("ARTÉRIA") { Codigo = 465 },
-                new Models.TipoDeLogradouro("ELEVADA") { Codigo = 468 },
-                new Models.TipoDeLogradouro("PORTO") { Codigo = 469 },
-                new Models.TipoDeLogradouro("BALÃO") { Codigo = 470 },
-                new Models.TipoDeLogradouro("PARADOURO") { Codigo = 471 },
-                new Models.TipoDeLogradouro("ÁREA") { Codigo = 472 },
-                new Models.TipoDeLogradouro("JARDINETE") { Codigo = 473 },
-                new Models.TipoDeLogradouro("ESPLANADA") { Codigo = 474 },
-                new Models.TipoDeLogradouro("QUINTAS") { Codigo = 475 },
-                new Models.TipoDeLogradouro("RÓTULA") { Codigo = 476 },
-                new Models.TipoDeLogradouro("MARINA") { Codigo = 477 },
-                new Models.TipoDeLogradouro("DESCIDA") { Codigo = 478 },
-                new Models.TipoDeLogradouro("CIRCULAR") { Codigo = 479 },
-                new Models.TipoDeLogradouro("UNIDADE") { Codigo = 480 },
-                new Models.TipoDeLogradouro("CHÁCARA") { Codigo = 481 },
-                new Models.TipoDeLogradouro("RAMPA") { Codigo = 482 },
-                new Models.TipoDeLogradouro("PONTA") { Codigo = 483 },
-                new Models.TipoDeLogradouro("VIA DE PEDESTRE") { Codigo = 484 },
-                new Models.TipoDeLogradouro("CONDOMÍNIO") { Codigo = 485 },
-                new Models.TipoDeLogradouro("NÚCLEO HABITACIONAL") { Codigo = 486 },
-                new Models.TipoDeLogradouro("RESIDENCIAL") { Codigo = 487 },
-                new Models.TipoDeLogradouro("CANAL") { Codigo = 495 },
-                new Models.TipoDeLogradouro("BURACO") { Codigo = 496 },
-                new Models.TipoDeLogradouro("MÓDULO") { Codigo = 497 },
-                new Models.TipoDeLogradouro("ESTÂNCIA") { Codigo = 498 },
-                new Models.TipoDeLogradouro("LAGO") { Codigo = 499 },
-                new Models.TipoDeLogradouro("NÚCLEO") { Codigo = 500 },
-                new Models.TipoDeLogradouro("AEROPORTO") { Codigo = 501 },
-                new Models.TipoDeLogradouro("PASSAGEM SUBTERRÂNEA") { Codigo = 502 },
-                new Models.TipoDeLogradouro("COMPLEXO VIÁRIO") { Codigo = 503 },
-                new Models.TipoDeLogradouro("PRAÇA DE ESPORTES") { Codigo = 504 },
-                new Models.TipoDeLogradouro("VIA ELEVADO") { Codigo = 505 },
-                new Models.TipoDeLogradouro("ROTATÓRIA") { Codigo = 506 },
-                new Models.TipoDeLogradouro("1ª TRAVESSA") { Codigo = 507 },
-                new Models.TipoDeLogradouro("2ª TRAVESSA") { Codigo = 508 },
-                new Models.TipoDeLogradouro("3ª TRAVESSA") { Codigo = 509 },
-                new Models.TipoDeLogradouro("4ª TRAVESSA") { Codigo = 510 },
-                new Models.TipoDeLogradouro("5ª TRAVESSA") { Codigo = 511 },
-                new Models.TipoDeLogradouro("6ª TRAVESSA") { Codigo = 512 },
-                new Models.TipoDeLogradouro("7ª TRAVESSA") { Codigo = 513 },
-                new Models.TipoDeLogradouro("8ª TRAVESSA") { Codigo = 514 },
-                new Models.TipoDeLogradouro("9ª TRAVESSA") { Codigo = 515 },
-                new Models.TipoDeLogradouro("10ª TRAVESSA") { Codigo = 516 },
-                new Models.TipoDeLogradouro("11ª TRAVESSA") { Codigo = 517 },
-                new Models.TipoDeLogradouro("12ª TRAVESSA") { Codigo = 518 },
-                new Models.TipoDeLogradouro("13ª TRAVESSA") { Codigo = 519 },
-                new Models.TipoDeLogradouro("14ª TRAVESSA") { Codigo = 520 },
-                new Models.TipoDeLogradouro("15ª TRAVESSA") { Codigo = 521 },
-                new Models.TipoDeLogradouro("16ª TRAVESSA") { Codigo = 522 },
-                new Models.TipoDeLogradouro("1º ALTO") { Codigo = 523 },
-                new Models.TipoDeLogradouro("2º ALTO") { Codigo = 524 },
-                new Models.TipoDeLogradouro("3º ALTO") { Codigo = 525 },
-                new Models.TipoDeLogradouro("4º ALTO") { Codigo = 526 },
-                new Models.TipoDeLogradouro("5º ALTO") { Codigo = 527 },
-                new Models.TipoDeLogradouro("1º BECO") { Codigo = 528 },
-                new Models.TipoDeLogradouro("2º BECO") { Codigo = 529 },
-                new Models.TipoDeLogradouro("3º BECO") { Codigo = 530 },
-                new Models.TipoDeLogradouro("4º BECO") { Codigo = 531 },
-                new Models.TipoDeLogradouro("5º BECO") { Codigo = 532 },
-                new Models.TipoDeLogradouro("1ª PARALELA") { Codigo = 533 },
-                new Models.TipoDeLogradouro("2ª PARALELA") { Codigo = 534 },
-                new Models.TipoDeLogradouro("3ª PARALELA") { Codigo = 535 },
-                new Models.TipoDeLogradouro("4ª PARALELA") { Codigo = 536 },
-                new Models.TipoDeLogradouro("5ª PARALELA") { Codigo = 537 },
-                new Models.TipoDeLogradouro("1ª SUBIDA") { Codigo = 538 },
-                new Models.TipoDeLogradouro("2ª SUBIDA") { Codigo = 539 },
-                new Models.TipoDeLogradouro("3ª SUBIDA") { Codigo = 540 },
-                new Models.TipoDeLogradouro("4ª SUBIDA") { Codigo = 541 },
-                new Models.TipoDeLogradouro("5ª SUBIDA") { Codigo = 542 },
-                new Models.TipoDeLogradouro("6ª SUBIDA") { Codigo = 543 },
-                new Models.TipoDeLogradouro("1ª VILA") { Codigo = 544 },
-                new Models.TipoDeLogradouro("2ª VILA") { Codigo = 545 },
-                new Models.TipoDeLogradouro("3ª VILA") { Codigo = 546 },
-                new Models.TipoDeLogradouro("4ª VILA") { Codigo = 547 },
-                new Models.TipoDeLogradouro("5ª VILA") { Codigo = 548 },
-                new Models.TipoDeLogradouro("1º PARQUE") { Codigo = 549 },
-                new Models.TipoDeLogradouro("2º PARQUE") { Codigo = 550 },
-                new Models.TipoDeLogradouro("3º PARQUE") { Codigo = 551 },
-                new Models.TipoDeLogradouro("1ª RUA") { Codigo = 552 },
-                new Models.TipoDeLogradouro("2ª RUA") { Codigo = 553 },
-                new Models.TipoDeLogradouro("3ª RUA") { Codigo = 554 },
-                new Models.TipoDeLogradouro("4ª RUA") { Codigo = 555 },
-                new Models.TipoDeLogradouro("5ª RUA") { Codigo = 556 },
-                new Models.TipoDeLogradouro("6ª RUA") { Codigo = 557 },
-                new Models.TipoDeLogradouro("7ª RUA") { Codigo = 558 },
-                new Models.TipoDeLogradouro("8ª RUA") { Codigo = 559 },
-                new Models.TipoDeLogradouro("9ª RUA") { Codigo = 560 },
-                new Models.TipoDeLogradouro("10ª RUA") { Codigo = 561 },
-                new Models.TipoDeLogradouro("11ª RUA") { Codigo = 562 },
-                new Models.TipoDeLogradouro("12ª RUA") { Codigo = 563 },
-                new Models.TipoDeLogradouro("ESTACIONAMENTO") { Codigo = 564 },
-                new Models.TipoDeLogradouro("VALA") { Codigo = 565 },
-                new Models.TipoDeLogradouro("RUA DE PEDESTRE") { Codigo = 566 },
-                new Models.TipoDeLogradouro("TÚNEL") { Codigo = 567 },
-                new Models.TipoDeLogradouro("VARIANTE") { Codigo = 568 },
-                new Models.TipoDeLogradouro("RODO ANEL") { Codigo = 569 },
-                new Models.TipoDeLogradouro("TRAVESSA PARTICULAR") { Codigo = 570 },
-                new Models.TipoDeLogradouro("CALÇADA") { Codigo = 571 },
-                new Models.TipoDeLogradouro("VIA DE ACESSO") { Codigo = 572 },
-                new Models.TipoDeLogradouro("ENTRADA PARTICULAR") { Codigo = 573 },
-                new Models.TipoDeLogradouro("ACAMPAMENTO") { Codigo = 645 },
-                new Models.TipoDeLogradouro("VIA EXPRESSA") { Codigo = 646 },
-                new Models.TipoDeLogradouro("ESTRADA MUNICIPAL") { Codigo = 650 },
-                new Models.TipoDeLogradouro("AVENIDA CONTORNO") { Codigo = 651 },
-                new Models.TipoDeLogradouro("ENTRE QUADRA") { Codigo = 652 },
-                new Models.TipoDeLogradouro("RUA DE LIGAÇÃO") { Codigo = 653 },
-                new Models.TipoDeLogradouro("ÁREA ESPECIAL") { Codigo = 654 },
-                new Models.TipoDeLogradouro("1ª AVENIDA") { Codigo = 655 },
-                new Models.TipoDeLogradouro("2ª AVENIDA") { Codigo = 656 },
-                new Models.TipoDeLogradouro("3ª AVENIDA") { Codigo = 657 },
-                new Models.TipoDeLogradouro("4ª AVENIDA") { Codigo = 658 },
-                new Models.TipoDeLogradouro("18ª TRAVESSA") { Codigo = 659 },
-                new Models.TipoDeLogradouro("19ª TRAVESSA") { Codigo = 660 },
-                new Models.TipoDeLogradouro("5ª AVENIDA") { Codigo = 661 },
-                new Models.TipoDeLogradouro("RECREIO") { Codigo = 662 },
-                new Models.TipoDeLogradouro("PARQUE MUNICIPAL") { Codigo = 663 },
-                new Models.TipoDeLogradouro("CONJUNTO MUTIRÃO") { Codigo = 664 },
-                new Models.TipoDeLogradouro("PARQUE RESIDENCIAL") { Codigo = 665 },
-                new Models.TipoDeLogradouro("VIA LOCAL") { Codigo = 666 },
-                new Models.TipoDeLogradouro("ACESSP LOCAL") { Codigo = 667 },
-                new Models.TipoDeLogradouro("VIA COLETORA") { Codigo = 668 },
-                new Models.TipoDeLogradouro("RUA PARTICULAR") { Codigo = 669 },
-                new Models.TipoDeLogradouro("RUA INTEGRAÇÃO") { Codigo = 670 },
-                new Models.TipoDeLogradouro("ESTRADA VELHA") { Codigo = 671 },
-                new Models.TipoDeLogradouro("RUA VELHA") { Codigo = 672 },
-                new Models.TipoDeLogradouro("TRAVESSA VELHA") { Codigo = 673 },
-                new Models.TipoDeLogradouro("ANTIGA ESTRADA") { Codigo = 674 },
-                new Models.TipoDeLogradouro("ESTRADA DE LIGAÇÃO") { Codigo = 675 },
-                new Models.TipoDeLogradouro("ESTRADA ESTADUAL") { Codigo = 676 },
-                new Models.TipoDeLogradouro("AVENIDA MARGINAL") { Codigo = 677 },
-                new Models.TipoDeLogradouro("AVENIDA VELHA") { Codigo = 678 },
-                new Models.TipoDeLogradouro("AVENIDA MARGINAL ESQUERDA") { Codigo = 679 },
-                new Models.TipoDeLogradouro("AVENIDA MARGINAL DIREITA") { Codigo = 680 },
-                new Models.TipoDeLogradouro("ESTRADA PARTICULAR") { Codigo = 681 },
-                new Models.TipoDeLogradouro("ESTRADA ANTIGA") { Codigo = 682 },
-                new Models.TipoDeLogradouro("6ª AVENIDA") { Codigo = 683 },
-                new Models.TipoDeLogradouro("VIA LITORANEA") { Codigo = 685 },
-                new Models.TipoDeLogradouro("CONTORNO") { Codigo = 686 },
-                new Models.TipoDeLogradouro("BLOCOS") { Codigo = 687 },
-                new Models.TipoDeLogradouro("CICLOVIA") { Codigo = 688 },
-                new Models.TipoDeLogradouro("BULEVAR") { Codigo = 689 },
-                new Models.TipoDeLogradouro("ESCADARIA") { Codigo = 690 },
-                new Models.TipoDeLogradouro("PRIMEIRA LADEIRA") { Codigo = 691 },
-                new Models.TipoDeLogradouro("2ª LADEIRA") { Codigo = 692 },
-                new Models.TipoDeLogradouro("3ª LADEIRA") { Codigo = 693 },
-                new Models.TipoDeLogradouro("QUARTA LADEIRA") { Codigo = 694 },
-                new Models.TipoDeLogradouro("QUINTA LADEIRA") { Codigo = 695 },
-                new Models.TipoDeLogradouro("PASSAGEM DE PEDESTRES") { Codigo = 696 },
-                new Models.TipoDeLogradouro("ESTRADA VICINAL") { Codigo = 697 },
-                new Models.TipoDeLogradouro("RUA PROJETADA") { Codigo = 698 },
-                new Models.TipoDeLogradouro("RUA PRINCIPAL") { Codigo = 699 },
-                new Models.TipoDeLogradouro("TERCEIRA AVENIDA") { Codigo = 700 },
-                new Models.TipoDeLogradouro("SEGUNDA AVENIDA") { Codigo = 701 },
-                new Models.TipoDeLogradouro("PASSEIO PÚBLICO") { Codigo = 702 },
-                new Models.TipoDeLogradouro("ENTRE BLOCO") { Codigo = 704 },
-                new Models.TipoDeLogradouro("ENSEADA") { Codigo = 705 },
-                new Models.TipoDeLogradouro("ILHOTA") { Codigo = 706 },
-                new Models.TipoDeLogradouro("VIA DE PEDESTRES") { Codigo = 707 },
-                new Models.TipoDeLogradouro("2ª TRAVESSA DA RODOVIA") { Codigo = 708 },
-                new Models.TipoDeLogradouro("1ª TRAVESSA DA RODOVIA") { Codigo = 709 },
-                new Models.TipoDeLogradouro("ESTRADA INTERMUNICIPAL") { Codigo = 710 },
-                new Models.TipoDeLogradouro("VIA COSTEIRA") { Codigo = 711 },
-                new Models.TipoDeLogradouro("ESTRADA DE SERVIDÃO") { Codigo = 712 },
-                new Models.TipoDeLogradouro("COMUNIDADE") { Codigo = 713 },
-                new Models.TipoDeLogradouro("EIXO INDUSTRIAL") { Codigo = 714 },
-                new Models.TipoDeLogradouro("MERCADO") { Codigo = 715 },
-                new Models.TipoDeLogradouro("EVANGÉLICA") { Codigo = 716 },
-                new Models.TipoDeLogradouro("CAMPUS") { Codigo = 717 },
-                new Models.TipoDeLogradouro("PROJEÇÃO") { Codigo = 718 },
-                new Models.TipoDeLogradouro("NÚCLEO RURAL") { Codigo = 719 },
-                new Models.TipoDeLogradouro("MARGEM") { Codigo = 720 },
-                new Models.TipoDeLogradouro("ÁREA VERDE") { Codigo = 721 },
-                new Models.TipoDeLogradouro("CONDOMÍNIO RESIDENCIAL") { Codigo = 722 },
-                new Models.TipoDeLogradouro("CALÇADÃO") { Codigo = 723 },
-                new Models.TipoDeLogradouro("RUELA") { Codigo = 724 },
-                new Models.TipoDeLogradouro("AVENIDA PERIMETRAL") { Codigo = 725 },
-                new Models.TipoDeLogradouro("VIA PRINCIPAL") { Codigo = 726 },
-                new Models.TipoDeLogradouro("VIA PEDESTRE") { Codigo = 727 },
-                new Models.TipoDeLogradouro("VIA LATERAL") { Codigo = 728 },
-                new Models.TipoDeLogradouro("CAMINHO DE SERVIDÃO") { Codigo = 729 },
-                new Models.TipoDeLogradouro("AVENIDA MARGINAL FORTE") { Codigo = 730 },
-                new Models.TipoDeLogradouro("ESTRADA DE FERRO") { Codigo = 731 },
-                new Models.TipoDeLogradouro("EIXO PRINCIPAL") { Codigo = 732 },
-                new Models.TipoDeLogradouro("EIXO") { Codigo = 733 },
-                new Models.TipoDeLogradouro("OUTEIRO") { Codigo = 734 },
-                new Models.TipoDeLogradouro("ESTRADA NOVA") { Codigo = 735 },
-                new Models.TipoDeLogradouro("CONJUNTO HABITACIONAL") { Codigo = 736 },
-                new Models.TipoDeLogradouro("JARDIM RESIDENCIAL") { Codigo = 737 },
-                new Models.TipoDeLogradouro("ANEL VIÁRIO") { Codigo = 738 },
-                new Models.TipoDeLogradouro("SERVIDÃO DE PASSAGEM") { Codigo = 739 },
-                new Models.TipoDeLogradouro("17ª TRAVESSA") { Codigo = 740 },
-                new Models.TipoDeLogradouro("ANTIGA ESTAÇÃO") { Codigo = 741 },
-                new Models.TipoDeLogradouro("20ª TRAVESSA") { Codigo = 742 },
-                new Models.TipoDeLogradouro("21ª TRAVESSA") { Codigo = 743 },
-                new Models.TipoDeLogradouro("22ª TRAVESSA") { Codigo = 744 },
-                new Models.TipoDeLogradouro("CONJUNTO RESIDENCIAL") { Codigo = 745 },
-                new Models.TipoDeLogradouro("2ª ALAMEDA") { Codigo = 746 },
-                new Models.TipoDeLogradouro("VARIANTE DA ESTRADA") { Codigo = 747 },
-                new Models.TipoDeLogradouro("VIA MARGINAL") { Codigo = 748 },
-                new Models.TipoDeLogradouro("MÓDULO COMERCIAL") { Codigo = 749 },
-                new Models.TipoDeLogradouro("NOVA AVENIDA") { Codigo = 750 },
-                new Models.TipoDeLogradouro("GLEBA") { Codigo = 751 },
-         });
-        }
-    }
-
-    class DAOSituacaoDeMoradia : DAO<Models.SituacaoDeMoradia> {
+    
+    class DAOSituacaoDeMoradia : DAOEnumerador<Models.SituacaoDeMoradia> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1192,7 +871,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOLocalizacaoDaMoradia : DAO<Models.LocalizacaoDaMoradia> {
+    class DAOLocalizacaoDaMoradia : DAOEnumerador<Models.LocalizacaoDaMoradia> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1204,7 +883,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOTipoDeDomicilio : DAO<Models.TipoDeDomicilio> {
+    class DAOTipoDeDomicilio : DAOEnumerador<Models.TipoDeDomicilio> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1218,7 +897,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOTipoDeAcessoAoDomicilio : DAO<Models.TipoDeAcessoAoDomicilio> {
+    class DAOTipoDeAcessoAoDomicilio : DAOEnumerador<Models.TipoDeAcessoAoDomicilio> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1232,7 +911,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOCondicaoDePosseEUsoDaTerra : DAO<Models.CondicaoDePosseEUsoDaTerra> {
+    class DAOCondicaoDePosseEUsoDaTerra : DAOEnumerador<Models.CondicaoDePosseEUsoDaTerra> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1250,7 +929,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOMaterialPredominanteNaConstrucao : DAO<Models.MaterialPredominanteNaConstrucao> {
+    class DAOMaterialPredominanteNaConstrucao : DAOEnumerador<Models.MaterialPredominanteNaConstrucao> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1268,7 +947,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOAbastecimentoDeAgua : DAO<Models.AbastecimentoDeAgua> {
+    class DAOAbastecimentoDeAgua : DAOEnumerador<Models.AbastecimentoDeAgua> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1283,7 +962,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOAguaConsumoDomicilio : DAO<Models.AguaConsumoDomicilio> {
+    class DAOAguaConsumoDomicilio : DAOEnumerador<Models.AguaConsumoDomicilio> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1298,7 +977,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOFormaDeEscoamentoDoBanheiroOuSanitario : DAO<Models.FormaDeEscoamentoDoBanheiroOuSanitario> {
+    class DAOFormaDeEscoamentoDoBanheiroOuSanitario : DAOEnumerador<Models.FormaDeEscoamentoDoBanheiroOuSanitario> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1314,7 +993,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAODestinoDoLixo : DAO<Models.DestinoDoLixo> {
+    class DAODestinoDoLixo : DAOEnumerador<Models.DestinoDoLixo> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1328,7 +1007,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOAnimalNoDomicilio : DAO<Models.AnimalNoDomicilio> {
+    class DAOAnimalNoDomicilio : DAOEnumerador<Models.AnimalNoDomicilio> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1342,7 +1021,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAORendaFamiliar : DAO<Models.RendaFamiliar> {
+    class DAORendaFamiliar : DAOEnumerador<Models.RendaFamiliar> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1359,7 +1038,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOTipoDeImovel : DAO<Models.TipoDeImovel>
+    class DAOTipoDeImovel : DAOEnumerador<Models.TipoDeImovel>
     {
         public override int? CreateTable()
         {
@@ -1385,7 +1064,7 @@ namespace gvn_ab_mobile.DAO {
     }
 
     //Ficha Atendimento Individual
-    class DAOTurno : DAO<Models.Turno> {
+    class DAOTurno : DAOEnumerador<Models.Turno> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1398,7 +1077,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOLocalDeAtendimento : DAO<Models.LocalDeAtendimento> {
+    class DAOLocalDeAtendimento : DAOEnumerador<Models.LocalDeAtendimento> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1418,7 +1097,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOTipoDeAtendimento : DAO<Models.TipoDeAtendimento> {
+    class DAOTipoDeAtendimento : DAOEnumerador<Models.TipoDeAtendimento> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1433,7 +1112,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOModalidadeAD : DAO<Models.ModalidadeAD> {
+    class DAOModalidadeAD : DAOEnumerador<Models.ModalidadeAD> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1447,7 +1126,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAORacionalidadeSaude : DAO<Models.RacionalidadeSaude> {
+    class DAORacionalidadeSaude : DAOEnumerador<Models.RacionalidadeSaude> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1463,7 +1142,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOAleitamentoMaterno : DAO<Models.AleitamentoMaterno> {
+    class DAOAleitamentoMaterno : DAOEnumerador<Models.AleitamentoMaterno> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1477,7 +1156,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAOOrigemAlimentacao : DAO<Models.OrigemAlimentacao> {
+    class DAOOrigemAlimentacao : DAOEnumerador<Models.OrigemAlimentacao> {
         public override int? CreateTable() {
             if (base.TableExists()) return 0;
 
@@ -1492,7 +1171,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAONasfs : DAO<Models.Nasfs>
+    class DAONasfs : DAOEnumerador<Models.Nasfs>
     {
         public override int? CreateTable()
         {
@@ -1650,7 +1329,7 @@ namespace gvn_ab_mobile.DAO {
         }
     }
 
-    class DAODesfecho : DAO<Models.Desfecho>
+    class DAODesfecho : DAOEnumerador<Models.Desfecho>
     {
         public override int? CreateTable()
         {

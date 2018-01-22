@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models {
     public class Ocupacao: Helpers.ObservableObject {

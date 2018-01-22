@@ -29,7 +29,6 @@
                 </StackLayout>
 
                 <StackLayout IsVisible="{Binding IsSituacaoRuaAndIsAcompanhadoPorOutraInstituicao}">
-                    <Label Text="Qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                     <Entry x:Name="OutraInstituicao" Placeholder="Instituições" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.OutraInstituicaoQueAcompanha}">
                         <Entry.Behaviors>
                             <behaviors:EntryLengthBehavior MaxLength="100" />
@@ -43,7 +42,6 @@
                 </StackLayout>
 
                 <StackLayout IsVisible="{Binding IsSituacaoRuaAndVisitsFamiliarFrequentemente}">
-                    <Label Text="Qual é o grau de parentesco:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                     <Entry x:Name="GrauParentescoFamiliarFrequentado" Placeholder="Grau de Parentesco" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.GrauParentescoFamiliarFrequentado}">
                         <Entry.Behaviors>
                             <behaviors:EntryLengthBehavior MaxLength="100" />
@@ -57,7 +55,6 @@
                 </StackLayout>
 
                 <StackLayout IsVisible="{Binding IsSituacaoRuaAndHasAcessoHigienePessoalSituacaoRua}">
-                    <Label Text="Qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                     <controls:SelectMultipleItems x:Name="CodHigienePessoal" Placeholder="Condições de higiene que o cidadão tem acesso."  Items="{Binding HigienePessoal}" SelectedItems="{Binding HigienesSelecionadas}"  >
                         <controls:SelectMultipleItems.Behaviors>
                             <behaviors:ValidatorSelectMultipleItems MinLength="0" MaxLength="4" />
@@ -86,9 +83,9 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <Button Text="Salvar Ficha" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                    <Button Text="SALVAR" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding SalvarFicha}" Controls="CodOrigemAlimentacao|OutraInstituicao|GrauParentescoFamiliarFrequentado|CodHigienePessoal" />
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodOrigemAlimentacao|OutraInstituicao|GrauParentescoFamiliarFrequentado|CodHigienePessoal" />
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>

@@ -34,7 +34,7 @@
                     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
                         <Button Text="sync" BackgroundColor="Transparent" BorderColor="Red" HorizontalOptions="Fill" TextColor="#003264"  VerticalOptions="Center">
                             <Button.Behaviors>
-                                <behaviors:ButtonSubmitBehavior Command="{Binding Sync}" Controls="" />
+                                <behaviors:ButtonSubmitBehavior Command="{Binding Sync}" Controls="Unidade" />
                             </Button.Behaviors>
                         </Button>
                     </StackLayout>

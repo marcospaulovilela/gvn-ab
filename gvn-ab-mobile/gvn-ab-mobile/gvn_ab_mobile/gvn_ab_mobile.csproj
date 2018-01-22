@@ -70,6 +70,7 @@
     <Compile Include="Converters\NegateConverter.cs" />
     <Compile Include="Converters\YesNoConverter.cs" />
     <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\DAOFichaUnicaLotacaoHeader.cs" />
     <Compile Include="DAO\DAOEquipe.cs" />
     <Compile Include="DAO\DAOEnumeradores.cs" />
     <Compile Include="DAO\DAOFichaAtendimentoIndividual.cs" />
@@ -79,6 +80,10 @@
     <Compile Include="DAO\DAOFichaOutrosSia.cs" />
     <Compile Include="DAO\DAOEstabelecimento.cs" />
     <Compile Include="DAO\DAOCbo.cs" />
+    <Compile Include="DAO\DAOLogradouro.cs" />
+    <Compile Include="DAO\DAOTipoLogradouro.cs" />
+    <Compile Include="DAO\DAOUnidadeFederal.cs" />
+    <Compile Include="DAO\DAOMunicipios.cs" />
     <Compile Include="DAO\DAOOcupacao.cs" />
     <Compile Include="DAO\DAOSincronizacaoConfig.cs" />
     <Compile Include="DAO\DAOProfissional.cs" />
@@ -97,11 +102,14 @@
     <Compile Include="Models\EntidadeDescricaoObservacao.cs" />
     <Compile Include="Models\EntidadeEnumerador.cs" />
     <Compile Include="Models\EntidadeExames.cs" />
-    <Compile Include="Models\EntidadeMunicipios.cs" />
     <Compile Include="Models\Enumeradores.cs" />
+    <Compile Include="Models\TipoLogradouro.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Header\FichaUnicaLotacaoHeader.cs" />
     <Compile Include="Models\Equipe.cs" />
+    <Compile Include="Models\Municipio.cs" />
+    <Compile Include="Models\UnidadeFederal.cs" />
+    <Compile Include="Models\Logradouro.cs" />
     <Compile Include="Models\Ocupacao.cs" />
     <Compile Include="Models\Header\FichaLotacaoHeader.cs" />
     <Compile Include="Models\Cbo.cs" />
@@ -112,6 +120,7 @@
     <Compile Include="ViewModels\FichaAtendimentoIndividualViewModel.cs" />
     <Compile Include="ViewModels\FichaCadastroDomiciliarViewModel.cs" />
     <Compile Include="ViewModels\FichaVisitaDomiciliarViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\SincronizacaoConfigViewModel.cs" />
     <Compile Include="ViewModels\FichaCadastroIndividualViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
