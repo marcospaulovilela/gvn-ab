@@ -79,31 +79,25 @@ namespace gvn_ab_mobile.ViewModels {
                 return this.SexoCidadao?.Codigo == 1;
             }
         }
-        public bool IsMulherAndHasIdadeGravida
-        {
-            get
-            {
+        public bool IsMulherAndHasIdadeGravida {
+            get {
                 System.DateTime data1 = DateTime.Now;
                 System.DateTime data2 = this.Ficha.DataNascimentoCidadao;
                 System.TimeSpan dataDiff = data1 - data2;
                 double totalDays = dataDiff.TotalDays;
 
-                return !((this.IsMulher == false) || ((totalDays < (9.0*365)) || (totalDays > (60.0*365))));
+                return !((this.IsMulher == false) || ((totalDays < (9.0 * 365)) || (totalDays > (60.0 * 365))));
             }
         }
 
-        public DateTime PropertyMinimumDate
-        {
-            get
-            {
+        public DateTime PropertyMinimumDate {
+            get {
                 return DateTime.Now.AddYears(-130);
             }
         }
 
-        public DateTime PropertyMinimumDateNaturalizacao
-        {
-            get
-            {
+        public DateTime PropertyMinimumDateNaturalizacao {
+            get {
                 DateTime data = DateTime.Now;
                 int year = data.Year - this.Ficha.DataNascimentoCidadao.Year;
 
@@ -115,8 +109,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private DateTime _dataNascimentoCidadao;
-        public DateTime DataNascimentoCidadao
-        {
+        public DateTime DataNascimentoCidadao {
             get { return this._dataNascimentoCidadao; }
             set {
                 this.Ficha.DataNascimentoCidadao = value;
@@ -737,9 +730,8 @@ namespace gvn_ab_mobile.ViewModels {
             await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
         }
 
-        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync()
-        {
-            await this.Page.Navigation.PushAsync(new Views.AssinaturaTermoRecusa.TermoDeRecusaPage());
+        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
+            await this.MenuPage.Navigation.PushAsync(new Views.AssinaturaTermoRecusa.TermoDeRecusaPage());
         }
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
@@ -758,12 +750,12 @@ namespace gvn_ab_mobile.ViewModels {
 
                 this.Ficha.DoencaCardiaca = this.DoencasCardiacasSelecionadas.Select(o => (Models.DoencaCardiaca)o).ToList();
                 this.Ficha.DoencaRins = this.ProblemasRinsSelecionados.Select(o => (Models.ProblemaRins)o).ToList();
-                this.Ficha.DoencaRespiratoria  = this.DoencasRespiratoriasSelecionadas.Select(o => (Models.DoencaRespiratoria)o).ToList();
+                this.Ficha.DoencaRespiratoria = this.DoencasRespiratoriasSelecionadas.Select(o => (Models.DoencaRespiratoria)o).ToList();
 
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6) {
                 this.IsBusy = true;
-                #pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+#pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
                 Task.Run(async () => {
                     this.Ficha.OrigemAlimentoSituacaoRua = this.OrigensAlimentacaoSelecionadas.Select(o => (Models.OrigemAlimentacao)o).ToList();
                     this.Ficha.HigienePessoalSituacaoRua = this.HigienesSelecionadas.Select(o => (Models.AcessoHigiene)o).ToList();
@@ -789,12 +781,11 @@ namespace gvn_ab_mobile.ViewModels {
                         };
                     };
                 });
-                #pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+#pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
             };
         }
 
-        private async System.Threading.Tasks.Task SalvarFichaAsync()
-        {
+        private async System.Threading.Tasks.Task SalvarFichaAsync() {
             //await this.Page.Navigation.PushAsync(new Views.AssinaturaTermoRecusa.AssinaturaMainPage());
         }
 

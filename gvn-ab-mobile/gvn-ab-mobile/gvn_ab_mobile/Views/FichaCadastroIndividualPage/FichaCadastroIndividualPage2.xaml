@@ -5,6 +5,7 @@
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2"
              xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
              xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
+			 xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Title="Identificação do Cidadão">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
@@ -73,7 +74,7 @@
 
                         <StackLayout >
                             <Label Text="Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                            <DatePicker x:Name="DataNascimento" Date="{Binding Ficha.DataNascimentoCidadao}">
+                            <DatePicker x:Name="DataNascimento" Date="{Binding DataNascimentoCidadao}" MinimumDate="{Binding PropertyMinimumDate}" MaximumDate="{x:Static sys:DateTime.Now}" >
                                 <DatePicker.Behaviors>
                                     <behaviors:ValidatorDatepickerBehavior />
                                 </DatePicker.Behaviors>
@@ -103,11 +104,11 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsRacaCor5}">
                         <Label Text="Etnia:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodEtnia" ItemsSource="{Binding Etnias}" SelectedItem="{Binding Etnia}"  HorizontalOptions="FillAndExpand" Title="Etnia">
-                            <Picker.Behaviors>
-                                <behaviors:ValidatorPickerBehavior />
-                            </Picker.Behaviors>
-                        </Picker>
+                        <controls:PickerSearch  x:Name="CodEtnia" Placeholder="Etnia" Items="{Binding Etnias}" SelectedItem="{Binding Etnia}"  HorizontalOptions="FillAndExpand">
+                            <controls:PickerSearch.Behaviors>
+                                <behaviors:ValidatorPickerSearchBehavior Required="true"/>
+                            </controls:PickerSearch.Behaviors>
+                        </controls:PickerSearch>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
@@ -203,7 +204,7 @@
                     <StackLayout Orientation="Horizontal">
                         <StackLayout IsVisible="{Binding IsNaturalizado}" >
                             <Label Text="Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <DatePicker  Date="{Binding Ficha.DtNaturalizacao}" >
+                            <DatePicker  Date="{Binding Ficha.DtNaturalizacao}" MinimumDate="{Binding PropertyMinimumDateNaturalizacao}" MaximumDate="{x:Static sys:DateTime.Now}" >
                                 <DatePicker.Behaviors>
                                     <behaviors:ValidatorDatepickerBehavior />
                                 </DatePicker.Behaviors>
