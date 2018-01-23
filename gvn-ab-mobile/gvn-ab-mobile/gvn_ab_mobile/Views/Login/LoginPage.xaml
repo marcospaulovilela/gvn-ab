@@ -5,7 +5,7 @@
              x:Class="gvn_ab_mobile.Views.Login.LoginPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout VerticalOptions="FillAndExpand" Padding="15, 50, 15, 100" Spacing="50">
+            <StackLayout VerticalOptions="FillAndExpand" Padding="15, 100, 15, 100" Spacing="50">
                 <StackLayout>
                     <Image Source="logoGoverna.png" />
                     <Label Text="Saude" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" TextColor="#003264" />
@@ -48,15 +48,15 @@
                                 </Entry.Behaviors>
                             </Entry>
                         </Grid>
+                    </StackLayout>
 
-                        <StackLayout Spacing="12" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
-                            <Button Text="Entrar" BackgroundColor="Transparent" TextColor="#003264" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
-                                <Button.Behaviors>
-                                    <behaviors:ButtonSubmitBehavior Command="{Binding Login}" Controls="Usuario|Senha" />
-                                </Button.Behaviors>
-                            </Button>
-                            <Button Text="Sync" IsVisible="True" TextColor="#003264" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" Command="{Binding Sincronizar}" />
-                        </StackLayout>
+                    <StackLayout Spacing="12" HorizontalOptions="Fill" VerticalOptions="End">
+                        <Button Text="Entrar" BackgroundColor="Transparent" BorderWidth="10" BorderColor="#003264" TextColor="#003264" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
+                            <Button.Behaviors>
+                                <behaviors:ButtonSubmitBehavior Command="{Binding Login}" Controls="Usuario|Senha" />
+                            </Button.Behaviors>
+                        </Button>
+                        <Button Text="Sync" IsVisible="True" TextColor="#003264" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" Command="{Binding Sincronizar}" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

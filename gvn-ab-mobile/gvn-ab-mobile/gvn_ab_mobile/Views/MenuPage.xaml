@@ -6,14 +6,15 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand" Padding="10, 15, 10, 0">
-                <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand">
-                    <Label Text="{Binding Profissional.NomProfissional}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#003264" />
-                    <Label Text="{Binding Cbo.NomCbo}" FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#003264" />
-                    <Label Text="{Binding Equipe.DesEquipe}" FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#003264" />
+                <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <Label Text="{Binding Profissional.NomProfissional}" FontSize="25" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#003264" />
+                    <Label Text="{Binding Cbo.NomCbo}" FontSize="20" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#003264" />
+                    <Label Text="{Binding Estabelecimento.DesNomFantasia}" FontSize="20" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#003264" />
+                    <Label Text="{Binding Equipe.DesEquipe}" FontSize="20" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#003264" />
                 </StackLayout>
-                <BoxView HeightRequest=".3" BackgroundColor="#003264"/>
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0, 25, 0, 0" Spacing="50">
-
+                <BoxView HeightRequest="1" BackgroundColor="#003264"/>
+                
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                     <StackLayout  VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="10">
                         <StackLayout Spacing="5" HorizontalOptions="Center" Orientation="Horizontal">
                             <Button Text="Cadastro Individual" WidthRequest="150" HorizontalOptions="CenterAndExpand" ContentLayout="Top,0" IsEnabled="{Binding CboCadastroIndividual}" Image="iconIndividuo" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264"  Clicked="OnCadastroIndividualClicked"  />
@@ -23,15 +24,14 @@
                             <Button HorizontalOptions="Center" WidthRequest="150" Text="Visita Domiciliar" ContentLayout="Top,0" IsEnabled="{Binding CboVisitaDomiciliar}" Image="iconVisita" BackgroundColor="Transparent"  BorderColor="#003264" TextColor="#003264" Clicked="OnVisitaDomiciliarClicked" />
                         </StackLayout>
                     </StackLayout>
-                    <BoxView HeightRequest=".3" BackgroundColor="#003264"/>
-                    <StackLayout Spacing="12" HorizontalOptions="FillAndExpand" VerticalOptions="End" Orientation="Horizontal">
-                        <StackLayout HorizontalOptions="CenterAndExpand">
-                            <Button Text="{Binding SendText}" IsEnabled="{Binding HasFichas}"  WidthRequest="150" ContentLayout="Top,0" Image="iconUpload1" BackgroundColor="Transparent" BorderColor="#003264" TextColor="#003264"/>
-                        </StackLayout>
-                        
-                        <Button Text="Sair" Clicked="OnSairClicked"  WidthRequest="150" HorizontalOptions="CenterAndExpand" ContentLayout="Top,0" Image="iconLogout" BackgroundColor="Transparent" BorderColor="#003264" TextColor="#003264"/>
+                </StackLayout>
+
+                <StackLayout Spacing="12" HorizontalOptions="FillAndExpand" Padding="0, 0, 0, 25" VerticalOptions="End" Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Button Text="{Binding SendText}" IsEnabled="{Binding HasFichas}"  WidthRequest="150" ContentLayout="Top,0" Image="iconUpload1" BackgroundColor="Transparent" BorderColor="#003264" TextColor="#003264"/>
                     </StackLayout>
 
+                    <Button Text="Sair" Clicked="OnSairClicked"  WidthRequest="150" HorizontalOptions="CenterAndExpand" ContentLayout="Top,0" Image="iconLogout" BackgroundColor="Transparent" BorderColor="#003264" TextColor="#003264"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
