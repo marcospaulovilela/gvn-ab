@@ -4,18 +4,22 @@ using System.Collections.Generic;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
 
-namespace gvn_ab_mobile.Models {
-    public class FichaCadastroIndividual : Helpers.ObservableObject {
-        public FichaCadastroIndividual() {
+namespace gvn_ab_mobile.Models
+{
+    public class FichaCadastroIndividual : Helpers.ObservableObject
+    {
+        public FichaCadastroIndividual()
+        {
             this.StatusSituacaoRua = true;
-            this.DataObito = this.DtNaturalizacao= this.DtEntradaBrasil = this.DataNascimentoCidadao = DateTime.Now;
+            this.DataObito = this.DtNaturalizacao = this.DtEntradaBrasil = this.DataNascimentoCidadao = DateTime.Now;
         }
 
 
         //Campo ID - Tipo long
         private long? _id;
         [PrimaryKey, AutoIncrement] //Chave Primária com incremento automático
-        public long? Id {
+        public long? Id
+        {
             get { return this._id; }
             set { SetProperty(ref _id, value); }
         }
@@ -28,7 +32,8 @@ namespace gvn_ab_mobile.Models {
         /// Não deve ser preenchido se o campo statusTeveInternadoem12Meses = false.
         /// </summary>
         [MaxLength(100)]
-        public string DescricaoCausaInternacaoEm12Meses {
+        public string DescricaoCausaInternacaoEm12Meses
+        {
             get { return this._descricaoCausaInternacaoEm12Meses; }
             set { SetProperty(ref _descricaoCausaInternacaoEm12Meses, value); }
         }
@@ -38,7 +43,8 @@ namespace gvn_ab_mobile.Models {
         /// Condição de saúde informada pelo cidadão.
         /// </summary>
         [MaxLength(100)]
-        public string DescricaoOutraCondicao1 {
+        public string DescricaoOutraCondicao1
+        {
             get { return this._descricaoOutraCondicao1; }
             set { SetProperty(ref _descricaoOutraCondicao1, value); }
         }
@@ -48,7 +54,8 @@ namespace gvn_ab_mobile.Models {
         /// Condição de saúde informada pelo cidadão.
         /// </summary>
         [MaxLength(100)]
-        public string DescricaoOutraCondicao2 {
+        public string DescricaoOutraCondicao2
+        {
             get { return this._descricaoOutraCondicao2; }
             set { SetProperty(ref _descricaoOutraCondicao2, value); }
         }
@@ -58,7 +65,8 @@ namespace gvn_ab_mobile.Models {
         /// Condição de saúde informada pelo cidadão.
         /// </summary>
         [MaxLength(100)]
-        public string DescricaoOutraCondicao3 {
+        public string DescricaoOutraCondicao3
+        {
             get { return this._descricaoOutraCondicao3; }
             set { SetProperty(ref _descricaoOutraCondicao3, value); }
         }
@@ -69,7 +77,8 @@ namespace gvn_ab_mobile.Models {
         /// Não deve ser preenchido se o campo statusUsaPlantasMedicinais = false.
         /// </summary>
         [MaxLength(100)]
-        public string DescricaoPlantasMedicinaisUsadas {
+        public string DescricaoPlantasMedicinaisUsadas
+        {
             get { return this._descricaoPlantasMedicinaisUsadas; }
             set { SetProperty(ref _descricaoPlantasMedicinaisUsadas, value); }
         }
@@ -81,7 +90,8 @@ namespace gvn_ab_mobile.Models {
         /// Não deve ser preenchido se o campo statusTeveDoencaCardiaca = false.
         /// </summary>
         [OneToMany, MaxLength(3)]
-        public List<Models.DoencaCardiaca> DoencaCardiaca {
+        public List<Models.DoencaCardiaca> DoencaCardiaca
+        {
             get { return this._doencaCardiaca; }
             set { SetProperty(ref _doencaCardiaca, value); }
         }
@@ -93,7 +103,8 @@ namespace gvn_ab_mobile.Models {
         /// Não deve ser preenchido o campo statusTemDoencaRespiratoria = false.
         /// </summary>
         [OneToMany, MaxLength(4)]
-        public List<Models.DoencaRespiratoria> DoencaRespiratoria {
+        public List<Models.DoencaRespiratoria> DoencaRespiratoria
+        {
             get { return this._doencaRespiratoria; }
             set { SetProperty(ref _doencaRespiratoria, value); }
         }
@@ -104,20 +115,22 @@ namespace gvn_ab_mobile.Models {
         /// Requerido preenchimento de pelo menos um item se o campo statusTemTeveDoencasRins = true;
         ///Não deve ser preenchido se o campo statusTemTeveDoencasRins = false
         /// </summary>
-        [OneToMany, MaxLength(3)] 
-        public List<Models.ProblemaRins> DoencaRins {
+        [OneToMany, MaxLength(3)]
+        public List<Models.ProblemaRins> DoencaRins
+        {
             get { return this._doencaRins; }
             set { SetProperty(ref _doencaRins, value); }
         }
 
-        
+
         private string _maternidadeDeReferencia;
         /// <summary>
         /// Nome da maternidade de referência.
         /// Não pode ser preenchido se o campo statusEhGestante = false.
         /// </summary>
-        [MaxLength(100)] 
-        public string MaternidadeDeReferencia {
+        [MaxLength(100)]
+        public string MaternidadeDeReferencia
+        {
             get { return this._maternidadeDeReferencia; }
             set { SetProperty(ref _maternidadeDeReferencia, value); }
         }
@@ -129,7 +142,8 @@ namespace gvn_ab_mobile.Models {
         /// //Situação referente ao peso corporal.
         /// </summary>
         [OneToOne("SituacaoPesoId")]
-        public Models.ConsideracaoPeso SituacaoPeso {
+        public Models.ConsideracaoPeso SituacaoPeso
+        {
             get { return this._situacaoPeso; }
             set { SetProperty(ref _situacaoPeso, value); }
         }
@@ -138,7 +152,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão faz uso de álcool.
         /// </summary>
-        public bool StatusEhDependenteAlcool {
+        public bool StatusEhDependenteAlcool
+        {
             get { return this._statusEhDependenteAlcool; }
             set { SetProperty(ref _statusEhDependenteAlcool, value); }
         }
@@ -147,7 +162,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão faz uso de outras drogas.
         /// </summary>
-        public bool StatusEhDependenteOutrasDrogas {
+        public bool StatusEhDependenteOutrasDrogas
+        {
             get { return this._statusEhDependenteOutrasDrogas; }
             set { SetProperty(ref _statusEhDependenteOutrasDrogas, value); }
         }
@@ -156,11 +172,12 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão é fumante.
         /// </summary>
-        public bool StatusEhFumante {
+        public bool StatusEhFumante
+        {
             get { return this._statusEhFumante; }
             set { SetProperty(ref _statusEhFumante, value); }
         }
-        
+
         private bool _statusEhGestante;
         /// <summary>
         /// Marcador se o cidadão é gestante.
@@ -168,7 +185,8 @@ namespace gvn_ab_mobile.Models {
         ///Campo sexoCidadao = 0 - Masculino;
         ///Campo dataNascimentoCidadao for menor que 9 anos ou maior que 60 anos a partir da dataAtendimento.
         /// </summary>
-        public bool StatusEhGestante {
+        public bool StatusEhGestante
+        {
             get { return this._statusEhGestante; }
             set { SetProperty(ref _statusEhGestante, value); }
         }
@@ -177,7 +195,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão é acamado.
         /// </summary>
-        public bool StatusEstaAcamado {
+        public bool StatusEstaAcamado
+        {
             get { return this._statusEstaAcamado; }
             set { SetProperty(ref _statusEstaAcamado, value); }
         }
@@ -186,7 +205,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão está domiciliado.
         /// </summary>
-        public bool StatusEstaDomiciliado {
+        public bool StatusEstaDomiciliado
+        {
             get { return this._statusEstaDomiciliado; }
             set { SetProperty(ref _statusEstaDomiciliado, value); }
         }
@@ -195,7 +215,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão tem diabetes.
         /// </summary>
-        public bool StatusTemDiabetes {
+        public bool StatusTemDiabetes
+        {
             get { return this._statusTemDiabetes; }
             set { SetProperty(ref _statusTemDiabetes, value); }
         }
@@ -204,7 +225,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão tem doença respiratoria.
         /// </summary>
-        public bool StatusTemDoencaRespiratoria {
+        public bool StatusTemDoencaRespiratoria
+        {
             get { return this._statusTemDoencaRespiratoria; }
             set { SetProperty(ref _statusTemDoencaRespiratoria, value); }
         }
@@ -213,7 +235,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão tem hanseiase.
         /// </summary>
-        public bool StatusTemHanseniase {
+        public bool StatusTemHanseniase
+        {
             get { return this._statusTemHanseniase; }
             set { SetProperty(ref _statusTemHanseniase, value); }
         }
@@ -222,7 +245,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão tem hipertensão arterial.
         /// </summary>
-        public bool StatusTemHipertensaoArterial {
+        public bool StatusTemHipertensaoArterial
+        {
             get { return this._statusTemHipertensaoArterial; }
             set { SetProperty(ref _statusTemHipertensaoArterial, value); }
         }
@@ -231,7 +255,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão teve cancer.
         /// </summary>
-        public bool StatusTemTeveCancer {
+        public bool StatusTemTeveCancer
+        {
             get { return this._statusTemTeveCancer; }
             set { SetProperty(ref _statusTemTeveCancer, value); }
         }
@@ -240,7 +265,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão teve doença nos rins.
         /// </summary>
-        public bool StatusTemTeveDoencasRins {
+        public bool StatusTemTeveDoencasRins
+        {
             get { return this._statusTemTeveDoencasRins; }
             set { SetProperty(ref _statusTemTeveDoencasRins, value); }
         }
@@ -249,7 +275,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão tem tuberculose.
         /// </summary>
-        public bool StatusTemTuberculose {
+        public bool StatusTemTuberculose
+        {
             get { return this._statusTemTuberculose; }
             set { SetProperty(ref _statusTemTuberculose, value); }
         }
@@ -258,7 +285,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão teve AVC.
         /// </summary>
-        public bool StatusTeveAvcDerrame {
+        public bool StatusTeveAvcDerrame
+        {
             get { return this._statusTeveAvcDerrame; }
             set { SetProperty(ref _statusTeveAvcDerrame, value); }
         }
@@ -267,7 +295,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão teve doenã cardiaca.
         /// </summary>
-        public bool StatusTeveDoencaCardiaca {
+        public bool StatusTeveDoencaCardiaca
+        {
             get { return this._statusTeveDoencaCardiaca; }
             set { SetProperty(ref _statusTeveDoencaCardiaca, value); }
         }
@@ -276,7 +305,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão teve infarto.
         /// </summary>
-        public bool StatusTeveInfarto {
+        public bool StatusTeveInfarto
+        {
             get { return this._statusTeveInfarto; }
             set { SetProperty(ref _statusTeveInfarto, value); }
         }
@@ -285,7 +315,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão estave instado em 12 meses.
         /// </summary>
-        public bool StatusTeveInternadoem12Meses {
+        public bool StatusTeveInternadoem12Meses
+        {
             get { return this._statusTeveInternadoem12Meses; }
             set { SetProperty(ref _statusTeveInternadoem12Meses, value); }
         }
@@ -294,7 +325,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão utiliza outras práticas integrativas complementares.
         /// </summary>
-        public bool StatusUsaOutrasPraticasIntegrativasOuComplementares {
+        public bool StatusUsaOutrasPraticasIntegrativasOuComplementares
+        {
             get { return this._statusUsaOutrasPraticasIntegrativasOuComplementares; }
             set { SetProperty(ref _statusUsaOutrasPraticasIntegrativasOuComplementares, value); }
         }
@@ -303,7 +335,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador se o cidadão utiliza plantas medicinais.
         /// </summary>
-        public bool StatusUsaPlantasMedicinais {
+        public bool StatusUsaPlantasMedicinais
+        {
             get { return this._statusUsaPlantasMedicinais; }
             set { SetProperty(ref _statusUsaPlantasMedicinais, value); }
         }
@@ -312,7 +345,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica se o cidadão teve diagnóstico de problema mental.
         /// </summary>
-        public bool StatusDiagnosticoMental {
+        public bool StatusDiagnosticoMental
+        {
             get { return this._statusDiagnosticoMental; }
             set { SetProperty(ref _statusDiagnosticoMental, value); }
         }
@@ -325,8 +359,9 @@ namespace gvn_ab_mobile.Models {
         /// Não pode ser preenchido se o campo statusSituacaoRua = false;
         /// Não pode ser preenchido se o campo statusVisitaFamiliarFrequentemente = false
         /// </summary>
-        [MaxLength(100)] 
-        public string GrauParentescoFamiliarFrequentado {
+        [MaxLength(100)]
+        public string GrauParentescoFamiliarFrequentado
+        {
             get { return this._grauParentescoFamiliarFrequentado; }
             set { SetProperty(ref _grauParentescoFamiliarFrequentado, value); }
         }
@@ -337,8 +372,9 @@ namespace gvn_ab_mobile.Models {
         /// Não pode ser preenchido se o campo statusSituacaoRua = false;
         /// Requerido preenchimento de pelo menos um item se o campo statusTemAcessoHigienePessoalSituacaoRua = true.
         /// </summary>
-        [OneToMany, MaxLength(4)] 
-        public List<Models.AcessoHigiene> HigienePessoalSituacaoRua {
+        [OneToMany, MaxLength(4)]
+        public List<Models.AcessoHigiene> HigienePessoalSituacaoRua
+        {
             get { return this._higienePessoalSituacaoRua; }
             set { SetProperty(ref _higienePessoalSituacaoRua, value); }
         }
@@ -348,8 +384,9 @@ namespace gvn_ab_mobile.Models {
         /// Origem da alimentação do cidadão em situação de rua.
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
-        [OneToMany, MaxLength(5)] 
-        public List<Models.OrigemAlimentacao> OrigemAlimentoSituacaoRua {
+        [OneToMany, MaxLength(5)]
+        public List<Models.OrigemAlimentacao> OrigemAlimentoSituacaoRua
+        {
             get { return this._origemAlimentoSituacaoRua; }
             set { SetProperty(ref _origemAlimentoSituacaoRua, value); }
         }
@@ -360,8 +397,9 @@ namespace gvn_ab_mobile.Models {
         /// Não pode ser preenchido se o campo statusSituacaoRua = false;
         /// Não pode ser preenchido se o campo statusAcompanhadoPorOutraInstituição = false.
         /// </summary>
-        [MaxLength(100)] 
-        public string OutraInstituicaoQueAcompanha {
+        [MaxLength(100)]
+        public string OutraInstituicaoQueAcompanha
+        {
             get { return this._outraInstituicaoQueAcompanha; }
             set { SetProperty(ref _outraInstituicaoQueAcompanha, value); }
         }
@@ -373,7 +411,8 @@ namespace gvn_ab_mobile.Models {
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
         [OneToOne("QuantidadeAlimentacoesAoDiaSituacaoRuaId")]
-        public Models.QuantasVezesAlimentacao QuantidadeAlimentacoesAoDiaSituacaoRua {
+        public Models.QuantasVezesAlimentacao QuantidadeAlimentacoesAoDiaSituacaoRua
+        {
             get { return this._quantidadeAlimentacoesAoDiaSituacaoRua; }
             set { SetProperty(ref _quantidadeAlimentacoesAoDiaSituacaoRua, value); }
         }
@@ -383,7 +422,8 @@ namespace gvn_ab_mobile.Models {
         /// Marcador que indica se o cidadão é acompanhado por outra instituição.
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
-        public bool StatusAcompanhadoPorOutraInstituicao {
+        public bool StatusAcompanhadoPorOutraInstituicao
+        {
             get { return this._statusAcompanhadoPorOutraInstituicao; }
             set { SetProperty(ref _statusAcompanhadoPorOutraInstituicao, value); }
         }
@@ -393,7 +433,8 @@ namespace gvn_ab_mobile.Models {
         /// Marcador que indica se o cidadão possuiu alguma referência familiar.
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
-        public bool StatusPossuiReferenciaFamiliar {
+        public bool StatusPossuiReferenciaFamiliar
+        {
             get { return this._statusPossuiReferenciaFamiliar; }
             set { SetProperty(ref _statusPossuiReferenciaFamiliar, value); }
         }
@@ -403,7 +444,8 @@ namespace gvn_ab_mobile.Models {
         /// Marcador que indica se o cidadão recebe algum benefício.
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
-        public bool StatusRecebeBeneficio {
+        public bool StatusRecebeBeneficio
+        {
             get { return this._statusRecebeBeneficio; }
             set { SetProperty(ref _statusRecebeBeneficio, value); }
         }
@@ -413,7 +455,8 @@ namespace gvn_ab_mobile.Models {
         /// Marcador que indica se o cidadão está em situação de rua.
         /// </summary>
         [NotNull]
-        public bool StatusSituacaoRua {
+        public bool StatusSituacaoRua
+        {
             get { return this._statusSituacaoRua; }
             set { SetProperty(ref _statusSituacaoRua, value); }
         }
@@ -423,7 +466,8 @@ namespace gvn_ab_mobile.Models {
         /// Marcador que indica se o cidadão tem acesso a higiene pessoal.
         /// Não pode ser preenchido se o campo statusSituacaoRua = false
         /// </summary>
-        public bool StatusTemAcessoHigienePessoalSituacaoRua {
+        public bool StatusTemAcessoHigienePessoalSituacaoRua
+        {
             get { return this._statusTemAcessoHigienePessoalSituacaoRua; }
             set { SetProperty(ref _statusTemAcessoHigienePessoalSituacaoRua, value); }
         }
@@ -433,7 +477,8 @@ namespace gvn_ab_mobile.Models {
         /// Marcador que indica se o cidadão visita algum familiar frequentemente.
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
-        public bool StatusVisitaFamiliarFrequentemente {
+        public bool StatusVisitaFamiliarFrequentemente
+        {
             get { return this._statusVisitaFamiliarFrequentemente; }
             set { SetProperty(ref _statusVisitaFamiliarFrequentemente, value); }
         }
@@ -445,7 +490,8 @@ namespace gvn_ab_mobile.Models {
         /// Não pode ser preenchido se o campo statusSituacaoRua = false.
         /// </summary>
         [OneToOne("TempoSituacaoRuaId")]
-        public Models.TempoSituacaoDeRua TempoSituacaoRua {
+        public Models.TempoSituacaoDeRua TempoSituacaoRua
+        {
             get { return this._tempoSituacaoRua; }
             set { SetProperty(ref _tempoSituacaoRua, value); }
         }
@@ -457,8 +503,9 @@ namespace gvn_ab_mobile.Models {
         /// Nome social do cidadão.
         /// Somente texto e apóstrofo 
         /// </summary>
-        [MaxLength(70)] 
-        public string NomeSocial {
+        [MaxLength(70)]
+        public string NomeSocial
+        {
             get { return this._nomeSocial; }
             set { SetProperty(ref _nomeSocial, value); }
         }
@@ -471,7 +518,8 @@ namespace gvn_ab_mobile.Models {
         /// Só pode ser preenchido se o campo nacionalidadeCidadao = 1 (Brasileiro). Neste caso é de preenchimento obrigatório.
         /// </summary>
         [OneToOne("MunicipioNascimentoId")]
-        public Models.Municipio MunicipioNascimento {
+        public Models.Municipio MunicipioNascimento
+        {
             get { return this.Municipio; }
             set { SetProperty(ref Municipio, value); }
         }
@@ -482,7 +530,8 @@ namespace gvn_ab_mobile.Models {
         /// Não pode ser posterior a dataAtendimento ou mais anterior que 130 anos a partir da dataAtendimento.
         /// </summary>
         [NotNull]
-        public DateTime DataNascimentoCidadao {
+        public DateTime DataNascimentoCidadao
+        {
             get { return this._dataNascimentoCidadao; }
             set { SetProperty(ref _dataNascimentoCidadao, value); }
         }
@@ -491,7 +540,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica que o cidadão desconhece o nome da mãe
         /// </summary>
-        public bool DesconheceNomeMae {
+        public bool DesconheceNomeMae
+        {
             get { return this._desconheceNomeMae; }
             set { SetProperty(ref _desconheceNomeMae, value); }
         }
@@ -501,8 +551,9 @@ namespace gvn_ab_mobile.Models {
         /// E-mail do cidadão.
         /// Requerido seguir o padrão endereco@domínio.extensao
         /// </summary>
-        [MaxLength(100)] 
-        public string EmailCidadao {
+        [MaxLength(100)]
+        public string EmailCidadao
+        {
             get { return this._emailCidadao; }
             set { SetProperty(ref _emailCidadao, value); }
         }
@@ -513,7 +564,8 @@ namespace gvn_ab_mobile.Models {
         /// Indica se o cidadão é brasileiro, naturalizado ou estrangeiro.
         /// </summary>
         [OneToOne("NacionalidadeCidadaoId"), NotNull]
-        public Models.Nacionalidade NacionalidadeCidadao {
+        public Models.Nacionalidade NacionalidadeCidadao
+        {
             get { return this._nacionalidadeCidadao; }
             set { SetProperty(ref _nacionalidadeCidadao, value); }
         }
@@ -524,7 +576,8 @@ namespace gvn_ab_mobile.Models {
         /// As regras de validação de um nome estão descritas em Validar nome.
         /// </summary>
         [NotNull, MaxLength(70)]
-        public string NomeCidadao {
+        public string NomeCidadao
+        {
             get { return this._nomeCidadao; }
             set { SetProperty(ref _nomeCidadao, value); }
         }
@@ -535,8 +588,9 @@ namespace gvn_ab_mobile.Models {
         /// As regras de validação de um nome estão descritas em Validar nome;
         /// Não deve ser preenchido se o campo desconheceNomeMae = true.
         /// </summary>
-        [MaxLength(70)] 
-        public string NomeMaeCidadao {
+        [MaxLength(70)]
+        public string NomeMaeCidadao
+        {
             get { return this._nomeMaeCidadao; }
             set { SetProperty(ref _nomeMaeCidadao, value); }
         }
@@ -547,7 +601,8 @@ namespace gvn_ab_mobile.Models {
         /// Validado por algoritmo.
         /// </summary>
         [MaxLength(15)]
-        public string CnsCidadao {
+        public string CnsCidadao
+        {
             get { return this._cnsCidadao; }
             set { SetProperty(ref _cnsCidadao, value); }
         }
@@ -558,8 +613,9 @@ namespace gvn_ab_mobile.Models {
         /// Validado por algoritmo;
         /// Só pode ser preenchido se o campo statusEhResponsavel = false.
         /// </summary>
-        [MaxLength(15)] 
-        public string CnsResponsavelFamiliar {
+        [MaxLength(15)]
+        public string CnsResponsavelFamiliar
+        {
             get { return this._cnsResponsavelFamiliar; }
             set { SetProperty(ref _cnsResponsavelFamiliar, value); }
         }
@@ -570,7 +626,8 @@ namespace gvn_ab_mobile.Models {
         /// Apenas números.
         /// </summary>
         [MaxLength(11)]
-        public string TelefoneCelular {
+        public string TelefoneCelular
+        {
             get { return this._telefoneCelular; }
             set { SetProperty(ref _telefoneCelular, value); }
         }
@@ -580,8 +637,9 @@ namespace gvn_ab_mobile.Models {
         /// Número do NIS (PIS / PASEP) do cidadão.
         /// Apenas números.
         /// </summary>
-        [MaxLength(11)] 
-        public string NumeroNisPisPasep {
+        [MaxLength(11)]
+        public string NumeroNisPisPasep
+        {
             get { return this._numeroNisPisPasep; }
             set { SetProperty(ref _numeroNisPisPasep, value); }
         }
@@ -594,7 +652,8 @@ namespace gvn_ab_mobile.Models {
         /// Se o campo nacionalidadeCidadao for igual a 1 (Brasileira), este campo deve ser preenchido com 31 (BRASIL).
         /// </summary>
         [OneToOne("PaisNascimentoId")]
-        public Models.Pais PaisNascimento {
+        public Models.Pais PaisNascimento
+        {
             get { return this._paisNascimento; }
             set { SetProperty(ref _paisNascimento, value); }
         }
@@ -604,8 +663,9 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Raça / cor do cidadão.
         /// </summary>
-        [OneToOne("RacaCorCidadaoId"), NotNull] 
-        public Models.RacaCor RacaCorCidadao {
+        [OneToOne("RacaCorCidadaoId"), NotNull]
+        public Models.RacaCor RacaCorCidadao
+        {
             get { return this._racaCorCidadao; }
             set { SetProperty(ref _racaCorCidadao, value); }
         }
@@ -616,7 +676,8 @@ namespace gvn_ab_mobile.Models {
         /// Sexo do cidadão.
         /// </summary>
         [OneToOne("SexoCidadaoId"), NotNull]
-        public Models.Sexo SexoCidadao {
+        public Models.Sexo SexoCidadao
+        {
             get { return this._sexoCidadao; }
             set { SetProperty(ref _sexoCidadao, value); }
         }
@@ -625,7 +686,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica se o cidadão é responsável familiar.
         /// </summary>
-        public bool StatusEhResponsavel {
+        public bool StatusEhResponsavel
+        {
             get { return this._statusEhResponsavel; }
             set { SetProperty(ref _statusEhResponsavel, value); }
         }
@@ -638,7 +700,8 @@ namespace gvn_ab_mobile.Models {
         /// Só deve ser preenchido se o campo racaCorCidadao = 5. Neste caso o preenchimento é obrigatório.
         /// </summary>
         [OneToOne("EtniaId")]
-        public Models.Etnia Etnia {
+        public Models.Etnia Etnia
+        {
             get { return this._etnia; }
             set { SetProperty(ref _etnia, value); }
         }
@@ -650,7 +713,8 @@ namespace gvn_ab_mobile.Models {
         /// Não deve ser preenchido se o campo desconheceNomePai = true.Caso contrário, o preenchimento é obrigatório
         /// </summary>
         [MaxLength(70)]
-        public string NomePaiCidadao {
+        public string NomePaiCidadao
+        {
             get { return this._nomePaiCidadao; }
             set { SetProperty(ref _nomePaiCidadao, value); }
         }
@@ -659,7 +723,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica que o cidadão desconhece o nome do pai.
         /// </summary>
-        public bool DesconheceNomePai {
+        public bool DesconheceNomePai
+        {
             get { return this._desconheceNomePai; }
             set { SetProperty(ref _desconheceNomePai, value); }
         }
@@ -671,7 +736,8 @@ namespace gvn_ab_mobile.Models {
         /// Não pode ser posterior a dataAtendimento;
         /// Não pode ser anterior a dataNascimentoCidadao.
         /// </summary>
-        public DateTime? DtNaturalizacao {
+        public DateTime? DtNaturalizacao
+        {
             get { return this._dtNaturalizacao; }
             set { SetProperty(ref _dtNaturalizacao, value); }
         }
@@ -681,8 +747,9 @@ namespace gvn_ab_mobile.Models {
         /// Portaria de naturalização do cidadão.
         /// Só deve ser preenchido se o campo nacionalidadeCidadao = 2. Neste caso o preenchimento é obrigatório.
         /// </summary>
-        [MaxLength(16)] 
-        public string PortariaNaturalizacao {
+        [MaxLength(16)]
+        public string PortariaNaturalizacao
+        {
             get { return this._portariaNaturalizacao; }
             set { SetProperty(ref _portariaNaturalizacao, value); }
         }
@@ -694,7 +761,8 @@ namespace gvn_ab_mobile.Models {
         /// Não pode ser posterior a dataAtendimento;
         /// Não pode ser anterior a dataNascimentoCidadao.
         /// </summary>
-        public DateTime? DtEntradaBrasil {
+        public DateTime? DtEntradaBrasil
+        {
             get { return this._dtEntradaBrasil; }
             set { SetProperty(ref _dtEntradaBrasil, value); }
         }
@@ -705,7 +773,8 @@ namespace gvn_ab_mobile.Models {
         /// Não deve ser preenchido se o campo stForaArea = true. Caso contrário, o preenchimento é obrigatório.
         /// </summary>
         [MaxLength(2)]
-        public string Microarea {
+        public string Microarea
+        {
             get { return this._microarea; }
             set { SetProperty(ref _microarea, value); }
         }
@@ -714,7 +783,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica que o cidadão está fora da área.
         /// </summary>
-        public bool StForaArea {
+        public bool StForaArea
+        {
             get { return this._stForaArea; }
             set { SetProperty(ref _stForaArea, value); }
         }
@@ -727,8 +797,9 @@ namespace gvn_ab_mobile.Models {
         /// Requerido preenchimento de pelo menos um item se o campo statusTemAlgumaDeficiencia = true;
         /// Não deve ser preenchido se o campo statusTemAlgumaDeficiencia = false.
         /// </summary>
-        [OneToMany, MaxLength(5)] 
-        public List<Models.DeficienciaCidadao> DeficienciasCidadao {
+        [OneToMany, MaxLength(5)]
+        public List<Models.DeficienciaCidadao> DeficienciasCidadao
+        {
             get { return this._deficienciasCidadao; }
             set { SetProperty(ref _deficienciasCidadao, value); }
         }
@@ -739,7 +810,8 @@ namespace gvn_ab_mobile.Models {
         /// Curso mais elevado que o cidadão frequenta ou frequentou.
         /// </summary>
         [OneToOne("GrauInstrucaoCidadaoId")]
-        public Models.CursoMaisElevado GrauInstrucaoCidadao {
+        public Models.CursoMaisElevado GrauInstrucaoCidadao
+        {
             get { return this._grauInstrucaoCidadao; }
             set { SetProperty(ref _grauInstrucaoCidadao, value); }
         }
@@ -751,7 +823,8 @@ namespace gvn_ab_mobile.Models {
         /// Deve ser um código de CBO válido.
         /// </summary>
         [OneToOne("OcupacaoId")]
-        public Models.Ocupacao Ocupacao{
+        public Models.Ocupacao Ocupacao
+        {
             get { return this.ocupacao; }
             set { SetProperty(ref ocupacao, value); }
         }
@@ -763,7 +836,8 @@ namespace gvn_ab_mobile.Models {
         /// Não pode ser preenchido se o campo statusDesejaInformarOrientacaoSexual = false
         /// </summary>
         [OneToOne("OrientacaoSexualCidadaoId")]
-        public Models.OrientacaoSexual OrientacaoSexualCidadao {
+        public Models.OrientacaoSexual OrientacaoSexualCidadao
+        {
             get { return this._orientacaoSexualCidadao; }
             set { SetProperty(ref _orientacaoSexualCidadao, value); }
         }
@@ -773,8 +847,9 @@ namespace gvn_ab_mobile.Models {
         /// Nome da comunidade tradicional que o cidadão pertence.
         /// Não deve ser preenchido se o campo statusMembroPovoComunidadeTradicional = false.
         /// </summary>
-        [MaxLength(100)] 
-        public string PovoComunidadeTradicional {
+        [MaxLength(100)]
+        public string PovoComunidadeTradicional
+        {
             get { return this._povoComunidadeTradicional; }
             set { SetProperty(ref _povoComunidadeTradicional, value); }
         }
@@ -786,7 +861,8 @@ namespace gvn_ab_mobile.Models {
         /// Só pode ser preenchido se o campo statusEhResponsavel = false.
         /// </summary>
         [OneToOne("RelacaoParentescoCidadaoId")]
-        public Models.RelacaoParentesco RelacaoParentescoCidadao {
+        public Models.RelacaoParentesco RelacaoParentescoCidadao
+        {
             get { return this._relacaoParentescoCidadao; }
             set { SetProperty(ref _relacaoParentescoCidadao, value); }
         }
@@ -797,7 +873,8 @@ namespace gvn_ab_mobile.Models {
         /// Código da situação do cidadão no mercado de trabalho.
         /// </summary>
         [OneToOne("SituacaoMercadoTrabalhoCidadaoId")]
-        public Models.SituacaoMercadoTrabalho SituacaoMercadoTrabalhoCidadao {
+        public Models.SituacaoMercadoTrabalho SituacaoMercadoTrabalhoCidadao
+        {
             get { return this._situacaoMercadoTrabalhoCidadao; }
             set { SetProperty(ref _situacaoMercadoTrabalhoCidadao, value); }
         }
@@ -806,16 +883,18 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica se o cidadão deseja informar sua orientação sexual.
         /// </summary>
-        public bool StatusDesejaInformarOrientacaoSexual {
+        public bool StatusDesejaInformarOrientacaoSexual
+        {
             get { return this._statusDesejaInformarOrientacaoSexual; }
             set { SetProperty(ref _statusDesejaInformarOrientacaoSexual, value); }
         }
- 
+
         private bool _statusFrequentaBenzedeira;
         /// <summary>
         /// Marcador que indica se o cidadão frequenta cuidador tradicional.
         /// </summary>
-        public bool StatusFrequentaBenzedeira {
+        public bool StatusFrequentaBenzedeira
+        {
             get { return this._statusFrequentaBenzedeira; }
             set { SetProperty(ref _statusFrequentaBenzedeira, value); }
         }
@@ -825,7 +904,8 @@ namespace gvn_ab_mobile.Models {
         /// Marcador que indica se o cidadão frequenta escola ou creche.
         /// </summary>
         [NotNull]
-        public bool StatusFrequentaEscola {
+        public bool StatusFrequentaEscola
+        {
             get { return this._statusFrequentaEscola; }
             set { SetProperty(ref _statusFrequentaEscola, value); }
         }
@@ -834,7 +914,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica se o cidadão é membro de um povo ou comunidade tradicional.
         /// </summary>
-        public bool StatusMembroPovoComunidadeTradicional {
+        public bool StatusMembroPovoComunidadeTradicional
+        {
             get { return this._statusMembroPovoComunidadeTradicional; }
             set { SetProperty(ref _statusMembroPovoComunidadeTradicional, value); }
         }
@@ -843,7 +924,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica se o cidadão participa de algum grupo comunitário.
         /// </summary>
-        public bool StatusParticipaGrupoComunitario {
+        public bool StatusParticipaGrupoComunitario
+        {
             get { return this._statusParticipaGrupoComunitario; }
             set { SetProperty(ref _statusParticipaGrupoComunitario, value); }
         }
@@ -852,7 +934,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica se o cidadão possui plano de saúde privado.
         /// </summary>
-        public bool StatusPossuiPlanoSaudePrivado {
+        public bool StatusPossuiPlanoSaudePrivado
+        {
             get { return this._statusPossuiPlanoSaudePrivado; }
             set { SetProperty(ref _statusPossuiPlanoSaudePrivado, value); }
         }
@@ -862,7 +945,8 @@ namespace gvn_ab_mobile.Models {
         /// Marcador que indica se cidadão tem alguma deficiência.
         /// </summary>
         [NotNull]
-        public bool StatusTemAlgumaDeficiencia {
+        public bool StatusTemAlgumaDeficiencia
+        {
             get { return this._statusTemAlgumaDeficiencia; }
             set { SetProperty(ref _statusTemAlgumaDeficiencia, value); }
         }
@@ -874,7 +958,8 @@ namespace gvn_ab_mobile.Models {
         /// Não pode ser preenchido se o campo statusDesejaInformarIdentidadeGenero = false.
         /// </summary>
         [OneToOne("IdentidadeGeneroCidadaoId")]
-        public Models.IdentidadeGeneroCidadao IdentidadeGeneroCidadao {
+        public Models.IdentidadeGeneroCidadao IdentidadeGeneroCidadao
+        {
             get { return this._identidadeGeneroCidadao; }
             set { SetProperty(ref _identidadeGeneroCidadao, value); }
         }
@@ -883,7 +968,8 @@ namespace gvn_ab_mobile.Models {
         /// <summary>
         /// Marcador que indica se o cidadão deseja informar sua identidade de gênero.
         /// </summary>
-        public bool StatusDesejaInformarIdentidadeGenero {
+        public bool StatusDesejaInformarIdentidadeGenero
+        {
             get { return this._statusDesejaInformarIdentidadeGenero; }
             set { SetProperty(ref _statusDesejaInformarIdentidadeGenero, value); }
         }
@@ -893,8 +979,9 @@ namespace gvn_ab_mobile.Models {
         /// Código do responsável por crianças de até 9 anos.
         /// Não pode ser preenchido se a dataNascimentoCidadao for anterior ou igual a 10 anos a partir da dataAtendimento.
         /// </summary>
-        [OneToMany, MaxLength(6)] 
-        public List<Models.ResponsavelCrianca> ResponsavelPorCrianca {
+        [OneToMany, MaxLength(6)]
+        public List<Models.ResponsavelCrianca> ResponsavelPorCrianca
+        {
             get { return this._responsavelPorCrianca; }
             set { SetProperty(ref _responsavelPorCrianca, value); }
         }
@@ -907,7 +994,8 @@ namespace gvn_ab_mobile.Models {
         /// Motivo da saída do cidadão do cadastro.
         /// </summary>
         [OneToOne("MotivoSaidaCidadaoId")]
-        public Models.MotivoSaida MotivoSaidaCidadao {
+        public Models.MotivoSaida MotivoSaidaCidadao
+        {
             get { return this._motivoSaidaCidadao; }
             set { SetProperty(ref _motivoSaidaCidadao, value); }
         }
@@ -917,7 +1005,8 @@ namespace gvn_ab_mobile.Models {
         /// Dataa de óbito do cidadão no formato epoch time.
         /// Só pode ser preenchido se o campo motivoSaidaCidadao = 135. Neste caso o preenchimento é obrigatório.
         /// </summary>
-        public DateTime? DataObito {
+        public DateTime? DataObito
+        {
             get { return this._dataObito; }
             set { SetProperty(ref _dataObito, value); }
         }
@@ -928,7 +1017,8 @@ namespace gvn_ab_mobile.Models {
         /// Só pode ser preenchido se o campo motivoSaidaCidadao = 135.
         /// </summary>
         [MaxLength(9)]
-        public string NumeroDO {
+        public string NumeroDO
+        {
             get { return this._numeroDO; }
             set { SetProperty(ref _numeroDO, value); }
         }
@@ -939,17 +1029,19 @@ namespace gvn_ab_mobile.Models {
         /// Marcador que indica se o termo de recusa foi assinalado.
         /// </summary>
         [NotNull]
-        public bool StatusTermoRecusaCadastroIndividualAtencaoBasica {
+        public bool StatusTermoRecusaCadastroIndividualAtencaoBasica
+        {
             get { return this._statusTermoRecusaCadastroIndividualAtencaoBasica; }
             set { SetProperty(ref _statusTermoRecusaCadastroIndividualAtencaoBasica, value); }
         }
 
-        private bool _fichaAtualizada; 
+        private bool _fichaAtualizada;
         /// <summary>
         /// 
         /// </summary>
         [NotNull]
-        public bool FichaAtualizada {
+        public bool FichaAtualizada
+        {
             get { return this._fichaAtualizada; }
             set { SetProperty(ref _fichaAtualizada, value); }
         }
@@ -966,7 +1058,8 @@ namespace gvn_ab_mobile.Models {
         /// É recomendado concatenar o CNES na frente do UUID, de modo que os 7 dígitos (CNES) + 1 de hífen somados aos 36 (32 caracteres + 4 hífen) do UUID são a limitação de 44 bytes do campo. Formato canônico.
         /// </summary>
         [MaxLength(44)]
-        public string Uuid {
+        public string Uuid
+        {
             get { return this._uuid; }
             set { SetProperty(ref _uuid, value); }
         }
@@ -977,7 +1070,8 @@ namespace gvn_ab_mobile.Models {
         ///  Se for uma ficha de atualização, deve ser preenchido com o UUID da ficha que deu origem ao registro. Se for a ficha de cadastro, este campo deve ser igual ao campo uuid.
         /// </summary>
         [MaxLength(44)]
-        public string UuidFichaOriginadora {
+        public string UuidFichaOriginadora
+        {
             get { return this._uuidFichaOriginadora; }
             set { SetProperty(ref _uuidFichaOriginadora, value); }
         }
@@ -985,7 +1079,8 @@ namespace gvn_ab_mobile.Models {
         public long? HeaderId { get; set; }
         private FichaUnicaLotacaoHeader _header;
         [OneToOne("HeaderId")]
-        public FichaUnicaLotacaoHeader Header {
+        public FichaUnicaLotacaoHeader Header
+        {
             get { return this._header; }
             set { SetProperty(ref _header, value); }
         }

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:gvn_ab_mobile.Converters"
+             x:Class="gvn_ab_mobile.Views.AssinaturaTermoRecusa.ConfirmacaoPage"
+             Title="Confirmação dos dados inseridos:"
+             Padding="12">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:YesNoConverter x:Key="YesNo" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid ColumnSpacing="12" RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- contents -->
+        <ScrollView Grid.ColumnSpan="2">
+            <StackLayout Spacing="12">
+
+                <Label Text="Confirme as informações abaixo:"
+                       LineBreakMode="WordWrap" />
+
+                <Label Text="Nome Completo do Cidadão:" Margin="0,0,0,-6" />
+                <Label Text="{Binding TermoDeRecusa.NomeCompletoCidadao}" FontAttributes="Bold" />
+
+                <Label Text="RG do Cidadão:" Margin="0,0,0,-6" />
+                <Label Text="{Binding TermoDeRecusa.RGCidadao}" FontAttributes="Bold" />
+
+                <Label Text="Signature:" Margin="0,0,0,-6" />
+                <Image Source="{Binding SignatureImage}" HorizontalOptions="Start" Margin="0,0,0,-6" />
+                <Label Text="{Binding SignatureSize}" FontAttributes="Italic" />
+
+                
+
+            </StackLayout>
+        </ScrollView>
+
+        <!-- navigation -->
+        <Button Text="&lt; Voltar" Clicked="OnBackClicked"
+                Grid.Row="1" Grid.Column="0" />
+        <Button Text="Confirmar &gt;" Clicked="OnNextClicked"
+                Grid.Row="1" Grid.Column="1" />
+
+    </Grid>
+
+</ContentPage>

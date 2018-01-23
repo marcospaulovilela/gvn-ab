@@ -171,7 +171,7 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
                     <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" />
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodMunicipio|CodCep|CodUF|CodBairro|CodTipoLogradouro|NomeLogradouro|Numero|Complemento|PtoReferencia|Microarea|CodTipoImovel|NumTelefoneResidencia|NumTelefoneContato" />
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>
