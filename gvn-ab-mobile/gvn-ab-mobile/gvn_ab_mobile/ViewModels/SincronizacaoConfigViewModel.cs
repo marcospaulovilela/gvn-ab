@@ -105,7 +105,6 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial()) { DAOFichaCadastroDomiciliar.CreateTable(); }
             using (DAO.DAOFichaVisitaDomiciliar DAOFichaVisitaDomiciliar = new DAO.DAOFichaVisitaDomiciliar()) { DAOFichaVisitaDomiciliar.CreateTable(); }
             using (DAO.DAOFichaFamilia DAOFichaFamilia = new DAO.DAOFichaFamilia()) { DAOFichaFamilia.CreateTable(); }
-            using (DAO.DAOTermoDeRecusa DAOTermoDeRecusa = new DAO.DAOTermoDeRecusa()) { DAOTermoDeRecusa.CreateTable(); }
 
         }
 

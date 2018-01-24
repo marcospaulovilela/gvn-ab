@@ -9,7 +9,7 @@ namespace gvn_ab_mobile {
         public App() {
             InitializeComponent();
 
-            RestartWizard();
+          //  RestartWizard();
 
             SetMainPage();
         }
@@ -20,7 +20,7 @@ namespace gvn_ab_mobile {
             };
         }
 
-        private Models.AssinaturaTermoRecusa.TermoDeRecusaModel termoDeRecusa;
+        /*private Models.AssinaturaTermoRecusa.TermoDeRecusaModel termoDeRecusa;
         public Models.AssinaturaTermoRecusa.TermoDeRecusaModel TermoDeRecusa => termoDeRecusa;
 
         public static new App Current => ((App)Application.Current);
@@ -34,6 +34,6 @@ namespace gvn_ab_mobile {
         public void CompleteWizard()
         {
             MainPage = new NavigationPage(new Views.Login.LoginPage());
-        }
+        }*/
     }
 }

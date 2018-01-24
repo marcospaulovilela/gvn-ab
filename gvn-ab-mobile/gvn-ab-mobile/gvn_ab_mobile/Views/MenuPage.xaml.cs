@@ -17,14 +17,12 @@ namespace gvn_ab_mobile.Views {
             using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual())
             using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial())
             using (DAO.DAOFichaVisitaDomiciliar DAOFichaVisitaDomiciliar = new DAO.DAOFichaVisitaDomiciliar())
-            using (DAO.DAOTermoDeRecusa DAOTermoDeRecusa = new DAO.DAOTermoDeRecusa())
             {
                 var FichasCadastroIndividual = DAOFichaCadastroIndividual.Select();
                 var FichasCadastroDomiciliar = DAOFichaCadastroDomiciliar.Select();
                 var FichasVisitaDomociliar = DAOFichaVisitaDomiciliar.Select();
-                var FichasTermoDeRecusa = DAOTermoDeRecusa.Select();
 
-                var nFichas = FichasCadastroIndividual.Count + FichasCadastroDomiciliar.Count + FichasVisitaDomociliar.Count + FichasTermoDeRecusa.Count;
+                var nFichas = FichasCadastroIndividual.Count + FichasCadastroDomiciliar.Count + FichasVisitaDomociliar.Count;
 
                 if (this.ViewModel.HasFichas = nFichas > 0)
                 {
