@@ -32,9 +32,7 @@
         </ScrollView>
 
         <!-- navigation -->
-        <Button Text="&lt; Voltar" Clicked="OnBackClicked"
-                Grid.Row="1" Grid.Column="0" />
-        <Button Text="Continuar &gt;" Clicked="OnNextClicked"
+        <Button Text="Continuar &gt;" Command="{Binding Continuar}"
                 Grid.Row="1" Grid.Column="1" />
 
     </Grid>

@@ -14,14 +14,14 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AssinaturaPage : ContentPage
     {
-        public AssinaturaPage()
+        ViewModels.TermoDeRecusaViewModel viewModel;
+
+        public AssinaturaPage(ViewModels.TermoDeRecusaViewModel viewModel)
         {
             InitializeComponent();
 
-            BindingContext = this;
+            this.BindingContext = this.viewModel = viewModel;
         }
-
-        public Models.AssinaturaTermoRecusa.TermoDeRecusaModel TermoDeRecusa => App.Current.TermoDeRecusa;
 
         protected override void OnAppearing()
         {
@@ -30,16 +30,21 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
             RestoreSignature();
         }
 
-        private void OnBackClicked(object sender, EventArgs e)
+        private void RestoreSignature()
         {
-            // don't save picture on back
-            SaveSignatureAsync(false);
+            // just to make sure
+            signaturePad.Clear();
 
-            Navigation.PopAsync();
+            // load the saved signature
+            if (this.viewModel.SignaturePoints != null)
+            {
+                signaturePad.Points = this.viewModel.SignaturePoints;
+            }
         }
 
-        private async void OnNextClicked(object sender, EventArgs e)
+        private async void OnContinuarClicked()
         {
+
             if (signaturePad.IsBlank)
             {
                 await DisplayAlert("Sem Assinatura", "Nenhuma assinatura detectada. Por favor, tenha certeza de que assinou acima da linha.", "OK");
@@ -49,38 +54,22 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
             // save all on next
             await SaveSignatureAsync(true);
 
-            //await StreamToBase64Async();
+            await StreamToBase64Async();
 
-            await Navigation.PushAsync(new ConfirmacaoPage());
-        }
-
-        private void RestoreSignature()
-        {
-            var pd = App.Current.TermoDeRecusa;
-
-            // just to make sure
-            signaturePad.Clear();
-
-            // load the saved signature
-            if (pd.SignaturePoints != null)
-            {
-                signaturePad.Points = pd.SignaturePoints;
-            }
+            await this.viewModel.SalvarTermoAsync();
         }
 
         private async Task SaveSignatureAsync(bool saveImage)
         {
             IsBusy = true;
 
-            var pd = App.Current.TermoDeRecusa;
-
             // save the signature points
-            pd.SignaturePoints = signaturePad.Points.ToList();
+            this.viewModel.SignaturePoints = signaturePad.Points.ToList();
 
             if (saveImage)
             {
                 // save the signature image (encoded as .png)
-                pd.SignatureImage = await signaturePad.GetImageStreamAsync(SignatureImageFormat.Png, new ImageConstructionSettings
+                this.viewModel.SignatureImage = await signaturePad.GetImageStreamAsync(SignatureImageFormat.Png, new ImageConstructionSettings
                 {
                     BackgroundColor = Color.Transparent,
                     ShouldCrop = true,
@@ -98,7 +87,7 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
 
             var pd = App.Current.TermoDeRecusa;
 
-            Stream InputStream = pd.SignatureImage;           
+            Stream InputStream = this.viewModel.SignatureImage;
             byte[] result;
 
             using (var streamReader = new MemoryStream())
@@ -111,15 +100,10 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
 
             string base64 = Convert.ToBase64String(result);
 
-            pd.SignatureStream = base64;
+            pd.AssinaturaBase64 = base64;
 
         }
 
-        public string NomeRG => $"{TermoDeRecusa.NomeCompletoCidadao}, portador(a) do RG nº {TermoDeRecusa.RGCidadao}".Trim();
-
-        private void OnRestartClicked(object sender, EventArgs e)
-        {
-            App.Current.RestartWizard();
-        }
     }
+
 }

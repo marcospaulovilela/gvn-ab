@@ -36,6 +36,9 @@ namespace gvn_ab_mobile.Models
         [ForeignKey(typeof(FichaCadastroIndividual))]
         public long? FichaCadastroIndividualId { get; set; }
 
+        [ForeignKey(typeof(FichaCadastroDomiciliarTerritorial))]
+        public long? FichaCadastroDomiciliarTerritorialId { get; set; }
+
         public override string ToString()
         {
             return $"{this.Descricao}";

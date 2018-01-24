@@ -25,7 +25,7 @@
 
                     <StackLayout>
                         <Label Text="Existem outros profissionais de saúde vinculados à Instituição (não inclui profissionais da rede pública de saúde):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Switch HorizontalOptions="Start"/>
+                        <Switch IsToggled="{Binding Ficha.StOutrosProfissionaisVinculados}" HorizontalOptions="Start"/>
                     </StackLayout>
 
                 </StackLayout>

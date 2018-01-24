@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using SQLite;
 using SQLiteNetExtensions.Attributes;
@@ -7,6 +8,11 @@ namespace gvn_ab_mobile.Models
 {
     public class FichaCadastroDomiciliarTerritorial : Helpers.ObservableObject
     {
+
+        public FichaCadastroDomiciliarTerritorial()
+        {
+
+        }
 
         //Campo ID - Tipo long
         private long? _id;
@@ -36,9 +42,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo animaisNoDomicilio - Tipo List<Long>
-        private List<long> _animaisNoDomicilio; //Condicional
-        [MaxLength(4)] //Máximo 4 códigos
-        public List<long> AnimaisNoDomicilio
+        private List<Models.AnimalNoDomicilio> _animaisNoDomicilio; //Condicional
+        [OneToMany(CascadeOperations = CascadeOperation.All), MaxLength(4)] //Máximo 4 códigos
+        public List<Models.AnimalNoDomicilio> AnimaisNoDomicilio
         {
             get { return this._animaisNoDomicilio; }
             set { SetProperty(ref _animaisNoDomicilio, value); }
@@ -62,17 +68,13 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo tpCdsOrigem - Tipo Integer
-        private int _tpCdsOrigem; //Obrigatório
+        //Obrigatório
         [NotNull, MaxLength(1)] //Mínimo 1; Máximo 1 dígito
-        public int TpCdsOrigem
-        {
-            get { return this._tpCdsOrigem; }
-            set { SetProperty(ref _tpCdsOrigem, value); }
-        }
+        public int TpCdsOrigem { get; } = 3;
 
         //Campo uuid - Tipo string
         private string _uuid; //Obrigatório
-        [NotNull, MaxLength(44)] //Mínimo 36 caracteres; Máximo 44 caracteres
+        [MaxLength(44)] //Mínimo 36 caracteres; Máximo 44 caracteres
         public string Uuid
         {
             get { return this._uuid; }
@@ -81,7 +83,7 @@ namespace gvn_ab_mobile.Models
 
         //Campo uuidFichaOriginadora - Tipo string
         private string _uuidFichaOriginadora; //Obrigatório
-        [NotNull, MaxLength(44)] //Mínimo 36 caracteres; Máximo 44 caracteres
+        [MaxLength(44)] //Mínimo 36 caracteres; Máximo 44 caracteres
         public string UuidFichaOriginadora
         {
             get { return this._uuidFichaOriginadora; }
@@ -90,8 +92,9 @@ namespace gvn_ab_mobile.Models
 
 
         //Campo tipoDeImovel - Tipo long
+        public long? TipoDeImovelId { get; set; }
         private Models.TipoDeImovel _tipoDeImovel; //Obrigatório
-        [NotNull]
+        [OneToOne("TipoDeImovelId"), NotNull]
         public Models.TipoDeImovel TipoDeImovel
         {
             get { return this._tipoDeImovel; }
@@ -101,7 +104,9 @@ namespace gvn_ab_mobile.Models
         //INÍCIO CONDIÇÃO MORADIA
 
         //Campo abastecimentoAgua - Tipo long
+        public long? AbastecimentoAguaId { get; set; }
         private Models.AbastecimentoDeAgua _abastecimentoAgua; //Não Obrigatório
+        [OneToOne("AbastecimentoAguaId")]
         public Models.AbastecimentoDeAgua AbastecimentoAgua
         {
             get { return this._abastecimentoAgua; }
@@ -109,7 +114,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo areaProducaoRural - Tipo long
+        public long? AreaProducaoRuralId { get; set; }
         private Models.CondicaoDePosseEUsoDaTerra _areaProducaoRural; //Condicional
+        [OneToOne("AreaProducaoRuralId")]
         public Models.CondicaoDePosseEUsoDaTerra AreaProducaoRural
         {
             get { return this._areaProducaoRural; }
@@ -117,7 +124,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo destinoLixo - Tipo long
+        public long? DestinoLixoId { get; set; }
         private Models.DestinoDoLixo _destinoLixo; //Não Obrigatório
+        [OneToOne("DestinoLixoId")]
         public Models.DestinoDoLixo DestinoLixo
         {
             get { return this._destinoLixo; }
@@ -133,8 +142,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo localizacao - Tipo long
+        public long? LocalizacaoId { get; set; }
         private Models.LocalizacaoDaMoradia _localizacao; //Obrigatório
-        [NotNull]
+        [OneToOne("LocalizacaoId"), NotNull]
         public Models.LocalizacaoDaMoradia Localizacao
         {
             get { return this._localizacao; }
@@ -142,7 +152,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo materialPredominanteParedesExtDomicilio - Tipo long
+        public long? MaterialPredominanteParedesExtDomicilioId { get; set; }
         private Models.MaterialPredominanteNaConstrucao _materialPredominanteParedesExtDomicilio; //Não Obrigatório
+        [OneToOne("MaterialPredominanteParedesExtDomicilioId")]
         public Models.MaterialPredominanteNaConstrucao MaterialPredominanteParedesExtDomicilio
         {
             get { return this._materialPredominanteParedesExtDomicilio; }
@@ -168,7 +180,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo situacaoMoradiaPosseTerra - Tipo long
+        public long? SituacaoMoradiaPosseTerraId { get; set; }
         private Models.SituacaoDeMoradia _situacaoMoradiaPosseTerra; //Não Obrigatório
+        [OneToOne("SituacaoMoradiaPosseTerraId")]
         public Models.SituacaoDeMoradia SituacaoMoradiaPosseTerra
         {
             get { return this._situacaoMoradiaPosseTerra; }
@@ -184,7 +198,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo tipoAcessoDomicilio - Tipo long
+        public long? TipoAcessoDomicilioId { get; set; }
         private Models.TipoDeAcessoAoDomicilio _tipoAcessoDomicilio; //Não Obrigatório
+        [OneToOne("TipoAcessoDomicilioId")]
         public Models.TipoDeAcessoAoDomicilio TipoAcessoDomicilio
         {
             get { return this._tipoAcessoDomicilio; }
@@ -192,7 +208,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo tipoDomicilio - Tipo long
+        public long? TipoDomicilioId { get; set; }
         private Models.TipoDeDomicilio _tipoDomicilio; //Não Obrigatório
+        [OneToOne("TipoDomicilioId")]
         public Models.TipoDeDomicilio TipoDomicilio
         {
             get { return this._tipoDomicilio; }
@@ -200,7 +218,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo aguaConsumoDomicilio - Tipo long
+        public long? AguaConsumoDomicilioId { get; set; }
         private Models.AguaConsumoDomicilio _aguaConsumoDomicilio; //Não Obrigatório
+        [OneToOne("AguaConsumoDomicilioId")]
         public Models.AguaConsumoDomicilio AguaConsumoDomicilio
         {
             get { return this._aguaConsumoDomicilio; }
@@ -230,12 +250,13 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo codigoIbgeMunicipio - Tipo string
-        private Models.Municipio municipio; //Obrigatório
-        [NotNull] //Mínimo 7 caracteres; Máximo 7 caracteres
+        public long? MunicipioId { get; set; }
+        private Models.Municipio _municipio; //Obrigatório
+        [OneToOne("MunicipioId")] //Mínimo 7 caracteres; Máximo 7 caracteres
         public Models.Municipio Municipio
         {
-            get { return this.municipio; }
-            set { SetProperty(ref municipio, value); }
+            get { return this._municipio; }
+            set { SetProperty(ref _municipio, value); }
         }
 
         //Campo complemento - Tipo string
@@ -258,7 +279,7 @@ namespace gvn_ab_mobile.Models
 
         //Campo numero - Tipo string
         private string _numero; //Obrigatório
-        [NotNull, MaxLength(10)] //Mínimo 1 caracter; Máximo 10 caracteres
+        [MaxLength(10)] //Mínimo 1 caracter; Máximo 10 caracteres
         public string Numero
         {
             get { return this._numero; }
@@ -266,8 +287,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo numeroDneUf - Tipo string
+        public long? UnidadeFederalId { get; set; }
         private Models.UnidadeFederal unidadeFederal; //Obrigatório
-        [NotNull]
+        [OneToOne("UnidadeFederalId")]
         public Models.UnidadeFederal UnidadeFederal
         {
             get { return this.unidadeFederal; }
@@ -293,8 +315,9 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo tipoLogradouroNumeroDne - Tipo string
+        public long? TipoLogradouroNumeroDneId { get; set; }
         private Models.TipoLogradouro _tipoLogradouroNumeroDne; //Obrigatório
-        [NotNull]
+        [OneToOne("TipoLogradouroNumeroDneId"), NotNull]
         public Models.TipoLogradouro TipoLogradouroNumeroDne
         {
             get { return this._tipoLogradouroNumeroDne; }
@@ -396,22 +419,25 @@ namespace gvn_ab_mobile.Models
 
         //CARDINALIDADE RELAÇÃO FICHA HEADER
 
-        [OneToOne]
-        public FichaLotacaoHeader Header
+        public long? HeaderId { get; set; }
+        private FichaUnicaLotacaoHeader _header;
+        [OneToOne("HeaderId")]
+        public FichaUnicaLotacaoHeader Header
         {
-            get;
-            set;
+            get { return this._header; }
+            set { SetProperty(ref _header, value); }
         }
 
         //
 
         //CARDINALIDADE FICHA FACMILIA
 
-        [OneToMany]
-        public List<FichaFamilia> Familias
+        private List<Models.FichaFamilia> _familias;
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Models.FichaFamilia> Familias
         {
-            get;
-            set;
+            get { return this._familias;  }
+            set { SetProperty(ref _familias, value);  }
         }
 
         //

@@ -12,7 +12,7 @@
 
                 <StackLayout Orientation="Horizontal">
 
-                    <StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Município:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <controls:PickerSearch x:Name="CodMunicipio" Placeholder="Município"  Items="{Binding Municipios}" SelectedItem="{Binding CodigoIbgeMunicipio}">
                             <controls:PickerSearch.Behaviors>
@@ -22,17 +22,8 @@
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
-                        <Label Text="CEP:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <Entry x:Name="CodCep" Placeholder="CEP" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }">
-                            <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MinLength="8"  MaxLength="8" Required="true" />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </StackLayout>
-
-                    <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="UF:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <controls:PickerSearch x:Name="CodUF" Items="{Binding UFs}" SelectedItem="{Binding NumeroDneUf}">
+                        <controls:PickerSearch x:Name="CodUF" Items="{Binding UFs}" SelectedItem="{Binding UnidadeFederal}">
                             <controls:PickerSearch.Behaviors>
                                 <behaviors:ValidatorPickerSearchBehavior Required="true"/>
                             </controls:PickerSearch.Behaviors>
@@ -43,19 +34,9 @@
 
                 <StackLayout Orientation="Horizontal">
 
-                    <StackLayout>
-                        <Label Text="Bairro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry x:Name="CodBairro" Placeholder="Bairro" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Bairro}">
-                            <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="72"/>
-                                <behaviors:EntryNomeBehavior Required="true" />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </StackLayout>
-
-                    <StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Tipo de Logradouro:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
-                        <controls:PickerSearch x:Name="CodTipoLogradouro" Items="{Binding TiposLogradouros}" SelectedItem="{Binding TipoLogradouro}">
+                        <controls:PickerSearch x:Name="CodTipoLogradouro" Items="{Binding TiposLogradouros}" SelectedItem="{Binding TipoLogradouroNumeroDne}">
                             <controls:PickerSearch.Behaviors>
                                 <behaviors:ValidatorPickerSearchBehavior Required="true"/>
                             </controls:PickerSearch.Behaviors>
@@ -66,8 +47,30 @@
                         <Label Text="Nome do Logradouro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Entry x:Name="NomeLogradouro" Placeholder="Nome do Logradouro" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeLogradouro}">
                             <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="72"/>
-                                <behaviors:EntryNomeBehavior Required="true" />
+                                <behaviors:EntryLengthBehavior MaxLength="72" Required="true" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+
+                </StackLayout>
+
+
+                <StackLayout Orientation="Horizontal">
+
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Bairro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Entry x:Name="CodBairro" Placeholder="Bairro" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Bairro}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MaxLength="72" Required="true"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                    
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="CEP:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                        <Entry x:Name="CodCep" Placeholder="CEP" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MinLength="8"  MaxLength="8" Required="true" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
@@ -80,8 +83,7 @@
                         <Label Text="Número:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                         <Entry x:Name="Numero" Keyboard="Numeric" Placeholder="Número" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Numero}">
                             <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MinLength="1"  MaxLength="10"/>
-                                <behaviors:EntryNomeBehavior Required="true" />
+                                <behaviors:EntryLengthBehavior MinLength="1"  MaxLength="10" Required="true"/>
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
@@ -157,6 +159,10 @@
                         </Entry>
                     </StackLayout>
 
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Telefone Contato:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Entry x:Name="NumTelefoneContato" Placeholder="Tel. Contato" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneContato}">
@@ -171,7 +177,7 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
                     <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodMunicipio|CodCep|CodUF|CodBairro|CodTipoLogradouro|NomeLogradouro|Numero|Complemento|PtoReferencia|Microarea|CodTipoImovel|NumTelefoneResidencia|NumTelefoneContato" />
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodCep|CodBairro|NomeLogradouro|Numero|Complemento|PtoReferencia|Microarea|CodTipoImovel|NumTelefoneResidencia|NumTelefoneContato" />
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>

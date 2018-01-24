@@ -12,23 +12,14 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TermoDeRecusaPage : ContentPage
     {
-        public TermoDeRecusaPage()
+        ViewModels.TermoDeRecusaViewModel ViewModel { get; set; }
+
+        public TermoDeRecusaPage(ViewModels.TermoDeRecusaViewModel viewModel)
         {
             InitializeComponent();
 
-            BindingContext = this;
+            this.BindingContext = this.ViewModel = viewModel;
         }
 
-        public Models.AssinaturaTermoRecusa.TermoDeRecusaModel Termo => App.Current.TermoDeRecusa;
-
-        private void OnBackClicked(object sender, EventArgs e)
-        {
-            Navigation.PopAsync();
-        }
-
-        private void OnNextClicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new AssinaturaPage());
-        }
     }
 }

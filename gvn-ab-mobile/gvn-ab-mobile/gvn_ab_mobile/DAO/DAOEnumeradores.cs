@@ -889,10 +889,10 @@ namespace gvn_ab_mobile.DAO {
 
             base.CreateTable();
             return base.Insert(new List<Models.TipoDeDomicilio>() {
-                  new Models.TipoDeDomicilio("Pavimento") { Codigo = 89 },
-                  new Models.TipoDeDomicilio("Chão Batido") { Codigo = 90 },
-                  new Models.TipoDeDomicilio("Fluvial") { Codigo = 91 },
-                  new Models.TipoDeDomicilio("Outro") { Codigo = 92 },
+                  new Models.TipoDeDomicilio("Casa") { Codigo = 85 },
+                  new Models.TipoDeDomicilio("Apartamento") { Codigo = 86 },
+                  new Models.TipoDeDomicilio("Cômodo") { Codigo = 87 },
+                  new Models.TipoDeDomicilio("Outro") { Codigo = 88 },
             });
         }
     }

@@ -13,12 +13,12 @@ namespace gvn_ab_mobile.Views.FichaCadastroDomiciliarPage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FichaCadastroDomiciliarPage1 : ContentPage
     {
-        ViewModels.FichaCadastroDomiciliarViewModel viewModel;
+        ViewModels.FichaCadastroDomiciliarViewModel ViewModel { get; set; }
 
-        public FichaCadastroDomiciliarPage1()
+        public FichaCadastroDomiciliarPage1(ViewModels.FichaCadastroDomiciliarViewModel viewModel)
         {
             InitializeComponent();
-            this.BindingContext = this.viewModel = new ViewModels.FichaCadastroDomiciliarViewModel(this);
+            this.BindingContext = this.ViewModel = viewModel;
         }
     }
 }

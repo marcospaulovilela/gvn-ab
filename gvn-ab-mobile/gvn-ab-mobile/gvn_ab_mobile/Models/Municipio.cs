@@ -23,7 +23,7 @@ namespace gvn_ab_mobile.Models {
             get { return this.codUnidadeFederal; }
             set { SetProperty(ref codUnidadeFederal, value); }
         }
-        
+
         public override string ToString() {
             return $" {this.nomMunicipio} ";
         }

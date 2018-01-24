@@ -40,10 +40,7 @@
         </StackLayout>
 
         <!-- navigation -->
-        <Button Text="&lt; Voltar" Clicked="OnBackClicked"
-                IsEnabled="{Binding IsBusy, Converter={StaticResource Negate}}"
-                Grid.Row="1" Grid.Column="0" />
-        <Button Text="Continuar &gt;" Clicked="OnNextClicked"
+        <Button Text="Continuar &gt;" Clicked="OnContinuarClicked"
                 IsEnabled="{Binding IsBusy, Converter={StaticResource Negate}}"
                 Grid.Row="1" Grid.Column="1" />
 

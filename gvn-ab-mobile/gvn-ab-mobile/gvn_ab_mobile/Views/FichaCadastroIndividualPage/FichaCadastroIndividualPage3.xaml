@@ -43,7 +43,7 @@
                     <Picker x:Name="CodSituacaoMercadoTrabalho" ItemsSource="{Binding SituacoesMercadoTrabalho}" SelectedItem="{Binding SituacaoMercadoTrabalhoCidadao}" Title="Situação Mercado de Trabalho" TextColor="Gray" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
 
-                <StackLayout>
+                <StackLayout IsVisible="{Binding HasIdadeResponsavelCrianca}">
                     <Label Text="Crianças de 0 a 9 anos, com quem fica?:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                     <controls:SelectMultipleItems x:Name="CodResponsavelPorCrianca" Placeholder="Responsável por crianças de até 9 anos"  Items="{Binding ResponsaveisCriancas}" SelectedItems="{Binding ResponsaveisCriancasSelecionadas}"  >
                         <controls:SelectMultipleItems.Behaviors>

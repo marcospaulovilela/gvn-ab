@@ -18,8 +18,6 @@ namespace gvn_ab_mobile.ViewModels {
         public ICommand Concordar { get; }
         public ICommand NaoConcordar { get; }
 
-        public ICommand SalvarFicha { get; }
-
         public Models.FichaCadastroIndividual Ficha { get; set; }
 
         // USADO PAGE 2
@@ -100,17 +98,34 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-        public DateTime PropertyMinimumDateNaturalizacao
+        public DateTime PropertyMinimumDateNaturalizacaoOuEntradaBrasil
         {
             get
             {
                 DateTime data = DateTime.Now;
                 int year = data.Year - this.Ficha.DataNascimentoCidadao.Year;
+                int month = data.Month - this.Ficha.DataNascimentoCidadao.Month;
+                int day = data.Day - this.Ficha.DataNascimentoCidadao.Day;
 
                 if (data.Day != this.Ficha.DataNascimentoCidadao.Day)
-                    data = data.AddDays(-((data.Day - this.Ficha.DataNascimentoCidadao.Day)));
-
+                {
+                    data = data.AddDays(-(day));
+                    data = data.AddMonths(-(month));
+                }
                 return data.AddYears(-year);
+            }
+        }
+
+        public bool HasIdadeResponsavelCrianca
+        {
+            get
+            {
+                System.DateTime data1 = DateTime.Now;
+                System.DateTime data2 = this.Ficha.DataNascimentoCidadao;
+                System.TimeSpan dataDiff = data1 - data2;
+                double totalDays = dataDiff.TotalDays;
+
+                return !(totalDays < (10.0*365));
             }
         }
 
@@ -123,7 +138,8 @@ namespace gvn_ab_mobile.ViewModels {
 
                 SetProperty(ref _dataNascimentoCidadao, value);
                 OnPropertyChanged("IsMulherAndHasIdadeGravida");
-                OnPropertyChanged("PropertyMinimumDateNaturalizacao");
+                OnPropertyChanged("PropertyMinimumDateNaturalizacaoOuEntradaBrasil");
+                OnPropertyChanged("HasIdadeResponsavelCrianca");
             }
         }
 
@@ -698,7 +714,7 @@ namespace gvn_ab_mobile.ViewModels {
 
             this.Concordar = new Command(async () => await ConcordarExecuteAsync());
             this.NaoConcordar = new Command(async () => await NaoConcordarExecuteAsync());
-            this.SalvarFicha = new Command(async () => await SalvarFichaAsync());
+
             this.Sexos = new ObservableRangeCollection<Models.Sexo>(new DAO.DAOSexo().Select()); //traz todos os sexos na base.
             this.Paises = new ObservableRangeCollection<Models.Pais>(new DAO.DAOPais().Select());
             this.Etnias = new ObservableRangeCollection<Models.Etnia>(new DAO.DAOEtnia().Select());
@@ -739,7 +755,7 @@ namespace gvn_ab_mobile.ViewModels {
 
         private async System.Threading.Tasks.Task NaoConcordarExecuteAsync()
         {
-            await this.Page.Navigation.PushAsync(new Views.AssinaturaTermoRecusa.TermoDeRecusaPage());
+            await this.MenuPage.Navigation.PushAsync(new Views.AssinaturaTermoRecusa.TermoDeRecusaPage(new ViewModels.TermoDeRecusaViewModel(this.MenuPage)));
         }
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
@@ -791,11 +807,6 @@ namespace gvn_ab_mobile.ViewModels {
                 });
                 #pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
             };
-        }
-
-        private async System.Threading.Tasks.Task SalvarFichaAsync()
-        {
-            //await this.Page.Navigation.PushAsync(new Views.AssinaturaTermoRecusa.AssinaturaMainPage());
         }
 
     }

@@ -182,7 +182,7 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout IsVisible="{Binding IsEstrangeiro}">
                         <Label Text="Data de Entrada no Brasil:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <DatePicker Date="{Binding Ficha.DtEntradaBrasil}"  >
+                        <DatePicker Date="{Binding Ficha.DtEntradaBrasil}" MinimumDate="{Binding PropertyMinimumDateNaturalizacaoOuEntradaBrasil}" MaximumDate="{x:Static sys:DateTime.Now}" >
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />
                             </DatePicker.Behaviors>
@@ -202,7 +202,7 @@
                 <StackLayout Orientation="Horizontal">
                     <StackLayout IsVisible="{Binding IsNaturalizado}" >
                         <Label Text="Data de Naturalização:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <DatePicker  Date="{Binding Ficha.DtNaturalizacao}" MinimumDate="{Binding PropertyMinimumDateNaturalizacao}" MaximumDate="{x:Static sys:DateTime.Now}" >
+                        <DatePicker  Date="{Binding Ficha.DtNaturalizacao}" MinimumDate="{Binding PropertyMinimumDateNaturalizacaoOuEntradaBrasil}" MaximumDate="{x:Static sys:DateTime.Now}" >
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />
                             </DatePicker.Behaviors>

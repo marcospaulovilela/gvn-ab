@@ -66,6 +66,9 @@
     <Compile Include="Controls\TableGrid.xaml.cs">
       <DependentUpon>TableGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TableGridFichas.xaml.cs">
+      <DependentUpon>TableGridFichas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TableGridPage.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
     <Compile Include="Converters\YesNoConverter.cs" />
@@ -82,6 +85,7 @@
     <Compile Include="DAO\DAOEstabelecimento.cs" />
     <Compile Include="DAO\DAOCbo.cs" />
     <Compile Include="DAO\DAOLogradouro.cs" />
+    <Compile Include="DAO\DAOTermoDeRecusa.cs" />
     <Compile Include="DAO\DAOTipoLogradouro.cs" />
     <Compile Include="DAO\DAOUnidadeFederal.cs" />
     <Compile Include="DAO\DAOMunicipios.cs" />
@@ -120,6 +124,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FichaAtendimentoIndividualViewModel.cs" />
     <Compile Include="ViewModels\FichaCadastroDomiciliarViewModel.cs" />
+    <Compile Include="ViewModels\FichasPageViewModel.cs" />
     <Compile Include="ViewModels\FichaVisitaDomiciliarViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\SincronizacaoConfigViewModel.cs" />
@@ -127,14 +132,12 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\TermoDeRecusaViewModel.cs" />
     <Compile Include="Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AssinaturaTermoRecusa\AssinaturaPage.xaml.cs">
       <DependentUpon>AssinaturaPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AssinaturaTermoRecusa\ConfirmacaoPage.xaml.cs">
-      <DependentUpon>ConfirmacaoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AssinaturaTermoRecusa\TermoDeRecusaPage.xaml.cs">
       <DependentUpon>TermoDeRecusaPage.xaml</DependentUpon>
@@ -211,6 +214,9 @@
     <Compile Include="Views\ItemFamilia.xaml.cs">
       <DependentUpon>ItemFamilia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SalvarFichas\FichaCadastroIndividualRow.xaml.cs">
+      <DependentUpon>FichaCadastroIndividualRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login\LoginPage2.xaml.cs">
       <DependentUpon>LoginPage2.xaml</DependentUpon>
     </Compile>
@@ -222,6 +228,9 @@
     </Compile>
     <Compile Include="Views\PagePopUp.xaml.cs">
       <DependentUpon>PagePopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SalvarFichas\ListaFichasPage.xaml.cs">
+      <DependentUpon>ListaFichasPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SincronizacaoConfigPage2.xaml.cs">
       <DependentUpon>SincronizacaoConfigPage2.xaml</DependentUpon>
@@ -506,13 +515,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\AssinaturaTermoRecusa\ConfirmacaoPage.xaml">
+    <EmbeddedResource Include="Views\AssinaturaTermoRecusa\TermoDeRecusaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\AssinaturaTermoRecusa\TermoDeRecusaPage.xaml">
+    <EmbeddedResource Include="Views\SalvarFichas\FichaCadastroIndividualRow.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SalvarFichas\ListaFichasPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\TableGridFichas.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
