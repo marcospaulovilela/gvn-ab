@@ -1,6 +1,7 @@
 ﻿using gvn_ab_mobile.Helpers;
 using SQLite;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -378,9 +379,9 @@ namespace gvn_ab_mobile.ViewModels {
                                 DataAtendimento = DateTime.Now
                             };
 
-                            //this.Ficha.Familias = this.Familias;
+                            this.Ficha.Familias = this.Familias.Select(o => (Models.FichaFamilia)o).ToList();
 
-                            //DAOFichaFamilia.Insert(this.Ficha.Familias);
+                            DAOFichaFamilia.Insert(this.Ficha.Familias);
                             DAOFichaUnicaLotacaoHeader.Insert(this.Ficha.Header);
                             DAOFichaCadastroDomiciliar.Insert(this.Ficha);
                             Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.MenuPage.Navigation.PopToRootAsync());

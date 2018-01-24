@@ -68,7 +68,7 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo rendaFamiliar - Tipo long
-        private long? RendaFamiliarId { get; set; }
+        public long? RendaFamiliarId { get; set; }
         private Models.RendaFamiliar _rendaFamiliar; //Não Obrigatório
         [OneToOne("RendaFamiliarId")]
         public Models.RendaFamiliar RendaFamiliar
