@@ -750,7 +750,7 @@ namespace gvn_ab_mobile.ViewModels {
 
         private async System.Threading.Tasks.Task NaoConcordarExecuteAsync()
         {
-            await this.MenuPage.Navigation.PushAsync(new Views.AssinaturaTermoRecusa.TermoDeRecusaPage());
+            await this.MenuPage.Navigation.PushAsync(new Views.AssinaturaTermoRecusa.TermoDeRecusaPage(new ViewModels.TermoDeRecusaViewModel(this.MenuPage)));
         }
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
