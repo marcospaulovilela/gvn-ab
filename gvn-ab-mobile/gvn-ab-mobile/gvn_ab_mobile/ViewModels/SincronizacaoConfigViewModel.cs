@@ -262,6 +262,8 @@ namespace gvn_ab_mobile.ViewModels {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.Page.Navigation.PushAsync(new Views.SincronizacaoConfigPage2(this)));
 
                 } catch (Exception ex) {
+                    await this.Page.DisplayAlert("Erro!!", ex.Message, "Ok");
+
                     System.Diagnostics.Debug.WriteLine(ex);
                     MessagingCenter.Send(new MessagingCenterAlert {
                         Title = "Error",

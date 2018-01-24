@@ -56,9 +56,9 @@ namespace gvn_ab_mobile.ViewModels {
             try {
                 using (var objDao = new DAO.DAOProfissional()) {
                     var user = objDao.GetProfissionalByDesLogin(this.Profissional.DesLogin);
-                    this.Profissional = user;
-
+                    
                     if (user != null && user.DesSenha == this.Profissional.DesSenha) { //SERIO??? BRINCADEIRA SEGURANÇA FAZER DIREITO DEPOIS.....
+                        this.Profissional = user;
                         if (this.Profissional.Cbos?.Count() == 0) {
                             await this.Page.DisplayAlert("Erro de usuario", "Usuario não possui nenhum CBO vinculado.", "Ok");
                         } else if (this.Profissional.Cbos?.Count() == 1) {

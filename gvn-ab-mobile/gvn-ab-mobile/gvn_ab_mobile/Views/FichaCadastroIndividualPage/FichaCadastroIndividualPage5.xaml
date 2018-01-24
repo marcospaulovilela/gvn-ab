@@ -6,9 +6,9 @@
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5"
              Title="Condições/Situações de Saúde Gerais">
     <ContentPage.Content>
-        <StackLayout Padding="20, 30, 20, 20">
-            <ScrollView HorizontalOptions="FillAndExpand" >
-                <StackLayout>
+        <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
+            <StackLayout VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal" IsVisible="{Binding IsMulherAndHasIdadeGravida}">
                         <Label Text="Está gestante?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusEhGestante}"></Switch>
@@ -75,7 +75,7 @@
                             </controls:SelectMultipleItems.Behaviors>
                         </controls:SelectMultipleItems>
                     </StackLayout>
-                    
+
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Tem ou Teve Problema nos Rins?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusDoencaRins}"></Switch>
@@ -169,7 +169,7 @@
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding HasOutrasCondicoesDeSaude}">
-                        
+
                         <Label Text="Outra Condição de Saúde 1:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Entry Placeholder="Condição de Saúde" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoOutraCondicao1}">
                             <Entry.Behaviors>
@@ -180,7 +180,7 @@
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding HasOutrasCondicoesDeSaude}">
-                        
+
                         <Label Text="Outra Condição de Saúde 2:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Entry Placeholder="Condição de Saúde" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.DescricaoOutraCondicao2}">
                             <Entry.Behaviors>
@@ -200,16 +200,15 @@
                         </Entry>
 
                     </StackLayout>
-
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                        <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
-                            <Button.Behaviors>
-                                <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodDoencaCardiaca|CodDoencaRins|CodDoencaRespiratoria|CausaInternacao|PlantasMedicinais" />
-                            </Button.Behaviors>
-                        </Button>
-                    </StackLayout>
                 </StackLayout>
-            </ScrollView>
-        </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodDoencaCardiaca|CodDoencaRins|CodDoencaRespiratoria|CausaInternacao|PlantasMedicinais" />
+                        </Button.Behaviors>
+                    </Button>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

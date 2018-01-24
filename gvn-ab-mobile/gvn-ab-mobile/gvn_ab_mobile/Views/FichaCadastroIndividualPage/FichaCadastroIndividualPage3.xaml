@@ -7,7 +7,8 @@
              Title="Informações Sóciodemográficas">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
-            <StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
 
                 <StackLayout Orientation="Horizontal" IsVisible="{Binding IsResponsavel}">
                     <StackLayout HorizontalOptions="FillAndExpand">
@@ -116,7 +117,7 @@
                         </controls:SelectMultipleItems>
                     </StackLayout>
                 </StackLayout>
-
+            </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
                     <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
@@ -124,8 +125,7 @@
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>
-
-            </StackLayout>
+            </StackLayout >
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
