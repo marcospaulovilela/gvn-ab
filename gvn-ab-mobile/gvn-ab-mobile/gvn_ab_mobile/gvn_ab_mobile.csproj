@@ -116,7 +116,6 @@
     <Compile Include="Models\UnidadeFederal.cs" />
     <Compile Include="Models\Logradouro.cs" />
     <Compile Include="Models\Ocupacao.cs" />
-    <Compile Include="Models\Header\FichaLotacaoHeader.cs" />
     <Compile Include="Models\Cbo.cs" />
     <Compile Include="Models\SincronizacaoConfig.cs" />
     <Compile Include="Models\Profissional.cs" />

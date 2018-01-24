@@ -442,5 +442,17 @@ namespace gvn_ab_mobile.Models
 
         //
 
+        // Assinatura Termo de Recusa
+
+        //Campo AssinaturaBase64 - Tipo String
+        private string _assinaturaBase64;
+        public string AssinaturaBase64
+        {
+            get { return this._assinaturaBase64; }
+            set { SetProperty(ref _assinaturaBase64, value); }
+        }
+
+        //
+
     }
 }
