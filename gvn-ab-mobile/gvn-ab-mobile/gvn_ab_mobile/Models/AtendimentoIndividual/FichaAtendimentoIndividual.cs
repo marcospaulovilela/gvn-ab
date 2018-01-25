@@ -85,12 +85,12 @@ namespace gvn_ab_mobile.Models
 
         //CARDINALIDADE RELAÇÃO FICHA HEADER
 
-        [OneToMany]
-        public List<FichaLotacaoHeader> Headers
-        {
-            get;
-            set;
-        }
+        //[OneToMany]
+        //public List<FichaLotacaoHeader> Headers
+        //{
+        //    get;
+        //    set;
+        //}
 
         //Campo numeroProntuario - Tipo string
         private string _numeroProntuario; //Não Obrigatório
