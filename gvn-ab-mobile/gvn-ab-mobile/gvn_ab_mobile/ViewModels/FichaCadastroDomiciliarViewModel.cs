@@ -1,9 +1,9 @@
 ﻿using gvn_ab_mobile.Helpers;
 using SQLite;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +26,14 @@ namespace gvn_ab_mobile.ViewModels {
 
         public ObservableCollection<object> Familias { get; set; }
 
+        public List<Point> SignaturePoints;
+        public Stream SignatureImage;
+        public List<Point> SignaturePoints1;
+        public Stream SignatureImage1;
+
+        public string NomeRG => $"{this.Ficha.NomeCidadao}, portador(a) do RG nº {this.Ficha.Rg}".Trim();
+        public string NomeRG1 => $"{this.Ficha.NomeResponsavelTecnico}, portador(a) do RG nº {this.Ficha.RgResponsavelTecnico}".Trim();
+
         //USADO PAGE 2
 
         public ObservableRangeCollection<Models.UnidadeFederal> UFs { get; set; }
@@ -33,31 +41,29 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableRangeCollection<Models.TipoDeImovel> TiposImoveis { get; set; }
         public ObservableRangeCollection<Models.Municipio> Municipios { get; set; }
 
-        private Models.Municipio _codigoIbgeMunicipio;
-        public Models.Municipio CodigoIbgeMunicipio {
-            get { return this._codigoIbgeMunicipio; }
-            set {
-                this.Ficha.Municipio = value;
-                SetProperty(ref _codigoIbgeMunicipio, value);
-            }
-        }
-
         private Models.UnidadeFederal uf;
-        public Models.UnidadeFederal UF
-        {
+        public Models.UnidadeFederal UF {
             get { return this.uf; }
-            set
-            {
+            set {
                 SetProperty(ref uf, value);
 
-                //this.CodigoIbgeMunicipio = null;
-                using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio())
-                {
+                this.CodigoIbgeMunicipio = null;
+                using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio()) {
                     this.Municipios.Clear();
                     this.Municipios.AddRange(DAOMunicipio.GetByCodUnidadeFederal(value.CodUnidadeFederal));
                 };
             }
 
+        }
+        private Models.Municipio _codigoIbgeMunicipio;
+        public Models.Municipio CodigoIbgeMunicipio
+        {
+            get { return this._codigoIbgeMunicipio; }
+            set
+            {
+                this.Ficha.Municipio = value;
+                SetProperty(ref _codigoIbgeMunicipio, value);
+            }
         }
 
         private bool _stSemNumero; //Não Obrigatório
@@ -65,6 +71,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._stSemNumero; }
             set {
                 this.Ficha.StSemNumero = value;
+                this.Ficha.Numero = value ? "SN" : string.Empty;
 
                 SetProperty(ref _stSemNumero, value);
                 OnPropertyChanged("HasNumero");
@@ -76,11 +83,12 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-        private bool _stForaArea; //Não Obrigatório
+        private bool _stForaArea;
         public bool StForaArea {
             get { return this._stForaArea; }
             set {
                 this.Ficha.StForaArea = value;
+                this.Ficha.Microarea = value ? "FA" : string.Empty;
 
                 SetProperty(ref _stForaArea, value);
                 OnPropertyChanged("IsForaArea");
@@ -323,7 +331,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
-            await this.MenuPage.DisplayAlert("Fazer assinatura do cidadão", "", "Ok");
+            await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage1(this));
         }
 
         private async System.Threading.Tasks.Task ConcordarInstituicaoPermanenciaExecuteAsync() {
@@ -331,12 +339,25 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async System.Threading.Tasks.Task NaoConcordarInstituicaoPermanenciaExecuteAsync() {
-            await this.MenuPage.DisplayAlert("Fazer assinatura do cidadão", "", "Ok");
+            await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage3(this));
+        }
+
+        public async System.Threading.Tasks.Task TelaInstituicaoPermanenciaExecuteAsync()
+        {
+            await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
         }
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
             var CurrentPage = this.MenuPage.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
-            if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2)
+            if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage1)
+            {
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage2(this));
+            }
+            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage3)
+            {
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage4(this));
+            }
+            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2)
             {
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3(this));
             }
@@ -360,44 +381,52 @@ namespace gvn_ab_mobile.ViewModels {
             }
             else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8)
             {
-                this.IsBusy = true;
-                #pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
-                Task.Run(async () => {
-                    
-                    using (DAO.DAOFichaFamilia DAOFichaFamilia = new DAO.DAOFichaFamilia())
-                    using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader())
-                    using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial())
-                    {
-                        try
-                        {
-                            this.Ficha.Header = new Models.FichaUnicaLotacaoHeader()
-                            {
-                                Cbo = this.MenuPage.ViewModel.Cbo.CodCbo,
-                                CnsProfissional = this.MenuPage.ViewModel.Profissional.CnsProfissional,
-                                Cnes = this.MenuPage.ViewModel.Estabelecimento.ImpCnes,
-                                Ine = this.MenuPage.ViewModel.Equipe.CodEquipe,
-                                DataAtendimento = DateTime.Now
-                            };
 
-                            this.Ficha.Familias = this.Familias.Select(o => (Models.FichaFamilia)o).ToList();
+                SalvarExecuteAsync();
 
-                            DAOFichaFamilia.Insert(this.Ficha.Familias);
-                            DAOFichaUnicaLotacaoHeader.Insert(this.Ficha.Header);
-                            DAOFichaCadastroDomiciliar.Insert(this.Ficha);
-                            Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.MenuPage.Navigation.PopToRootAsync());
-                        }
-                        catch (Exception e)
-                        {
-                            System.Diagnostics.Debug.WriteLine(e);
-                        }
-                        finally
-                        {
-                            this.IsBusy = false;
-                        };
-                    };
-                });
-                #pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
             };
+        }
+
+        public async System.Threading.Tasks.Task SalvarExecuteAsync()
+        {
+
+            this.IsBusy = true;
+            #pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+            Task.Run(async () => {
+
+                using (DAO.DAOFichaFamilia DAOFichaFamilia = new DAO.DAOFichaFamilia())
+                using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader())
+                using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial())
+                {
+                    try
+                    {
+                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader()
+                        {
+                            Cbo = this.MenuPage.ViewModel.Cbo.CodCbo,
+                            CnsProfissional = this.MenuPage.ViewModel.Profissional.CnsProfissional,
+                            Cnes = this.MenuPage.ViewModel.Estabelecimento.ImpCnes,
+                            Ine = this.MenuPage.ViewModel.Equipe.CodEquipe,
+                            DataAtendimento = DateTime.Now
+                        };
+
+                        this.Ficha.Familias = this.Familias.Select(o => (Models.FichaFamilia)o).ToList();
+
+                        DAOFichaFamilia.Insert(this.Ficha.Familias);
+                        DAOFichaUnicaLotacaoHeader.Insert(this.Ficha.Header);
+                        DAOFichaCadastroDomiciliar.Insert(this.Ficha);
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.MenuPage.Navigation.PopToRootAsync());
+                    }
+                    catch (Exception e)
+                    {
+                        System.Diagnostics.Debug.WriteLine(e);
+                    }
+                    finally
+                    {
+                        this.IsBusy = false;
+                    };
+                };
+            });
+            #pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
         }
 
     }

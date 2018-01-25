@@ -388,6 +388,15 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _nomeResponsavelTecnico, value); }
         }
 
+        //Campo rgResponsavelTecnico - Tipo string
+        private string _rgResponsavelTecnico; //Obrigatório
+        [MaxLength(8)] //Mínimo 3 caracteres; Máximo 70 caracteres
+        public string RgResponsavelTecnico
+        {
+            get { return this._rgResponsavelTecnico; }
+            set { SetProperty(ref _rgResponsavelTecnico, value); }
+        }
+
         //Campo cnsResponsavelTecnico - Tipo string
         private string _cnsResponsavelTecnico; //Não Obrigatório
         [MaxLength(15)] //Mínimo 15 caracteres; Máximo 15 caracteres
@@ -413,6 +422,24 @@ namespace gvn_ab_mobile.Models
         {
             get { return this._telefoneResponsavelTecnico; }
             set { SetProperty(ref _telefoneResponsavelTecnico, value); }
+        }
+
+        //Campo NomeCidadão
+        private string _nomeCidadao;
+        [MaxLength(70)]
+        public string NomeCidadao
+        {
+            get { return this._nomeCidadao; }
+            set { SetProperty(ref _nomeCidadao, value); }
+        }
+
+        //Campo Rg do Cidadão - Tipo String
+        private string _rg;
+        [MaxLength(8)]
+        public string Rg
+        {
+            get { return this._rg; }
+            set { SetProperty(ref _rg, value); }
         }
 
         //FIM INSTITUIÇÃO PERMANÊNCIA
@@ -444,20 +471,20 @@ namespace gvn_ab_mobile.Models
 
         // Assinaturas Termos de Recusa
 
-        //Campo AssinaturaCadastroBase64 - Tipo String
-        private string _assinaturaCadastroBase64;
-        public string AssinaturaCadastroBase64
+        //Campo AssinaturaRecusaCadastroBase64 - Tipo String
+        private string _assinaturaRecusaCadastroBase64;
+        public string AssinaturaRecusaCadastroBase64
         {
-            get { return this._assinaturaCadastroBase64; }
-            set { SetProperty(ref _assinaturaCadastroBase64, value); }
+            get { return this._assinaturaRecusaCadastroBase64; }
+            set { SetProperty(ref _assinaturaRecusaCadastroBase64, value); }
         }
 
-        //Campo AssinaturaInstituicaoPermanenciaBase64 - Tipo String
-        private string _assinaturaInstituicaoPermanenciaCadastroBase64;
-        public string AssinaturaInstituicaoPermanenciaCadastroBase64
+        //Campo AssinaturaRecusaInstituicaoPermanenciaBase64 - Tipo String
+        private string _assinaturaRecusaInstituicaoPermanenciaCadastroBase64;
+        public string AssinaturaRecusaInstituicaoPermanenciaCadastroBase64
         {
-            get { return this._assinaturaInstituicaoPermanenciaCadastroBase64; }
-            set { SetProperty(ref _assinaturaInstituicaoPermanenciaCadastroBase64, value); }
+            get { return this._assinaturaRecusaInstituicaoPermanenciaCadastroBase64; }
+            set { SetProperty(ref _assinaturaRecusaInstituicaoPermanenciaCadastroBase64, value); }
         }
 
         //

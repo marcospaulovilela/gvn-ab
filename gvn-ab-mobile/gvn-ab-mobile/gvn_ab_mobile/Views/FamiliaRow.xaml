@@ -21,9 +21,9 @@
 
                 <StackLayout>
                     <Label Text="CNS do Responsável:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                    <Entry Placeholder="CNS do Responsável" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Item.NumeroCnsResponsavel}">
+                    <Entry x:Name="CNSResponsavel" Placeholder="CNS do Responsável" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Item.NumeroCnsResponsavel}">
                         <Entry.Behaviors>
-                            <behaviors:ValidatorCns />
+                            <behaviors:ValidatorCns Required="true"/>
                         </Entry.Behaviors>
                     </Entry>
                 </StackLayout>
@@ -60,7 +60,11 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Salvar" BorderWidth="1" Command="{Binding Save}"  BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264" />
+                    <Button Text="Salvar" BorderWidth="1" BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Save}" />
+                        </Button.Behaviors>
+                    </Button>
                     <Button Text="Cancelar" BorderWidth="1" Command="{Binding Cancel}"  BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264" />
                 </StackLayout>
 

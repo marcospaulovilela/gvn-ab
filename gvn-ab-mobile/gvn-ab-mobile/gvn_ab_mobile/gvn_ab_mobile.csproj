@@ -179,6 +179,18 @@
     <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarPage8.xaml.cs">
       <DependentUpon>FichaCadastroDomiciliarPage8.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarRecusaPage1.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarRecusaPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarRecusaPage2.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarRecusaPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarRecusaPage3.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarRecusaPage3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarRecusaPage4.xaml.cs">
+      <DependentUpon>FichaCadastroDomiciliarRecusaPage4.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage2.xaml.cs">
       <DependentUpon>FichaCadastroIndividualPage2.xaml</DependentUpon>
     </Compile>
@@ -529,6 +541,30 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualRecusaPage2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarRecusaPage1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarRecusaPage2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarRecusaPage4.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroDomiciliarPage\FichaCadastroDomiciliarRecusaPage3.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
