@@ -9,17 +9,16 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
+namespace gvn_ab_mobile.Views.FichaCadastroIndividualPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AssinaturaPage : ContentPage
+    public partial class FichaCadastroIndividualRecusaPage2 : ContentPage
     {
-        ViewModels.TermoDeRecusaViewModel viewModel;
+        ViewModels.FichaCadastroIndividualViewModel viewModel;
 
-        public AssinaturaPage(ViewModels.TermoDeRecusaViewModel viewModel)
+        public FichaCadastroIndividualRecusaPage2(ViewModels.FichaCadastroIndividualViewModel viewModel)
         {
             InitializeComponent();
-
             this.BindingContext = this.viewModel = viewModel;
         }
 
@@ -56,7 +55,7 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
 
             await StreamToBase64Async();
 
-            await this.viewModel.SalvarTermoAsync();
+            await this.viewModel.SalvarExecuteAsync();
         }
 
         private async Task SaveSignatureAsync(bool saveImage)
@@ -85,8 +84,6 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
         private async Task StreamToBase64Async()
         {
 
-            var pd = App.Current.TermoDeRecusa;
-
             Stream InputStream = this.viewModel.SignatureImage;
             byte[] result;
 
@@ -100,10 +97,9 @@ namespace gvn_ab_mobile.Views.AssinaturaTermoRecusa
 
             string base64 = Convert.ToBase64String(result);
 
-            pd.AssinaturaBase64 = base64;
+            this.viewModel.Ficha.AssinaturaBase64 = base64;
 
         }
 
     }
-
 }

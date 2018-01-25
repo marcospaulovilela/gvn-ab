@@ -1098,6 +1098,34 @@ namespace gvn_ab_mobile.Models
 
         //
 
+        //Informações Adicionais do Cidadão
+
+        private string _cpf;
+        [MaxLength(11)]
+        public string Cpf
+        {
+            get { return this._cpf; }
+            set { SetProperty(ref _cpf, value); }
+        }
+
+        private string _rg;
+        [MaxLength(8)]
+        public string Rg
+        {
+            get { return this._rg; }
+            set { SetProperty(ref _rg, value); }
+        }
+
+        private string _tituloEleitor;
+        [MaxLength(12)]
+        public string TituloEleitor
+        {
+            get { return this._tituloEleitor; }
+            set { SetProperty(ref _tituloEleitor, value); }
+        }
+
+        //
+
         public override string ToString()
         {
             return $"Ficha {this.Id}";

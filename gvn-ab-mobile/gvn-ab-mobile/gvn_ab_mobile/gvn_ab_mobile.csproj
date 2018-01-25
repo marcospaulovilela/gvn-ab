@@ -80,12 +80,10 @@
     <Compile Include="DAO\DAOFichaAtendimentoIndividual.cs" />
     <Compile Include="DAO\DAOFichaCadastroDomiciliarTerritorial.cs" />
     <Compile Include="DAO\DAOFichaFamilia.cs" />
-    <Compile Include="DAO\DAOFichaHeader.cs" />
     <Compile Include="DAO\DAOFichaOutrosSia.cs" />
     <Compile Include="DAO\DAOEstabelecimento.cs" />
     <Compile Include="DAO\DAOCbo.cs" />
     <Compile Include="DAO\DAOLogradouro.cs" />
-    <Compile Include="DAO\DAOTermoDeRecusa.cs" />
     <Compile Include="DAO\DAOTipoLogradouro.cs" />
     <Compile Include="DAO\DAOUnidadeFederal.cs" />
     <Compile Include="DAO\DAOMunicipios.cs" />
@@ -97,7 +95,6 @@
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\ObservableRangeCollection.cs" />
     <Compile Include="Helpers\RestAPI.cs" />
-    <Compile Include="Models\AssinaturaTermoRecusa\TermoDeRecusaModel.cs" />
     <Compile Include="Models\AtendimentoIndividual\FichaAtendimentoIndividual.cs" />
     <Compile Include="Models\CadastroDomiciliarTerritorial\FichaCadastroDomiciliarTerritorial.cs" />
     <Compile Include="Models\CadastroIndividual\FichaCadastroIndividual.cs" />
@@ -131,15 +128,8 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\TermoDeRecusaViewModel.cs" />
     <Compile Include="Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AssinaturaTermoRecusa\AssinaturaPage.xaml.cs">
-      <DependentUpon>AssinaturaPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AssinaturaTermoRecusa\TermoDeRecusaPage.xaml.cs">
-      <DependentUpon>TermoDeRecusaPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FamiliaRow.xaml.cs">
       <DependentUpon>FamiliaRow.xaml</DependentUpon>
@@ -206,6 +196,12 @@
     </Compile>
     <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualPage6.xaml.cs">
       <DependentUpon>FichaCadastroIndividualPage6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualRecusaPage1.xaml.cs">
+      <DependentUpon>FichaCadastroIndividualRecusaPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualRecusaPage2.xaml.cs">
+      <DependentUpon>FichaCadastroIndividualRecusaPage2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FichaVisitaDomiciliarPage\FichaVisitaDomiciliarPage1.xaml.cs">
       <DependentUpon>FichaVisitaDomiciliarPage1.xaml</DependentUpon>
@@ -508,18 +504,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\AssinaturaTermoRecusa\AssinaturaPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\AssinaturaTermoRecusa\TermoDeRecusaPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\SalvarFichas\FichaCadastroIndividualRow.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -533,6 +517,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\TableGridFichas.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualRecusaPage1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FichaCadastroIndividualPage\FichaCadastroIndividualRecusaPage2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
