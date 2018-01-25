@@ -21,5 +21,18 @@ namespace gvn_ab_mobile.Helpers {
                 return reponseResult;
             };
         }
+
+        public async Task<bool> PostAsync(object obj) {
+            using (HttpClient client = new HttpClient()) {
+
+                var uri = new Uri(this.Url);
+                var json = JsonConvert.SerializeObject(obj);
+
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await client.PostAsync(uri, content);
+                return response.IsSuccessStatusCode;
+            };
+        }
     }
 }
