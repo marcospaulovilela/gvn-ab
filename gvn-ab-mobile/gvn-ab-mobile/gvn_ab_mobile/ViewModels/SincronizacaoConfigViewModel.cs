@@ -75,30 +75,16 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAOAnimalNoDomicilio DAOAnimalNoDomicilio = new DAO.DAOAnimalNoDomicilio()) { DAOAnimalNoDomicilio.CreateTable(); }
             using (DAO.DAORendaFamiliar DAORendaFamiliar = new DAO.DAORendaFamiliar()) { DAORendaFamiliar.CreateTable(); }
 
-            //using (DAO.DAOListaCiapCondicaoAvaliada DAOListaCiapCondicaoAvaliada = new DAO.DAOListaCiapCondicaoAvaliada()) { DAOListaCiapCondicaoAvaliada.CreateTable(); }
-            //using (DAO.DAOListaExames DAOListaExames = new DAO.DAOListaExames()) { DAOListaExames.CreateTable(); }
-            //using (DAO.DAONasfs DAONasfs = new DAO.DAONasfs()) { DAONasfs.CreateTable(); }
-            //using (DAO.DAOCondutaEncaminhamento DAOCondutaEncaminhamento = new DAO.DAOCondutaEncaminhamento()) { DAOCondutaEncaminhamento.CreateTable(); }
-
-            //using (DAO.DAOLocalDeAtendimento DAOLocalAtendimento = new DAO.DAOLocalDeAtendimento()) { DAOLocalAtendimento.CreateTable(); }
-            //using (DAO.DAOTipoDeAtendimento DAOTipoAtendimento = new DAO.DAOTipoDeAtendimento()) { DAOTipoAtendimento.CreateTable(); }
-            //using (DAO.DAOModalidadeAD DAOModalidadeAD = new DAO.DAOModalidadeAD()) { DAOModalidadeAD.CreateTable(); }
-            //using (DAO.DAORacionalidadeSaude DAORacionalidadeSaude = new DAO.DAORacionalidadeSaude()) { DAORacionalidadeSaude.CreateTable(); }
-            //using (DAO.DAOAleitamentoMaterno DAOAleitamentoMaterno = new DAO.DAOAleitamentoMaterno()) { DAOAleitamentoMaterno.CreateTable(); }
-
             using (DAO.DAOTurno DAOTurno = new DAO.DAOTurno()) { DAOTurno.CreateTable(); }
             using (DAO.DAODesfecho DAODesfecho = new DAO.DAODesfecho()) { DAODesfecho.CreateTable(); }
             using (DAO.DAOMotivoVisita DAOMotivoVisita = new DAO.DAOMotivoVisita()) { DAOMotivoVisita.CreateTable(); }
 
-
-
-
             using (DAO.DAOOcupacao DAOOcupacao = new DAO.DAOOcupacao()) { DAOOcupacao.CreateTable(); };
             using (DAO.DAOUnidadeFederal DAOUnidadeFederal = new DAO.DAOUnidadeFederal()) { DAOUnidadeFederal.CreateTable(); };
             using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio()) { DAOMunicipio.CreateTable(); };
+            using (DAO.DAOBairro DAOBairro = new DAO.DAOBairro()) { DAOBairro.CreateTable(); };
             using (DAO.DAOLogradouro DAOLogradouro = new DAO.DAOLogradouro()) { DAOLogradouro.CreateTable(); };
             using (DAO.DAOTipoLogradouro DAOTipoLogradouro = new DAO.DAOTipoLogradouro()) { DAOTipoLogradouro.CreateTable(); };
-
 
             using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader()) { DAOFichaUnicaLotacaoHeader.CreateTable(); }
             using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) { DAOFichaCadastroIndividual.CreateTable(); }
@@ -208,16 +194,16 @@ namespace gvn_ab_mobile.ViewModels {
                     };
                     #endregion
 
-                    #region Logradouros
-                    var Logradouros = new List<Models.Logradouro>() {
-                        new Models.Logradouro() {
-                            CodLogradouro = 1,
-                            CodTipoLogradouro = 1,
-                            NomLogradouro = "Av. Rondom Pacheco"
+                    #region Bairros
+                    var Bairros = new List<Models.Bairro>() {
+                        new Models.Bairro() {
+                            CodBairro = 1,
+                            NomBairro = "Centro",
+                            CodMunicipio = 1
                         }
                     };
-                    using (DAO.DAOLogradouro DAOLogradouro = new DAO.DAOLogradouro()) {
-                        DAOLogradouro.Insert(Logradouros);
+                    using (DAO.DAOBairro DAOBairro = new DAO.DAOBairro()) {
+                        DAOBairro.Insert(Bairros);
                     };
                     #endregion
 
@@ -230,6 +216,19 @@ namespace gvn_ab_mobile.ViewModels {
                     };
                     using (DAO.DAOTipoLogradouro DAOTipoLogradouro = new DAO.DAOTipoLogradouro()) {
                         DAOTipoLogradouro.Insert(TiposLogradouro);
+                    };
+                    #endregion
+
+                    #region Logradouros
+                    var Logradouros = new List<Models.Logradouro>() {
+                        new Models.Logradouro() {
+                            CodLogradouro = 1,
+                            CodTipoLogradouro = 1,
+                            NomLogradouro = "Av. Rondom Pacheco"
+                        }
+                    };
+                    using (DAO.DAOLogradouro DAOLogradouro = new DAO.DAOLogradouro()) {
+                        DAOLogradouro.Insert(Logradouros);
                     };
                     #endregion
 
@@ -257,11 +256,13 @@ namespace gvn_ab_mobile.ViewModels {
                 try {
                     this.Estabelecimentos.Clear();
                     this.Estabelecimentos.AddRange(await new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Estabelecimento.ashx").GetAsync<Models.Estabelecimento>());
-
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.Page.Navigation.PushAsync(new Views.SincronizacaoConfigPage2(this)));
-
+                    if (this.Estabelecimentos.Any()) {
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.Page.Navigation.PushAsync(new Views.SincronizacaoConfigPage2(this)));
+                    } else {
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.Page.DisplayAlert("Erro", "Servidor não possui nenhum estabelecimento vinculado", "Ok"));
+                    };
                 } catch (Exception ex) {
-                    await this.Page.DisplayAlert("Erro!!", ex.Message, "Ok");
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async() => await this.Page.DisplayAlert("Erro", ex.Message, "Ok"));
 
                     System.Diagnostics.Debug.WriteLine(ex);
                     MessagingCenter.Send(new MessagingCenterAlert {
@@ -286,16 +287,12 @@ namespace gvn_ab_mobile.ViewModels {
                     
                     var TaskGetUnidadeFederal = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/UnidadeFederal.ashx").GetAsync<Models.UnidadeFederal>();
                     var TaskGetMunicipio = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Municipio.ashx").GetAsync<Models.Municipio>();
+                    var TaskGetBairro = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Bairro.ashx?codMunicipio={this.Estabelecimento.CodMunicipio}").GetAsync<Models.Bairro>();
                     var TaskGetLogradouro = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Logradouro.ashx?codUnidade={this.Estabelecimento.CodUnidade}").GetAsync<Models.Logradouro>();
                     var TaskGetTipoLogradouro = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/TipoLogradouro.ashx").GetAsync<Models.TipoLogradouro>();
 
                     this.CargaDados ();
                     
-                    using (DAO.DAOEstabelecimento DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
-                        DAOEstabelecimento.CreateTable();
-                        DAOEstabelecimento.Insert(this.Estabelecimento);
-                    }
-
                     #region Profissionais
                     using (DAO.DAOProfissional DAOProfissional = new DAO.DAOProfissional()) {
                         var profissionais = await TaskGetProfissionais;
@@ -334,6 +331,13 @@ namespace gvn_ab_mobile.ViewModels {
                     };
                     #endregion
 
+                    #region Bairros
+                    var Bairros = await TaskGetBairro;
+                    using (DAO.DAOBairro DAOBairro = new DAO.DAOBairro()) {
+                        DAOBairro.Insert(Bairros);
+                    };
+                    #endregion
+
                     #region Logradouros
                     var Logradouros = await TaskGetLogradouro;
                     using (DAO.DAOLogradouro DAOLogradouro = new DAO.DAOLogradouro()) {
@@ -348,6 +352,10 @@ namespace gvn_ab_mobile.ViewModels {
                     };
                     #endregion
 
+                    using (DAO.DAOEstabelecimento DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
+                        DAOEstabelecimento.CreateTable();
+                        DAOEstabelecimento.Insert(this.Estabelecimento);
+                    }
 
                     #region SyncConfig
                     using (DAO.DAOSincronizacaoConfig DAOSync = new DAO.DAOSincronizacaoConfig()) {

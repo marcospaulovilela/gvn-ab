@@ -52,22 +52,22 @@
 
                 <StackLayout Orientation="Horizontal">
 
-                    <StackLayout HorizontalOptions="FillAndExpand">
+                    <!--<StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Tipo de Logradouro:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
                         <controls:PickerSearch x:Name="CodTipoLogradouro" Items="{Binding TiposLogradouros}" SelectedItem="{Binding TipoLogradouroNumeroDne}">
                             <controls:PickerSearch.Behaviors>
                                 <behaviors:ValidatorPickerSearchBehavior Required="true"/>
                             </controls:PickerSearch.Behaviors>
                         </controls:PickerSearch>
-                    </StackLayout>
+                    </StackLayout>-->
 
                     <StackLayout HorizontalOptions="FillAndExpand" >
-                        <Label Text="Nome do Logradouro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry x:Name="NomeLogradouro" Placeholder="Nome do Logradouro" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeLogradouro}">
-                            <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="72" Required="true" />
-                            </Entry.Behaviors>
-                        </Entry>
+                        <Label Text="Logradouro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <controls:PickerSearch x:Name="NomLogradouro" Items="{Binding Logradouros}" SelectedItem="{Binding Ficha.Logradouro}">
+                            <controls:PickerSearch.Behaviors>
+                                <behaviors:ValidatorPickerSearchBehavior Required="true"/>
+                            </controls:PickerSearch.Behaviors>
+                        </controls:PickerSearch>
                     </StackLayout>
 
                 </StackLayout>
@@ -75,15 +75,15 @@
 
                 <StackLayout Orientation="Horizontal">
 
-                    <StackLayout HorizontalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="FillAndExpand" >
                         <Label Text="Bairro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry x:Name="CodBairro" Placeholder="Bairro" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Bairro}">
-                            <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="72" Required="true"/>
-                            </Entry.Behaviors>
-                        </Entry>
+                        <controls:PickerSearch x:Name="CodBairro" Items="{Binding Bairros}" SelectedItem="{Binding Ficha.Bairro}">
+                            <controls:PickerSearch.Behaviors>
+                                <behaviors:ValidatorPickerSearchBehavior Required="true"/>
+                            </controls:PickerSearch.Behaviors>
+                        </controls:PickerSearch>
                     </StackLayout>
-                    
+
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="CEP:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                         <Entry x:Name="CodCep" Placeholder="CEP" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }">
@@ -92,7 +92,6 @@
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
-
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -109,6 +108,20 @@
                     <StackLayout>
                         <Label Text="Sem Número:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Switch  HorizontalOptions="Center" IsToggled="{Binding StSemNumero}" />
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Microárea:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Entry x:Name="Microarea" IsEnabled="{Binding IsForaArea}" Placeholder="Microárea" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Microarea}">
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthBehavior MinLength="2"  MaxLength="2" Required="true" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Está Fora Área:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Switch  HorizontalOptions="Center" IsToggled="{Binding StForaArea}" />
                     </StackLayout>
 
                 </StackLayout>
@@ -136,25 +149,6 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-
-                    <StackLayout IsVisible="{Binding IsForaArea}">
-                        <Label Text="Microárea:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry x:Name="Microarea" Placeholder="Microárea" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Microarea}">
-                            <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MinLength="2"  MaxLength="2" Required="true" />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </StackLayout>
-
-                    <StackLayout>
-                        <Label Text="Está Fora Área:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Switch  HorizontalOptions="Center" IsToggled="{Binding StForaArea}" />
-                    </StackLayout>
-
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-
                     <StackLayout>
                         <Label Text="Tipo De Imóvel:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Picker x:Name="CodTipoImovel" ItemsSource="{Binding TiposImoveis}" SelectedItem="{Binding TipoDeImovel}" HorizontalOptions="FillAndExpand" Title="Tipo Imóvel" Scale="1">
@@ -195,7 +189,7 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
                     <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="NomCidadao|RGCidadao|CodUF|CodMunicipio|CodCep|CodBairro|NomeLogradouro|Numero|Complemento|PtoReferencia|Microarea|CodTipoImovel|NumTelefoneResidencia|NumTelefoneContato" />
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="NomCidadao|RGCidadao|CodUF|CodMunicipio|CodCep|CodBairro|NomLogradouro|Numero|Complemento|PtoReferencia|Microarea|CodTipoImovel|NumTelefoneResidencia|NumTelefoneContato" />
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>

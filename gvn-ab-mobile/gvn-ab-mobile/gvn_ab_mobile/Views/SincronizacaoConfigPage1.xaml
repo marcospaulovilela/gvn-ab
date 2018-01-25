@@ -12,7 +12,9 @@
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1">
+                    <Label Text="Endereço servidor Governa.Saude.AtencaoBasica:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                     <Entry Text="{Binding SincronizacaoConfig.DesEndereco }" FontSize="Small" Placeholder="Endereço Governa.Saude.AtencaoBasica" VerticalOptions="Center" />
+                    
                     <Button Text="Conectar" Command="{Binding Connectar}"  IsEnabled="{Binding SincronizacaoConfig.hasDesEndereco }"   BackgroundColor="Transparent" TextColor="#003264" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill"/>
                     <Button IsVisible="True" Text="SYNC - OFFLINE (CRIA TABELAS E USUARIO FIXO) - APAGAR DEPOIS" BackgroundColor="Transparent" Command="{Binding SyncOffline}" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="#003264"  VerticalOptions="Center"/>
                 </StackLayout>

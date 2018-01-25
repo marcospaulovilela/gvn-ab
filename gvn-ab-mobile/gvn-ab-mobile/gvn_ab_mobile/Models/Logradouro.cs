@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace gvn_ab_mobile.Models {
     public class Logradouro: Helpers.ObservableObject {
@@ -23,9 +24,11 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref codTipoLogradouro, value); }
         }
 
+        [NotNull, OneToOne("CodTipoLogradouro")]
+        public TipoLogradouro TipoLogradouro { get; set; }
 
         public override string ToString() {
-            return $" {this.codLogradouro} - {this.NomLogradouro}";
+            return $" {this.TipoLogradouro?.NomTipoLogradouro ?? ""} {this.NomLogradouro}".Trim();
         }
     }
 }

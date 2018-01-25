@@ -51,7 +51,7 @@
                     </StackLayout>
 
                     <StackLayout Spacing="12" HorizontalOptions="Fill" VerticalOptions="End">
-                        <Button Text="Entrar" BackgroundColor="Transparent" BorderWidth="10" BorderColor="#003264" TextColor="#003264" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
+                        <Button Text="Entrar" IsEnabled="{Binding HasUser}" BackgroundColor="Transparent" BorderWidth="10" BorderColor="#003264" TextColor="#003264" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
                             <Button.Behaviors>
                                 <behaviors:ButtonSubmitBehavior Command="{Binding Login}" Controls="Usuario|Senha" />
                             </Button.Behaviors>

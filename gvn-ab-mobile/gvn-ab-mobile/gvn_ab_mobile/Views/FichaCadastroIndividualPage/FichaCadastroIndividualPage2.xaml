@@ -163,7 +163,7 @@
                     <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsBrasileiro}">
                         <StackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="U.F. de Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <Picker ItemsSource="{Binding UFs}" SelectedItem="{Binding UF}"  HorizontalOptions="FillAndExpand"  Title="U.F. de Nascimento">
+                            <Picker ItemsSource="{Binding UFs}" IsEnabled="False" SelectedItem="{Binding UF}"  HorizontalOptions="FillAndExpand"  Title="U.F. de Nascimento">
                                 <Picker.Behaviors>
                                     <behaviors:ValidatorPickerBehavior />
                                 </Picker.Behaviors>
@@ -172,7 +172,7 @@
 
                         <StackLayout>
                             <Label Text="Município de Nascimento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <controls:PickerSearch x:Name="CodMunicipio" Placeholder="Municipio de nascimento"  Items="{Binding Municipios}" SelectedItem="{Binding Municipio}">
+                            <controls:PickerSearch x:Name="CodMunicipio" IsEnabled = "false"  Placeholder="Municipio de nascimento"  Items="{Binding Municipios}" SelectedItem="{Binding Municipio}">
                                 <controls:PickerSearch.Behaviors>
                                     <behaviors:ValidatorPickerSearchBehavior Required="true"/>
                                 </controls:PickerSearch.Behaviors>

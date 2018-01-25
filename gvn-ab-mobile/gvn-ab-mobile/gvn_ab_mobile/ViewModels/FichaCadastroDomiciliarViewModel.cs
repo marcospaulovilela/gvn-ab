@@ -37,7 +37,8 @@ namespace gvn_ab_mobile.ViewModels {
         //USADO PAGE 2
 
         public ObservableRangeCollection<Models.UnidadeFederal> UFs { get; set; }
-        public ObservableRangeCollection<Models.TipoLogradouro> TiposLogradouros { get; set; }
+        public ObservableRangeCollection<Models.Logradouro> Logradouros { get; set; }
+        public ObservableRangeCollection<Models.Bairro> Bairros { get; set; }
         public ObservableRangeCollection<Models.TipoDeImovel> TiposImoveis { get; set; }
         public ObservableRangeCollection<Models.Municipio> Municipios { get; set; }
 
@@ -47,11 +48,11 @@ namespace gvn_ab_mobile.ViewModels {
             set {
                 SetProperty(ref uf, value);
 
-                this.CodigoIbgeMunicipio = null;
-                using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio()) {
-                    this.Municipios.Clear();
-                    this.Municipios.AddRange(DAOMunicipio.GetByCodUnidadeFederal(value.CodUnidadeFederal));
-                };
+                //this.CodigoIbgeMunicipio = null;
+                //using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio()) {
+                //    this.Municipios.Clear();
+                //    this.Municipios.AddRange(DAOMunicipio.GetByCodUnidadeFederal(value.CodUnidadeFederal));
+                //};
             }
 
         }
@@ -97,16 +98,6 @@ namespace gvn_ab_mobile.ViewModels {
         public bool IsForaArea {
             get {
                 return !this.StForaArea;
-            }
-        }
-
-        private Models.TipoLogradouro _tipoLogradouroNumeroDne; //Obrigatório
-        public Models.TipoLogradouro TipoLogradouroNumeroDne {
-            get { return this._tipoLogradouroNumeroDne; }
-            set {
-                this.Ficha.TipoLogradouroNumeroDne = value;
-
-                SetProperty(ref _tipoLogradouroNumeroDne, value);
             }
         }
 
@@ -304,8 +295,16 @@ namespace gvn_ab_mobile.ViewModels {
             this.NaoConcordarInstituicaoPermanencia = new Command(async () => await NaoConcordarInstituicaoPermanenciaExecuteAsync());
 
             this.Municipios = new ObservableRangeCollection<Models.Municipio>();
-            this.UFs = new ObservableRangeCollection<Models.UnidadeFederal>(new DAO.DAOUnidadeFederal().Select());
-            this.TiposLogradouros = new ObservableRangeCollection<Models.TipoLogradouro>(new DAO.DAOTipoLogradouro().Select());
+            this.UFs = new ObservableRangeCollection<Models.UnidadeFederal>();
+
+            using (var DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
+                var estabelecimento = DAOEstabelecimento.Select().First();
+                this.CodigoIbgeMunicipio = estabelecimento.Municipio;
+                this.UF = this.CodigoIbgeMunicipio.UnidadeFederal;
+            }
+
+            this.Logradouros = new ObservableRangeCollection<Models.Logradouro>(new DAO.DAOLogradouro().Select());
+            this.Bairros = new ObservableRangeCollection<Models.Bairro>(new DAO.DAOBairro().Select());
             this.TiposImoveis = new ObservableRangeCollection<Models.TipoDeImovel>(new DAO.DAOTipoDeImovel().Select());
 
             this.SituacoesDeMoradia = new ObservableRangeCollection<Models.SituacaoDeMoradia>(new DAO.DAOSituacaoDeMoradia().Select());
@@ -324,6 +323,7 @@ namespace gvn_ab_mobile.ViewModels {
             this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());
 
             this.Familias = new ObservableCollection<object>();
+
         }
 
         private async System.Threading.Tasks.Task ConcordarExecuteAsync() {

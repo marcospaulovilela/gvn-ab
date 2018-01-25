@@ -83,6 +83,7 @@
     <Compile Include="DAO\DAOFichaOutrosSia.cs" />
     <Compile Include="DAO\DAOEstabelecimento.cs" />
     <Compile Include="DAO\DAOCbo.cs" />
+    <Compile Include="DAO\DAOBairro.cs" />
     <Compile Include="DAO\DAOLogradouro.cs" />
     <Compile Include="DAO\DAOTipoLogradouro.cs" />
     <Compile Include="DAO\DAOUnidadeFederal.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Models\EntidadeEnumerador.cs" />
     <Compile Include="Models\EntidadeExames.cs" />
     <Compile Include="Models\Enumeradores.cs" />
+    <Compile Include="Models\Bairro.cs" />
     <Compile Include="Models\TipoLogradouro.cs" />
     <Compile Include="Models\Estabelecimento.cs" />
     <Compile Include="Models\Header\FichaUnicaLotacaoHeader.cs" />
