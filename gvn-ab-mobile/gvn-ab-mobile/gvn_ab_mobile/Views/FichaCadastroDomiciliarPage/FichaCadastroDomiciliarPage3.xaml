@@ -49,6 +49,9 @@
                     <StackLayout IsVisible="{Binding HasTipoDomicilioAndIsRural}">
                         <Label Text="Em caso de Área de Produção Rural: Condição de Posse e Uso da Terra" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                         <Picker x:Name="CodCondicaoPosseUsoTerra" ItemsSource="{Binding CondicoesPosseUsoTerra}" SelectedItem="{Binding AreaProducaoRural}" HorizontalOptions="FillAndExpand" Title="Condição Posse e Uso da Terra" Scale="1">
+                            <Picker.Behaviors>
+                                <behaviors:ValidatorPickerBehavior />
+                            </Picker.Behaviors>
                         </Picker>
                     </StackLayout>
 
@@ -58,9 +61,9 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Número de Moradores:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry x:Name="NumMoradores" Placeholder="Num Moradores" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuMoradores}">
+                        <Entry x:Name="NumMoradores" Placeholder="Num Moradores" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding NuMoradores}">
                             <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="4" />
+                                <behaviors:EntryDifferZeroBehavior MaxLength="4" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>

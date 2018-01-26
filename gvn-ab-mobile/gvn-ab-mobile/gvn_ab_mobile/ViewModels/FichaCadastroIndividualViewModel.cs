@@ -67,7 +67,7 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-        private Models.Sexo _sexoCidadao;
+        Models.Sexo _sexoCidadao;
         public Models.Sexo SexoCidadao {
             get { return this._sexoCidadao; }
             set {
@@ -256,6 +256,9 @@ namespace gvn_ab_mobile.ViewModels {
                 return this.NacionalidadeCidadao?.Codigo == 1;
             }
             set {
+
+                //Arrumar
+
                 this.Ficha.PaisNascimento.Codigo = 31;
                 this.Ficha.PaisNascimento.Descricao = "Brasil";
             }

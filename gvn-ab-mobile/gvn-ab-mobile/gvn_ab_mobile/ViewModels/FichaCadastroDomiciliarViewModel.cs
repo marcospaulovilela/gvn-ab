@@ -152,6 +152,56 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableRangeCollection<Models.FormaDeEscoamentoDoBanheiroOuSanitario> FormasEscoamentoBanheiroOuSanitario { get; set; }
         public ObservableRangeCollection<Models.DestinoDoLixo> DestinosLixo { get; set; }
 
+        private string _nuMoradores;
+        public string NuMoradores
+        {
+            get { return this._nuMoradores; }
+            set
+            {
+                if (value.Length > 0)
+                {
+                    int numFamilias = this.Familias.Count();
+
+                    int numMoradores = int.Parse(value);
+
+                    if (numMoradores < numFamilias)
+                    {
+                        this.Ficha.NuMoradores = numFamilias.ToString();
+                    }
+                    else
+                    {
+
+                        List<Models.FichaFamilia> listaFamilias = this.Familias.Select(o => (Models.FichaFamilia)o).ToList();
+                        int somaMembros = 0;
+
+                        for (int i = 0; i < listaFamilias.Count(); i++)
+                        {
+                            somaMembros += listaFamilias.ElementAt(i).NumeroMembrosFamilia;
+                        }
+
+                        if(numMoradores < somaMembros)
+                        {
+                            this.Ficha.NuMoradores = somaMembros.ToString();
+                        }
+                        else
+                        {
+                            this.Ficha.NuMoradores = value;
+                        }
+
+                    }
+
+                    SetProperty(ref _nuMoradores, this.Ficha.NuMoradores);
+
+                }
+                else
+                {
+                    this.Ficha.NuMoradores = "1";
+
+                    SetProperty(ref _nuMoradores, "1");
+                }
+            }
+        }
+
         private Models.SituacaoDeMoradia _situacaoMoradiaPosseTerra; //Não Obrigatório
         public Models.SituacaoDeMoradia SituacaoMoradiaPosseTerra {
             get { return this._situacaoMoradiaPosseTerra; }
@@ -239,14 +289,14 @@ namespace gvn_ab_mobile.ViewModels {
         public Models.AguaConsumoDomicilio AguaConsumoDomicilio {
             get { return this._aguaConsumoDomicilio; }
             set {
-                this.AguaConsumoDomicilio = value;
+                this.Ficha.AguaConsumoDomicilio = value;
 
                 SetProperty(ref _aguaConsumoDomicilio, value);
             }
         }
 
-        private long _formaEscoamentoBanheiro; //Não Obrigatório
-        public long FormaEscoamentoBanheiro {
+        private Models.FormaDeEscoamentoDoBanheiroOuSanitario _formaEscoamentoBanheiro; //Não Obrigatório
+        public Models.FormaDeEscoamentoDoBanheiroOuSanitario FormaEscoamentoBanheiro {
             get { return this._formaEscoamentoBanheiro; }
             set {
                 this.Ficha.FormaEscoamentoBanheiro = value;
@@ -285,6 +335,47 @@ namespace gvn_ab_mobile.ViewModels {
             get {
                 return this.StAnimaisNoDomicilio;
             }
+        }
+
+        private string _quantosAnimaisNoDomicilio;
+        public string QuantosAnimaisNoDomicilio
+        {
+
+            get { return this._quantosAnimaisNoDomicilio; }
+            set
+            {
+
+                if(value.Length > 0)
+                {
+
+                    int numAnimais = int.Parse(value);
+
+                    int animaisSelecionados = this.AnimaisSelecionados.Count();
+
+                    if(numAnimais < animaisSelecionados)
+                    {
+                        this.Ficha.QuantosAnimaisNoDomicilio = animaisSelecionados.ToString();
+                    }
+                    else
+                    {
+                        this.Ficha.QuantosAnimaisNoDomicilio = numAnimais.ToString();
+                    }
+
+                    SetProperty(ref _quantosAnimaisNoDomicilio, this.Ficha.QuantosAnimaisNoDomicilio);
+
+                }
+                else
+                {
+
+                    int animaisSelecionados = this.AnimaisSelecionados.Count();
+
+                    this.Ficha.QuantosAnimaisNoDomicilio = animaisSelecionados.ToString();
+
+                    SetProperty(ref _quantosAnimaisNoDomicilio, this.Ficha.QuantosAnimaisNoDomicilio);
+                }
+
+            }
+
         }
 
 
@@ -359,7 +450,7 @@ namespace gvn_ab_mobile.ViewModels {
             }
             else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2)
             {
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3(this));
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5(this));
             }
             else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3)
             {
@@ -369,11 +460,11 @@ namespace gvn_ab_mobile.ViewModels {
             {
                 this.Ficha.AnimaisNoDomicilio = this.AnimaisSelecionados.Select(o => (Models.AnimalNoDomicilio)o).ToList();
 
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5(this));
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
             }
             else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5)
             {
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3(this));
             }
             else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage7)
             {

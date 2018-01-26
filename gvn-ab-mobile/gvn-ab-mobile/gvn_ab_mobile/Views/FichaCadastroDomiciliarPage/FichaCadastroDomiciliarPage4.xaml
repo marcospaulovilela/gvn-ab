@@ -33,7 +33,7 @@
                         <Label Text="Qual(is):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                         <controls:SelectMultipleItems x:Name="CodAnimaisDomicilio" Items="{Binding AnimaisNoDomicilio}" SelectedItems="{Binding AnimaisSelecionados}"  >
                             <controls:SelectMultipleItems.Behaviors>
-                                <behaviors:ValidatorSelectMultipleItems MaxLength="4" />
+                                <behaviors:ValidatorSelectMultipleItems MinLength="1"  MaxLength="4" />
                             </controls:SelectMultipleItems.Behaviors>
                         </controls:SelectMultipleItems>
                     </StackLayout>
@@ -44,9 +44,9 @@
 
                     <StackLayout IsVisible="{Binding HasAnimais}">
                         <Label Text="Quantos?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Entry x:Name="NumAnimais" Placeholder="Num Animais" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.QuantosAnimaisNoDomicilio}">
+                        <Entry x:Name="NumAnimais" Placeholder="Num Animais" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding QuantosAnimaisNoDomicilio}">
                             <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="2" Required="true" />
+                                <behaviors:EntryDifferZeroBehavior MaxLength="2" Required="true" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>

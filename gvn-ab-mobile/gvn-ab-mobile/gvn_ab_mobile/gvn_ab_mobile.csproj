@@ -39,7 +39,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviors\EntryDifferZeroBehavior.cs" />
     <Compile Include="Behaviors\EntryDoubleBehavior.cs" />
+    <Compile Include="Behaviors\EntryLettersNumbersBehavior.cs" />
     <Compile Include="Behaviors\EntryNomeBehavior.cs" />
     <Compile Include="Behaviors\EntryLengthBehavior.cs" />
     <Compile Include="Behaviors\Validator.cs" />
