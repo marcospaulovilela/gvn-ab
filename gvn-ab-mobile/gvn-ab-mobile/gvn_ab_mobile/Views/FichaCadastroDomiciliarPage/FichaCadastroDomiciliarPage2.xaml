@@ -11,24 +11,6 @@
             <StackLayout VerticalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand">
                     <StackLayout>
-                        <Label Text="**Nome do Cidadão**:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry x:Name="NomCidadao" Placeholder="Nome do Cidadao" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.NomeCidadao}">
-                            <Entry.Behaviors>
-                                <behaviors:EntryNomeBehavior Required="true" />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </StackLayout>
-
-                    <StackLayout>
-                        <Label Text="**RG do Cidadão**:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry x:Name="RGCidadao" Placeholder="RG do Cidadao" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.Rg}">
-                            <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MinLength="8"  MaxLength="8"  Required="true" />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </StackLayout>
-
-                    <StackLayout Orientation="Horizontal">
 
                         <StackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="U.F:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
@@ -98,9 +80,9 @@
 
                         <StackLayout  HorizontalOptions="FillAndExpand">
                             <Label Text="Número:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                            <Entry x:Name="Numero" IsEnabled="{Binding HasNumero}" Keyboard="Numeric" Placeholder="Número" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Numero}">
+                            <Entry x:Name="Numero" IsEnabled="{Binding HasNumero}" Placeholder="Número" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Numero}">
                                 <Entry.Behaviors>
-                                    <behaviors:EntryLengthBehavior MinLength="1"  MaxLength="10" Required="true"/>
+                                    <behaviors:EntryLettersNumbersBehavior Required="true"/>
                                 </Entry.Behaviors>
                             </Entry>
                         </StackLayout>
@@ -164,7 +146,7 @@
 
                         <StackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="Telefone Residência:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                            <Entry x:Name="NumTelefoneResidencia" Placeholder="Tel. Residência" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneResidencia}">
+                            <Entry x:Name="NumTelefoneResidencia" Keyboard="Numeric" Placeholder="Tel. Residência" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneResidencia}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLengthBehavior MinLength="10"  MaxLength="11" />
                                 </Entry.Behaviors>
@@ -176,7 +158,7 @@
                     <StackLayout Orientation="Horizontal">
                         <StackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="Telefone Contato:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <Entry x:Name="NumTelefoneContato" Placeholder="Tel. Contato" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneContato}">
+                            <Entry x:Name="NumTelefoneContato" Keyboard="Numeric" Placeholder="Tel. Contato" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneContato}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLengthBehavior MinLength="10"  MaxLength="11" />
                                 </Entry.Behaviors>
@@ -188,7 +170,7 @@
                 <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
                     <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="NomCidadao|RGCidadao|CodUF|CodMunicipio|CodCep|CodBairro|NomLogradouro|Numero|Complemento|PtoReferencia|Microarea|CodTipoImovel|NumTelefoneResidencia|NumTelefoneContato" />
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodUF|CodMunicipio|CodCep|CodBairro|NomLogradouro|Numero|Complemento|PtoReferencia|Microarea|CodTipoImovel|NumTelefoneResidencia|NumTelefoneContato" />
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>

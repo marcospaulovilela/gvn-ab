@@ -49,19 +49,19 @@
                         </Picker>
                     </StackLayout>
 
-                    <StackLayout Orientation="Horizontal" IsVisible="{Binding HasTipoDomicilio}" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <StackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="Número de Moradores:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                            <Entry x:Name="NumMoradores" Placeholder="Num Moradores" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding NuMoradores}">
+                            <Entry x:Name="NumMoradores" Keyboard="Numeric" Placeholder="Num Moradores" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding NuMoradores}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryDifferZeroBehavior MaxLength="4" />
                                 </Entry.Behaviors>
                             </Entry>
                         </StackLayout>
 
-                        <StackLayout HorizontalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="FillAndExpand"  IsVisible="{Binding HasTipoDomicilio}">
                             <Label Text="Número de Cômodos:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <Entry x:Name="NumComodos" Placeholder="Num Cômodos" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuComodos}">
+                            <Entry x:Name="NumComodos" Keyboard="Numeric" Placeholder="Num Cômodos" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuComodos}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLengthBehavior MaxLength="2" />
                                 </Entry.Behaviors>

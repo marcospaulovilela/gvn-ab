@@ -43,7 +43,9 @@ namespace gvn_ab_mobile.Views {
         }
 
         async void OnCadastroIndividualClicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new FichaCadastroIndividualPage.FichaCadastroIndividualPage1(new ViewModels.FichaCadastroIndividualViewModel(this)));
+            var viewModelCadastroIndividual = new ViewModels.FichaCadastroIndividualViewModel(this);
+
+            await Navigation.PushAsync(new FichaCadastroIndividualPage.FichaCadastroIndividualPage1(viewModelCadastroIndividual));
         }
 
         async void OnCadastroDomiciliarClicked(object sender, EventArgs e) {
@@ -53,7 +55,9 @@ namespace gvn_ab_mobile.Views {
         }
 
         async void OnVisitaDomiciliarClicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new FichaVisitaDomiciliarPage.FichaVisitaDomiciliarPage1(new ViewModels.FichaVisitaDomiciliarViewModel(this)));
+            var viewModelVisitaDomiciliar = new ViewModels.FichaVisitaDomiciliarViewModel(this);
+
+            await Navigation.PushAsync(new FichaVisitaDomiciliarPage.FichaVisitaDomiciliarPage1(viewModelVisitaDomiciliar));
         }
 
         async void OnEnviarFichasClicked(object sender, EventArgs e) {

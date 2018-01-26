@@ -24,7 +24,7 @@
                     </ListView>
                 </StackLayout>
             </Frame>
+            <Button Text="Criar Ficha" BorderWidth="0" Command="{Binding Add}"  BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264" HorizontalOptions="End" VerticalOptions="Center"/>
         </StackLayout>
-
     </ContentView.Content>
 </ContentView>
