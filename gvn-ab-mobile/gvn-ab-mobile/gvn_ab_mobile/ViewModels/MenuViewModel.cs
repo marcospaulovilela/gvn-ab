@@ -56,6 +56,8 @@ namespace gvn_ab_mobile.ViewModels {
 
             using (DAO.DAOEstabelecimento DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
                 this.Estabelecimento = DAOEstabelecimento.Select()?.First();
+
+                this.Estabelecimento.Municipio = new DAO.DAOMunicipio().Select(this.Estabelecimento.Municipio.CodMunicipio);
             }
         }
     }

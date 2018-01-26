@@ -33,6 +33,11 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         public bool HasUser { get; set; }
+        public override bool NotIsBusy {
+            get {
+                return this.HasUser && !this.IsBusy;
+            }
+        }
 
         public LoginViewModel(Page page) {
             this.Profissional = new Models.Profissional() {
@@ -56,6 +61,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async Task LoginExecuteAsync() {
+            this.IsBusy = true;
             try {
                 using (var objDao = new DAO.DAOProfissional()) {
                     var user = objDao.GetProfissionalByDesLogin(this.Profissional.DesLogin);
@@ -84,7 +90,9 @@ namespace gvn_ab_mobile.ViewModels {
                 };
             } catch (Exception e) {
                 System.Diagnostics.Debug.WriteLine(e);
-            }
+            } finally {
+                this.IsBusy = false;
+            };
         }
 
         private async Task SincronizarExecuteAsync() {

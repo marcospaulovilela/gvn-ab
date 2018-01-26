@@ -84,7 +84,7 @@ namespace gvn_ab_mobile.DAO {
         }
 
         public List<T> Select() {
-            var scan = this.connection?.GetAllWithChildren<T>();
+            var scan = this.connection?.GetAllWithChildren<T>(recursive: true);
             if (scan == null)
                 scan = new List<T>();
 
@@ -93,7 +93,7 @@ namespace gvn_ab_mobile.DAO {
 
         public T Select(long? id) {
             var obj = this.connection.Get<T>(id);
-            this.connection?.GetChildren<T>(obj);
+            this.connection?.GetChildren<T>(obj, true);
 
             return obj;
         }

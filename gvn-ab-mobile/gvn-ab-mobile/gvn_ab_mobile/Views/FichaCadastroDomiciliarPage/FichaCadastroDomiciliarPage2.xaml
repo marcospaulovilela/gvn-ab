@@ -32,7 +32,7 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="U.F:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker x:Name="CodUF" ItemsSource="{Binding UFs}" SelectedItem="{Binding UF}"  HorizontalOptions="FillAndExpand"  Title="U.F.">
+                        <Picker x:Name="CodUF" IsEnabled="False" ItemsSource="{Binding UFs}" SelectedItem="{Binding UF}"  HorizontalOptions="FillAndExpand"  Title="U.F.">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />
                             </Picker.Behaviors>
@@ -41,7 +41,7 @@
 
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="Município:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <controls:PickerSearch x:Name="CodMunicipio" Placeholder="Município"  Items="{Binding Municipios}" SelectedItem="{Binding CodigoIbgeMunicipio}">
+                        <controls:PickerSearch Enabled="false"  x:Name="CodMunicipio" Placeholder="Município"  Items="{Binding Municipios}" SelectedItem="{Binding CodigoIbgeMunicipio}">
                             <controls:PickerSearch.Behaviors>
                                 <behaviors:ValidatorPickerSearchBehavior Required="true"/>
                             </controls:PickerSearch.Behaviors>
@@ -149,8 +149,8 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-                    <StackLayout>
-                        <Label Text="Tipo De Imóvel:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Tipo De Imóvel:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Picker x:Name="CodTipoImovel" ItemsSource="{Binding TiposImoveis}" SelectedItem="{Binding TipoDeImovel}" HorizontalOptions="FillAndExpand" Title="Tipo Imóvel" Scale="1">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />

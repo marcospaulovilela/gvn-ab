@@ -50,18 +50,16 @@ namespace gvn_ab_mobile.ViewModels {
 
                 //this.CodigoIbgeMunicipio = null;
                 //using (DAO.DAOMunicipio DAOMunicipio = new DAO.DAOMunicipio()) {
-                //    this.Municipios.Clear();
-                //    this.Municipios.AddRange(DAOMunicipio.GetByCodUnidadeFederal(value.CodUnidadeFederal));
+                //this.Municipios.Clear();
+                //this.Municipios.AddRange(DAOMunicipio.GetByCodUnidadeFederal(value.CodUnidadeFederal));
                 //};
             }
 
         }
         private Models.Municipio _codigoIbgeMunicipio;
-        public Models.Municipio CodigoIbgeMunicipio
-        {
+        public Models.Municipio CodigoIbgeMunicipio {
             get { return this._codigoIbgeMunicipio; }
-            set
-            {
+            set {
                 this.Ficha.Municipio = value;
                 SetProperty(ref _codigoIbgeMunicipio, value);
             }
@@ -176,8 +174,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private Models.TipoDeDomicilio _tipoDomicilio; //Não Obrigatório
-        public Models.TipoDeDomicilio TipoDomicilio
-        {
+        public Models.TipoDeDomicilio TipoDomicilio {
             get { return this._tipoDomicilio; }
             set {
                 this.Ficha.TipoDomicilio = value;
@@ -294,33 +291,25 @@ namespace gvn_ab_mobile.ViewModels {
             this.ConcordarInstituicaoPermanencia = new Command(async () => await ConcordarInstituicaoPermanenciaExecuteAsync());
             this.NaoConcordarInstituicaoPermanencia = new Command(async () => await NaoConcordarInstituicaoPermanenciaExecuteAsync());
 
-            this.Municipios = new ObservableRangeCollection<Models.Municipio>();
-            this.UFs = new ObservableRangeCollection<Models.UnidadeFederal>();
 
-            using (var DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
-                var estabelecimento = DAOEstabelecimento.Select().First();
-                this.CodigoIbgeMunicipio = estabelecimento.Municipio;
-                this.UF = this.CodigoIbgeMunicipio.UnidadeFederal;
-            }
-
+            #region CarregamentoDados Page2
             this.Logradouros = new ObservableRangeCollection<Models.Logradouro>(new DAO.DAOLogradouro().Select());
             this.Bairros = new ObservableRangeCollection<Models.Bairro>(new DAO.DAOBairro().Select());
             this.TiposImoveis = new ObservableRangeCollection<Models.TipoDeImovel>(new DAO.DAOTipoDeImovel().Select());
 
-            this.SituacoesDeMoradia = new ObservableRangeCollection<Models.SituacaoDeMoradia>(new DAO.DAOSituacaoDeMoradia().Select());
-            this.LocalizacoesMoradias = new ObservableRangeCollection<Models.LocalizacaoDaMoradia>(new DAO.DAOLocalizacaoDaMoradia().Select());
-            this.TiposDeDomicilio = new ObservableRangeCollection<Models.TipoDeDomicilio>(new DAO.DAOTipoDeDomicilio().Select());
-            this.TiposAcessoDomicilio = new ObservableRangeCollection<Models.TipoDeAcessoAoDomicilio>(new DAO.DAOTipoDeAcessoAoDomicilio().Select());
-            this.CondicoesPosseUsoTerra = new ObservableRangeCollection<Models.CondicaoDePosseEUsoDaTerra>(new DAO.DAOCondicaoDePosseEUsoDaTerra().Select());
-            this.MateriaisPredominantesConstrucao = new ObservableRangeCollection<Models.MaterialPredominanteNaConstrucao>(new DAO.DAOMaterialPredominanteNaConstrucao().Select());
-            this.AbastecimentosAgua = new ObservableRangeCollection<Models.AbastecimentoDeAgua>(new DAO.DAOAbastecimentoDeAgua().Select());
-            this.AguaConsumoDomicilios = new ObservableRangeCollection<Models.AguaConsumoDomicilio>(new DAO.DAOAguaConsumoDomicilio().Select());
-            this.FormasEscoamentoBanheiroOuSanitario = new ObservableRangeCollection<Models.FormaDeEscoamentoDoBanheiroOuSanitario>(new DAO.DAOFormaDeEscoamentoDoBanheiroOuSanitario().Select());
-            this.DestinosLixo = new ObservableRangeCollection<Models.DestinoDoLixo>(new DAO.DAODestinoDoLixo().Select());
+            using (var DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
+                var estabelecimento = DAOEstabelecimento.Select().First();
 
-            this.AnimaisNoDomicilio = new ObservableRangeCollection<Models.AnimalNoDomicilio>(new DAO.DAOAnimalNoDomicilio().Select());
+                this.Municipios = new ObservableRangeCollection<Models.Municipio>();
+                this.UFs = new ObservableRangeCollection<Models.UnidadeFederal>();
 
-            this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());
+                this.UFs.Add(new DAO.DAOUnidadeFederal().Select(estabelecimento.Municipio.CodUnidadeFederal));
+                this.UF = this.UFs.First();
+
+                this.Municipios.Add(estabelecimento.Municipio);
+                this.CodigoIbgeMunicipio = this.Municipios.First();
+            };
+            #endregion
 
             this.Familias = new ObservableCollection<object>();
 
@@ -342,66 +331,61 @@ namespace gvn_ab_mobile.ViewModels {
             await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage3(this));
         }
 
-        public async System.Threading.Tasks.Task TelaInstituicaoPermanenciaExecuteAsync()
-        {
+        public async System.Threading.Tasks.Task TelaInstituicaoPermanenciaExecuteAsync() {
             await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
         }
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
             var CurrentPage = this.MenuPage.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
-            if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage1)
-            {
+            if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage1) {
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage2(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage3)
-            {
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage3) {
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage4(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2)
-            {
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2) {
+                #region Carregament dados page 3
+                this.SituacoesDeMoradia = new ObservableRangeCollection<Models.SituacaoDeMoradia>(new DAO.DAOSituacaoDeMoradia().Select());
+                this.LocalizacoesMoradias = new ObservableRangeCollection<Models.LocalizacaoDaMoradia>(new DAO.DAOLocalizacaoDaMoradia().Select());
+                this.TiposDeDomicilio = new ObservableRangeCollection<Models.TipoDeDomicilio>(new DAO.DAOTipoDeDomicilio().Select());
+                this.TiposAcessoDomicilio = new ObservableRangeCollection<Models.TipoDeAcessoAoDomicilio>(new DAO.DAOTipoDeAcessoAoDomicilio().Select());
+                this.CondicoesPosseUsoTerra = new ObservableRangeCollection<Models.CondicaoDePosseEUsoDaTerra>(new DAO.DAOCondicaoDePosseEUsoDaTerra().Select());
+                this.MateriaisPredominantesConstrucao = new ObservableRangeCollection<Models.MaterialPredominanteNaConstrucao>(new DAO.DAOMaterialPredominanteNaConstrucao().Select());
+                this.AbastecimentosAgua = new ObservableRangeCollection<Models.AbastecimentoDeAgua>(new DAO.DAOAbastecimentoDeAgua().Select());
+                this.AguaConsumoDomicilios = new ObservableRangeCollection<Models.AguaConsumoDomicilio>(new DAO.DAOAguaConsumoDomicilio().Select());
+                this.FormasEscoamentoBanheiroOuSanitario = new ObservableRangeCollection<Models.FormaDeEscoamentoDoBanheiroOuSanitario>(new DAO.DAOFormaDeEscoamentoDoBanheiroOuSanitario().Select());
+                this.DestinosLixo = new ObservableRangeCollection<Models.DestinoDoLixo>(new DAO.DAODestinoDoLixo().Select());
+                #endregion
+
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3)
-            {
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3) {
+                this.AnimaisNoDomicilio = new ObservableRangeCollection<Models.AnimalNoDomicilio>(new DAO.DAOAnimalNoDomicilio().Select());
+
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4)
-            {
+
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4) {
+                this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());
+
                 this.Ficha.AnimaisNoDomicilio = this.AnimaisSelecionados.Select(o => (Models.AnimalNoDomicilio)o).ToList();
-
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5)
-            {
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5) {
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage7)
-            {
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage7) {
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8(this));
-            }
-            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8)
-            {
-
+            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8) {
                 SalvarExecuteAsync();
-
             };
         }
 
-        public async System.Threading.Tasks.Task SalvarExecuteAsync()
-        {
+        public async System.Threading.Tasks.Task SalvarExecuteAsync() {
 
             this.IsBusy = true;
-            #pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+#pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
             Task.Run(async () => {
 
                 using (DAO.DAOFichaFamilia DAOFichaFamilia = new DAO.DAOFichaFamilia())
                 using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader())
-                using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial())
-                {
-                    try
-                    {
-                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader()
-                        {
+                using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial()) {
+                    try {
+                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader() {
                             Cbo = this.MenuPage.ViewModel.Cbo.CodCbo,
                             CnsProfissional = this.MenuPage.ViewModel.Profissional.CnsProfissional,
                             Cnes = this.MenuPage.ViewModel.Estabelecimento.ImpCnes,
@@ -415,20 +399,15 @@ namespace gvn_ab_mobile.ViewModels {
                         DAOFichaUnicaLotacaoHeader.Insert(this.Ficha.Header);
                         DAOFichaCadastroDomiciliar.Insert(this.Ficha);
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.MenuPage.Navigation.PopToRootAsync());
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         System.Diagnostics.Debug.WriteLine(e);
-                    }
-                    finally
-                    {
+                    } finally {
                         this.IsBusy = false;
                     };
                 };
             });
-            #pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+#pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
         }
 
     }
-
 }

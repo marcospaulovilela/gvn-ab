@@ -97,10 +97,10 @@ namespace gvn_ab_mobile.Controls {
             set { this.viewModel.Placeholder = value; }
         }
 
-        //public bool IsEnabled {
-        //    get { return this.viewModel.IsEnabled; }
-        //    set { this.viewModel.IsEnabled = value; }
-        //}
+        public bool Enabled {
+            get { return this.viewModel.IsEnabled; }
+            set { this.viewModel.IsEnabled = value; }
+        }
 
         public PickerSearchViewModel viewModel { get; set; }
         public PickerSearch() {

@@ -18,7 +18,7 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-        public bool NotIsBusy {
+        public virtual bool NotIsBusy {
             get { return !isBusy; }
             set {
                 SetProperty(ref isBusy, !value);

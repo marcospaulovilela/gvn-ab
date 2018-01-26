@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gvn_ab_mobile.Controls.PickerSearch">
     <ContentView.Content>
-        <StackLayout x:Name="LabelItems" HeightRequest="30">
-            <Label BackgroundColor="Transparent" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" TextColor="Gray" Text="{Binding Title}" />
+        <StackLayout x:Name="LabelItems" HeightRequest="30" IsEnabled="{Binding IsEnabled}">
+            <Label BackgroundColor="Transparent" IsEnabled="{Binding IsEnabled}" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" TextColor="Gray" Text="{Binding Title}" />
         </StackLayout>
     </ContentView.Content>
 </ContentView>
