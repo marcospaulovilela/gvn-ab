@@ -19,6 +19,13 @@ namespace gvn_ab_mobile.Controls {
             set { SetProperty(ref placeholder, value); }
         }
 
+        private bool isEnabled = true;
+        public bool IsEnabled {
+            get { return isEnabled; }
+            set { SetProperty(ref isEnabled, value); }
+        }
+
+
         private string filtro = string.Empty;
         public string Filtro {
             get { return filtro; }
@@ -89,6 +96,11 @@ namespace gvn_ab_mobile.Controls {
             get { return this.viewModel.Placeholder; }
             set { this.viewModel.Placeholder = value; }
         }
+
+        //public bool IsEnabled {
+        //    get { return this.viewModel.IsEnabled; }
+        //    set { this.viewModel.IsEnabled = value; }
+        //}
 
         public PickerSearchViewModel viewModel { get; set; }
         public PickerSearch() {

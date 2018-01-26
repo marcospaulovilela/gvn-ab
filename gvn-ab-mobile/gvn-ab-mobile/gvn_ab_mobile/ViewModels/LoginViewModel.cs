@@ -32,6 +32,8 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
+        public bool HasUser { get; set; }
+
         public LoginViewModel(Page page) {
             this.Profissional = new Models.Profissional() {
                 DesLogin = "admsaude",
@@ -43,6 +45,8 @@ namespace gvn_ab_mobile.ViewModels {
             this.CboSelect = new Command(() => CallMenu());
 
             this.Sincronizar = new Command(async () => await SincronizarExecuteAsync());
+
+            this.HasUser = new DAO.DAOProfissional().Select().Any();
         }
 
         private void CallMenu() {
@@ -52,11 +56,10 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async Task LoginExecuteAsync() {
-
             try {
                 using (var objDao = new DAO.DAOProfissional()) {
                     var user = objDao.GetProfissionalByDesLogin(this.Profissional.DesLogin);
-                    
+
                     if (user != null && user.DesSenha == this.Profissional.DesSenha) { //SERIO??? BRINCADEIRA SEGURANÇA FAZER DIREITO DEPOIS.....
                         this.Profissional = user;
                         if (this.Profissional.Cbos?.Count() == 0) {

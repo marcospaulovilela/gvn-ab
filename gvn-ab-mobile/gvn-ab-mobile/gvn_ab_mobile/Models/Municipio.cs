@@ -24,6 +24,9 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref codUnidadeFederal, value); }
         }
 
+        [NotNull, OneToOne("CodUnidadeFederal")]
+        public UnidadeFederal UnidadeFederal { get; set; }
+
         public override string ToString() {
             return $" {this.nomMunicipio} ";
         }

@@ -233,13 +233,13 @@ namespace gvn_ab_mobile.Models
 
         //INÍCIO ENDEREÇO LOCAL PERMANÊNCIA
 
-        //Campo bairro - Tipo string
-        private string _bairro; //Obrigatório
-        [NotNull, MaxLength(72)] //Máximo 72 caracteres
-        public string Bairro
-        {
-            get { return this._bairro; }
-            set { SetProperty(ref _bairro, value); }
+
+        public long? BairroId { get; set; }
+        private Models.Bairro bairro; //Obrigatório
+        [OneToOne("BairroId")] 
+        public Models.Bairro Bairro{
+            get { return this.bairro; }
+            set { SetProperty(ref bairro, value); }
         }
 
         //Campo cep - Tipo string
@@ -270,13 +270,14 @@ namespace gvn_ab_mobile.Models
             set { SetProperty(ref _complemento, value); }
         }
 
-        //Campo nomeLogradouro - Tipo string
-        private string _nomeLogradouro; //Obrigatório
-        [NotNull, MaxLength(72)] //Máximo 72 caracteres
-        public string NomeLogradouro
-        {
-            get { return this._nomeLogradouro; }
-            set { SetProperty(ref _nomeLogradouro, value); }
+
+        //Campo codigoIbgeMunicipio - Tipo string
+        public long? LogradouroId { get; set; }
+        private Models.Logradouro logradouro; //Obrigatório
+        [OneToOne("LogradouroId")] //Mínimo 7 caracteres; Máximo 7 caracteres
+        public Models.Logradouro Logradouro {
+            get { return this.logradouro; }
+            set { SetProperty(ref logradouro, value); }
         }
 
         //Campo numero - Tipo string
