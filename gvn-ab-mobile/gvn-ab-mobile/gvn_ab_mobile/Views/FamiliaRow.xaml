@@ -37,7 +37,7 @@
                     <Label Text="Número de Membros da Família:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                     <Entry Placeholder="Num membros família" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Item.NumeroMembrosFamilia}">
                         <Entry.Behaviors>
-                            <behaviors:EntryLengthBehavior MaxLength="2" />
+                            <behaviors:EntryDifferZeroBehavior MaxLength="2" />
                         </Entry.Behaviors>
                     </Entry>
                 </StackLayout>

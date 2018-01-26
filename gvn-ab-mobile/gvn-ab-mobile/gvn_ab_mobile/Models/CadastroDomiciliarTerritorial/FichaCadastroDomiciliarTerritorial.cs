@@ -134,8 +134,10 @@ namespace gvn_ab_mobile.Models
         }
 
         //Campo formaEscoamentoBanheiro - Tipo long
-        private long _formaEscoamentoBanheiro; //Não Obrigatório
-        public long FormaEscoamentoBanheiro
+        public long? FormaEscoamentoBanheiroId { get; set; }
+        private Models.FormaDeEscoamentoDoBanheiroOuSanitario _formaEscoamentoBanheiro; //Não Obrigatório
+        [OneToOne("FormaEscoamentoBanheiroId")]
+        public Models.FormaDeEscoamentoDoBanheiroOuSanitario FormaEscoamentoBanheiro
         {
             get { return this._formaEscoamentoBanheiro; }
             set { SetProperty(ref _formaEscoamentoBanheiro, value); }
