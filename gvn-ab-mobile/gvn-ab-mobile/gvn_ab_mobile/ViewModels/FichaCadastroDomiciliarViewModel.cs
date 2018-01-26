@@ -60,6 +60,7 @@ namespace gvn_ab_mobile.ViewModels
             }
 
         }
+
         private Models.Municipio _codigoIbgeMunicipio;
         public Models.Municipio CodigoIbgeMunicipio
         {
@@ -70,6 +71,38 @@ namespace gvn_ab_mobile.ViewModels
                 SetProperty(ref _codigoIbgeMunicipio, value);
             }
         }
+
+        private Models.Bairro bairro;
+        public Models.Bairro Bairro {
+            get { return this.bairro; }
+            set {
+                if (value == this.Ficha.Bairro) return;
+                this.Ficha.Bairro = value;
+                SetProperty(ref bairro, value);
+
+                this.Logradouro = null;
+                try {
+                    using (DAO.DAOLocalizacao DAOLocalizacao = new DAO.DAOLocalizacao()) {
+                        var LocalizacoesBairro = DAOLocalizacao.GetLocalizacaoByBairro(value.CodBairro);
+                        this.Logradouros.Clear();
+                        this.Logradouros.AddRange(LocalizacoesBairro.Select(o => o.Logradouro));
+                    }
+                } catch (Exception e) {
+
+                }
+
+            }
+        }
+
+        private Models.Logradouro logradouro;
+        public Models.Logradouro Logradouro {
+            get { return this.logradouro; }
+            set {
+                this.Ficha.Logradouro = value;
+                SetProperty(ref logradouro, value);
+            }
+        }
+
 
         private bool _stSemNumero; //Não Obrigatório
         public bool StSemNumero
@@ -440,7 +473,6 @@ namespace gvn_ab_mobile.ViewModels
 
             #region CarregamentoDados Page2
             this.Logradouros = new ObservableRangeCollection<Models.Logradouro>();
-            Task.Run(() => this.Logradouros.AddRange(new DAO.DAOLogradouro().Select()));
             this.Bairros = new ObservableRangeCollection<Models.Bairro>(new DAO.DAOBairro().Select());
             this.TiposImoveis = new ObservableRangeCollection<Models.TipoDeImovel>(new DAO.DAOTipoDeImovel().Select());
 

@@ -15,7 +15,7 @@ namespace gvn_ab_mobile.DAO {
         public override int? Insert(Logradouro obj) {
             if (obj == null) return null;
             try {
-                string cmdText = "INSERT INTO Logradouro (CodLogradouro, NomLogradouro, CodTipoLogradouro) values (?, ?, ?)";
+                string cmdText = "INSERT INTO Logradouro (CodLogradouro, NomLogradouro, CodTipoLogradouro) values (?, ?, ?, ?)";
                 var cmd = connection.CreateCommand(cmdText, obj.CodLogradouro, obj.NomLogradouro, obj.CodTipoLogradouro);
                 return cmd.ExecuteNonQuery();
             } catch(Exception e) {

@@ -85,6 +85,7 @@ namespace gvn_ab_mobile.ViewModels {
             using (DAO.DAOBairro DAOBairro = new DAO.DAOBairro()) { DAOBairro.CreateTable(); };
             using (DAO.DAOLogradouro DAOLogradouro = new DAO.DAOLogradouro()) { DAOLogradouro.CreateTable(); };
             using (DAO.DAOTipoLogradouro DAOTipoLogradouro = new DAO.DAOTipoLogradouro()) { DAOTipoLogradouro.CreateTable(); };
+            using (DAO.DAOLocalizacao DAOLocalizacao = new DAO.DAOLocalizacao()) { DAOLocalizacao.CreateTable(); }
 
             using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader()) { DAOFichaUnicaLotacaoHeader.CreateTable(); }
             using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) { DAOFichaCadastroIndividual.CreateTable(); }
@@ -233,6 +234,17 @@ namespace gvn_ab_mobile.ViewModels {
                     };
                     #endregion
 
+                    #region Localizacao
+                    var Localizacao = new List<Models.Localizacao>() { new Models.Localizacao() {
+                            CodLocalizacao = 1, CodCep="11111111", CodBairro=1, CodLogradouro = 1, DesComplemento = "Teste"
+                        }
+                    };
+
+                    using (DAO.DAOLocalizacao DAOLocalizacao = new DAO.DAOLocalizacao()) {
+                        var result = DAOLocalizacao.Insert(Localizacao);
+                    };
+                    #endregion
+
                     #region SyncConfig
                     using (DAO.DAOSincronizacaoConfig DAOSync = new DAO.DAOSincronizacaoConfig()) {
                         DAOSync.CreateTable();
@@ -291,6 +303,7 @@ namespace gvn_ab_mobile.ViewModels {
                     var TaskGetBairro = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Bairro.ashx?codMunicipio={this.Estabelecimento.CodMunicipio}").GetAsync<Models.Bairro>();
                     var TaskGetLogradouro = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Logradouro.ashx?codUnidade={this.Estabelecimento.CodUnidade}").GetAsync<Models.Logradouro>();
                     var TaskGetTipoLogradouro = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/TipoLogradouro.ashx").GetAsync<Models.TipoLogradouro>();
+                    var TaskGetLocalizacao = new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Localizacao.ashx").GetAsync<Models.Localizacao>();
 
                     this.CargaDados ();
                     
@@ -353,8 +366,16 @@ namespace gvn_ab_mobile.ViewModels {
                     };
                     #endregion
 
+                    #region Localizacao
+                    var Localizacao = await TaskGetLocalizacao;
+                    using (DAO.DAOLocalizacao DAOLocalizacao  = new DAO.DAOLocalizacao()) {
+                        var result = DAOLocalizacao.Insert(Localizacao);
+                    };
+                    #endregion
+
                     using (DAO.DAOEstabelecimento DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
                         DAOEstabelecimento.CreateTable();
+                        this.Estabelecimento.Municipio = new Models.Municipio() { CodMunicipio = this.Estabelecimento.CodMunicipio };
                         DAOEstabelecimento.Insert(this.Estabelecimento);
                     }
 

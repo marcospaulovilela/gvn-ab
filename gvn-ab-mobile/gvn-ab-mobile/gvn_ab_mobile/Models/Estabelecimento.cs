@@ -32,7 +32,6 @@ namespace gvn_ab_mobile.Models {
         }
 
         private long? codMunicipio;
-        [NotNull]
         public long? CodMunicipio {
             get { return this.codMunicipio; }
             set { SetProperty(ref codMunicipio, value); }
