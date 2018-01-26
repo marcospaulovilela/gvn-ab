@@ -35,23 +35,22 @@ namespace gvn_ab_mobile.Behaviors {
 
         void OnClicked(object sender, EventArgs args) {
             var Button = (Button)sender;
-            Element root = Button.Parent;
+            Element root; 
             
             //==========================
             if (!string.IsNullOrEmpty(this.Controls)) {
                 var result = true;
 
-                while(!(root.Parent is Page)) {
-                    root = root.Parent;
-                }
-    
+                for(root = Button.Parent; !(root.Parent is Page); root = root.Parent)
+                
                 foreach (var controlName in this.Controls.Split('|')) {
                     View Control = root.FindByName<View>(controlName);
-                    bool isVisible = true;
+                    if (Control == null) continue;
 
-                    for (View parent = Control; (parent.Parent is View) && (isVisible = parent.IsVisible); parent = (View)parent.Parent);
+                    bool isVisible = true;
+                    for (View parent = Control; parent.Parent is Page; parent = (View)parent.Parent);
                
-                    if (Control == null || !isVisible) continue;
+                    if (!isVisible) continue;
 
                     foreach(IValidator v in Control.Behaviors.OfType<IValidator>()){
                         if (!v.Validate(Control)) result = false;
