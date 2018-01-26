@@ -6,34 +6,29 @@
              Title="Instituição de Permanência">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
-            <StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-
-                    <StackLayout>
-                        <Label Text="Nome da Instituição de Permanência:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Nome Instituição Permanência" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeInstituicaoPermanencia}">
-                            <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="100" />
-                            </Entry.Behaviors>
-                        </Entry>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <Label Text="Nome da Instituição de Permanência:" FontSize="Small" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="Black" />
+                            <Entry Placeholder="Nome Instituição Permanência" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeInstituicaoPermanencia}">
+                                <Entry.Behaviors>
+                                    <behaviors:EntryLengthBehavior MaxLength="100" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
                     </StackLayout>
 
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-
-                    <StackLayout>
-                        <Label Text="Existem outros profissionais de saúde vinculados à Instituição (não inclui profissionais da rede pública de saúde):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                        <Switch IsToggled="{Binding Ficha.StOutrosProfissionaisVinculados}" HorizontalOptions="Start"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <Label Text="Existem outros profissionais de saúde vinculados à Instituição (não inclui profissionais da rede pública de saúde):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                            <Switch IsToggled="{Binding Ficha.StOutrosProfissionaisVinculados}" HorizontalOptions="Start"/>
+                        </StackLayout>
                     </StackLayout>
-
                 </StackLayout>
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
                     <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
                 </StackLayout>
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

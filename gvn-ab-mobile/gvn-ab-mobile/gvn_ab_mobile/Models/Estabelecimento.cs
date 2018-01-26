@@ -38,7 +38,7 @@ namespace gvn_ab_mobile.Models {
             set { SetProperty(ref codMunicipio, value); }
         }
 
-        [NotNull, OneToOne("CodMunicipio")]
+        [OneToOne("CodMunicipio")]
         public Municipio Municipio { get; set; }
 
         public override string ToString() {

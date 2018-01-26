@@ -233,8 +233,8 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-        private long _formaEscoamentoBanheiro; //Não Obrigatório
-        public long FormaEscoamentoBanheiro {
+        private Models.FormaDeEscoamentoDoBanheiroOuSanitario _formaEscoamentoBanheiro; //Não Obrigatório
+        public Models.FormaDeEscoamentoDoBanheiroOuSanitario FormaEscoamentoBanheiro {
             get { return this._formaEscoamentoBanheiro; }
             set {
                 this.Ficha.FormaEscoamentoBanheiro = value;
@@ -293,7 +293,8 @@ namespace gvn_ab_mobile.ViewModels {
 
 
             #region CarregamentoDados Page2
-            this.Logradouros = new ObservableRangeCollection<Models.Logradouro>(new DAO.DAOLogradouro().Select());
+            this.Logradouros = new ObservableRangeCollection<Models.Logradouro>();
+            Task.Run(() => this.Logradouros.AddRange(new DAO.DAOLogradouro().Select()));
             this.Bairros = new ObservableRangeCollection<Models.Bairro>(new DAO.DAOBairro().Select());
             this.TiposImoveis = new ObservableRangeCollection<Models.TipoDeImovel>(new DAO.DAOTipoDeImovel().Select());
 
@@ -357,9 +358,13 @@ namespace gvn_ab_mobile.ViewModels {
 
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3(this));
             } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3) {
-                this.AnimaisNoDomicilio = new ObservableRangeCollection<Models.AnimalNoDomicilio>(new DAO.DAOAnimalNoDomicilio().Select());
-
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4(this));
+                if (this.TipoDeImovel.Codigo == 1) {
+                    this.AnimaisNoDomicilio = new ObservableRangeCollection<Models.AnimalNoDomicilio>(new DAO.DAOAnimalNoDomicilio().Select());
+                    await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4(this));
+                } else {
+                    this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());
+                    await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5(this));
+                };
 
             } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4) {
                 this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());

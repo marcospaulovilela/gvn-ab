@@ -100,13 +100,6 @@ namespace gvn_ab_mobile.ViewModels {
                 try {
                     this.CargaDados();
 
-                    using (DAO.DAOEstabelecimento DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
-                        DAOEstabelecimento.CreateTable();
-                        DAOEstabelecimento.Insert(new Models.Estabelecimento() { CodUnidade = 1, DesNomFantasia = "Unidade fixa", ImpCnes="1111" });
-
-                        this.SincronizacaoConfig.CodEstabelecimento = 1;
-                    };
-    
                     #region Profissionais
                     using (DAO.DAOProfissional DAOProfissional = new DAO.DAOProfissional()) {
                         using (DAO.DAOEquipe DAOEquipe = new DAO.DAOEquipe()) {
@@ -193,6 +186,14 @@ namespace gvn_ab_mobile.ViewModels {
                         DAOMunicipio.Insert(Municipios);
                     };
                     #endregion
+
+                    using (DAO.DAOEstabelecimento DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
+                        DAOEstabelecimento.CreateTable();
+                        var Estabelecimento = new Models.Estabelecimento() { CodUnidade = 1, CodMunicipio = 1, DesNomFantasia = "Unidade fixa", ImpCnes = "1111", Municipio = new Models.Municipio() { CodMunicipio = 1 } };
+                        DAOEstabelecimento.Insert(Estabelecimento);
+
+                        this.SincronizacaoConfig.CodEstabelecimento = 1;
+                    };
 
                     #region Bairros
                     var Bairros = new List<Models.Bairro>() {

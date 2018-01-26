@@ -34,13 +34,17 @@ namespace gvn_ab_mobile.Behaviors {
         }
 
         void OnClicked(object sender, EventArgs args) {
-            Element root;
             var Button = (Button)sender;
+            Element root = Button.Parent;
+            
             //==========================
             if (!string.IsNullOrEmpty(this.Controls)) {
                 var result = true;
-                for (root = Button.Parent; root != null && root.Parent.GetType() != typeof(Xamarin.Forms.NavigationPage); root = root.Parent) ; //ACHA A PAGE ROOT
 
+                while(!(root.Parent is Page)) {
+                    root = root.Parent;
+                }
+    
                 foreach (var controlName in this.Controls.Split('|')) {
                     View Control = root.FindByName<View>(controlName);
                     bool isVisible = true;

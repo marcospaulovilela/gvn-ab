@@ -7,16 +7,13 @@
              Title="Famílias">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
-            <StackLayout>
-
-                <StackLayout>
-                    <controls:TableGrid Title="Famílias" Items="{Binding Familias}" ItemPage="gvn_ab_mobile.Views.FamiliaRow" ItemType="gvn_ab_mobile.Models.FichaFamilia" />
+            <StackLayout VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <controls:TableGrid Items="{Binding Familias}" ItemPage="gvn_ab_mobile.Views.FamiliaRow" ItemType="gvn_ab_mobile.Models.FichaFamilia" />
                 </StackLayout>
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"  VerticalOptions="End">
                     <Button Text="Continuar" BackgroundColor="#003264" Command="{Binding Continuar}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
                 </StackLayout>
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

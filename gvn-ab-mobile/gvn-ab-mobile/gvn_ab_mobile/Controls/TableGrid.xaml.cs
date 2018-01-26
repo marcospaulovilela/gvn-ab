@@ -59,6 +59,13 @@ namespace gvn_ab_mobile.Controls {
             TableGrid.OnItemsSourceChanged(this.Control, this.Control.Items, this.Control.Items);
         }
 
+
+        public bool HasTitle {
+            get {
+                return !string.IsNullOrWhiteSpace(this.Title);
+            }
+        }
+
         public async Task EditItemAsync(TableGridItem item) {
             var page = (TableGridPage)System.Activator.CreateInstance(Type.GetType(this.Control.ItemPage), this, item.Data);
             await this.Control.Navigation.PushModalAsync(page);
