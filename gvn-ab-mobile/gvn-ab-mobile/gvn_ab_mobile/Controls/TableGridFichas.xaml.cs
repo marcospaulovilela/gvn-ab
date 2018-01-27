@@ -15,11 +15,14 @@ namespace gvn_ab_mobile.Controls {
     public class TableGridFichasItem : Helpers.ObservableObject {
         public ICommand Edit { get; }
         public ICommand Delete { get; }
+        public bool IsVisible { get; set; }
 
         private TableGridFichas tableGrid;
         public TableGridFichasItem(object data, TableGridFichas tableGrid) {
-            this.Edit = new Command(async () => await this.tableGrid.viewModel.EditItemAsync(this));
-            this.Delete = new Command(() => this.tableGrid.viewModel.DeleteItem(this));
+            this.Edit = new Command(() => this.tableGrid.EditItems(this));
+            this.Delete = new Command(() => this.tableGrid.DeleteItem(this));
+
+            this.IsVisible = tableGrid.CanEdit;
 
             this.Data = data;
             this.tableGrid = tableGrid;
@@ -41,28 +44,30 @@ namespace gvn_ab_mobile.Controls {
         public TableGridFichasViewModel(TableGridFichas control) {
             this.Control = control;
         }
-
-        public async Task EditItemAsync(TableGridFichasItem item) { }
-
-        public void DeleteItem(TableGridFichasItem item) { this.Control?.Delete?.Execute(item.Data); }
     }
 
     public partial class TableGridFichas : ContentView {
         public static readonly BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(ObservableRangeCollection<object>), typeof(TableGridFichas), null, BindingMode.TwoWay, propertyChanged: OnItemsSourceChanged);
         public static readonly BindableProperty DeleteProperty = BindableProperty.Create(nameof(Delete), typeof(ICommand), typeof(TableGridFichas), null);
         public static readonly BindableProperty AddProperty = BindableProperty.Create(nameof(Add), typeof(ICommand), typeof(TableGridFichas), null);
+        public static readonly BindableProperty EditProperty = BindableProperty.Create(nameof(Edit), typeof(ICommand), typeof(TableGridFichas), null);
 
         public ObservableRangeCollection<object> Items {
             get { return (ObservableRangeCollection<object>)GetValue(ItemsProperty); }
         }
 
-        public ICommand Delete {
-            get { return (ICommand)GetValue(DeleteProperty); }
+        public ICommand Add { get { return (ICommand)GetValue(AddProperty); } }
+        public ICommand Edit { get { return (ICommand)GetValue(EditProperty); } }
+        public void EditItems(TableGridFichasItem item) {
+            this.Edit?.Execute(item.Data);
         }
 
-        public ICommand Add {
-            get { return (ICommand)GetValue(AddProperty); }
+        public ICommand Delete { get { return (ICommand)GetValue(DeleteProperty); } }
+        public void DeleteItem(TableGridFichasItem item) {
+            this.Delete?.Execute(item.Data);
         }
+
+        public bool CanEdit { get; set; } = true;
 
         public static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue) {
             var self = ((TableGridFichas)bindable);
@@ -87,7 +92,12 @@ namespace gvn_ab_mobile.Controls {
         }
 
         private void ListViewBugado_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            var obj = ((ListView)sender).SelectedItem as TableGridFichasItem;
             ((ListView)sender).SelectedItem = null;
+
+            if (obj == null || !this.CanEdit) return;
+
+            obj.Edit.Execute(null);
         }
     }
 }

@@ -1,16 +1,17 @@
-﻿using System.Threading.Tasks;
-
+﻿using gvn_ab_mobile.Helpers;
+using gvn_ab_mobile.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using gvn_ab_mobile.ViewModels;
-using gvn_ab_mobile.Helpers;
-using System.Windows.Input;
-using System;
 
-namespace gvn_ab_mobile.Views.FichaVisitaDomiciliarPage {
-
-    public class ListFichaVisitaDomiciliarPageViewModel : BaseViewModel {
-        private ListFichaVisitaDomiciliarPage Page { get; set; }
+namespace gvn_ab_mobile.Views.FichaCadastroIndividualPage {
+    public class ListFichaCadastroIndividualViewModel: BaseViewModel {
+        private ListFichaCadastroIndividual Page { get; set; }
         private ObservableRangeCollection<object> fichas = new ObservableRangeCollection<object>();
         public ObservableRangeCollection<object> Fichas {
             get { return this.fichas; }
@@ -21,7 +22,7 @@ namespace gvn_ab_mobile.Views.FichaVisitaDomiciliarPage {
         public ICommand Edit { get; }
         public ICommand Delete { get; }
 
-        public ListFichaVisitaDomiciliarPageViewModel(ListFichaVisitaDomiciliarPage page) {
+        public ListFichaCadastroIndividualViewModel(ListFichaCadastroIndividual page) {
             this.Page = page;
 
             this.Add = new Command(async () => await this.AddExecuteAsync());
@@ -32,28 +33,28 @@ namespace gvn_ab_mobile.Views.FichaVisitaDomiciliarPage {
         private void DeleteExecute(object item) {
             Task.Run(() => {
                 try {
-                    var objFicha = (Models.FichaVisitaDomiciliarTerritorial)item;
-                    using (DAO.DAOFichaVisitaDomiciliar DAO = new DAO.DAOFichaVisitaDomiciliar()) {
+                    var objFicha = (Models.FichaCadastroIndividual)item;
+                    using (DAO.DAOFichaCadastroIndividual DAO = new DAO.DAOFichaCadastroIndividual()) {
                         DAO.Delete(objFicha);
                         this.Fichas = new ObservableRangeCollection<object>(DAO.Select());
                     };
-                } catch(Exception e) {
+                } catch (Exception e) {
 
                 };
             });
         }
 
         public async Task AddExecuteAsync() {
-            await this.Page.Navigation.PushAsync(new FichaVisitaDomiciliarPage.FichaVisitaDomiciliarPage1(new ViewModels.FichaVisitaDomiciliarViewModel(this.Page)));
+            await this.Page.Navigation.PushAsync(new FichaCadastroIndividualPage.FichaCadastroIndividualPage1(new ViewModels.FichaCadastroIndividualViewModel(this.Page)));
         }
 
         private void EditExecute(object item) {
             Task.Run(() => {
                 try {
-                    var objFicha = (Models.FichaVisitaDomiciliarTerritorial)item;
-                    var vm = new ViewModels.FichaVisitaDomiciliarViewModel(this.Page, objFicha);
-                    
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.Page.Navigation.PushAsync(new FichaVisitaDomiciliarPage.FichaVisitaDomiciliarPage1(vm)));
+                    var objFicha = (Models.FichaCadastroIndividual)item;
+                    var vm = new ViewModels.FichaCadastroIndividualViewModel(this.Page, objFicha);
+
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.Page.Navigation.PushAsync(new FichaCadastroIndividualPage.FichaCadastroIndividualPage1(vm)));
 
                 } catch (Exception e) {
 
@@ -62,22 +63,22 @@ namespace gvn_ab_mobile.Views.FichaVisitaDomiciliarPage {
         }
 
         public void Load() {
-            using (DAO.DAOFichaVisitaDomiciliar DAO = new DAO.DAOFichaVisitaDomiciliar()) {
+            using (DAO.DAOFichaCadastroIndividual DAO = new DAO.DAOFichaCadastroIndividual()) {
                 this.Fichas = new ObservableRangeCollection<object>(DAO.Select());
             };
         }
     }
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ListFichaVisitaDomiciliarPage : ContentPage {
+    public partial class ListFichaCadastroIndividual : ContentPage {
         public MenuPage MenuPage { get; }
-        private ListFichaVisitaDomiciliarPageViewModel viewModel { get; }
-        
-        public ListFichaVisitaDomiciliarPage(MenuPage menu) {
+        private ListFichaCadastroIndividualViewModel viewModel { get; }
+
+        public ListFichaCadastroIndividual(MenuPage menu) {
             InitializeComponent();
 
             this.MenuPage = menu;
-            this.BindingContext = this.viewModel = new ListFichaVisitaDomiciliarPageViewModel(this);
+            this.BindingContext = this.viewModel = new ListFichaCadastroIndividualViewModel(this);
         }
 
         protected override void OnAppearing() {

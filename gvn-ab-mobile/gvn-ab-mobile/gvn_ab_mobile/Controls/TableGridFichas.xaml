@@ -12,7 +12,7 @@
                                 <ViewCell>
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                         <Label Text="{Binding toString}" HorizontalOptions="FillAndExpand" FontSize="Small" VerticalOptions="Center" />
-                                        <Button Image="edit2" Command="{Binding Edit}" BackgroundColor="Transparent"  WidthRequest="38" HeightRequest="38" HorizontalOptions="End" VerticalOptions="Center"/>
+                                        <Button Image="edit2" Command="{Binding Edit}" IsVisible="{Binding IsVisible}" BackgroundColor="Transparent"  WidthRequest="38" HeightRequest="38" HorizontalOptions="End" VerticalOptions="Center"/>
                                         <Button Image="delete" Command="{Binding Delete}" BackgroundColor="Transparent"  WidthRequest="38" HeightRequest="38" HorizontalOptions="End" VerticalOptions="Center"/>
                                     </StackLayout>
                                 </ViewCell>

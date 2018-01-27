@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gvn_ab_mobile.Views.FichaCadastroDomiciliarPage.ListFichaCadastroDomiciliar"
+             xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;" 
+             Title="Fichas de cadastro domiciliar">
+    <ContentPage.Content>
+        <StackLayout Padding="15,0,15,15" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <controls:TableGridFichas VerticalOptions="FillAndExpand" Items="{Binding Fichas}" Delete="{Binding Delete}" Add="{Binding Add}" Edit="{Binding Edit}" CanEdit="false"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

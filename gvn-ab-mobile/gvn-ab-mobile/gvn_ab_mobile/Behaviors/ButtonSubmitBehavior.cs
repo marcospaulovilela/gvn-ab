@@ -48,7 +48,7 @@ namespace gvn_ab_mobile.Behaviors {
                     if (Control == null) continue;
 
                     bool isVisible = true;
-                    for (View parent = Control; parent.Parent is Page; parent = (View)parent.Parent);
+                    for (View parent = Control; !(parent.Parent is Page) && (isVisible = parent.IsVisible); parent = (View)parent.Parent);
                
                     if (!isVisible) continue;
 

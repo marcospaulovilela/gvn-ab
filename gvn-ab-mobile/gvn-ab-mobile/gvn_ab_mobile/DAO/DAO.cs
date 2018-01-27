@@ -8,7 +8,7 @@ namespace gvn_ab_mobile.DAO {
     public class DAO<T> : IDisposable
         where T : new () {
 
-        private static string dbName = "gvn-ab-1.db3";
+        private static string dbName = "gvn-ab-2.db3";
      
         protected SQLiteConnection connection;
 
@@ -26,7 +26,7 @@ namespace gvn_ab_mobile.DAO {
         }
 
         public bool TableExists() {
-            this.DropTable();
+            //this.DropTable();
 
             const string cmdText = "SELECT name FROM sqlite_master WHERE type='table' AND name=?";
             var cmd = connection.CreateCommand(cmdText, typeof(T).Name);
@@ -87,6 +87,8 @@ namespace gvn_ab_mobile.DAO {
             var scan = this.connection?.GetAllWithChildren<T>(recursive: true);
             if (scan == null)
                 scan = new List<T>();
+
+            scan.ForEach(o => this.connection?.GetChildren<T>(o, true));
 
             return scan;
         }

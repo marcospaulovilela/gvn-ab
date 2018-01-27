@@ -85,6 +85,7 @@ namespace gvn_ab_mobile.Controls {
         static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue) {
             var self = ((PickerSearch)bindable);
             self.viewModel.Title = self.SelectedItem?.ToString() ?? "Selecione ...";
+            self.InvokeEvenHandler();
         }
 
         public object SelectedItem {

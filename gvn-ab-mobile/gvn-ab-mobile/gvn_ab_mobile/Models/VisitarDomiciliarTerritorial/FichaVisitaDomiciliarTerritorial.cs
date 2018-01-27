@@ -4,16 +4,13 @@ using System.Collections.Generic;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
 
-namespace gvn_ab_mobile.Models
-{
-    public class FichaVisitaDomiciliarTerritorial : Helpers.ObservableObject
-    {
+namespace gvn_ab_mobile.Models {
+    public class FichaVisitaDomiciliarTerritorial : Helpers.ObservableObject {
 
         //Campo ID - Tipo long
         private long? _id;
         [PrimaryKey, AutoIncrement] //Chave Primária com incremento automático
-        public long? Id
-        {
+        public long? Id {
             get { return this._id; }
             set { SetProperty(ref _id, value); }
         }
@@ -25,8 +22,7 @@ namespace gvn_ab_mobile.Models
         /// É recomendado concatenar o CNES na frente do UUID, de modo que os 7 dígitos (CNES) + 1 de hífen somados aos 36 (32 caracteres + 4 hífen) do UUID são a limitação de 44 bytes do campo. Formato canônico.
         /// </summary>
         [MaxLength(44)]
-        public string Uuid
-        {
+        public string Uuid {
             get { return this._uuid; }
             set { SetProperty(ref _uuid, value); }
         }
@@ -43,9 +39,8 @@ namespace gvn_ab_mobile.Models
         //CAMPO HEADERTRANSPORT
         private FichaUnicaLotacaoHeader _header;
 
-        [NotNull,OneToOne("HeaderId")]
-        public FichaUnicaLotacaoHeader Header
-        {
+        [NotNull, OneToOne("HeaderId")]
+        public FichaUnicaLotacaoHeader Header {
             get { return this._header; }
             set { SetProperty(ref _header, value); }
         }
@@ -55,8 +50,7 @@ namespace gvn_ab_mobile.Models
         //Campo turno - Tipo long
         private Models.Turno _turno; //Obrigatório
         [OneToOne("TurnoId"), NotNull]
-        public Models.Turno Turno
-        {
+        public Models.Turno Turno {
             get { return this._turno; }
             set { SetProperty(ref _turno, value); }
         }
@@ -64,8 +58,7 @@ namespace gvn_ab_mobile.Models
         //Campo numProntuario - Tipo string
         private string _numProntuario; //Não Obrigatório
         [MaxLength(30)] //Mínimo 0 dígitos; Máximo 30 dígitos
-        public string NumProntuario
-        {
+        public string NumProntuario {
             get { return this._numProntuario; }
             set { SetProperty(ref _numProntuario, value); }
         }
@@ -73,8 +66,7 @@ namespace gvn_ab_mobile.Models
         //Campo cnsCidadao - Tipo string
         private string _cnsCidadao; //Não Obrigatório
         [MaxLength(15)] //Mínimo 15 dígitos; Máximo 15 dígitos
-        public string CnsCidadao
-        {
+        public string CnsCidadao {
             get { return this._cnsCidadao; }
             set { SetProperty(ref _cnsCidadao, value); }
         }
@@ -82,8 +74,7 @@ namespace gvn_ab_mobile.Models
         //Campo dtNascimento - Tipo long
         private long _dtNascimento; //Obrigatório
         [NotNull]
-        public long DtNascimento
-        {
+        public long DtNascimento {
             get { return this._dtNascimento; }
             set { SetProperty(ref _dtNascimento, value); }
         }
@@ -92,25 +83,22 @@ namespace gvn_ab_mobile.Models
         //Campo sexo - Tipo long
         private Models.Sexo _sexo; //Obrigatório
         [OneToOne("SexoId"), NotNull]
-        public Models.Sexo Sexo
-        {
+        public Models.Sexo Sexo {
             get { return this._sexo; }
             set { SetProperty(ref _sexo, value); }
         }
 
         //Campo statusVisitaCompartilhadaOutroProfissional - Tipo boolean
         private bool _statusVisitaCompartilhadaOutroProfissional; //Não Obrigatório
-        public bool StatusVisitaCompartilhadaOutroProfissional
-        {
+        public bool StatusVisitaCompartilhadaOutroProfissional {
             get { return this._statusVisitaCompartilhadaOutroProfissional; }
             set { SetProperty(ref _statusVisitaCompartilhadaOutroProfissional, value); }
         }
 
         //CAMPO motivosVisita
         private List<Models.MotivoVisita> _motivosVisita;
-        [OneToMany]
-        public List<Models.MotivoVisita> MotivosVisita
-        {
+        [OneToMany, MaxLength(10)]
+        public List<Models.MotivoVisita> MotivosVisita {
             get { return this._motivosVisita; }
             set { SetProperty(ref _motivosVisita, value); }
         }
@@ -119,8 +107,7 @@ namespace gvn_ab_mobile.Models
         //CAMPO desfecho
         private Models.Desfecho _desfecho;
         [OneToOne("DesfechoId")]
-        public Models.Desfecho Desfecho
-        {
+        public Models.Desfecho Desfecho {
             get { return this._desfecho; }
             set { SetProperty(ref _desfecho, value); }
         }
@@ -128,16 +115,14 @@ namespace gvn_ab_mobile.Models
         //Campo microarea - Tipo string
         private string _microarea; //Condicional
         [MaxLength(2)] //Mínimo 2 caracteres; Máximo 2 caracteres
-        public string Microarea
-        {
+        public string Microarea {
             get { return this._microarea; }
             set { SetProperty(ref _microarea, value); }
         }
 
         //Campo stForaArea - Tipo boolean
         private bool _stForaArea; //Não Obrigatório
-        public bool StForaArea
-        {
+        public bool StForaArea {
             get { return this._stForaArea; }
             set { SetProperty(ref _stForaArea, value); }
         }
@@ -147,8 +132,7 @@ namespace gvn_ab_mobile.Models
         //Campo tipoDeImovel - Tipo long
         private Models.TipoDeImovel _tipoDeImovel; //Obrigatório
         [OneToOne("TipoDeImovelId"), NotNull]
-        public Models.TipoDeImovel TipoDeImovel
-        {
+        public Models.TipoDeImovel TipoDeImovel {
             get { return this._tipoDeImovel; }
             set { SetProperty(ref _tipoDeImovel, value); }
         }
@@ -156,8 +140,7 @@ namespace gvn_ab_mobile.Models
         //Campo pesoAcompanhamentoNutricional - Tipo double
         private double _pesoAcompanhamentoNutricional; //Não Obrigatório
         [MaxLength(7)] //Mínimo 1 dígito; Máximo 7 dígitos
-        public double PesoAcompanhamentoNutricional
-        {
+        public double PesoAcompanhamentoNutricional {
             get { return this._pesoAcompanhamentoNutricional; }
             set { SetProperty(ref _pesoAcompanhamentoNutricional, value); }
         }
@@ -165,11 +148,14 @@ namespace gvn_ab_mobile.Models
         //Campo alturaAcompanhamentoNutricional - Tipo double
         private double _alturaAcompanhamentoNutricional; //Não Obrigatório
         [MaxLength(5)] //Mínimo 2 dígitos; Máximo 5 dígitos
-        public double AlturaAcompanhamentoNutricional
-        {
+        public double AlturaAcompanhamentoNutricional {
             get { return this._alturaAcompanhamentoNutricional; }
             set { SetProperty(ref _alturaAcompanhamentoNutricional, value); }
         }
 
+
+        public override string ToString() {
+            return $"Mudar o metodo tostring da ficha {this.GetType().Name}";
+        }
     }
 }

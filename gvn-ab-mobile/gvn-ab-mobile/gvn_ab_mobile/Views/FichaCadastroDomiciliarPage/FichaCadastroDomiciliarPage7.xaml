@@ -9,7 +9,7 @@
             <StackLayout VerticalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="Nome da Instituição de Permanência:" FontSize="Small" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="Black" />
                             <Entry Placeholder="Nome Instituição Permanência" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeInstituicaoPermanencia}">
                                 <Entry.Behaviors>

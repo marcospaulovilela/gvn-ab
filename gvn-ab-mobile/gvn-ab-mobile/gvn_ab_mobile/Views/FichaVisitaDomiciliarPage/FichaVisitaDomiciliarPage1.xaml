@@ -58,7 +58,7 @@
 
                         <StackLayout IsVisible="{Binding IsNotImovelCod2and3and4and5and6and12}" HorizontalOptions="FillAndExpand">
                             <Label Text="CNS do Cidadão:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <Entry Placeholder="CNS Cidadão" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsCidadao}">
+                            <Entry x:Name="CnsCidadao" Placeholder="CNS Cidadão" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsCidadao}">
                                 <Entry.Behaviors>
                                     <behaviors:ValidatorCns Required="true" />
                                 </Entry.Behaviors>
@@ -154,7 +154,7 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
                         <Button Text="Salvar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                             <Button.Behaviors>
-                                <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodTurno|CodMicroarea|CodTipoImovel" />
+                                <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodTurno|CodMicroarea|CodTipoImovel|CnsCidadao" />
                             </Button.Behaviors>
                         </Button>
                     </StackLayout>

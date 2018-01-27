@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace gvn_ab_mobile.ViewModels {
     public class FichaCadastroIndividualViewModel : BaseViewModel {
-        private Views.MenuPage MenuPage { get; set; }
+        private Views.FichaCadastroIndividualPage.ListFichaCadastroIndividual RootPage { get; set; }
 
         public ICommand Continuar { get; }
 
@@ -100,17 +100,14 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-        public DateTime PropertyMinimumDateNaturalizacao
-        {
-            get
-            {
+        public DateTime PropertyMinimumDateNaturalizacao {
+            get {
                 DateTime data = DateTime.Now;
                 int year = data.Year - this.Ficha.DataNascimentoCidadao.Year;
                 int month = data.Month - this.Ficha.DataNascimentoCidadao.Month;
                 int day = data.Day - this.Ficha.DataNascimentoCidadao.Day;
 
-                if (data.Day != this.Ficha.DataNascimentoCidadao.Day)
-                {
+                if (data.Day != this.Ficha.DataNascimentoCidadao.Day) {
                     data = data.AddDays(-(day));
                     data = data.AddMonths(-(month));
                 }
@@ -118,16 +115,14 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-        public bool HasIdadeResponsavelCrianca
-        {
-            get
-            {
+        public bool HasIdadeResponsavelCrianca {
+            get {
                 System.DateTime data1 = DateTime.Now;
                 System.DateTime data2 = this.Ficha.DataNascimentoCidadao;
                 System.TimeSpan dataDiff = data1 - data2;
                 double totalDays = dataDiff.TotalDays;
 
-                return !(totalDays < (10.0*365));
+                return !(totalDays < (10.0 * 365));
             }
         }
 
@@ -710,9 +705,9 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
 
-        public FichaCadastroIndividualViewModel(Views.MenuPage page) {
-            this.Ficha = new Models.FichaCadastroIndividual();
-            this.MenuPage = page;
+        public FichaCadastroIndividualViewModel(Views.FichaCadastroIndividualPage.ListFichaCadastroIndividual rootPage, Models.FichaCadastroIndividual objFicha = null) {
+            this.Ficha = new Models.FichaCadastroIndividual(); ;
+            this.RootPage = rootPage;
 
             this.Continuar = new Command(async () => await ContinuarExecuteAsync());
 
@@ -754,35 +749,34 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
-            await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
+            await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2(this));
         }
 
-        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync()
-        {
-            await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualRecusaPage1(this));
+        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
+            await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualRecusaPage1(this));
         }
 
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
-            var CurrentPage = this.MenuPage.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
+            var CurrentPage = this.RootPage.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
             if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualRecusaPage1) {
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualRecusaPage2(this));
+                await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualRecusaPage2(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2) {
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
+                await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3) {
                 //passa informaçoes da model para a entidade
                 this.Ficha.ResponsavelPorCrianca = this.ResponsaveisCriancasSelecionadas.Select(o => (Models.ResponsavelCrianca)o).ToList();
                 this.Ficha.DeficienciasCidadao = this.DeficienciasSelecionadas.Select(o => (Models.DeficienciaCidadao)o).ToList();
 
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4(this));
+                await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4) {
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
+                await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage5) {
 
                 this.Ficha.DoencaCardiaca = this.DoencasCardiacasSelecionadas.Select(o => (Models.DoencaCardiaca)o).ToList();
                 this.Ficha.DoencaRins = this.ProblemasRinsSelecionados.Select(o => (Models.ProblemaRins)o).ToList();
                 this.Ficha.DoencaRespiratoria = this.DoencasRespiratoriasSelecionadas.Select(o => (Models.DoencaRespiratoria)o).ToList();
 
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
+                await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage6) {
                 this.Ficha.OrigemAlimentoSituacaoRua = this.OrigensAlimentacaoSelecionadas.Select(o => (Models.OrigemAlimentacao)o).ToList();
                 this.Ficha.HigienePessoalSituacaoRua = this.HigienesSelecionadas.Select(o => (Models.AcessoHigiene)o).ToList();
@@ -792,42 +786,41 @@ namespace gvn_ab_mobile.ViewModels {
             };
         }
 
-        public async System.Threading.Tasks.Task SalvarExecuteAsync()
-        {
+        public async System.Threading.Tasks.Task SalvarExecuteAsync() {
 
             this.IsBusy = true;
-            #pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+#pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
             Task.Run(async () => {
 
                 using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader())
-                using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual())
-                {
-                    try
-                    {
-                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader()
-                        {
-                            Cbo = this.MenuPage.ViewModel.Cbo.CodCbo,
-                            CnsProfissional = this.MenuPage.ViewModel.Profissional.CnsProfissional,
-                            Cnes = this.MenuPage.ViewModel.Estabelecimento.ImpCnes,
-                            Ine = this.MenuPage.ViewModel.Equipe.CodEquipe,
+                using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual()) {
+                    try {
+                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader() {
+                            Cbo = this.RootPage.MenuPage.ViewModel.Cbo.CodCbo,
+                            CnsProfissional = this.RootPage.MenuPage.ViewModel.Profissional.CnsProfissional,
+                            Cnes = this.RootPage.MenuPage.ViewModel.Estabelecimento.ImpCnes,
+                            Ine = this.RootPage.MenuPage.ViewModel.Equipe.CodEquipe,
                             DataAtendimento = DateTime.Now
                         };
 
                         DAOFichaUnicaLotacaoHeader.Insert(this.Ficha.Header);
                         DAOFichaCadastroIndividual.Insert(this.Ficha);
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.MenuPage.Navigation.PopToRootAsync());
-                    }
-                    catch (Exception e)
-                    {
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => {
+                            var BackCount = this.RootPage.Navigation.NavigationStack.Count - 2;
+                            for (var counter = 1; counter < BackCount; counter++) {
+                                this.RootPage.Navigation.RemovePage(this.RootPage.Navigation.NavigationStack[this.RootPage.Navigation.NavigationStack.Count - 2]);
+                            };
+
+                            await this.RootPage.Navigation.PopAsync();
+                        });
+                    } catch (Exception e) {
                         System.Diagnostics.Debug.WriteLine(e);
-                    }
-                    finally
-                    {
+                    } finally {
                         this.IsBusy = false;
                     };
                 };
             });
-            #pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+#pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
 
         }
 

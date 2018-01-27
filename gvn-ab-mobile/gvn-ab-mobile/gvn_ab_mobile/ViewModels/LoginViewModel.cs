@@ -51,7 +51,9 @@ namespace gvn_ab_mobile.ViewModels {
 
             this.Sincronizar = new Command(async () => await SincronizarExecuteAsync());
 
-            this.HasUser = new DAO.DAOProfissional().Select().Any();
+            using(DAO.DAOProfissional dao = new DAO.DAOProfissional()) {
+                this.HasUser = dao.TableExists() && dao.Select().Any();
+            }
         }
 
         private void CallMenu() {
