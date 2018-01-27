@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace gvn_ab_mobile.ViewModels {
-    public class FichaCadastroDomiciliarViewModel : BaseViewModel {
+namespace gvn_ab_mobile.ViewModels
+{
+    public class FichaCadastroDomiciliarViewModel : BaseViewModel
+    {
         private Views.MenuPage MenuPage { get; set; }
 
         public ICommand Continuar { get; }
@@ -43,9 +45,11 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableRangeCollection<Models.Municipio> Municipios { get; set; }
 
         private Models.UnidadeFederal uf;
-        public Models.UnidadeFederal UF {
+        public Models.UnidadeFederal UF
+        {
             get { return this.uf; }
-            set {
+            set
+            {
                 SetProperty(ref uf, value);
 
                 //this.CodigoIbgeMunicipio = null;
@@ -58,9 +62,11 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private Models.Municipio _codigoIbgeMunicipio;
-        public Models.Municipio CodigoIbgeMunicipio {
+        public Models.Municipio CodigoIbgeMunicipio
+        {
             get { return this._codigoIbgeMunicipio; }
-            set {
+            set
+            {
                 this.Ficha.Municipio = value;
                 SetProperty(ref _codigoIbgeMunicipio, value);
             }
@@ -99,9 +105,11 @@ namespace gvn_ab_mobile.ViewModels {
 
 
         private bool _stSemNumero; //Não Obrigatório
-        public bool StSemNumero {
+        public bool StSemNumero
+        {
             get { return this._stSemNumero; }
-            set {
+            set
+            {
                 this.Ficha.StSemNumero = value;
                 this.Ficha.Numero = value ? "SN" : string.Empty;
 
@@ -109,16 +117,20 @@ namespace gvn_ab_mobile.ViewModels {
                 OnPropertyChanged("HasNumero");
             }
         }
-        public bool HasNumero {
-            get {
+        public bool HasNumero
+        {
+            get
+            {
                 return !this.StSemNumero;
             }
         }
 
         private bool _stForaArea;
-        public bool StForaArea {
+        public bool StForaArea
+        {
             get { return this._stForaArea; }
-            set {
+            set
+            {
                 this.Ficha.StForaArea = value;
                 this.Ficha.Microarea = value ? "FA" : string.Empty;
 
@@ -126,16 +138,20 @@ namespace gvn_ab_mobile.ViewModels {
                 OnPropertyChanged("IsForaArea");
             }
         }
-        public bool IsForaArea {
-            get {
+        public bool IsForaArea
+        {
+            get
+            {
                 return !this.StForaArea;
             }
         }
 
         private Models.TipoDeImovel _tipoDeImovel; //Obrigatório
-        public Models.TipoDeImovel TipoDeImovel {
+        public Models.TipoDeImovel TipoDeImovel
+        {
             get { return this._tipoDeImovel; }
-            set {
+            set
+            {
                 this.Ficha.TipoDeImovel = value;
 
                 SetProperty(ref _tipoDeImovel, value);
@@ -145,19 +161,25 @@ namespace gvn_ab_mobile.ViewModels {
                 OnPropertyChanged("HasTipoDomicilioAndIsRural");
             }
         }
-        public bool HasTipoDomicilio {
-            get {
+        public bool HasTipoDomicilio
+        {
+            get
+            {
                 return !((this.TipoDeImovel?.Codigo == 7) || (this.TipoDeImovel?.Codigo == 8) || (this.TipoDeImovel?.Codigo == 9)
                     || (this.TipoDeImovel?.Codigo == 10) || (this.TipoDeImovel?.Codigo == 11));
             }
         }
-        public bool IsDomicilio {
-            get {
+        public bool IsDomicilio
+        {
+            get
+            {
                 return this.TipoDeImovel?.Codigo == 1;
             }
         }
-        public bool IsNotDomicilio {
-            get {
+        public bool IsNotDomicilio
+        {
+            get
+            {
                 return !(this.TipoDeImovel?.Codigo == 1);
             }
         }
@@ -175,9 +197,11 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableRangeCollection<Models.DestinoDoLixo> DestinosLixo { get; set; }
 
         private Models.SituacaoDeMoradia _situacaoMoradiaPosseTerra; //Não Obrigatório
-        public Models.SituacaoDeMoradia SituacaoMoradiaPosseTerra {
+        public Models.SituacaoDeMoradia SituacaoMoradiaPosseTerra
+        {
             get { return this._situacaoMoradiaPosseTerra; }
-            set {
+            set
+            {
                 this.Ficha.SituacaoMoradiaPosseTerra = value;
 
                 SetProperty(ref _situacaoMoradiaPosseTerra, value);
@@ -185,9 +209,11 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private Models.LocalizacaoDaMoradia _localizacao; //Obrigatório
-        public Models.LocalizacaoDaMoradia Localizacao {
+        public Models.LocalizacaoDaMoradia Localizacao
+        {
             get { return this._localizacao; }
-            set {
+            set
+            {
                 this.Ficha.Localizacao = value;
 
                 SetProperty(ref _localizacao, value);
@@ -195,21 +221,27 @@ namespace gvn_ab_mobile.ViewModels {
                 OnPropertyChanged("HasTipoDomicilioAndIsRural");
             }
         }
-        public bool IsRural {
-            get {
+        public bool IsRural
+        {
+            get
+            {
                 return this.Localizacao?.Codigo == 84;
             }
         }
-        public bool HasTipoDomicilioAndIsRural {
-            get {
+        public bool HasTipoDomicilioAndIsRural
+        {
+            get
+            {
                 return ((this.HasTipoDomicilio == true) && (this.IsRural == true));
             }
         }
 
         private Models.TipoDeDomicilio _tipoDomicilio; //Não Obrigatório
-        public Models.TipoDeDomicilio TipoDomicilio {
+        public Models.TipoDeDomicilio TipoDomicilio
+        {
             get { return this._tipoDomicilio; }
-            set {
+            set
+            {
                 this.Ficha.TipoDomicilio = value;
 
                 SetProperty(ref _tipoDomicilio, value);
@@ -217,9 +249,11 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private Models.TipoDeAcessoAoDomicilio _tipoAcessoDomicilio; //Não Obrigatório
-        public Models.TipoDeAcessoAoDomicilio TipoAcessoDomicilio {
+        public Models.TipoDeAcessoAoDomicilio TipoAcessoDomicilio
+        {
             get { return this._tipoAcessoDomicilio; }
-            set {
+            set
+            {
                 this.Ficha.TipoAcessoDomicilio = value;
 
                 SetProperty(ref _tipoAcessoDomicilio, value);
@@ -227,9 +261,11 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private Models.CondicaoDePosseEUsoDaTerra _areaProducaoRural; //Condicional
-        public Models.CondicaoDePosseEUsoDaTerra AreaProducaoRural {
+        public Models.CondicaoDePosseEUsoDaTerra AreaProducaoRural
+        {
             get { return this._areaProducaoRural; }
-            set {
+            set
+            {
                 this.Ficha.AreaProducaoRural = value;
 
                 SetProperty(ref _areaProducaoRural, value);
@@ -237,9 +273,11 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private Models.MaterialPredominanteNaConstrucao _materialPredominanteParedesExtDomicilio; //Não Obrigatório
-        public Models.MaterialPredominanteNaConstrucao MaterialPredominanteParedesExtDomicilio {
+        public Models.MaterialPredominanteNaConstrucao MaterialPredominanteParedesExtDomicilio
+        {
             get { return this._materialPredominanteParedesExtDomicilio; }
-            set {
+            set
+            {
                 this.Ficha.MaterialPredominanteParedesExtDomicilio = value;
 
                 SetProperty(ref _materialPredominanteParedesExtDomicilio, value);
@@ -247,29 +285,35 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private Models.AbastecimentoDeAgua _abastecimentoAgua; //Não Obrigatório
-        public Models.AbastecimentoDeAgua AbastecimentoAgua {
+        public Models.AbastecimentoDeAgua AbastecimentoAgua
+        {
             get { return this._abastecimentoAgua; }
-            set {
+            set
+            {
                 this.Ficha.AbastecimentoAgua = value;
 
                 SetProperty(ref _abastecimentoAgua, value);
             }
         }
 
-        private Models.AguaConsumoDomicilio _aguaConsumoDomicilio; //Não Obrigatório
-        public Models.AguaConsumoDomicilio AguaConsumoDomicilio {
+        Models.AguaConsumoDomicilio _aguaConsumoDomicilio; //Não Obrigatório
+        public Models.AguaConsumoDomicilio AguaConsumoDomicilio
+        {
             get { return this._aguaConsumoDomicilio; }
-            set {
-                this.AguaConsumoDomicilio = value;
+            set
+            {
+                this.Ficha.AguaConsumoDomicilio = value;
 
                 SetProperty(ref _aguaConsumoDomicilio, value);
             }
         }
 
         private Models.FormaDeEscoamentoDoBanheiroOuSanitario _formaEscoamentoBanheiro; //Não Obrigatório
-        public Models.FormaDeEscoamentoDoBanheiroOuSanitario FormaEscoamentoBanheiro {
+        public Models.FormaDeEscoamentoDoBanheiroOuSanitario FormaEscoamentoBanheiro
+        {
             get { return this._formaEscoamentoBanheiro; }
-            set {
+            set
+            {
                 this.Ficha.FormaEscoamentoBanheiro = value;
 
                 SetProperty(ref _formaEscoamentoBanheiro, value);
@@ -277,9 +321,11 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         private Models.DestinoDoLixo _destinoLixo; //Não Obrigatório
-        public Models.DestinoDoLixo DestinoLixo {
+        public Models.DestinoDoLixo DestinoLixo
+        {
             get { return this._destinoLixo; }
-            set {
+            set
+            {
                 this.Ficha.DestinoLixo = value;
 
                 SetProperty(ref _destinoLixo, value);
@@ -291,9 +337,11 @@ namespace gvn_ab_mobile.ViewModels {
         public ObservableCollection<object> AnimaisSelecionados { get; } = new ObservableCollection<object>();
 
         private bool _stAnimaisNoDomicilio; //Condicional
-        public bool StAnimaisNoDomicilio {
+        public bool StAnimaisNoDomicilio
+        {
             get { return this._stAnimaisNoDomicilio; }
-            set {
+            set
+            {
                 this.Ficha.StAnimaisNoDomicilio = value;
 
                 this.AnimaisSelecionados.Clear();
@@ -302,8 +350,10 @@ namespace gvn_ab_mobile.ViewModels {
                 OnPropertyChanged("HasAnimais");
             }
         }
-        public bool HasAnimais {
-            get {
+        public bool HasAnimais
+        {
+            get
+            {
                 return this.StAnimaisNoDomicilio;
             }
         }
@@ -312,7 +362,103 @@ namespace gvn_ab_mobile.ViewModels {
         //USADO PAGE 5
         public ObservableRangeCollection<Models.RendaFamiliar> RendasFamiliares { get; set; }
 
-        public FichaCadastroDomiciliarViewModel(Views.MenuPage page) {
+        //SUPER VALIDAÇÕES
+
+        private string _nuMoradores;
+        public string NuMoradores
+        {
+            get { return this._nuMoradores; }
+            set
+            {
+                if (value.Length > 0)
+                {
+                    int numFamilias = this.Familias.Count();
+
+                    int numMoradores = int.Parse(value);
+
+                    if (numMoradores < numFamilias)
+                    {
+                        this.Ficha.NuMoradores = numFamilias.ToString();
+                    }
+                    else
+                    {
+
+                        List<Models.FichaFamilia> listaFamilias = this.Familias.Select(o => (Models.FichaFamilia)o).ToList();
+                        int somaMembros = 0;
+
+                        for (int i = 0; i < listaFamilias.Count(); i++)
+                        {
+                            somaMembros += listaFamilias.ElementAt(i).NumeroMembrosFamilia;
+                        }
+
+                        if (numMoradores < somaMembros)
+                        {
+                            this.Ficha.NuMoradores = somaMembros.ToString();
+                        }
+                        else
+                        {
+                            this.Ficha.NuMoradores = value;
+                        }
+
+                    }
+
+                    SetProperty(ref _nuMoradores, this.Ficha.NuMoradores);
+
+                }
+                else
+                {
+                    this.Ficha.NuMoradores = "1";
+
+                    SetProperty(ref _nuMoradores, "1");
+                }
+            }
+        }
+
+        private string _quantosAnimaisNoDomicilio;
+        public string QuantosAnimaisNoDomicilio
+        {
+
+            get { return this._quantosAnimaisNoDomicilio; }
+            set
+            {
+
+                if (value.Length > 0)
+                {
+
+                    int numAnimais = int.Parse(value);
+
+                    int animaisSelecionados = this.AnimaisSelecionados.Count();
+
+                    if (numAnimais < animaisSelecionados)
+                    {
+                        this.Ficha.QuantosAnimaisNoDomicilio = animaisSelecionados.ToString();
+                    }
+                    else
+                    {
+                        this.Ficha.QuantosAnimaisNoDomicilio = numAnimais.ToString();
+                    }
+
+                    SetProperty(ref _quantosAnimaisNoDomicilio, this.Ficha.QuantosAnimaisNoDomicilio);
+
+                }
+                else
+                {
+
+                    int animaisSelecionados = this.AnimaisSelecionados.Count();
+
+                    this.Ficha.QuantosAnimaisNoDomicilio = animaisSelecionados.ToString();
+
+                    SetProperty(ref _quantosAnimaisNoDomicilio, this.Ficha.QuantosAnimaisNoDomicilio);
+                }
+
+            }
+
+        }
+
+        //
+
+        public FichaCadastroDomiciliarViewModel(Views.MenuPage page)
+        {
             this.Ficha = new Models.FichaCadastroDomiciliarTerritorial();
             this.MenuPage = page;
 
@@ -330,7 +476,8 @@ namespace gvn_ab_mobile.ViewModels {
             this.Bairros = new ObservableRangeCollection<Models.Bairro>(new DAO.DAOBairro().Select());
             this.TiposImoveis = new ObservableRangeCollection<Models.TipoDeImovel>(new DAO.DAOTipoDeImovel().Select());
 
-            using (var DAOEstabelecimento = new DAO.DAOEstabelecimento()) {
+            using (var DAOEstabelecimento = new DAO.DAOEstabelecimento())
+            {
                 var estabelecimento = DAOEstabelecimento.Select().First();
 
                 this.Municipios = new ObservableRangeCollection<Models.Municipio>();
@@ -348,33 +495,69 @@ namespace gvn_ab_mobile.ViewModels {
 
         }
 
-        private async System.Threading.Tasks.Task ConcordarExecuteAsync() {
+        private async System.Threading.Tasks.Task ConcordarExecuteAsync()
+        {
             await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2(this));
         }
 
-        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync() {
+        private async System.Threading.Tasks.Task NaoConcordarExecuteAsync()
+        {
             await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage1(this));
         }
 
-        private async System.Threading.Tasks.Task ConcordarInstituicaoPermanenciaExecuteAsync() {
+        private async System.Threading.Tasks.Task ConcordarInstituicaoPermanenciaExecuteAsync()
+        {
             await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage7(this));
         }
 
-        private async System.Threading.Tasks.Task NaoConcordarInstituicaoPermanenciaExecuteAsync() {
+        private async System.Threading.Tasks.Task NaoConcordarInstituicaoPermanenciaExecuteAsync()
+        {
             await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage3(this));
         }
 
-        public async System.Threading.Tasks.Task TelaInstituicaoPermanenciaExecuteAsync() {
+        public async System.Threading.Tasks.Task TelaInstituicaoPermanenciaExecuteAsync()
+        {
             await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
         }
 
-        private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
+        private async System.Threading.Tasks.Task ContinuarExecuteAsync()
+        {
             var CurrentPage = this.MenuPage.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
-            if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage1) {
+            if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage1)
+            {
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage2(this));
-            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage3) {
+            }
+            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage3)
+            {
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage4(this));
-            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2) {
+            }
+            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage2)
+            {
+                this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());
+
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5(this));
+            }
+            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3)
+            {
+                if (this.TipoDeImovel.Codigo == 1)
+                {
+                    this.AnimaisNoDomicilio = new ObservableRangeCollection<Models.AnimalNoDomicilio>(new DAO.DAOAnimalNoDomicilio().Select());
+                    await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4(this));
+                }
+                else
+                {
+                    await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
+                };
+
+            }
+            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4)
+            {
+
+                this.Ficha.AnimaisNoDomicilio = this.AnimaisSelecionados.Select(o => (Models.AnimalNoDomicilio)o).ToList();
+                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
+            }
+            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5)
+            {
                 #region Carregament dados page 3
                 this.SituacoesDeMoradia = new ObservableRangeCollection<Models.SituacaoDeMoradia>(new DAO.DAOSituacaoDeMoradia().Select());
                 this.LocalizacoesMoradias = new ObservableRangeCollection<Models.LocalizacaoDaMoradia>(new DAO.DAOLocalizacaoDaMoradia().Select());
@@ -389,40 +572,33 @@ namespace gvn_ab_mobile.ViewModels {
                 #endregion
 
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3(this));
-            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage3) {
-                if (this.TipoDeImovel.Codigo == 1) {
-                    this.AnimaisNoDomicilio = new ObservableRangeCollection<Models.AnimalNoDomicilio>(new DAO.DAOAnimalNoDomicilio().Select());
-                    await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4(this));
-                } else {
-                    this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());
-                    await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5(this));
-                };
-
-            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4) {
-                this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());
-
-                this.Ficha.AnimaisNoDomicilio = this.AnimaisSelecionados.Select(o => (Models.AnimalNoDomicilio)o).ToList();
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5(this));
-            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5) {
-                await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
-            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage7) {
+            }
+            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage7)
+            {
                 await this.MenuPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8(this));
-            } else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8) {
+            }
+            else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8)
+            {
                 SalvarExecuteAsync();
             };
         }
 
-        public async System.Threading.Tasks.Task SalvarExecuteAsync() {
+        public async System.Threading.Tasks.Task SalvarExecuteAsync()
+        {
 
             this.IsBusy = true;
-#pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
-            Task.Run(async () => {
+            #pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+            Task.Run(async () =>
+            {
 
                 using (DAO.DAOFichaFamilia DAOFichaFamilia = new DAO.DAOFichaFamilia())
                 using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader())
-                using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial()) {
-                    try {
-                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader() {
+                using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial())
+                {
+                    try
+                    {
+                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader()
+                        {
                             Cbo = this.MenuPage.ViewModel.Cbo.CodCbo,
                             CnsProfissional = this.MenuPage.ViewModel.Profissional.CnsProfissional,
                             Cnes = this.MenuPage.ViewModel.Estabelecimento.ImpCnes,
@@ -436,14 +612,18 @@ namespace gvn_ab_mobile.ViewModels {
                         DAOFichaUnicaLotacaoHeader.Insert(this.Ficha.Header);
                         DAOFichaCadastroDomiciliar.Insert(this.Ficha);
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.MenuPage.Navigation.PopToRootAsync());
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e)
+                    {
                         System.Diagnostics.Debug.WriteLine(e);
-                    } finally {
+                    }
+                    finally
+                    {
                         this.IsBusy = false;
                     };
                 };
             });
-#pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+            #pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
         }
 
     }
