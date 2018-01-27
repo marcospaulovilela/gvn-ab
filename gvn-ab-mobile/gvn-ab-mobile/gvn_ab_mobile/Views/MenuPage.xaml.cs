@@ -53,7 +53,8 @@ namespace gvn_ab_mobile.Views {
         }
 
         async void OnVisitaDomiciliarClicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new FichaVisitaDomiciliarPage.FichaVisitaDomiciliarPage1(new ViewModels.FichaVisitaDomiciliarViewModel(this)));
+            //await Navigation.PushAsync(new FichaVisitaDomiciliarPage.FichaVisitaDomiciliarPage1(new ViewModels.FichaVisitaDomiciliarViewModel(this)));
+            await Navigation.PushAsync(new FichaVisitaDomiciliarPage.ListFichaVisitaDomiciliarPage(this));
         }
 
         async void OnEnviarFichasClicked(object sender, EventArgs e) {

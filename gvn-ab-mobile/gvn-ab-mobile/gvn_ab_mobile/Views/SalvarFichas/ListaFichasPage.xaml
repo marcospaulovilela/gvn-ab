@@ -10,7 +10,7 @@
             <StackLayout>
 
                 <StackLayout>
-                    <controls:TableGridFichas Title="Fichas Cadastro Individual" Items="{Binding FichasCadastroIndividual}" ItemType="gvn_ab_mobile.Models.FichaCadastroIndividual" />
+                    <!--<controls:TableGridFichas Title="Fichas Cadastro Individual" Items="{Binding FichasCadastroIndividual}" ItemType="gvn_ab_mobile.Models.FichaCadastroIndividual" />-->
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >

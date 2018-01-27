@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 
 namespace gvn_ab_mobile.DAO {
-    public abstract class DAO<T> : IDisposable
+    public class DAO<T> : IDisposable
         where T : new () {
 
         private static string dbName = "gvn-ab-1.db3";
