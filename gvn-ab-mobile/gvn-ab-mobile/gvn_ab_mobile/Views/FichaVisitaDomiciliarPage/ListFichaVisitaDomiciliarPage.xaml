@@ -5,8 +5,8 @@
              xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
              Title="Ficha de visita domiciliar">
     <ContentPage.Content>
-        <StackLayout Padding="15,0,15,15">
-            <controls:TableGridFichas Items="{Binding Fichas}"/>
+        <StackLayout Padding="15,0,15,15" VerticalOptions="FillAndExpand">
+            <controls:TableGridFichas VerticalOptions="FillAndExpand" Items="{Binding Fichas}" Delete="{Binding Delete}" Add="{Binding Add}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

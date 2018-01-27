@@ -34,33 +34,34 @@ namespace gvn_ab_mobile.Controls {
     }
 
     public class TableGridFichasViewModel : ViewModels.BaseViewModel {
-        public ICommand Add { get; }
-
-        private TableGridFichas Control { get; }
+      
+        public TableGridFichas Control { get; }
         public ObservableRangeCollection<TableGridFichasItem> ItemsForListView { get; } = new ObservableRangeCollection<TableGridFichasItem>();
         
         public TableGridFichasViewModel(TableGridFichas control) {
             this.Control = control;
-            this.Add = new Command(async () => await this.AddExecuteAsync());
         }
-
-        private async Task AddExecuteAsync() { }
 
         public async Task EditItemAsync(TableGridFichasItem item) { }
 
-        public void DeleteItem(TableGridFichasItem item) { this.Control.Delete.Execute(item); }
+        public void DeleteItem(TableGridFichasItem item) { this.Control?.Delete?.Execute(item.Data); }
     }
 
     public partial class TableGridFichas : ContentView {
         public static readonly BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(ObservableRangeCollection<object>), typeof(TableGridFichas), null, BindingMode.TwoWay, propertyChanged: OnItemsSourceChanged);
         public static readonly BindableProperty DeleteProperty = BindableProperty.Create(nameof(Delete), typeof(ICommand), typeof(TableGridFichas), null);
-        
+        public static readonly BindableProperty AddProperty = BindableProperty.Create(nameof(Add), typeof(ICommand), typeof(TableGridFichas), null);
+
         public ObservableRangeCollection<object> Items {
             get { return (ObservableRangeCollection<object>)GetValue(ItemsProperty); }
         }
 
         public ICommand Delete {
             get { return (ICommand)GetValue(DeleteProperty); }
+        }
+
+        public ICommand Add {
+            get { return (ICommand)GetValue(AddProperty); }
         }
 
         public static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue) {
@@ -72,8 +73,6 @@ namespace gvn_ab_mobile.Controls {
         }
 
         public string ItemPage { get; set; }
-
-        public ICommand Add { get; }
         public TableGridFichasViewModel viewModel { get; }
 
         public string Title {

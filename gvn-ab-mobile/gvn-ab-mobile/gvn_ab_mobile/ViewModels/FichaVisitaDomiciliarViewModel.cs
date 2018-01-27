@@ -11,7 +11,7 @@ using Xamarin.Forms;
 namespace gvn_ab_mobile.ViewModels {
     public class FichaVisitaDomiciliarViewModel : BaseViewModel {
 
-        private Views.MenuPage MenuPage { get; set; }
+        private Views.FichaVisitaDomiciliarPage.ListFichaVisitaDomiciliarPage RootPage { get; set; }
 
         public ICommand Continuar { get; }
 
@@ -99,7 +99,7 @@ namespace gvn_ab_mobile.ViewModels {
                 return (!((this.TipoDeImovel?.Codigo == 2) || (this.TipoDeImovel?.Codigo == 3) || (this.TipoDeImovel?.Codigo == 4) || (this.TipoDeImovel?.Codigo == 5) || (this.TipoDeImovel?.Codigo == 6) || (this.TipoDeImovel?.Codigo == 12)));
             }
         }
-        
+
         private Models.Desfecho _desfecho;
         public Models.Desfecho Desfecho {
             get { return this._desfecho; }
@@ -124,9 +124,9 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
 
-        public FichaVisitaDomiciliarViewModel(Views.MenuPage menuPage) {
+        public FichaVisitaDomiciliarViewModel(Views.FichaVisitaDomiciliarPage.ListFichaVisitaDomiciliarPage rootPage) {
             this.Ficha = new Models.FichaVisitaDomiciliarTerritorial();
-            this.MenuPage = menuPage;
+            this.RootPage = rootPage;
 
             this.Continuar = new Command(async () => ContinuarExecute());
 
@@ -150,16 +150,26 @@ namespace gvn_ab_mobile.ViewModels {
                 using (DAO.DAOFichaVisitaDomiciliar DAOFichaVisitaDomiciliar = new DAO.DAOFichaVisitaDomiciliar()) {
                     try {
                         this.Ficha.Header = new Models.FichaUnicaLotacaoHeader() {
-                            Cbo = this.MenuPage.ViewModel.Cbo.CodCbo,
-                            CnsProfissional = this.MenuPage.ViewModel.Profissional.CnsProfissional,
-                            Cnes = this.MenuPage.ViewModel.Estabelecimento.ImpCnes,
-                            Ine = this.MenuPage.ViewModel.Equipe.CodEquipe,
+                            Cbo = this.RootPage.MenuPage.ViewModel.Cbo.CodCbo,
+                            CnsProfissional = this.RootPage.MenuPage.ViewModel.Profissional.CnsProfissional,
+                            Cnes = this.RootPage.MenuPage.ViewModel.Estabelecimento.ImpCnes,
+                            Ine = this.RootPage.MenuPage.ViewModel.Equipe.CodEquipe,
                             DataAtendimento = DateTime.Now
                         };
 
                         DAOFichaUnicaLotacaoHeader.Insert(this.Ficha.Header);
                         DAOFichaVisitaDomiciliar.Insert(this.Ficha);
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.MenuPage.Navigation.PopToRootAsync());
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => {
+                            try {
+                                //var BackCount = this.RootPage.Navigation.NavigationStack.Count - 2;
+                                //for (var counter = 1; counter < BackCount; counter++) {
+                                //    this.RootPage.Navigation.RemovePage(this.RootPage.Navigation.NavigationStack[this.RootPage.Navigation.NavigationStack.Count - 2]);
+                                //}
+                                await this.RootPage.Navigation.PopAsync();
+                            } catch (Exception e) {
+
+                            };
+                        });
                     } catch (Exception e) {
                         System.Diagnostics.Debug.WriteLine(e);
                     } finally {
