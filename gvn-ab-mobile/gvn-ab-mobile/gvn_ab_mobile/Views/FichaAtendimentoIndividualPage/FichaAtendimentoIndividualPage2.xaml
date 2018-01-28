@@ -53,11 +53,7 @@
 
                     <StackLayout>
                         <Label Text="Perímetro Cefálico (cm):" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Perímetro" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.PerimetroCefalico}">
-                        <Entry.Behaviors>
-                            <behaviors:EntryDoubleBehavior />
-                        </Entry.Behaviors>
-                        </Entry>
+                        <Entry Placeholder="Perímetro" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.PerimetroCefalico}"/>
                     </StackLayout>
 
                     <StackLayout>

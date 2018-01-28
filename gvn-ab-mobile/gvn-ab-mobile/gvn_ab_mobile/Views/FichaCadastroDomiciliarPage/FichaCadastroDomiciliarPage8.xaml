@@ -5,54 +5,70 @@
              x:Class="gvn_ab_mobile.Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8"
              Title="Identificação do Responsável Técnico da Instituição de Permanência">
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
-            <StackLayout VerticalOptions="FillAndExpand">
+        <AbsoluteLayout>
+            <ScrollView  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="20, 30, 20, 20" >
                 <StackLayout VerticalOptions="FillAndExpand">
-                    <StackLayout HorizontalOptions="FillAndExpand">
-                        <Label Text="Nome:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry x:Name="NomeResponsavel" Placeholder="Nome" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeResponsavelTecnico}">
-                            <Entry.Behaviors>
-                                <behaviors:EntryNomeBehavior Required="true" />
-                            </Entry.Behaviors>
-                        </Entry>
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="Nome:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                                <Entry x:Name="NomeResponsavel" Placeholder="Nome" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeResponsavelTecnico}">
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryNomeBehavior Required="true" />
+                                    </Entry.Behaviors>
+                                </Entry>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="Cargo na Instituição:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                                <Entry Placeholder="Cargo" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CargoInstituicao }">
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthBehavior MaxLength="100" />
+                                    </Entry.Behaviors>
+                                </Entry>
+                            </StackLayout>
+                        </StackLayout>
+
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="CNS do Responsável:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                                <Entry Placeholder="CNS" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsResponsavelTecnico }">
+                                    <Entry.Behaviors>
+                                        <behaviors:ValidatorCns />
+                                    </Entry.Behaviors>
+                                </Entry>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="Telefone de Contato:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                                <Entry Placeholder="Telefone" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneResponsavelTecnico }">
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthBehavior MinLength="10"  MaxLength="11" />
+                                    </Entry.Behaviors>
+                                </Entry>
+                            </StackLayout>
+                        </StackLayout>
+
                     </StackLayout>
 
-                    <StackLayout HorizontalOptions="FillAndExpand">
-                        <Label Text="Cargo na Instituição:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Entry Placeholder="Cargo" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CargoInstituicao }">
-                            <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="100" />
-                            </Entry.Behaviors>
-                        </Entry>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
+                        <Button Text="Salvar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                            <Button.Behaviors>
+                                <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodTurno|CodMicroarea|CodTipoImovel|CnsCidadao|CodMotivoSaida|CodSexo" />
+                            </Button.Behaviors>
+                        </Button>
                     </StackLayout>
+                </StackLayout>
+            </ScrollView>
 
-                    <StackLayout Orientation="Horizontal">
-                        <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="CNS do Responsável:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                            <Entry Placeholder="CNS" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsResponsavelTecnico }">
-                                <Entry.Behaviors>
-                                    <behaviors:ValidatorCns />
-                                </Entry.Behaviors>
-                            </Entry>
-                        </StackLayout>
-                        <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Telefone de Contato:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                            <Entry Placeholder="Telefone" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneResponsavelTecnico }">
-                                <Entry.Behaviors>
-                                    <behaviors:EntryLengthBehavior MinLength="10"  MaxLength="11" />
-                                </Entry.Behaviors>
-                            </Entry>
-                        </StackLayout>
-                    </StackLayout>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
-                    <Button Text="Salvar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
-                        <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="NomeResponsavel" />
-                        </Button.Behaviors>
-                    </Button>
-                </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            <ContentView x:Name="actIndBackground" BackgroundColor="#222222" Opacity="0.5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsBusy}"/>
+            <ActivityIndicator x:Name="actInd" Color="White" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

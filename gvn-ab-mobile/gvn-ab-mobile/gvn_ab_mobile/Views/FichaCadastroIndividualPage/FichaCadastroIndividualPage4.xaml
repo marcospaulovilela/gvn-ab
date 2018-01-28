@@ -3,27 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4"
              xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Title="Saída do Cidadão">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
             <StackLayout VerticalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Retirar cidadão do cadastro:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                        <Label Text="Retirar cidadão do cadastro:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" TextColor="Black" />
                         <Switch  HorizontalOptions="Center" IsToggled="{Binding StatusDesejaSairDoCadastro}" />
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" IsVisible="{Binding WantsSairDoCadastro}">
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Motivo Saída:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
+                            <Label Text="Motivo Saída:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
                             <Picker x:Name="CodMotivoSaida" ItemsSource="{Binding MotivosSaida}" SelectedItem="{Binding MotivoSaida}" Title="Motivo Saída" TextColor="Gray" HorizontalOptions="FillAndExpand">
                             </Picker>
                         </StackLayout>
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding WantsSairDoCadastroAndIsMotivoObito}">
-                        <Label Text="Obito:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <DatePicker x:Name="DataObito"  Date="{Binding Ficha.DataObito}" >
+                        <Label Text="Obito:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                        <DatePicker x:Name="DataObito" MinimumDate="{Binding PropertyNascimentoDate}"  Date="{Binding Ficha.DataObito}" MaximumDate="{x:Static sys:DateTime.Now}" >
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />
                             </DatePicker.Behaviors>
@@ -31,8 +32,8 @@
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding WantsSairDoCadastroAndIsMotivoObito}">
-                        <Label Text="Número da D.O:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Row="3" Grid.Column="2" TextColor="Black" />
-                        <Entry Placeholder="Num DO" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.NumeroDO}">
+                        <Label Text="Número da D.O:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Row="3" Grid.Column="2" TextColor="Black" />
+                        <Entry Placeholder="Num DO" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="Fill" Grid.Row="4" Grid.Column="2" TextColor="Black" Text="{Binding Ficha.NumeroDO}">
                             <Entry.Behaviors>
                                 <behaviors:EntryLengthBehavior MinLength="9"  MaxLength="9" Required="true" />
                             </Entry.Behaviors>

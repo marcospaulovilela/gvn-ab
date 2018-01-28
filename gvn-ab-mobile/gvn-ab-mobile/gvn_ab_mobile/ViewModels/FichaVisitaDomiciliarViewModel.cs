@@ -26,13 +26,19 @@ namespace gvn_ab_mobile.ViewModels {
         public List<Models.MotivoVisita> motivosVisitasLiberados;
         public List<Models.MotivoVisita> MotivosVisitasLiberados {
             get { return this.motivosVisitasLiberados; }
-            set { SetProperty(ref this.motivosVisitasLiberados, value); }
+            set {
+                SetProperty(ref this.motivosVisitasLiberados, value);
+                OnPropertyChanged("IsVisibleSexo");
+            }
         }
 
         public ObservableCollection<object> motivosSelecionados;
         public ObservableCollection<object> MotivosSelecionados {
             get { return this.motivosSelecionados; }
-            set { SetProperty(ref this.motivosSelecionados, value); }
+            set {
+                SetProperty(ref this.motivosSelecionados, value);
+                OnPropertyChanged("IsVisibleSexo");
+            }
 
         }
         public ObservableCollection<Models.Desfecho> Desfechos { get; set; }
@@ -65,6 +71,92 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
+        public bool IsVisibleSexo
+        {
+            get
+            {
+
+                bool result = false;
+
+                if (this.IsNotImovelCod2and3and4and5and6and12 == true)
+                {
+                    if(this.motivosSelecionados.Count > 0)
+                    {
+                        for(int i=0; i<this.motivosSelecionados.Count; i++)
+                        {
+                            Models.MotivoVisita motivo = (Models.MotivoVisita) this.motivosSelecionados.ElementAt(i);
+                            if(motivo.Observacoes.ToUpper().Equals("#BUSCA_ATIVA"))
+                            {
+                                result = true;
+                                break;
+                            }
+                            if (motivo.Observacoes.ToUpper().Equals("#ACOMPANHAMENTO"))
+                            {
+                                result = true;
+                                break;
+                            }
+                            if (motivo.Codigo == 25)
+                            {
+                                result = true;
+                                break;
+                            }
+                            if (motivo.Codigo == 31)
+                            {
+                                result = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(this.PesoAcompanhamentoNutricional != 0)
+                    {
+                            result = true;
+                    }
+
+                    if (this.AlturaAcompanhamentoNutricional != 0)
+                    {
+                        result = true;
+                    }
+                }
+                    
+                return result;
+
+            }
+        }
+
+        private double _pesoAcompanhamentoNutricional;
+        public double PesoAcompanhamentoNutricional
+        {
+            get { return this._pesoAcompanhamentoNutricional; }
+            set
+            {
+                this.Ficha.PesoAcompanhamentoNutricional = value;
+                SetProperty(ref _pesoAcompanhamentoNutricional, value);
+                OnPropertyChanged("IsVisibleSexo");
+            }
+        }
+
+        private double _alturaAcompanhamentoNutricional;
+        public double AlturaAcompanhamentoNutricional
+        {
+            get { return this._alturaAcompanhamentoNutricional; }
+            set
+            {
+                if(value < 20.0)
+                {
+                    this.Ficha.AlturaAcompanhamentoNutricional = 20.0;
+                    SetProperty(ref _alturaAcompanhamentoNutricional, 20.0);
+                    OnPropertyChanged("IsVisibleSexo");
+                }
+                else
+                {
+                    this.Ficha.AlturaAcompanhamentoNutricional = value;
+                    SetProperty(ref _alturaAcompanhamentoNutricional, value);
+                    OnPropertyChanged("IsVisibleSexo");
+                }
+            }
+        }
+
         private Models.Turno _turno; //Obrigatório
         public Models.Turno Turno {
             get { return this._turno; }
@@ -83,6 +175,7 @@ namespace gvn_ab_mobile.ViewModels {
                 this.Ficha.TipoDeImovelId = value?.Codigo;
                 this.Ficha.TipoDeImovel = value;
 
+                this.MotivosSelecionados.Clear();
                 if (!((value.Codigo == 2) || (value.Codigo == 3) || (value.Codigo == 4) || (value.Codigo == 5) || (value.Codigo == 6) || (value.Codigo == 12))) {
                     this.MotivosVisitasLiberados = this.MotivosVisitas.Select(o => o).ToList();
                 } else {
@@ -95,11 +188,12 @@ namespace gvn_ab_mobile.ViewModels {
                 SetProperty(ref _tipoDeImovel, value);
                 OnPropertyChanged("IsNotImovelCod2and3and4and5and6and12");
                 OnPropertyChanged("IsVisitaRealizadaAndIsNotImovelCod2and3and4and5and6and12");
+                OnPropertyChanged("IsVisibleSexo");
             }
         }
         public bool IsNotImovelCod2and3and4and5and6and12 {
             get {
-                return (!((this.TipoDeImovel?.Codigo == 2) || (this.TipoDeImovel?.Codigo == 3) || (this.TipoDeImovel?.Codigo == 4) || (this.TipoDeImovel?.Codigo == 5) || (this.TipoDeImovel?.Codigo == 6) || (this.TipoDeImovel?.Codigo == 12)));
+                return (!((this.TipoDeImovel == null) || (this.TipoDeImovel?.Codigo == 2) || (this.TipoDeImovel?.Codigo == 3) || (this.TipoDeImovel?.Codigo == 4) || (this.TipoDeImovel?.Codigo == 5) || (this.TipoDeImovel?.Codigo == 6) || (this.TipoDeImovel?.Codigo == 12)));
             }
         }
 
@@ -113,6 +207,7 @@ namespace gvn_ab_mobile.ViewModels {
                 SetProperty(ref _desfecho, value);
                 OnPropertyChanged("IsVisitaRealizada");
                 OnPropertyChanged("IsVisitaRealizadaAndIsNotImovelCod2and3and4and5and6and12");
+                OnPropertyChanged("IsVisibleSexo");
             }
         }
 
@@ -125,6 +220,26 @@ namespace gvn_ab_mobile.ViewModels {
         public bool IsVisitaRealizadaAndIsNotImovelCod2and3and4and5and6and12 {
             get {
                 return ((this.IsVisitaRealizada == true) && (this.IsNotImovelCod2and3and4and5and6and12 == true));
+            }
+        }
+
+        private DateTime _dataNascimentoCidadao;
+        public DateTime DataNascimentoCidadao
+        {
+            get { return this._dataNascimentoCidadao; }
+            set
+            {
+                this.Ficha.DtNascimento = value;
+
+                SetProperty(ref _dataNascimentoCidadao, value);
+            }
+        }
+
+        public DateTime PropertyMinimumDate
+        {
+            get
+            {
+                return DateTime.Now.AddYears(-130);
             }
         }
 
@@ -144,6 +259,7 @@ namespace gvn_ab_mobile.ViewModels {
             if (ficha == null) {
                 this.Ficha = new Models.FichaVisitaDomiciliarTerritorial();
                 this.MotivosSelecionados = new ObservableCollection<object>();
+                this.DataNascimentoCidadao = DateTime.Now;
 
             } else {
                 this.Ficha = ficha;

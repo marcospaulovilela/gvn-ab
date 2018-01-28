@@ -10,7 +10,7 @@
                 <StackLayout VerticalOptions="FillAndExpand">
                     <?SelectBox?>
                     <StackLayout IsVisible="{Binding HasTipoDomicilio}" HorizontalOptions="FillAndExpand" >
-                        <Label Text="Situação de Moradia/Posse da Terra:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Label Text="Situação de Moradia/Posse da Terra:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Picker x:Name="CodSituacaoMoradia" ItemsSource="{Binding SituacoesDeMoradia}" SelectedItem="{Binding SituacaoMoradiaPosseTerra}" HorizontalOptions="FillAndExpand" Title="Situação Moradia" Scale="1">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />
@@ -22,7 +22,7 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <?SelectBox?>
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Localização da Moradia:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                            <Label Text="Localização da Moradia:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                             <Picker x:Name="CodLocalizacao" ItemsSource="{Binding LocalizacoesMoradias}" SelectedItem="{Binding Localizacao}" HorizontalOptions="FillAndExpand" Title="Localização Moradia" Scale="1">
                                 <Picker.Behaviors>
                                     <behaviors:ValidatorPickerBehavior />
@@ -32,7 +32,7 @@
 
                         <?SelectBox?>
                         <StackLayout IsVisible="{Binding HasTipoDomicilio}" HorizontalOptions="FillAndExpand">
-                            <Label Text="Tipo de Domicílio:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"  TextColor="Black" />
+                            <Label Text="Tipo de Domicílio:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"  TextColor="Black" />
                             <Picker x:Name="CodTipoDomicilio" ItemsSource="{Binding TiposDeDomicilio}" SelectedItem="{Binding TipoDomicilio}" HorizontalOptions="FillAndExpand" Title="Tipo Domicílio" Scale="1">
                             </Picker>
                         </StackLayout>
@@ -41,7 +41,7 @@
 
                     <?SelectBox?>
                     <StackLayout IsVisible="{Binding HasTipoDomicilioAndIsRural}" HorizontalOptions="FillAndExpand">
-                        <Label Text="Em caso de Área de Produção Rural: Condição de Posse e Uso da Terra" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                        <Label Text="Em caso de Área de Produção Rural: Condição de Posse e Uso da Terra" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                         <Picker x:Name="CodCondicaoPosseUsoTerra" ItemsSource="{Binding CondicoesPosseUsoTerra}" SelectedItem="{Binding AreaProducaoRural}" HorizontalOptions="FillAndExpand" Title="Condição Posse e Uso da Terra" Scale="1">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />
@@ -51,7 +51,7 @@
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Número de Moradores:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                            <Label Text="Número de Moradores:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                             <Entry x:Name="NumMoradores" Keyboard="Numeric" Placeholder="Num Moradores" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding NuMoradores}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryDifferZeroBehavior MaxLength="4" />
@@ -60,7 +60,7 @@
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand"  IsVisible="{Binding HasTipoDomicilio}">
-                            <Label Text="Número de Cômodos:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Label Text="Número de Cômodos:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <Entry x:Name="NumComodos" Keyboard="Numeric" Placeholder="Num Cômodos" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NuComodos}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLengthBehavior MaxLength="2" />
@@ -71,13 +71,13 @@
 
                     <?SelectBox?>
                     <StackLayout IsVisible="{Binding HasTipoDomicilio}" HorizontalOptions="FillAndExpand">
-                        <Label Text="Tipo de Acesso ao Domicílio:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                        <Label Text="Tipo de Acesso ao Domicílio:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                         <Picker x:Name="CodTipoAcessoDomicilio" ItemsSource="{Binding TiposAcessoDomicilio}" SelectedItem="{Binding TipoAcessoDomicilio}" HorizontalOptions="FillAndExpand" Title="Tipo Acesso Domicílio" Scale="1">
                         </Picker>
                     </StackLayout>
 
                     <StackLayout IsVisible="{Binding HasTipoDomicilio}" HorizontalOptions="FillAndExpand">
-                        <Label Text="Material Predominante na Construção das Paredes Externas de seu Domicílio:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                        <Label Text="Material Predominante na Construção das Paredes Externas de seu Domicílio:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                         <Picker x:Name="CodMaterialPredominanteConstrucao" ItemsSource="{Binding MateriaisPredominantesConstrucao}" SelectedItem="{Binding MaterialPredominanteParedesExtDomicilio}" HorizontalOptions="FillAndExpand" Title="Material Predominante Construção" Scale="1">
                         </Picker>
                     </StackLayout>
@@ -86,14 +86,14 @@
 
                         <?SelectBox?>
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Abastecimento de Água:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                            <Label Text="Abastecimento de Água:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                             <Picker x:Name="CodAbastecimentoAgua" ItemsSource="{Binding AbastecimentosAgua}" SelectedItem="{Binding AbastecimentoAgua}" HorizontalOptions="FillAndExpand" Title="Abastecimento Água" Scale="1">
                             </Picker>
                         </StackLayout>
 
                         <?SelectBox?>
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Água para Consumo no Domicílio:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                            <Label Text="Água para Consumo no Domicílio:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                             <Picker x:Name="CodAguaConsumoDomicilio" ItemsSource="{Binding AguaConsumoDomicilios}" SelectedItem="{Binding AguaConsumoDomicilio}" HorizontalOptions="FillAndExpand" Title="Água para Consumo" Scale="1">
                             </Picker>
                         </StackLayout>
@@ -104,20 +104,20 @@
 
                         <?SelectBox?>
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Forma de Escoamento do Banheiro ou Sanitário:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                            <Label Text="Forma de Escoamento do Banheiro ou Sanitário:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                             <Picker x:Name="CodFormaEscoamentoBanheiroOuSanitario" ItemsSource="{Binding FormasEscoamentoBanheiroOuSanitario}" SelectedItem="{Binding FormaEscoamentoBanheiro}" HorizontalOptions="FillAndExpand" Title="Forma Escoamento" Scale="1"/>
                         </StackLayout>
 
                         <?SelectBox?>
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Destino do Lixo:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                            <Label Text="Destino do Lixo:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                             <Picker x:Name="CodDestinoLixo" ItemsSource="{Binding DestinosLixo}" SelectedItem="{Binding DestinoLixo}" HorizontalOptions="FillAndExpand" Title="Destino Lixo" Scale="1"/>
                         </StackLayout>
 
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="Disponibilidade de Energia Elétrica?" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Label Text="Disponibilidade de Energia Elétrica?" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Switch  HorizontalOptions="Center" IsToggled="{Binding Ficha.StDisponibilidadeEnergia}" />
                     </StackLayout>
                 </StackLayout>

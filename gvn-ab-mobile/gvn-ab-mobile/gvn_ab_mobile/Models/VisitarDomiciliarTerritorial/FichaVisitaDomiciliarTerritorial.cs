@@ -72,9 +72,9 @@ namespace gvn_ab_mobile.Models {
         }
 
         //Campo dtNascimento - Tipo long
-        private long _dtNascimento; //Obrigatório
+        private DateTime _dtNascimento; //Obrigatório
         [NotNull]
-        public long DtNascimento {
+        public DateTime DtNascimento {
             get { return this._dtNascimento; }
             set { SetProperty(ref _dtNascimento, value); }
         }
@@ -155,7 +155,9 @@ namespace gvn_ab_mobile.Models {
 
 
         public override string ToString() {
-            return $"Mudar o metodo tostring da ficha {this.GetType().Name}";
+            return $"Ficha {this.Id}: " + 
+                   $"{this.TipoDeImovel.Descricao} - " +
+                   $"{this.Turno.Descricao}";
         }
     }
 }

@@ -100,7 +100,13 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-        public DateTime PropertyMinimumDateNaturalizacao {
+        public DateTime PropertyNascimentoDate {
+            get {
+                return this.Ficha.DataNascimentoCidadao;
+            }
+}
+
+        public DateTime PropertyMinimumDateNaturalizacaoOuEntradaBrasil {
             get {
                 DateTime data = DateTime.Now;
                 int year = data.Year - this.Ficha.DataNascimentoCidadao.Year;
@@ -171,6 +177,7 @@ namespace gvn_ab_mobile.ViewModels {
             set {
                 this.Ficha.StatusEhResponsavel = value;
                 this.Ficha.CnsResponsavelFamiliar = string.Empty;
+                this.RelacaoParentescoCidadao = null;
 
                 SetProperty(ref _statusEhResponsavel, value);
                 OnPropertyChanged("IsResponsavel");
@@ -238,8 +245,17 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._nacionalidadeCidadao; }
             set {
                 this.Ficha.NacionalidadeCidadao = value;
-
                 SetProperty(ref _nacionalidadeCidadao, value);
+
+                if (this.IsBrasileiro == true)
+                {
+                    this.PaisNascimento = new Models.Pais
+                    {
+                        Codigo = 31,
+                        Descricao = "Brasil"
+                    };
+                }
+
                 OnPropertyChanged("IsBrasileiro");
                 OnPropertyChanged("IsEstrangeiro");
                 OnPropertyChanged("IsNaturalizado");
@@ -250,14 +266,6 @@ namespace gvn_ab_mobile.ViewModels {
             get {
                 return this.NacionalidadeCidadao?.Codigo == 1;
             }
-            set {
-
-                //Arrumar
-
-                this.Ficha.PaisNascimento.Codigo = 31;
-                this.Ficha.PaisNascimento.Descricao = "Brasil";
-            }
-
         }
         public bool IsEstrangeiro {
             get {
@@ -745,6 +753,8 @@ namespace gvn_ab_mobile.ViewModels {
 
             //Valor Default para o Switch Situação de Rua
             this.StatusSituacaoRua = true;
+
+            this.DataNascimentoCidadao = DateTime.Now.AddYears(-18);
 
         }
 
