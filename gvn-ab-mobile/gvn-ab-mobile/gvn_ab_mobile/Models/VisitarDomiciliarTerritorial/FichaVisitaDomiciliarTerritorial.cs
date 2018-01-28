@@ -157,7 +157,7 @@ namespace gvn_ab_mobile.Models {
         public override string ToString() {
             return $"Ficha {this.Id}: " + 
                    $"{this.TipoDeImovel.Descricao} - " +
-                   $"{this.Turno.Descricao} - ";
+                   $"{this.Turno.Descricao}";
         }
     }
 }

@@ -12,7 +12,7 @@
                 <StackLayout VerticalOptions="FillAndExpand">
                    
                     <StackLayout HorizontalOptions="FillAndExpand">
-                        <Label Text="U.F:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Label Text="U.F:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <Picker x:Name="CodUF" IsEnabled="False" ItemsSource="{Binding UFs}" SelectedItem="{Binding UF}"  HorizontalOptions="FillAndExpand"  Title="U.F.">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />
@@ -21,7 +21,7 @@
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="FillAndExpand">
-                        <Label Text="Município:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                        <Label Text="Município:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                         <controls:PickerSearch Enabled="false"  x:Name="CodMunicipio" Placeholder="Município"  Items="{Binding Municipios}" SelectedItem="{Binding CodigoIbgeMunicipio}">
                             <controls:PickerSearch.Behaviors>
                                 <behaviors:ValidatorPickerSearchBehavior Required="true"/>
@@ -31,8 +31,8 @@
                     
                     <StackLayout Orientation="Horizontal">
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="CEP:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                            <Entry x:Name="CodCep" Placeholder="CEP" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }">
+                            <Label Text="CEP:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                            <Entry x:Name="CodCep" Placeholder="CEP" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }">
                                 <Entry.Behaviors>
                                     <behaviors:EntryCepBehavior 
                                         Logradouro ="{Binding Logradouro}"  
@@ -44,7 +44,7 @@
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand" >
-                            <Label Text="Bairro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Label Text="Bairro:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <controls:PickerSearch x:Name="CodBairro" Items="{Binding Bairros}" SelectedItem="{Binding Bairro}">
                                 <controls:PickerSearch.Behaviors>
                                     <behaviors:ValidatorPickerSearchBehavior Required="true"/>
@@ -56,7 +56,7 @@
                     <StackLayout Orientation="Horizontal">
 
                         <!--<StackLayout HorizontalOptions="FillAndExpand">
-                        <Label Text="Tipo de Logradouro:" FontSize="Small" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
+                        <Label Text="Tipo de Logradouro:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
                         <controls:PickerSearch x:Name="CodTipoLogradouro" Items="{Binding TiposLogradouros}" SelectedItem="{Binding TipoLogradouroNumeroDne}">
                             <controls:PickerSearch.Behaviors>
                                 <behaviors:ValidatorPickerSearchBehavior Required="true"/>
@@ -65,7 +65,7 @@
                     </StackLayout>-->
 
                         <StackLayout HorizontalOptions="FillAndExpand" >
-                            <Label Text="Logradouro:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Label Text="Logradouro:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <controls:PickerSearch x:Name="NomLogradouro" Items="{Binding Logradouros}" SelectedItem="{Binding Logradouro}">
                                 <controls:PickerSearch.Behaviors>
                                     <behaviors:ValidatorPickerSearchBehavior Required="true"/>
@@ -77,7 +77,7 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 
                         <StackLayout  HorizontalOptions="FillAndExpand">
-                            <Label Text="Número:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                            <Label Text="Número:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
                             <Entry x:Name="Numero" IsEnabled="{Binding HasNumero}" Placeholder="Número" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Numero}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLettersNumbersBehavior Required="true"/>
@@ -86,12 +86,12 @@
                         </StackLayout>
 
                         <StackLayout>
-                            <Label Text="Sem Número:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Label Text="Sem Número:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <Switch  HorizontalOptions="Center" IsToggled="{Binding StSemNumero}" />
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Microárea:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Label Text="Microárea:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <Entry x:Name="Microarea" IsEnabled="{Binding IsForaArea}" Placeholder="Microárea" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Microarea}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLengthBehavior MinLength="2"  MaxLength="2" Required="true" />
@@ -100,7 +100,7 @@
                         </StackLayout>
 
                         <StackLayout>
-                            <Label Text="Está Fora Área:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Label Text="Está Fora Área:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <Switch  HorizontalOptions="Center" IsToggled="{Binding StForaArea}" />
                         </StackLayout>
 
@@ -109,7 +109,7 @@
                     <StackLayout Orientation="Horizontal">
 
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Complemento:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                            <Label Text="Complemento:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                             <Entry x:Name="Complemento" Placeholder="Complemento" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Complemento}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLengthBehavior MaxLength="30"/>
@@ -118,7 +118,7 @@
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="PTO.Referência:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Label Text="PTO.Referência:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <Entry x:Name="PtoReferencia" Placeholder="Pto.Referência" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.PontoReferencia}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLengthBehavior MaxLength="40"/>
@@ -130,7 +130,7 @@
 
                     <StackLayout Orientation="Horizontal">
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Tipo De Imóvel:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                            <Label Text="Tipo De Imóvel:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                             <Picker x:Name="CodTipoImovel" ItemsSource="{Binding TiposImoveis}" SelectedItem="{Binding TipoDeImovel}" HorizontalOptions="FillAndExpand" Title="Tipo Imóvel" Scale="1">
                                 <Picker.Behaviors>
                                     <behaviors:ValidatorPickerBehavior />
@@ -143,7 +143,7 @@
                     <StackLayout Orientation="Horizontal">
 
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Telefone Residência:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                            <Label Text="Telefone Residência:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
                             <Entry x:Name="NumTelefoneResidencia" Keyboard="Numeric" Placeholder="Tel. Residência" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneResidencia}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLengthBehavior MinLength="10"  MaxLength="11" />
@@ -155,7 +155,7 @@
 
                     <StackLayout Orientation="Horizontal">
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Telefone Contato:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Label Text="Telefone Contato:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <Entry x:Name="NumTelefoneContato" Keyboard="Numeric" Placeholder="Tel. Contato" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneContato}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLengthBehavior MinLength="10"  MaxLength="11" />

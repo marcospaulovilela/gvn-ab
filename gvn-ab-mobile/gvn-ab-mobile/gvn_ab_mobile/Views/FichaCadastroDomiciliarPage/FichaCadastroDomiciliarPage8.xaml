@@ -10,8 +10,8 @@
                 <StackLayout VerticalOptions="FillAndExpand">
                     <StackLayout VerticalOptions="FillAndExpand">
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Nome:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <Entry x:Name="NomeResponsavel" Placeholder="Nome" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeResponsavelTecnico}">
+                            <Label Text="Nome:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Entry x:Name="NomeResponsavel" Placeholder="Nome" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.NomeResponsavelTecnico}">
                                 <Entry.Behaviors>
                                     <behaviors:EntryNomeBehavior Required="true" />
                                 </Entry.Behaviors>
@@ -19,8 +19,8 @@
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Cargo na Instituição:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <Entry Placeholder="Cargo" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CargoInstituicao }">
+                            <Label Text="Cargo na Instituição:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Entry Placeholder="Cargo" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CargoInstituicao }">
                                 <Entry.Behaviors>
                                     <behaviors:EntryLengthBehavior MaxLength="100" />
                                 </Entry.Behaviors>
@@ -29,16 +29,16 @@
 
                         <StackLayout Orientation="Horizontal">
                             <StackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="CNS do Responsável:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                                <Entry Placeholder="CNS" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsResponsavelTecnico }">
+                                <Label Text="CNS do Responsável:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                                <Entry Placeholder="CNS" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsResponsavelTecnico }">
                                     <Entry.Behaviors>
                                         <behaviors:ValidatorCns />
                                     </Entry.Behaviors>
                                 </Entry>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="Telefone de Contato:" FontSize="Small" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                                <Entry Placeholder="Telefone" Keyboard="Numeric" FontSize="Small" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneResponsavelTecnico }">
+                                <Label Text="Telefone de Contato:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
+                                <Entry Placeholder="Telefone" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.TelefoneResponsavelTecnico }">
                                     <Entry.Behaviors>
                                         <behaviors:EntryLengthBehavior MinLength="10"  MaxLength="11" />
                                     </Entry.Behaviors>
