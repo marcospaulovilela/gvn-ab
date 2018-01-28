@@ -407,9 +407,7 @@ namespace gvn_ab_mobile.ViewModels
                 }
                 else
                 {
-                    this.Ficha.NuMoradores = "1";
-
-                    SetProperty(ref _nuMoradores, "1");
+                    SetProperty(ref _nuMoradores, value);
                 }
             }
         }
@@ -470,7 +468,6 @@ namespace gvn_ab_mobile.ViewModels
             this.ConcordarInstituicaoPermanencia = new Command(async () => await ConcordarInstituicaoPermanenciaExecuteAsync());
             this.NaoConcordarInstituicaoPermanencia = new Command(async () => await NaoConcordarInstituicaoPermanenciaExecuteAsync());
 
-
             #region CarregamentoDados Page2
             this.Logradouros = new ObservableRangeCollection<Models.Logradouro>();
             this.Bairros = new ObservableRangeCollection<Models.Bairro>(new DAO.DAOBairro().Select());
@@ -492,6 +489,7 @@ namespace gvn_ab_mobile.ViewModels
             #endregion
 
             this.Familias = new ObservableCollection<object>();
+            
 
         }
 

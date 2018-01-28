@@ -100,7 +100,13 @@ namespace gvn_ab_mobile.ViewModels {
             }
         }
 
-        public DateTime PropertyMinimumDateNaturalizacao {
+        public DateTime PropertyNascimentoDate {
+            get {
+                return this.Ficha.DataNascimentoCidadao;
+            }
+}
+
+        public DateTime PropertyMinimumDateNaturalizacaoOuEntradaBrasil {
             get {
                 DateTime data = DateTime.Now;
                 int year = data.Year - this.Ficha.DataNascimentoCidadao.Year;
@@ -747,6 +753,8 @@ namespace gvn_ab_mobile.ViewModels {
 
             //Valor Default para o Switch Situação de Rua
             this.StatusSituacaoRua = true;
+
+            this.DataNascimentoCidadao = DateTime.Now.AddYears(-18);
 
         }
 

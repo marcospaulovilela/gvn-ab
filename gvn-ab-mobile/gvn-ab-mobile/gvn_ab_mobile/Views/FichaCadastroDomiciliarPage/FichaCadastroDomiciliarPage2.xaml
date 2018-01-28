@@ -30,18 +30,6 @@
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
-                        <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="CEP:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                            <Entry x:Name="CodCep" Placeholder="CEP" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }">
-                                <Entry.Behaviors>
-                                    <behaviors:EntryCepBehavior 
-                                        Logradouro ="{Binding Logradouro}"  
-                                        Bairro ="{Binding Bairro}"  
-                                        DesComplemento="{Binding Ficha.Complemento}"  
-                                        Required="true" />
-                                </Entry.Behaviors>
-                            </Entry>
-                        </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand" >
                             <Label Text="Bairro:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
@@ -51,6 +39,16 @@
                                 </controls:PickerSearch.Behaviors>
                             </controls:PickerSearch>
                         </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand" >
+                            <Label Text="Logradouro:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <controls:PickerSearch x:Name="NomLogradouro" Items="{Binding Logradouros}" SelectedItem="{Binding Logradouro}">
+                                <controls:PickerSearch.Behaviors>
+                                    <behaviors:ValidatorPickerSearchBehavior Required="true"/>
+                                </controls:PickerSearch.Behaviors>
+                            </controls:PickerSearch>
+                        </StackLayout>
+
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">
@@ -64,14 +62,19 @@
                         </controls:PickerSearch>
                     </StackLayout>-->
 
-                        <StackLayout HorizontalOptions="FillAndExpand" >
-                            <Label Text="Logradouro:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <controls:PickerSearch x:Name="NomLogradouro" Items="{Binding Logradouros}" SelectedItem="{Binding Logradouro}">
-                                <controls:PickerSearch.Behaviors>
-                                    <behaviors:ValidatorPickerSearchBehavior Required="true"/>
-                                </controls:PickerSearch.Behaviors>
-                            </controls:PickerSearch>
+                        <StackLayout HorizontalOptions="FillAndExpand">
+                            <Label Text="CEP:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                            <Entry x:Name="CodCep" Placeholder="CEP" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }">
+                                <Entry.Behaviors>
+                                    <behaviors:EntryCepBehavior 
+                                        Logradouro ="{Binding Logradouro}"  
+                                        Bairro ="{Binding Bairro}"  
+                                        DesComplemento="{Binding Ficha.Complemento}"  
+                                        Required="true" />
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
+
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
@@ -90,6 +93,9 @@
                             <Switch  HorizontalOptions="Center" IsToggled="{Binding StSemNumero}" />
                         </StackLayout>
 
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
                         <StackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="Microárea:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <Entry x:Name="Microarea" IsEnabled="{Binding IsForaArea}" Placeholder="Microárea" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Microarea}">
@@ -103,7 +109,6 @@
                             <Label Text="Está Fora Área:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <Switch  HorizontalOptions="Center" IsToggled="{Binding StForaArea}" />
                         </StackLayout>
-
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">

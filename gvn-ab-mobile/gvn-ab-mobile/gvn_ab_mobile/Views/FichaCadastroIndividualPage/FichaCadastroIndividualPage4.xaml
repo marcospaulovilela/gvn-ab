@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gvn_ab_mobile.Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage4"
              xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Title="Saída do Cidadão">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
@@ -23,7 +24,7 @@
 
                     <StackLayout IsVisible="{Binding WantsSairDoCadastroAndIsMotivoObito}">
                         <Label Text="Obito:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                        <DatePicker x:Name="DataObito"  Date="{Binding Ficha.DataObito}" >
+                        <DatePicker x:Name="DataObito" MinimumDate="{Binding PropertyNascimentoDate}"  Date="{Binding Ficha.DataObito}" MaximumDate="{x:Static sys:DateTime.Now}" >
                             <DatePicker.Behaviors>
                                 <behaviors:ValidatorDatepickerBehavior />
                             </DatePicker.Behaviors>

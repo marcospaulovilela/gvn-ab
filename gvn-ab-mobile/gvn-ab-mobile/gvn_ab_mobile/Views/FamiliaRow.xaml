@@ -4,6 +4,7 @@
              xmlns:TableGrid="clr-namespace:gvn_ab_mobile.Controls;assembly=Rg.Plugins.Popup"
              xmlns:controls="clr-namespace:gvn_ab_mobile.Controls;"
              xmlns:behaviors="clr-namespace:gvn_ab_mobile.Behaviors;"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="gvn_ab_mobile.Views.FamiliaRow">
   <ContentPage.Content>
     <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
@@ -28,7 +29,7 @@
 
           <StackLayout>
             <Label Text="Data de Nascimento do Responsável:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-            <DatePicker Date="{Binding Item.DataNascimentoResponsavel}" />
+            <DatePicker Date="{Binding Item.DataNascimentoResponsavel}" MaximumDate="{x:Static sys:DateTime.Now}"/>
           </StackLayout>
 
           <StackLayout>
