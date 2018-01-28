@@ -10,7 +10,6 @@ using Xamarin.Forms.Xaml;
 namespace gvn_ab_mobile.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuPage : ContentPage {
-
         public ViewModels.MenuViewModel ViewModel { get; set; }
 
         protected override void OnAppearing() {

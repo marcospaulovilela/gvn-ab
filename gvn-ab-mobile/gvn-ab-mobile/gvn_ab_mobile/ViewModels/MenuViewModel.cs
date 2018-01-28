@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gvn_ab_mobile.Helpers;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace gvn_ab_mobile.ViewModels {
         public Models.Cbo Cbo { get; set; }
         public Models.Equipe Equipe { get; set; }
         public Models.Estabelecimento Estabelecimento { get; set; }
+
+        public ICommand Send { get; }
 
         public bool CboCadastroIndividual {
             get {
@@ -58,7 +61,51 @@ namespace gvn_ab_mobile.ViewModels {
                 this.Estabelecimento = DAOEstabelecimento.Select()?.First();
 
                 this.Estabelecimento.Municipio = new DAO.DAOMunicipio().Select(this.Estabelecimento.Municipio.CodMunicipio);
+                this.Send = new Command(() => SendExecute());
             }
+        }
+
+        private void SendExecute() {
+            this.IsBusy = true;
+            Task.Run(async () => {
+                try {
+                    using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual())
+                    using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial())
+                    using (DAO.DAOFichaVisitaDomiciliar DAOFichaVisitaDomiciliar = new DAO.DAOFichaVisitaDomiciliar())
+                    using (DAO.DAOSincronizacaoConfig DAOSincronizacaoConfig = new DAO.DAOSincronizacaoConfig()) {
+                        var fichasCadastroIndividual = DAOFichaCadastroIndividual.Select();
+                        var fichasCadastroDomiciliar = DAOFichaCadastroDomiciliar.Select();
+                        var fichasVisitaDomiciliar = DAOFichaVisitaDomiciliar.Select();
+
+                        var sincronizacaoConfig = DAOSincronizacaoConfig.Select().FirstOrDefault();
+                        if (sincronizacaoConfig == null) return;
+
+
+                        using (var api = new RestAPI($"http://{sincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Send.ashx")) {
+                            #region Envia as fichas de cadastro individual
+                            //foreach (var o in fichasCadastroIndividual) {
+                            //    string buffer = Newtonsoft.Json.JsonConvert.SerializeObject(o);
+                            //    if(await api.PostAsync(o)) {
+                            //        DAOFichaCadastroIndividual.Delete(o);
+                            //    };
+                            //};
+                            #endregion
+
+                            #region Envia as fichas de visita domiciliar
+                            foreach (var o in fichasVisitaDomiciliar) {
+                                if (await api.PostAsync(o)) {
+                                    //DAOFichaVisitaDomiciliar.Delete(o);
+                                };
+                            };
+                            #endregion
+
+
+                        };
+
+
+                    };
+                } catch(Exception e) { } finally { this.IsBusy = false; };
+            });
         }
     }
 }

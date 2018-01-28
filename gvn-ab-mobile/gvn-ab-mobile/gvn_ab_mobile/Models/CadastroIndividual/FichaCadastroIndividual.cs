@@ -1028,7 +1028,7 @@ namespace gvn_ab_mobile.Models {
         //
 
         public override string ToString() {
-            return $"Cidadão: {this.NomeCidadao} | {this.SexoCidadao?.Descricao } | {this.DataNascimentoCidadao.ToString("dd/MM/yyyy")}";
+            return $"Ficha {this.Id}: {this.NomeCidadao} - {this.SexoCidadao?.Descricao } - {this.DataNascimentoCidadao.ToString("dd/MM/yyyy")}";
         }
 
     }
