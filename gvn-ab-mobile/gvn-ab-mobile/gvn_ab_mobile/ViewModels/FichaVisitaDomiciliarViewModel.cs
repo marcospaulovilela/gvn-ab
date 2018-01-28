@@ -142,9 +142,18 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._alturaAcompanhamentoNutricional; }
             set
             {
-                this.Ficha.AlturaAcompanhamentoNutricional = value;
-                SetProperty(ref _alturaAcompanhamentoNutricional, value);
-                OnPropertyChanged("IsVisibleSexo");
+                if(value < 20.0)
+                {
+                    this.Ficha.AlturaAcompanhamentoNutricional = 20.0;
+                    SetProperty(ref _alturaAcompanhamentoNutricional, 20.0);
+                    OnPropertyChanged("IsVisibleSexo");
+                }
+                else
+                {
+                    this.Ficha.AlturaAcompanhamentoNutricional = value;
+                    SetProperty(ref _alturaAcompanhamentoNutricional, value);
+                    OnPropertyChanged("IsVisibleSexo");
+                }
             }
         }
 
@@ -250,6 +259,7 @@ namespace gvn_ab_mobile.ViewModels {
             if (ficha == null) {
                 this.Ficha = new Models.FichaVisitaDomiciliarTerritorial();
                 this.MotivosSelecionados = new ObservableCollection<object>();
+                this.DataNascimentoCidadao = DateTime.Now;
 
             } else {
                 this.Ficha = ficha;

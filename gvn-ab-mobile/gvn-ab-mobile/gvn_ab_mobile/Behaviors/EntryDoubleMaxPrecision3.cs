@@ -37,11 +37,13 @@ namespace gvn_ab_mobile.Behaviors
             if (buffer.Length > 1 && buffer.Length < 8)
             {
 
-                if (double.Parse(buffer) < 0.5 && double.Parse(buffer) != 0)
+                double valor = double.Parse(buffer.Replace('.', ','));
+
+                if (valor > 0 && valor < 0.5)
                 {
                     buffer = "0.5";
                 }
-                if (double.Parse(buffer) > 500.0)
+                if (valor > 500.0)
                 {
                     buffer = "500.0";
                 }

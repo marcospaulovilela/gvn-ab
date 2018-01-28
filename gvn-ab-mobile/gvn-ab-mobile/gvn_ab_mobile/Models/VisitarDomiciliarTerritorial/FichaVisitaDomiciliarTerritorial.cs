@@ -155,7 +155,9 @@ namespace gvn_ab_mobile.Models {
 
 
         public override string ToString() {
-            return $"Mudar o metodo tostring da ficha {this.GetType().Name}";
+            return $"Ficha {this.Id}: " + 
+                   $"{this.TipoDeImovel.Descricao} - " +
+                   $"{this.Turno.Descricao} - ";
         }
     }
 }
