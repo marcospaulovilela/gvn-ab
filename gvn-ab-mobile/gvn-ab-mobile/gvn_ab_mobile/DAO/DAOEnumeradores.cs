@@ -1293,7 +1293,7 @@ namespace gvn_ab_mobile.DAO {
                   new Models.MotivoVisita("Visita periódica", "#TIPO_VISITA") { Codigo = 29 },
                   new Models.MotivoVisita("Consulta", "#BUSCA_ATIVA") { Codigo = 2 },
                   new Models.MotivoVisita("Exame", "#BUSCA_ATIVA") { Codigo = 3 },
-                  new Models.MotivoVisita("Vacina") { Codigo = 4 },
+                  new Models.MotivoVisita("Vacina", "#BUSCA_ATIVA") { Codigo = 4 },
                   new Models.MotivoVisita("Condicionalidades do bolsa família", "#BUSCA_ATIVA") { Codigo = 30 },
                   new Models.MotivoVisita("Gestante", "#ACOMPANHAMENTO") { Codigo = 5 },
                   new Models.MotivoVisita("Puérpera", "#ACOMPANHAMENTO") { Codigo = 6 },

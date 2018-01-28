@@ -40,9 +40,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Behaviors\EntryCepBehavior.cs" />
+    <Compile Include="Behaviors\EntryDoubleMaxPrecision1.cs" />
+    <Compile Include="Behaviors\EntryDoubleMaxPrecision3.cs" />
     <Compile Include="Behaviors\EntryWithListBehavior.cs" />
     <Compile Include="Behaviors\EntryDifferZeroBehavior.cs" />
-    <Compile Include="Behaviors\EntryDoubleBehavior.cs" />
     <Compile Include="Behaviors\EntryLettersNumbersBehavior.cs" />
     <Compile Include="Behaviors\EntryNomeBehavior.cs" />
     <Compile Include="Behaviors\EntryLengthBehavior.cs" />

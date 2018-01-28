@@ -72,9 +72,9 @@ namespace gvn_ab_mobile.Models {
         }
 
         //Campo dtNascimento - Tipo long
-        private long _dtNascimento; //Obrigatório
+        private DateTime _dtNascimento; //Obrigatório
         [NotNull]
-        public long DtNascimento {
+        public DateTime DtNascimento {
             get { return this._dtNascimento; }
             set { SetProperty(ref _dtNascimento, value); }
         }
