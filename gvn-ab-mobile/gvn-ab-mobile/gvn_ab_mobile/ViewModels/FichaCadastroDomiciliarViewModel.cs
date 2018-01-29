@@ -50,6 +50,7 @@ namespace gvn_ab_mobile.ViewModels
             get { return this.uf; }
             set
             {
+                this.Ficha.UnidadeFederal = value;
                 SetProperty(ref uf, value);
 
                 //this.CodigoIbgeMunicipio = null;
@@ -523,6 +524,7 @@ namespace gvn_ab_mobile.ViewModels
             var CurrentPage = this.RootPage.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
             if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage1)
             {
+                this.Ficha.StatusTermoRecusa = true;
                 await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage2(this));
             }
             else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarRecusaPage3)

@@ -108,15 +108,22 @@ namespace gvn_ab_mobile.ViewModels {
                         }
                     }
 
-                    if(this.PesoAcompanhamentoNutricional != 0)
+                    if(this.Desfecho != null)
                     {
-                            result = true;
-                    }
+                        if(this.Desfecho.Codigo == 1)
+                        {
+                            if (this.PesoAcompanhamentoNutricional != 0)
+                            {
+                                result = true;
+                            }
 
-                    if (this.AlturaAcompanhamentoNutricional != 0)
-                    {
-                        result = true;
+                            if (this.AlturaAcompanhamentoNutricional != 0)
+                            {
+                                result = true;
+                            }
+                        }
                     }
+                    
                 }
                     
                 return result;
@@ -127,7 +134,17 @@ namespace gvn_ab_mobile.ViewModels {
         private double _pesoAcompanhamentoNutricional;
         public double PesoAcompanhamentoNutricional
         {
-            get { return this._pesoAcompanhamentoNutricional; }
+            get
+            {
+                if(this.Ficha.PesoAcompanhamentoNutricional != 0)
+                {
+                    return this.Ficha.PesoAcompanhamentoNutricional;
+                }
+                else
+                {
+                    return this._pesoAcompanhamentoNutricional;
+                }
+            }
             set
             {
                 this.Ficha.PesoAcompanhamentoNutricional = value;
@@ -139,7 +156,17 @@ namespace gvn_ab_mobile.ViewModels {
         private double _alturaAcompanhamentoNutricional;
         public double AlturaAcompanhamentoNutricional
         {
-            get { return this._alturaAcompanhamentoNutricional; }
+            get
+            {
+                if (this.Ficha.AlturaAcompanhamentoNutricional != 0)
+                {
+                    return this.Ficha.AlturaAcompanhamentoNutricional;
+                }
+                else
+                {
+                    return this._alturaAcompanhamentoNutricional;
+                }
+            }
             set
             {
                 if(value < 20.0)
@@ -231,6 +258,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._dataNascimentoCidadao; }
             set
             {
+
                 this.Ficha.DtNascimento = value;
 
                 SetProperty(ref _dataNascimentoCidadao, value);

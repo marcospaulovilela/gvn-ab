@@ -23,26 +23,26 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!-- contents -->
-        <StackLayout Grid.ColumnSpan="2" Spacing="12">
+            <!-- contents -->
+            <StackLayout Grid.ColumnSpan="2" Spacing="12">
 
-            <Label Text="{Binding NomeRG, StringFormat='Eu, {0}, gozando de plena consciência dos meus atos, recuso este cadastro, mesmo que isso facilite o acompanhamento a minha saúde e de meus familiares. Estou ciente de que esta recusa não implicará o não atendimento na unidade de saúde.'}"
-                       LineBreakMode="WordWrap" />
+                <Label Text="{Binding NomeRG, StringFormat='Eu, {0}, gozando de plena consciência dos meus atos, recuso este cadastro, mesmo que isso facilite o acompanhamento a minha saúde e de meus familiares. Estou ciente de que esta recusa não implicará o não atendimento na unidade de saúde.'}"
+                           LineBreakMode="WordWrap" />
 
-            <signature:SignaturePadView x:Name="signaturePad"
-                                        HeightRequest="250"
-                                        BackgroundColor="#FBFBFB"
-                                        SignatureLineColor="DarkGray" StrokeColor="Black" StrokeWidth="2"
-                                        CaptionText="Assine acima desta linha" CaptionTextColor="DarkGray"
-                                        ClearText="Limpar Assinatura" ClearTextColor="DarkGray"
-                                        PromptText="" />
+                <signature:SignaturePadView x:Name="signaturePad"
+                                            HeightRequest="250"
+                                            BackgroundColor="#FBFBFB"
+                                            SignatureLineColor="DarkGray" StrokeColor="Black" StrokeWidth="2"
+                                            CaptionText="Assine acima desta linha" CaptionTextColor="DarkGray"
+                                            ClearText="Limpar Assinatura" ClearTextColor="DarkGray"
+                                            PromptText="" />
 
-        </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                    <Button Text="Salvar" BackgroundColor="#003264" Clicked="OnContinuarClicked"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource Negate}}" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center"/>
+                </StackLayout>
 
-        <!-- navigation -->
-        <Button Text="Salvar &gt;" Clicked="OnContinuarClicked"
-                IsEnabled="{Binding IsBusy, Converter={StaticResource Negate}}"
-                Grid.Row="1" Grid.Column="1" />
+            </StackLayout>
 
     </Grid>
 

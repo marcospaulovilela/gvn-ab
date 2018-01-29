@@ -38,7 +38,7 @@
                         <Label Text="RG do Responsável Técnico:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
                         <Entry x:Name="RGResponsavel" Keyboard="Numeric" Placeholder="RG do Responsável Técnico" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.RgResponsavelTecnico}">
                             <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="8"  Required="true" />
+                                <behaviors:EntryLengthBehavior MinLength="8" MaxLength="8"  Required="true" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>

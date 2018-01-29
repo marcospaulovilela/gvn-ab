@@ -47,7 +47,7 @@
                     <Label Text="RG do Cidadão:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
                     <Entry x:Name="RGCidadao" Placeholder="RG do Cidadao" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.Rg}">
                         <Entry.Behaviors>
-                            <behaviors:EntryLengthBehavior MaxLength="8"  Required="true" />
+                            <behaviors:EntryLengthBehavior MinLength="8"  MaxLength="8"  Required="true" />
                         </Entry.Behaviors>
                     </Entry>
                 </StackLayout>
@@ -157,7 +157,7 @@
                 <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsBrasileiro}">
                     <StackLayout HorizontalOptions="FillAndExpand">
                         <Label Text="U.F. de Nascimento:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                        <Picker ItemsSource="{Binding UFs}" SelectedItem="{Binding UF}"  HorizontalOptions="FillAndExpand"  Title="U.F. de Nascimento">
+                        <Picker x:Name="CodUF" ItemsSource="{Binding UFs}" SelectedItem="{Binding UF}"  HorizontalOptions="FillAndExpand"  Title="U.F. de Nascimento">
                             <Picker.Behaviors>
                                 <behaviors:ValidatorPickerBehavior />
                             </Picker.Behaviors>
@@ -215,12 +215,17 @@
                     </StackLayout>
                 </StackLayout>
 
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
+                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="NomCidadao|CPFCidadao|RGCidadao|TituloEleitorCidadao|CodMicroarea|DataNascimento|CodSexo|CodRacaCor|CodEtnia|NomMae|NomPai|CodNacionalidade|CodUF|CodMunicipio|CodPaisNascimento|DesPortariaNaturalizacao" />
+                        </Button.Behaviors>
+                    </Button>
+                </StackLayout>
+
             </StackLayout>
         </ScrollView>
 
-        <!-- navigation -->
-        <Button Text="Continuar &gt;" Command="{Binding Continuar}"
-                Grid.Row="1" Grid.Column="1" />
 
     </Grid>
 

@@ -769,6 +769,8 @@ namespace gvn_ab_mobile.ViewModels {
         private async System.Threading.Tasks.Task ContinuarExecuteAsync() {
             var CurrentPage = this.RootPage.Navigation.NavigationStack.Last(); //PEGA A ULTIMA PAGINA NA PILHA DE NAVEGAÇÃO, OU SEJA A ATUAL.
             if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualRecusaPage1) {
+                this.Ficha.StatusTermoRecusaCadastroIndividualAtencaoBasica = true;
+                this.Ficha.StatusSituacaoRua = false;
                 await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualRecusaPage2(this));
             } else if (CurrentPage is Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage2) {
                 await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroIndividualPage.FichaCadastroIndividualPage3(this));
