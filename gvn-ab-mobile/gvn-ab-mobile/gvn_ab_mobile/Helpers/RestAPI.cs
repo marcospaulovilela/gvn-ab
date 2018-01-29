@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace gvn_ab_mobile.Helpers {
-    public class RestAPI {
+    public class RestAPI : IDisposable {
         string Url { get; set; }
         public RestAPI(string url) {
             this.Url = url;
@@ -22,6 +22,25 @@ namespace gvn_ab_mobile.Helpers {
             };
         }
 
+        public async Task<bool> PostAsync(Models.FichaVisitaDomiciliarTerritorial obj) {
+            return await this.PostAsync(new {
+                tipoFicha = "FichaVisitaDomiciliarTerritorial", objDados = obj
+            });
+        }
+
+        public async Task<bool> PostAsync(Models.FichaCadastroDomiciliarTerritorial obj) {
+            return await this.PostAsync(new {
+                tipoFicha = "FichaCadastroDomiciliarTerritorial", objDados = obj
+            });
+        }
+
+        public async Task<bool> PostAsync(Models.FichaCadastroIndividual obj) {
+            return await this.PostAsync(new {
+                tipoFicha = "FichaCadastroIndividual", objDados = obj
+            });
+        }
+
+
         public async Task<bool> PostAsync(object obj) {
             using (HttpClient client = new HttpClient()) {
 
@@ -29,10 +48,15 @@ namespace gvn_ab_mobile.Helpers {
                 var json = JsonConvert.SerializeObject(obj);
 
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-
                 HttpResponseMessage response = await client.PostAsync(uri, content);
-                return response.IsSuccessStatusCode;
+
+                if (!response.IsSuccessStatusCode) return false;
+
+                string result = await response.Content.ReadAsStringAsync();
+                return String.Compare(result, "ack", StringComparison.CurrentCulture) == 0;
             };
         }
+
+        public void Dispose() { }
     }
 }

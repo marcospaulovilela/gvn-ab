@@ -172,10 +172,12 @@ namespace gvn_ab_mobile.ViewModels {
         public Models.TipoDeImovel TipoDeImovel {
             get { return this._tipoDeImovel; }
             set {
+                if (this._tipoDeImovel == value) return;
+
                 this.Ficha.TipoDeImovelId = value?.Codigo;
                 this.Ficha.TipoDeImovel = value;
 
-                this.MotivosSelecionados.Clear();
+                this.MotivosSelecionados?.Clear();
                 if (!((value.Codigo == 2) || (value.Codigo == 3) || (value.Codigo == 4) || (value.Codigo == 5) || (value.Codigo == 6) || (value.Codigo == 12))) {
                     this.MotivosVisitasLiberados = this.MotivosVisitas.Select(o => o).ToList();
                 } else {
@@ -265,6 +267,8 @@ namespace gvn_ab_mobile.ViewModels {
                 this.Ficha = ficha;
 
                 if (ficha.StForaArea) this.StForaArea = true; // SE APENAS SETAR O VALOR DA FICHA, O CAMPO MICRO AREA SERÁ LIMPO !!! CUIDADO.
+
+                this.DataNascimentoCidadao = ficha.DtNascimento;
 
                 this.Sexo = this.Sexos.Where(o => o.Codigo == ficha.SexoId).FirstOrDefault();
                 this.Turno = this.Turnos.Where(o => o.Codigo == ficha.TurnoId).FirstOrDefault();
