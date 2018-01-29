@@ -134,7 +134,17 @@ namespace gvn_ab_mobile.ViewModels {
         private double _pesoAcompanhamentoNutricional;
         public double PesoAcompanhamentoNutricional
         {
-            get { return this._pesoAcompanhamentoNutricional; }
+            get
+            {
+                if(this.Ficha.PesoAcompanhamentoNutricional != 0)
+                {
+                    return this.Ficha.PesoAcompanhamentoNutricional;
+                }
+                else
+                {
+                    return this._pesoAcompanhamentoNutricional;
+                }
+            }
             set
             {
                 this.Ficha.PesoAcompanhamentoNutricional = value;
@@ -146,7 +156,17 @@ namespace gvn_ab_mobile.ViewModels {
         private double _alturaAcompanhamentoNutricional;
         public double AlturaAcompanhamentoNutricional
         {
-            get { return this._alturaAcompanhamentoNutricional; }
+            get
+            {
+                if (this.Ficha.AlturaAcompanhamentoNutricional != 0)
+                {
+                    return this.Ficha.AlturaAcompanhamentoNutricional;
+                }
+                else
+                {
+                    return this._alturaAcompanhamentoNutricional;
+                }
+            }
             set
             {
                 if(value < 20.0)
