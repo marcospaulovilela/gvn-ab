@@ -108,15 +108,22 @@ namespace gvn_ab_mobile.ViewModels {
                         }
                     }
 
-                    if(this.PesoAcompanhamentoNutricional != 0)
+                    if(this.Desfecho != null)
                     {
-                            result = true;
-                    }
+                        if(this.Desfecho.Codigo == 1)
+                        {
+                            if (this.PesoAcompanhamentoNutricional != 0)
+                            {
+                                result = true;
+                            }
 
-                    if (this.AlturaAcompanhamentoNutricional != 0)
-                    {
-                        result = true;
+                            if (this.AlturaAcompanhamentoNutricional != 0)
+                            {
+                                result = true;
+                            }
+                        }
                     }
+                    
                 }
                     
                 return result;
