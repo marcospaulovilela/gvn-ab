@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using PCLCrypto;
+using System;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -40,10 +41,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         public LoginViewModel(Page page) {
-            this.Profissional = new Models.Profissional() {
-                DesLogin = "admsaude",
-                DesSenha = "123456"
-            };
+            this.Profissional = new Models.Profissional() { };
             this.Page = page;
 
             this.Login = new Command(async () => await LoginExecuteAsync());
@@ -53,7 +51,7 @@ namespace gvn_ab_mobile.ViewModels {
 
             using(DAO.DAOProfissional dao = new DAO.DAOProfissional()) {
                 this.HasUser = dao.TableExists() && dao.Select().Any();
-            }
+            };
         }
 
         private void CallMenu() {
@@ -62,13 +60,23 @@ namespace gvn_ab_mobile.ViewModels {
             };
         }
 
+        private string CriptografarComSHA1UTF8(string valor, string semente) {
+            var hasher = WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm(HashAlgorithm.Sha1);
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(string.Concat(semente, valor));
+            byte[] hash = hasher.HashData(inputBytes);
+
+            return Convert.ToBase64String(hash);
+        }
+
         private async Task LoginExecuteAsync() {
             this.IsBusy = true;
             try {
                 using (var objDao = new DAO.DAOProfissional()) {
                     var user = objDao.GetProfissionalByDesLogin(this.Profissional.DesLogin);
+                    var senha = CriptografarComSHA1UTF8(this.Profissional.DesSenha, "G0v3rn4");
 
-                    if (user != null && user.DesSenha == this.Profissional.DesSenha) { //SERIO??? BRINCADEIRA SEGURANÇA FAZER DIREITO DEPOIS.....
+                    if (user != null && user.DesSenha == senha) { //SERIO??? BRINCADEIRA SEGURANÇA FAZER DIREITO DEPOIS.....
                         this.Profissional = user;
                         if (this.Profissional.Cbos?.Count() == 0) {
                             await this.Page.DisplayAlert("Erro de usuario", "Usuario não possui nenhum CBO vinculado.", "Ok");

@@ -20,7 +20,9 @@ namespace gvn_ab_mobile.Controls {
         private TableGridFichas tableGrid;
         public TableGridFichasItem(object data, TableGridFichas tableGrid) {
             this.Edit = new Command(() => this.tableGrid.EditItems(this));
-            this.Delete = new Command(() => this.tableGrid.DeleteItem(this));
+            this.Delete = new Command(() => {
+                this.tableGrid.DeleteItem(this);
+            });
 
             this.IsVisible = tableGrid.CanEdit;
 

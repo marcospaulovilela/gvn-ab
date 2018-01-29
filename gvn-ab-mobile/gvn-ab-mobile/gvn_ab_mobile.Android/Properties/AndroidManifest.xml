@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.companyname.gvn_ab_mobile" android:versionCode="1" android:versionName="1.0" android:installLocation="preferExternal">
-  <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23" />
-  <uses-permission android:name="android.permission.INTERNET" />
-  <application android:icon="@drawable/logoGoverna" android:label="gvn-ab"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.governa.saude" android:versionCode="1" android:versionName="1.0" android:installLocation="preferExternal">
+	<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:icon="@drawable/logoGoverna" android:label="Governa Saude"></application>
 </manifest>

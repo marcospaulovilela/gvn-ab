@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace gvn_ab_mobile.DAO {
     class DAOFichaVisitaDomiciliar : DAO<Models.FichaVisitaDomiciliarTerritorial> {
         public override int? CreateTable() {
-            base.DropTable();
+            //base.DropTable();
             return base.CreateTable();
         }
     }

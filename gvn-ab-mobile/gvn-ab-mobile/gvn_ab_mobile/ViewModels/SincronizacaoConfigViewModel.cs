@@ -320,7 +320,7 @@ namespace gvn_ab_mobile.ViewModels {
                     #region Profissionais
                     using (DAO.DAOProfissional DAOProfissional = new DAO.DAOProfissional()) {
                         var profissionais = await TaskGetProfissionais;
-                        profissionais.ForEach(o => o.DesSenha = "123456");
+                        //profissionais.ForEach(o => o.DesSenha = "123456");
 
                         using (DAO.DAOEquipe DAOEquipe = new DAO.DAOEquipe()) {
                             DAOEquipe.CreateTable();

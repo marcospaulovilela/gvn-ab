@@ -9,7 +9,7 @@ namespace gvn_ab_mobile.DAO {
 
         public override int? CreateTable()
         {
-            base.DropTable();
+            //base.DropTable();
             return base.CreateTable();
         }
 

@@ -8,7 +8,7 @@ using gvn_ab_mobile.Models;
 namespace gvn_ab_mobile.DAO {
     public class DAOFichaUnicaLotacaoHeader : DAO<Models.FichaUnicaLotacaoHeader> {
         public override int? CreateTable() {
-            base.DropTable();
+            //base.DropTable();
             return base.CreateTable();
         }
     }

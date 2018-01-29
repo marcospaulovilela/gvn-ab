@@ -26,7 +26,12 @@ namespace gvn_ab_mobile.Views.FichaCadastroDomiciliarPage {
             this.Page = page;
 
             this.Add = new Command(async () => await this.AddExecuteAsync());
-            this.Delete = new Command((item) => this.DeleteExecute(item));
+            this.Delete = new Command(async (item) => {
+                var answer = await this.Page.DisplayAlert("Exclusão", "Deseja realmente excluir essa ficha?", "Sim", "Não");
+                if (answer) {
+                    this.DeleteExecute(item);
+                };
+            });
             this.Edit = new Command((item) => this.EditExecute(item));
         }
 
@@ -65,7 +70,7 @@ namespace gvn_ab_mobile.Views.FichaCadastroDomiciliarPage {
 
         public void Load() {
             using (DAO.DAOFichaCadastroDomiciliarTerritorial DAO = new DAO.DAOFichaCadastroDomiciliarTerritorial()) {
-                this.Fichas = new ObservableRangeCollection<object>(DAO.Select());
+                this.Fichas = new ObservableRangeCollection<object>(DAO.Select().Where(o => o.Header.CnsProfissional == this.Page.MenuPage.ViewModel.Profissional.CnsProfissional));
             };
         }
     }

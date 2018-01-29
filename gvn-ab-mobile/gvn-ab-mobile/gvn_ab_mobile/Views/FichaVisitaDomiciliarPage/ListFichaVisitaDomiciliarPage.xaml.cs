@@ -6,6 +6,7 @@ using gvn_ab_mobile.ViewModels;
 using gvn_ab_mobile.Helpers;
 using System.Windows.Input;
 using System;
+using System.Linq;
 
 namespace gvn_ab_mobile.Views.FichaVisitaDomiciliarPage {
 
@@ -25,7 +26,12 @@ namespace gvn_ab_mobile.Views.FichaVisitaDomiciliarPage {
             this.Page = page;
 
             this.Add = new Command(async () => await this.AddExecuteAsync());
-            this.Delete = new Command((item) => this.DeleteExecute(item));
+            this.Delete = new Command(async (item) => {
+                var answer = await this.Page.DisplayAlert("Exclusão", "Deseja realmente excluir essa ficha?", "Sim", "Não");
+                if (answer) {
+                    this.DeleteExecute(item);
+                };
+            });
             this.Edit = new Command((item) => this.EditExecute(item));
         }
 
@@ -63,7 +69,7 @@ namespace gvn_ab_mobile.Views.FichaVisitaDomiciliarPage {
 
         public void Load() {
             using (DAO.DAOFichaVisitaDomiciliar DAO = new DAO.DAOFichaVisitaDomiciliar()) {
-                this.Fichas = new ObservableRangeCollection<object>(DAO.Select());
+                this.Fichas = new ObservableRangeCollection<object>(DAO.Select().Where(o => o.Header.CnsProfissional == this.Page.MenuPage.ViewModel.Profissional.CnsProfissional));
             };
         }
     }
