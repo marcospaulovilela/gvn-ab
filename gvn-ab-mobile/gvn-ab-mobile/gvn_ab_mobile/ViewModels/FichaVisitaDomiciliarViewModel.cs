@@ -238,6 +238,7 @@ namespace gvn_ab_mobile.ViewModels {
             get { return this._dataNascimentoCidadao; }
             set
             {
+
                 this.Ficha.DtNascimento = value;
 
                 SetProperty(ref _dataNascimentoCidadao, value);

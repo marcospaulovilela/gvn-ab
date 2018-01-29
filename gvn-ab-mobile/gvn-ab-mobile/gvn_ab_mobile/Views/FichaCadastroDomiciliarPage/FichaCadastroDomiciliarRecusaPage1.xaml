@@ -37,7 +37,7 @@
                         <Label Text="RG do Cidadão:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
                         <Entry x:Name="RGCidadao" Keyboard="Numeric" Placeholder="RG do Cidadao" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.Rg}">
                             <Entry.Behaviors>
-                                <behaviors:EntryLengthBehavior MaxLength="8"  Required="true" />
+                                <behaviors:EntryLengthBehavior MinLength="8" MaxLength="8"  Required="true" />
                             </Entry.Behaviors>
                         </Entry>
                     </StackLayout>
@@ -124,6 +124,9 @@
                             <Switch  HorizontalOptions="Center" IsToggled="{Binding StSemNumero}" />
                         </StackLayout>
 
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
                         <StackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="Microárea:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
                             <Entry x:Name="Microarea" IsEnabled="{Binding IsForaArea}" Placeholder="Microárea" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Microarea}">

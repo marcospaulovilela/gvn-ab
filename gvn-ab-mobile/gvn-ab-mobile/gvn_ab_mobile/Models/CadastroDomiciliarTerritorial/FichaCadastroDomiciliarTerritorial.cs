@@ -288,7 +288,7 @@ namespace gvn_ab_mobile.Models {
         //Campo tipoLogradouroNumeroDne - Tipo string
         public long? TipoLogradouroNumeroDneId { get; set; }
         private Models.TipoLogradouro _tipoLogradouroNumeroDne; //Obrigatório
-        [OneToOne("TipoLogradouroNumeroDneId"), NotNull]
+        [OneToOne("TipoLogradouroNumeroDneId")]
         public Models.TipoLogradouro TipoLogradouroNumeroDne {
             get { return this._tipoLogradouroNumeroDne; }
             set { SetProperty(ref _tipoLogradouroNumeroDne, value); }

@@ -18,9 +18,9 @@ namespace gvn_ab_mobile.Views {
             using (DAO.DAOFichaVisitaDomiciliar DAOFichaVisitaDomiciliar = new DAO.DAOFichaVisitaDomiciliar()) {
                 var FichasCadastroIndividual = DAOFichaCadastroIndividual.Select();
                 var FichasCadastroDomiciliar = DAOFichaCadastroDomiciliar.Select();
-                var FichasVisitaDomociliar = DAOFichaVisitaDomiciliar.Select();
+                var FichasVisitaDomiciliar = DAOFichaVisitaDomiciliar.Select();
 
-                var nFichas = FichasCadastroIndividual.Count + FichasCadastroDomiciliar.Count + FichasVisitaDomociliar.Count;
+                var nFichas = FichasCadastroIndividual.Count + FichasCadastroDomiciliar.Count + FichasVisitaDomiciliar.Count;
 
                 if (this.ViewModel.HasFichas = nFichas > 0) {
                     this.ViewModel.SendText = $"Enviar fichas ({nFichas})";

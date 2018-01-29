@@ -23,14 +23,6 @@
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">
-                        <StackLayout IsVisible="{Binding HasAnimais}" HorizontalOptions="Fill">
-                            <Label Text="Quantos?" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <Entry x:Name="NumAnimais" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding QuantosAnimaisNoDomicilio}">
-                                <Entry.Behaviors>
-                                    <behaviors:EntryWithListBehavior SelectedItems="{Binding AnimaisSelecionados}" MaxLength="2" Required="true" />
-                                </Entry.Behaviors>
-                            </Entry>
-                        </StackLayout>
                         <?SelectBox?>
                         <StackLayout IsVisible="{Binding HasAnimais}" HorizontalOptions="FillAndExpand">
                             <Label Text="Quais?" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
@@ -41,6 +33,18 @@
                             </controls:SelectMultipleItems>
                         </StackLayout>
                     </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout IsVisible="{Binding HasAnimais}" HorizontalOptions="Fill">
+                            <Label Text="Quantos?" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            <Entry x:Name="NumAnimais" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding QuantosAnimaisNoDomicilio}">
+                                <Entry.Behaviors>
+                                    <behaviors:EntryWithListBehavior SelectedItems="{Binding AnimaisSelecionados}" MaxLength="2" Required="true" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </StackLayout>
+                    
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
                     <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
