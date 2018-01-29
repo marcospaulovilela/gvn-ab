@@ -22,15 +22,25 @@ namespace gvn_ab_mobile.ViewModels {
 
         public SincronizacaoConfigViewModel(Page page) {
             this.Page = page;
-            this.SincronizacaoConfig = new Models.SincronizacaoConfig() {
-                DesEndereco = "192.168.0.170"
-            };
+            //this.SincronizacaoConfig = new Models.SincronizacaoConfig() {
+            //    DesEndereco = "192.168.0.170"
+            //};
 
             this.Sync = new Command(() => this.SyncExecute());
             this.Connectar = new Command(() => this.ConnectarExecuteAsync());
             this.Estabelecimentos = new ObservableRangeCollection<Models.Estabelecimento>();
 
             this.SyncOffline = new Command(() => this.SyncOfflineExecute());
+
+            using (DAO.DAOSincronizacaoConfig DAOSincronizacaoConfig = new DAO.DAOSincronizacaoConfig()) {
+                if(DAOSincronizacaoConfig.TableExists()) {
+                    this.SincronizacaoConfig = DAOSincronizacaoConfig.Select().FirstOrDefault();
+                };
+            };
+
+            if(this.SincronizacaoConfig == null) {
+                this.SincronizacaoConfig = new Models.SincronizacaoConfig();
+            };
         }
 
         /// <summary>

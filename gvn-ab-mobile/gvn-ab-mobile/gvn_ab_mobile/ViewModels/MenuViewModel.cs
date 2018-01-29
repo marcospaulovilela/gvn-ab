@@ -1,14 +1,17 @@
 ﻿using gvn_ab_mobile.Helpers;
+using gvn_ab_mobile.Views;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using gvn_ab_mobile.Views;
 
 namespace gvn_ab_mobile.ViewModels {
     public class MenuViewModel : BaseViewModel {
-        private Page Page { get; set; }
+        private MenuPage MenuPage  { get; set; }
 
         public Models.Profissional Profissional { get; set; }
         public Models.Cbo Cbo { get; set; }
@@ -50,8 +53,8 @@ namespace gvn_ab_mobile.ViewModels {
             set { SetProperty(ref sendText, value); }
         }
 
-        public MenuViewModel(Page page, Models.Profissional profissional, Models.Cbo cbo, Models.Equipe equipe) {
-            this.Page = page;
+        public MenuViewModel(MenuPage menuPage, Models.Profissional profissional, Models.Cbo cbo, Models.Equipe equipe) {
+            this.MenuPage  = menuPage;
 
             this.Profissional = profissional;
             this.Cbo = cbo;
@@ -63,6 +66,24 @@ namespace gvn_ab_mobile.ViewModels {
                 this.Estabelecimento.Municipio = new DAO.DAOMunicipio().Select(this.Estabelecimento.Municipio.CodMunicipio);
                 this.Send = new Command(() => SendExecute());
             }
+        }
+
+        public void LoadSend() {
+            using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual())
+            using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial())
+            using (DAO.DAOFichaVisitaDomiciliar DAOFichaVisitaDomiciliar = new DAO.DAOFichaVisitaDomiciliar()) {
+                var FichasCadastroIndividual = DAOFichaCadastroIndividual.Select();
+                var FichasCadastroDomiciliar = DAOFichaCadastroDomiciliar.Select();
+                var FichasVisitaDomociliar = DAOFichaVisitaDomiciliar.Select();
+
+                var nFichas = FichasCadastroIndividual.Count + FichasCadastroDomiciliar.Count + FichasVisitaDomociliar.Count;
+
+                if (this.HasFichas = nFichas > 0) {
+                    this.SendText = $"Enviar fichas ({nFichas})";
+                } else {
+                    this.SendText = "Enviar fichas";
+                };
+            };
         }
 
         private void SendExecute() {
@@ -80,26 +101,47 @@ namespace gvn_ab_mobile.ViewModels {
                         var sincronizacaoConfig = DAOSincronizacaoConfig.Select().FirstOrDefault();
                         if (sincronizacaoConfig == null) return;
 
-
                         using (var api = new RestAPI($"http://{sincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Send.ashx")) {
-                            #region Envia as fichas de cadastro individual
-                            //foreach (var o in fichasCadastroIndividual) {
-                            //    string buffer = Newtonsoft.Json.JsonConvert.SerializeObject(o);
-                            //    if(await api.PostAsync(o)) {
-                            //        DAOFichaCadastroIndividual.Delete(o);
-                            //    };
-                            //};
-                            #endregion
+                            PostResult result;
+                            List<Tuple<object, string>> Erros = new List<Tuple<object, string>>();
 
-                            #region Envia as fichas de visita domiciliar
-                            foreach (var o in fichasVisitaDomiciliar) {
-                                if (await api.PostAsync(o)) {
-                                    //DAOFichaVisitaDomiciliar.Delete(o);
+                            #region Envia as fichas de cadastro individual
+                            foreach (var o in fichasCadastroIndividual) {
+                                if ((result = await api.PostAsync(o)).Status) {
+                                    DAOFichaCadastroIndividual.Delete(o);
+                                } else {
+                                    Erros.Add(Tuple.Create<object, string>(o, result.Message));
                                 };
                             };
                             #endregion
 
+                            #region Envia as fichas de visita domiciliar
+                            foreach (var o in fichasVisitaDomiciliar) {
+                                if ((result = await api.PostAsync(o)).Status) {
+                                    DAOFichaVisitaDomiciliar.Delete(o);
+                                } else {
+                                    Erros.Add(Tuple.Create<object, string>(o, result.Message));
+                                };
+                            };
+                            #endregion
 
+                            #region Envia as fichas de cadastro domiciliar
+                            foreach (var o in fichasCadastroDomiciliar) {
+                                if ((result = await api.PostAsync(o)).Status) {
+                                    DAOFichaCadastroDomiciliar.Delete(o);
+                                } else {
+                                    Erros.Add(Tuple.Create<object, string>(o, result.Message));
+                                };
+                            };
+                            #endregion
+
+                            this.LoadSend();
+
+                            if (Erros.Any()) {
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                                    await this.MenuPage.Navigation.PushAsync(new ListErro(new ListErroViewModel(Erros.Select(o => new ErroItem(o)).ToList())))
+                                );
+                            };
                         };
 
 

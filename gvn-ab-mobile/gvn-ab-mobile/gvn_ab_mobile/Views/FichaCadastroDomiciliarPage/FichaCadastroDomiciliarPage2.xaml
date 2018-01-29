@@ -28,7 +28,20 @@
                             </controls:PickerSearch.Behaviors>
                         </controls:PickerSearch>
                     </StackLayout>
-                    
+
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="CEP:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
+                        <Entry x:Name="CodCep" Placeholder="CEP" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }">
+                            <Entry.Behaviors>
+                                <behaviors:EntryCepBehavior 
+                                        Logradouro ="{Binding Logradouro}"  
+                                        Bairro ="{Binding Bairro}"  
+                                        DesComplemento="{Binding Ficha.Complemento}"  
+                                        Required="true" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+
                     <StackLayout Orientation="Horizontal">
 
                         <StackLayout HorizontalOptions="FillAndExpand" >
@@ -61,19 +74,6 @@
                             </controls:PickerSearch.Behaviors>
                         </controls:PickerSearch>
                     </StackLayout>-->
-
-                        <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="CEP:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill"  TextColor="Black" />
-                            <Entry x:Name="CodCep" Placeholder="CEP" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.Cep }">
-                                <Entry.Behaviors>
-                                    <behaviors:EntryCepBehavior 
-                                        Logradouro ="{Binding Logradouro}"  
-                                        Bairro ="{Binding Bairro}"  
-                                        DesComplemento="{Binding Ficha.Complemento}"  
-                                        Required="true" />
-                                </Entry.Behaviors>
-                            </Entry>
-                        </StackLayout>
 
                     </StackLayout>
 

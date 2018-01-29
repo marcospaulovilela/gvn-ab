@@ -46,7 +46,7 @@ namespace gvn_ab_mobile.Behaviors {
 
             using(DAO.DAOLocalizacao DAOLocalizacao = new DAO.DAOLocalizacao()) {
                 var Localizacao = DAOLocalizacao.GetLocalizacaoByCep(entry.Text).FirstOrDefault();
-                if (Localizacao == null) return;
+                if (Localizacao == null || Localizacao.Bairro == null || Localizacao.Logradouro == null) return;
 
                 this.Bairro = Localizacao.Bairro;
                 this.Logradouro = Localizacao.Logradouro;

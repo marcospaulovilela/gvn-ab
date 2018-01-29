@@ -239,6 +239,9 @@
     <Compile Include="Views\ItemFamilia.xaml.cs">
       <DependentUpon>ItemFamilia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ListErro.xaml.cs">
+      <DependentUpon>ListErro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login\LoginPage2.xaml.cs">
       <DependentUpon>LoginPage2.xaml</DependentUpon>
     </Compile>
@@ -592,6 +595,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\FichaCadastroIndividualPage\ListFichaCadastroIndividual.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ListErro.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

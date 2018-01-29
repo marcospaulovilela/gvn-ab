@@ -24,7 +24,7 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                             <StackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="Cargo na Instituição:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                                <Entry Placeholder="Cargo" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CargoInstituicao }">
+                                <Entry x:Name="Cargo" Placeholder="Cargo" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CargoInstituicao }">
                                     <Entry.Behaviors>
                                         <behaviors:EntryLengthBehavior MaxLength="100" />
                                     </Entry.Behaviors>
@@ -36,7 +36,7 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                             <StackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="CNS do Responsável:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-                                <Entry Placeholder="CNS" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsResponsavelTecnico }">
+                                <Entry x:Name="CNS" Placeholder="CNS" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="Black" Text="{Binding Ficha.CnsResponsavelTecnico }">
                                     <Entry.Behaviors>
                                         <behaviors:ValidatorCns />
                                     </Entry.Behaviors>
@@ -60,7 +60,7 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
                         <Button Text="Salvar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                             <Button.Behaviors>
-                                <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodTurno|CodMicroarea|CodTipoImovel|CnsCidadao|CodMotivoSaida|CodSexo" />
+                                <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="NomeResponsavel|Cargo|CNS|" />
                             </Button.Behaviors>
                         </Button>
                     </StackLayout>
