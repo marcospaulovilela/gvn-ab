@@ -101,7 +101,7 @@ namespace gvn_ab_mobile.ViewModels {
                         var sincronizacaoConfig = DAOSincronizacaoConfig.Select().FirstOrDefault();
                         if (sincronizacaoConfig == null) return;
 
-                        using (var api = new RestAPI($"http://{sincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Send.ashx")) {
+                        using (var api = new RestAPI($"http://{sincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica/Handlers/Mobile/Send.ashx")) {
                             PostResult result;
                             List<Tuple<object, string>> Erros = new List<Tuple<object, string>>();
 
