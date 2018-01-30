@@ -579,11 +579,11 @@ namespace gvn_ab_mobile.ViewModels
             }
             else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage8)
             {
-                SalvarExecuteAsync();
+                SalvarExecute();
             };
         }
 
-        public async System.Threading.Tasks.Task SalvarExecuteAsync()
+        public void SalvarExecute()
         {
 
             this.IsBusy = true;

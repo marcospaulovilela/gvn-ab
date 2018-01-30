@@ -29,7 +29,7 @@
 
           <StackLayout>
             <Label Text="Data de Nascimento do Responsável:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-            <DatePicker Date="{Binding Item.DataNascimentoResponsavel}" MaximumDate="{x:Static sys:DateTime.Now}"/>
+            <DatePicker Date="{Binding ItemViewModel.DataNascimentoResponsavel}" MaximumDate="{x:Static sys:DateTime.Now}"/>
           </StackLayout>
 
           <StackLayout>
@@ -44,13 +44,13 @@
           <?SelectBox?>
           <StackLayout>
             <Label Text="Renda Familiar (Salário Mínimo):" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-            <Picker x:Name="CodRendaFamiliar" ItemsSource="{Binding RendasFamiliares}" SelectedItem="{Binding Item.RendaFamiliar}" HorizontalOptions="FillAndExpand" Title="Renda Familiar" Scale="1">
+            <Picker x:Name="CodRendaFamiliar" ItemsSource="{Binding ItemViewModel.RendasFamiliares}" SelectedItem="{Binding Item.RendaFamiliar}" HorizontalOptions="FillAndExpand" Title="Renda Familiar" Scale="1">
             </Picker>
           </StackLayout>
 
           <StackLayout>
             <Label Text="Reside Desde:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" TextColor="Black" />
-            <DatePicker Date="{Binding Item.ResideDesde}" />
+            <DatePicker Date="{Binding ItemViewModel.ResideDesde}" MinimumDate="{Binding ItemViewModel.DataNascimentoResponsavel}" MaximumDate="{x:Static sys:DateTime.Now}" />
           </StackLayout>
 
           <StackLayout>
@@ -61,7 +61,7 @@
         <StackLayout Orientation="Horizontal" HorizontalOptions="End">
           <Button Text="Salvar" BorderWidth="1" BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264">
             <Button.Behaviors>
-              <behaviors:ButtonSubmitBehavior Command="{Binding Save}" Controls="CNSResponsavel|CodRendaFamiliar" />
+              <behaviors:ButtonSubmitBehavior Command="{Binding Save}" Controls="CodRendaFamiliar" />
             </Button.Behaviors>
           </Button>
           <Button Text="Cancelar" BorderWidth="1" Command="{Binding Cancel}"  BorderColor="Transparent" BackgroundColor="Transparent" TextColor="#003264" />

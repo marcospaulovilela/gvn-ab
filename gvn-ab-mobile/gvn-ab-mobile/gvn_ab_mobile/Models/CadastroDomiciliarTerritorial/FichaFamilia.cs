@@ -74,7 +74,10 @@ namespace gvn_ab_mobile.Models
         public Models.RendaFamiliar RendaFamiliar
         {
             get { return this._rendaFamiliar; }
-            set { SetProperty(ref _rendaFamiliar, value); }
+            set {
+                if (value == null) return;
+                SetProperty(ref _rendaFamiliar, value);
+            }
         }
 
         //Campo rendaFamiliar - Tipo long

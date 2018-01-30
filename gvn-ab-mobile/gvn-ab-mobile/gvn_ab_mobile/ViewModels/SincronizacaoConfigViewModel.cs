@@ -278,7 +278,7 @@ namespace gvn_ab_mobile.ViewModels {
             Task.Run(async () => {
                 try {
                     this.Estabelecimentos.Clear();
-                    this.Estabelecimentos.AddRange(await new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica/Handlers/Mobile/Estabelecimento.ashx").GetAsync<Models.Estabelecimento>());
+                    this.Estabelecimentos.AddRange(await new RestAPI($"http://{this.SincronizacaoConfig.DesEndereco}/Governa.Saude.AtencaoBasica.Ministerio/Handlers/Mobile/Estabelecimento.ashx").GetAsync<Models.Estabelecimento>());
                     if (this.Estabelecimentos.Any()) {
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => await this.Page.Navigation.PushAsync(new Views.SincronizacaoConfigPage2(this)));
                     } else {

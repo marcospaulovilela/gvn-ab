@@ -41,7 +41,7 @@ namespace gvn_ab_mobile.ViewModels {
         }
 
         public LoginViewModel(Page page) {
-            this.Profissional = new Models.Profissional() { };
+            this.Profissional = new Models.Profissional() {/* DesLogin="admsaude", DesSenha="Governa123Saude"*/ };
             this.Page = page;
 
             this.Login = new Command(async () => await LoginExecuteAsync());

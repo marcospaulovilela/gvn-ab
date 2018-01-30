@@ -57,7 +57,7 @@ namespace gvn_ab_mobile.Views.FichaCadastroDomiciliarPage
 
             await StreamToBase64Async();
 
-            await this.viewModel.SalvarExecuteAsync();
+            this.viewModel.SalvarExecute();
         }
 
         private async Task SaveSignatureAsync(bool saveImage)
