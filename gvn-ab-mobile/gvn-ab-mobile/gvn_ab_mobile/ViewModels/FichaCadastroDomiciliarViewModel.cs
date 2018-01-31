@@ -74,21 +74,27 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.Bairro bairro;
-        public Models.Bairro Bairro {
+        public Models.Bairro Bairro
+        {
             get { return this.bairro; }
-            set {
+            set
+            {
                 if (value == this.Ficha.Bairro) return;
                 this.Ficha.Bairro = value;
                 SetProperty(ref bairro, value);
 
                 this.Logradouro = null;
-                try {
-                    using (DAO.DAOLocalizacao DAOLocalizacao = new DAO.DAOLocalizacao()) {
+                try
+                {
+                    using (DAO.DAOLocalizacao DAOLocalizacao = new DAO.DAOLocalizacao())
+                    {
                         var LocalizacoesBairro = DAOLocalizacao.GetLocalizacaoByBairro(value.CodBairro);
                         this.Logradouros.Clear();
                         this.Logradouros.AddRange(LocalizacoesBairro.Select(o => o.Logradouro));
                     }
-                } catch (Exception e) {
+                }
+                catch (Exception e)
+                {
 
                 }
 
@@ -96,9 +102,11 @@ namespace gvn_ab_mobile.ViewModels
         }
 
         private Models.Logradouro logradouro;
-        public Models.Logradouro Logradouro {
+        public Models.Logradouro Logradouro
+        {
             get { return this.logradouro; }
-            set {
+            set
+            {
                 this.Ficha.Logradouro = value;
                 SetProperty(ref logradouro, value);
             }
@@ -157,6 +165,7 @@ namespace gvn_ab_mobile.ViewModels
 
                 SetProperty(ref _tipoDeImovel, value);
                 OnPropertyChanged("HasTipoDomicilio");
+                OnPropertyChanged("HasNotTipoDomicilio");
                 OnPropertyChanged("IsDomicilio");
                 OnPropertyChanged("IsNotDomicilio");
                 OnPropertyChanged("HasTipoDomicilioAndIsRural");
@@ -168,6 +177,13 @@ namespace gvn_ab_mobile.ViewModels
             {
                 return !((this.TipoDeImovel?.Codigo == 7) || (this.TipoDeImovel?.Codigo == 8) || (this.TipoDeImovel?.Codigo == 9)
                     || (this.TipoDeImovel?.Codigo == 10) || (this.TipoDeImovel?.Codigo == 11));
+            }
+        }
+        public bool HasNotTipoDomicilio
+        {
+            get
+            {
+                return !(this.HasTipoDomicilio);
             }
         }
         public bool IsDomicilio
@@ -490,7 +506,7 @@ namespace gvn_ab_mobile.ViewModels
             #endregion
 
             this.Familias = new ObservableCollection<object>();
-            
+
 
         }
 
@@ -554,7 +570,15 @@ namespace gvn_ab_mobile.ViewModels
             {
 
                 this.Ficha.AnimaisNoDomicilio = this.AnimaisSelecionados.Select(o => (Models.AnimalNoDomicilio)o).ToList();
-                await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
+
+                if (this.HasNotTipoDomicilio)
+                    await this.RootPage.Navigation.PushAsync(new Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage6(this));
+                else
+                {
+                    this.Ficha.NomeResponsavelTecnico = "";
+                    SalvarExecuteAsync();
+                }
+                   
             }
             else if (CurrentPage is Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage5)
             {
@@ -587,7 +611,7 @@ namespace gvn_ab_mobile.ViewModels
         {
 
             this.IsBusy = true;
-            #pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+#pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
             Task.Run(async () =>
             {
 
@@ -595,8 +619,10 @@ namespace gvn_ab_mobile.ViewModels
                 using (DAO.DAOFichaUnicaLotacaoHeader DAOFichaUnicaLotacaoHeader = new DAO.DAOFichaUnicaLotacaoHeader())
                 using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial())
                 {
-                    try {
-                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader() {
+                    try
+                    {
+                        this.Ficha.Header = new Models.FichaUnicaLotacaoHeader()
+                        {
                             Cbo = this.RootPage.MenuPage.ViewModel.Cbo.CodCbo,
                             CnsProfissional = this.RootPage.MenuPage.ViewModel.Profissional.CnsProfissional,
                             Cnes = this.RootPage.MenuPage.ViewModel.Estabelecimento.ImpCnes,
@@ -610,9 +636,11 @@ namespace gvn_ab_mobile.ViewModels
                         DAOFichaUnicaLotacaoHeader.Insert(this.Ficha.Header);
                         DAOFichaCadastroDomiciliar.Insert(this.Ficha);
 
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () => {
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                        {
                             var BackCount = this.RootPage.Navigation.NavigationStack.Count - 2;
-                            for (var counter = 1; counter < BackCount; counter++) {
+                            for (var counter = 1; counter < BackCount; counter++)
+                            {
                                 this.RootPage.Navigation.RemovePage(this.RootPage.Navigation.NavigationStack[this.RootPage.Navigation.NavigationStack.Count - 2]);
                             };
 
@@ -630,7 +658,7 @@ namespace gvn_ab_mobile.ViewModels
                     };
                 };
             });
-            #pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+#pragma warning restore CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
         }
 
     }

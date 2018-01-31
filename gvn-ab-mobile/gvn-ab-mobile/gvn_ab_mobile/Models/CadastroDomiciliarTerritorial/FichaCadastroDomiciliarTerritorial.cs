@@ -345,7 +345,7 @@ namespace gvn_ab_mobile.Models {
 
         //Campo nomeResponsavelTecnico - Tipo string
         private string _nomeResponsavelTecnico; //Obrigatório
-        [NotNull, MaxLength(70)] //Mínimo 3 caracteres; Máximo 70 caracteres
+        [MaxLength(70)] //Mínimo 3 caracteres; Máximo 70 caracteres
         public string NomeResponsavelTecnico {
             get { return this._nomeResponsavelTecnico; }
             set { SetProperty(ref _nomeResponsavelTecnico, value); }

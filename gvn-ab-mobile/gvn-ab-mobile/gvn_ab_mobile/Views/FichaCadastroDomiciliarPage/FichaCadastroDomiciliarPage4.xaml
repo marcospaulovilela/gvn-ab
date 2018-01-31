@@ -6,54 +6,66 @@
              x:Class="gvn_ab_mobile.Views.FichaCadastroDomiciliarPage.FichaCadastroDomiciliarPage4"
              Title="Animais No Domicílio">
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" Padding="20, 30, 20, 20" >
-            <StackLayout VerticalOptions="FillAndExpand">
-                <StackLayout VerticalOptions="FillAndExpand">
-                    <StackLayout Orientation="Horizontal">
-                        <StackLayout IsVisible="{Binding IsNotDomicilio}">
-                            <Label Text="Tipo de Imóvel não é Domicílio, aperte em Continuar." FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+        <AbsoluteLayout>
+            <ScrollView  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="20, 30, 20, 20" >
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout IsVisible="{Binding IsNotDomicilio}">
+                                <Label Text="Tipo de Imóvel não é Domicílio, aperte em Continuar." FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                            </StackLayout>
                         </StackLayout>
-                    </StackLayout>
 
-                    <StackLayout Orientation="Horizontal">
-                        <StackLayout Orientation="Horizontal" IsVisible="{Binding IsDomicilio}">
-                            <Label Text="Existem Animais no Domicílio:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <Switch IsToggled="{Binding StAnimaisNoDomicilio}"  HorizontalOptions="Center" />
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" IsVisible="{Binding IsDomicilio}">
+                                <Label Text="Existem Animais no Domicílio:" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                                <Switch IsToggled="{Binding StAnimaisNoDomicilio}"  HorizontalOptions="Center" />
+                            </StackLayout>
                         </StackLayout>
-                    </StackLayout>
 
-                    <StackLayout Orientation="Horizontal">
-                        <?SelectBox?>
-                        <StackLayout IsVisible="{Binding HasAnimais}" HorizontalOptions="FillAndExpand">
-                            <Label Text="Quais?" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <controls:SelectMultipleItems x:Name="CodAnimaisDomicilio" HorizontalOptions="FillAndExpand" Items="{Binding AnimaisNoDomicilio}" SelectedItems="{Binding AnimaisSelecionados}"  >
-                                <controls:SelectMultipleItems.Behaviors>
-                                    <behaviors:ValidatorSelectMultipleItems MinLength="1"  MaxLength="4" />
-                                </controls:SelectMultipleItems.Behaviors>
-                            </controls:SelectMultipleItems>
+                        <StackLayout Orientation="Horizontal">
+                            <?SelectBox?>
+                            <StackLayout IsVisible="{Binding HasAnimais}" HorizontalOptions="FillAndExpand">
+                                <Label Text="Quais?" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                                <controls:SelectMultipleItems x:Name="CodAnimaisDomicilio" HorizontalOptions="FillAndExpand" Items="{Binding AnimaisNoDomicilio}" SelectedItems="{Binding AnimaisSelecionados}"  >
+                                    <controls:SelectMultipleItems.Behaviors>
+                                        <behaviors:ValidatorSelectMultipleItems MinLength="1"  MaxLength="4" />
+                                    </controls:SelectMultipleItems.Behaviors>
+                                </controls:SelectMultipleItems>
+                            </StackLayout>
                         </StackLayout>
-                    </StackLayout>
 
-                    <StackLayout Orientation="Horizontal">
-                        <StackLayout IsVisible="{Binding HasAnimais}" HorizontalOptions="Fill">
-                            <Label Text="Quantos?" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
-                            <Entry x:Name="NumAnimais" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding QuantosAnimaisNoDomicilio}">
-                                <Entry.Behaviors>
-                                    <behaviors:EntryWithListBehavior SelectedItems="{Binding AnimaisSelecionados}" MaxLength="2" Required="true" />
-                                </Entry.Behaviors>
-                            </Entry>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout IsVisible="{Binding HasAnimais}" HorizontalOptions="Fill">
+                                <Label Text="Quantos?" FontSize="Medium" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black" />
+                                <Entry x:Name="NumAnimais" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding QuantosAnimaisNoDomicilio}">
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryWithListBehavior SelectedItems="{Binding AnimaisSelecionados}" MaxLength="2" Required="true" />
+                                    </Entry.Behaviors>
+                                </Entry>
+                            </StackLayout>
                         </StackLayout>
+
                     </StackLayout>
-                    
+                    <StackLayout IsVisible="{Binding HasNotTipoDomicilio}" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
+                        <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                            <Button.Behaviors>
+                                <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodAnimaisDomicilio|NumAnimais" />
+                            </Button.Behaviors>
+                        </Button>
+                    </StackLayout>
+                    <StackLayout IsVisible="{Binding HasTipoDomicilio}" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
+                        <Button Text="Salvar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
+                            <Button.Behaviors>
+                                <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodAnimaisDomicilio|NumAnimais" />
+                            </Button.Behaviors>
+                        </Button>
+                    </StackLayout>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
-                    <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
-                        <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodAnimaisDomicilio|NumAnimais" />
-                        </Button.Behaviors>
-                    </Button>
-                </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+
+        <ContentView x:Name="actIndBackground" BackgroundColor="#222222" Opacity="0.5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsBusy}"/>
+        <ActivityIndicator x:Name="actInd" Color="White" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
