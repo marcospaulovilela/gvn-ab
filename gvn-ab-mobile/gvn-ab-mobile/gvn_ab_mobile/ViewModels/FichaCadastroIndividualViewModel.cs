@@ -793,12 +793,12 @@ namespace gvn_ab_mobile.ViewModels {
                 this.Ficha.OrigemAlimentoSituacaoRua = this.OrigensAlimentacaoSelecionadas.Select(o => (Models.OrigemAlimentacao)o).ToList();
                 this.Ficha.HigienePessoalSituacaoRua = this.HigienesSelecionadas.Select(o => (Models.AcessoHigiene)o).ToList();
 
-                await SalvarExecuteAsync();
+                SalvarExecute();
 
             };
         }
 
-        public async System.Threading.Tasks.Task SalvarExecuteAsync() {
+        public void SalvarExecute() {
 
             this.IsBusy = true;
 #pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída

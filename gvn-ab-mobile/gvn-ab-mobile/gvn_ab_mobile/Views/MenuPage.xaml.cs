@@ -12,22 +12,9 @@ namespace gvn_ab_mobile.Views {
     public partial class MenuPage : ContentPage {
         public ViewModels.MenuViewModel ViewModel { get; set; }
 
+    
         protected override void OnAppearing() {
-            using (DAO.DAOFichaCadastroIndividual DAOFichaCadastroIndividual = new DAO.DAOFichaCadastroIndividual())
-            using (DAO.DAOFichaCadastroDomiciliarTerritorial DAOFichaCadastroDomiciliar = new DAO.DAOFichaCadastroDomiciliarTerritorial())
-            using (DAO.DAOFichaVisitaDomiciliar DAOFichaVisitaDomiciliar = new DAO.DAOFichaVisitaDomiciliar()) {
-                var FichasCadastroIndividual = DAOFichaCadastroIndividual.Select();
-                var FichasCadastroDomiciliar = DAOFichaCadastroDomiciliar.Select();
-                var FichasVisitaDomiciliar = DAOFichaVisitaDomiciliar.Select();
-
-                var nFichas = FichasCadastroIndividual.Count + FichasCadastroDomiciliar.Count + FichasVisitaDomiciliar.Count;
-
-                if (this.ViewModel.HasFichas = nFichas > 0) {
-                    this.ViewModel.SendText = $"Enviar fichas ({nFichas})";
-                } else {
-                    this.ViewModel.SendText = "Enviar fichas";
-                };
-            };
+            this.ViewModel.LoadSend();
         }
 
         public MenuPage(Models.Profissional profissional, Models.Cbo cbo, Models.Equipe equipe) {

@@ -18,7 +18,7 @@ namespace gvn_ab_mobile.Controls {
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            var selectedItem = ((SelectItem)((ListView)sender).SelectedItem);
+            var selectedItem = (((ListView)sender).SelectedItem) as SelectItem;
             if(selectedItem != null) {
                 selectedItem.IsSelected = !selectedItem.IsSelected;
             };

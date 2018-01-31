@@ -11,20 +11,19 @@ namespace gvn_ab_mobile.Controls {
     public abstract class TableGridPage : ContentPage {
         public object Item { get; set; }
         public TableGridViewModel ViewModel { get; set; }
-        
-        //Ficha Familia
-        public ObservableRangeCollection<Models.RendaFamiliar> RendasFamiliares { get; set; }
-        //
+        public object ItemViewModel { get; set; }
 
         public ICommand Save { get; }
         public ICommand Cancel { get; }
 
-        public TableGridPage(TableGridViewModel viewModel, object item) {
+        public TableGridPage(TableGridViewModel viewModel, object item, object itemViewModel = null) {
             this.Item = item;
             this.ViewModel = viewModel;
-            this.BindingContext = this;
+            this.ItemViewModel = itemViewModel;
 
-            this.RendasFamiliares = new ObservableRangeCollection<Models.RendaFamiliar>(new DAO.DAORendaFamiliar().Select());
+            this.BindingContext = this;
+            
+
             this.Save = new Command(() => this.SaveExecute());
             this.Cancel = new Command(() => this.CancelExecute());
         }

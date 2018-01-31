@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace gvn_ab_mobile.Helpers {
+    public class PostResult {
+        public bool Status { get; set; }
+        public string Message { get; set; }
+    }
     public class RestAPI : IDisposable {
         string Url { get; set; }
         public RestAPI(string url) {
@@ -22,27 +26,28 @@ namespace gvn_ab_mobile.Helpers {
             };
         }
 
-        public async Task<bool> PostAsync(Models.FichaVisitaDomiciliarTerritorial obj) {
+        public async Task<PostResult> PostAsync(Models.FichaVisitaDomiciliarTerritorial obj) {
             return await this.PostAsync(new {
                 tipoFicha = "FichaVisitaDomiciliarTerritorial", objDados = obj
             });
         }
 
-        public async Task<bool> PostAsync(Models.FichaCadastroDomiciliarTerritorial obj) {
+        public async Task<PostResult> PostAsync(Models.FichaCadastroDomiciliarTerritorial obj) {
             return await this.PostAsync(new {
                 tipoFicha = "FichaCadastroDomiciliarTerritorial", objDados = obj
             });
         }
 
-        public async Task<bool> PostAsync(Models.FichaCadastroIndividual obj) {
+        public async Task<PostResult> PostAsync(Models.FichaCadastroIndividual obj) {
             return await this.PostAsync(new {
                 tipoFicha = "FichaCadastroIndividual", objDados = obj
             });
         }
 
 
-        public async Task<bool> PostAsync(object obj) {
+        public async Task<PostResult> PostAsync(object obj) {
             using (HttpClient client = new HttpClient()) {
+                var result = new PostResult();
 
                 var uri = new Uri(this.Url);
                 var json = JsonConvert.SerializeObject(obj);
@@ -50,10 +55,15 @@ namespace gvn_ab_mobile.Helpers {
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(uri, content);
 
-                if (!response.IsSuccessStatusCode) return false;
+                if (result.Status = response.IsSuccessStatusCode){
+                    string buffer = await response.Content.ReadAsStringAsync();
+                    if(String.Compare(buffer, "ack", StringComparison.CurrentCulture) != 0) {
+                        result.Status = false;
+                        result.Message = buffer.Replace("nack|", "");
+                    };
+                };
 
-                string result = await response.Content.ReadAsStringAsync();
-                return String.Compare(result, "ack", StringComparison.CurrentCulture) == 0;
+                return result;
             };
         }
 

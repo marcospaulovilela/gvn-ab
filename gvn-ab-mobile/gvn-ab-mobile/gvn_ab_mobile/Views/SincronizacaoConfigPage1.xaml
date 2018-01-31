@@ -16,7 +16,7 @@
                     <Entry Text="{Binding SincronizacaoConfig.DesEndereco }" FontSize="Small" Placeholder="Endereço Governa.Saude.AtencaoBasica" VerticalOptions="Center" />
                     
                     <Button Text="Conectar" Command="{Binding Connectar}"  IsEnabled="{Binding SincronizacaoConfig.hasDesEndereco }"   BackgroundColor="Transparent" TextColor="#003264" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill"/>
-                    <Button IsVisible="True" Text="SYNC - OFFLINE (CRIA TABELAS E USUARIO FIXO) - APAGAR DEPOIS" BackgroundColor="Transparent" Command="{Binding SyncOffline}" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="#003264"  VerticalOptions="Center"/>
+                    <Button IsVisible="False" Text="SYNC - OFFLINE (CRIA TABELAS E USUARIO FIXO) - APAGAR DEPOIS" BackgroundColor="Transparent" Command="{Binding SyncOffline}" BorderColor="Red" BorderRadius="100" HorizontalOptions="Fill" TextColor="#003264"  VerticalOptions="Center"/>
                 </StackLayout>
             </Grid>
             <ContentView x:Name="actIndBackground" BackgroundColor="#222222" Opacity="0.5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsBusy}"/>

@@ -36,18 +36,22 @@ namespace gvn_ab_mobile.Controls {
     public class TableGridViewModel : ViewModels.BaseViewModel {
         public ICommand Add { get; }
 
-        private TableGrid Control { get; set; }
+        protected TableGrid Control { get; set; }
 
         public TableGridViewModel(TableGrid control) {
             this.Control = control;
             this.ItemsForListView = new ObservableCollection<TableGridItem>();
             this.Add = new Command(async () => await this.AddExecuteAsync());
-
         }
 
         private async Task AddExecuteAsync() {
             var item = System.Activator.CreateInstance(Type.GetType(this.Control.ItemType));
-            var page = (TableGridPage)System.Activator.CreateInstance(Type.GetType(this.Control.ItemPage), this, item);
+            object ItemViewModel = null;
+            if (!string.IsNullOrEmpty(this.Control.ItemViewModelType)) {
+                ItemViewModel = System.Activator.CreateInstance(Type.GetType(this.Control.ItemViewModelType), item);
+            };
+
+            var page = (TableGridPage)System.Activator.CreateInstance(Type.GetType(this.Control.ItemPage), this, item, ItemViewModel);
 
             await this.Control.Navigation.PushModalAsync(page);
         }
@@ -67,7 +71,12 @@ namespace gvn_ab_mobile.Controls {
         }
 
         public async Task EditItemAsync(TableGridItem item) {
-            var page = (TableGridPage)System.Activator.CreateInstance(Type.GetType(this.Control.ItemPage), this, item.Data);
+            object ItemViewModel = null;
+            if (!string.IsNullOrEmpty(this.Control.ItemViewModelType)) {
+                ItemViewModel = System.Activator.CreateInstance(Type.GetType(this.Control.ItemViewModelType), item.Data);
+            };
+
+            var page = (TableGridPage)System.Activator.CreateInstance(Type.GetType(this.Control.ItemPage), this, item.Data, ItemViewModel);
             await this.Control.Navigation.PushModalAsync(page);
         }
 
@@ -91,6 +100,7 @@ namespace gvn_ab_mobile.Controls {
         public static readonly BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(ObservableCollection<object>), typeof(TableGrid), null, BindingMode.TwoWay, propertyChanged: OnItemsSourceChanged);
 
         public string ItemType { get; set; }
+        public string ItemViewModelType { get; set; }
         public string ItemPage { get; set; }
 
         public ICommand Add { get; }
@@ -120,7 +130,12 @@ namespace gvn_ab_mobile.Controls {
         }
 
         private void ListViewBugado_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            var obj = ((ListView)sender).SelectedItem as TableGridItem;
             ((ListView)sender).SelectedItem = null;
+
+            if (obj == null) return;
+
+            obj.Edit.Execute(null);
         }
     }
 }
