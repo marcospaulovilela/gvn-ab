@@ -35,28 +35,10 @@
                 </StackLayout>
 
                 <StackLayout>
-                    <Label Text="CPF do Cidadão:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
-                    <Entry x:Name="CPFCidadao" Placeholder="CPF do Cidadao" Keyboard="Numeric" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.Cpf}">
-                        <Entry.Behaviors>
-                            <behaviors:ValidatorCpf />
-                        </Entry.Behaviors>
-                    </Entry>
-                </StackLayout>
-
-                <StackLayout>
                     <Label Text="RG do Cidadão:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
                     <Entry x:Name="RGCidadao" Placeholder="RG do Cidadao" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.Rg}">
                         <Entry.Behaviors>
                             <behaviors:EntryLengthBehavior MinLength="8"  MaxLength="8"  Required="true" />
-                        </Entry.Behaviors>
-                    </Entry>
-                </StackLayout>
-
-                <StackLayout>
-                    <Label Text="Título de Eleitor do Cidadão:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
-                    <Entry x:Name="TituloEleitorCidadao" Placeholder="Título de Eleitor" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.TituloEleitor}">
-                        <Entry.Behaviors>
-                            <behaviors:EntryLengthBehavior MaxLength="12"  Required="true" />
                         </Entry.Behaviors>
                     </Entry>
                 </StackLayout>
@@ -218,7 +200,7 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" >
                     <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="NomCidadao|CPFCidadao|RGCidadao|TituloEleitorCidadao|CodMicroarea|DataNascimento|CodSexo|CodRacaCor|CodEtnia|NomMae|NomPai|CodNacionalidade|CodUF|CodMunicipio|CodPaisNascimento|DesPortariaNaturalizacao" />
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="NomCidadao|RGCidadao|CodMicroarea|DataNascimento|CodSexo|CodRacaCor|CodEtnia|NomMae|NomPai|CodNacionalidade|CodUF|CodMunicipio|CodPaisNascimento|DesPortariaNaturalizacao" />
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>
