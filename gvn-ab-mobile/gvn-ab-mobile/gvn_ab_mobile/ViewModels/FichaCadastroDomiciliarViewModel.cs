@@ -576,7 +576,7 @@ namespace gvn_ab_mobile.ViewModels
                 else
                 {
                     this.Ficha.NomeResponsavelTecnico = "";
-                    SalvarExecuteAsync();
+                    SalvarExecute();
                 }
                    
             }

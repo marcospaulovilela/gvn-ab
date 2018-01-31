@@ -76,7 +76,7 @@
                             <Label Text="RG do Cidadão:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
                             <Entry x:Name="RGCidadao" Placeholder="RG do Cidadao" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.Rg}">
                                 <Entry.Behaviors>
-                                    <behaviors:EntryLengthBehavior MinLength="8"  MaxLength="8"  Required="true" />
+                                    <behaviors:EntryLengthBehavior MinLength="8"  MaxLength="8"  Required="false" />
                                 </Entry.Behaviors>
                             </Entry>
                         </StackLayout>
@@ -85,7 +85,7 @@
                             <Label Text="Título de Eleitor do Cidadão:" FontSize="Medium" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Fill" TextColor="Black" />
                             <Entry x:Name="TituloEleitorCidadao" Placeholder="Título de Eleitor" FontSize="Medium" PlaceholderColor="LightGray" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Fill" TextColor="Black" Text="{Binding Ficha.TituloEleitor}">
                                 <Entry.Behaviors>
-                                    <behaviors:EntryLengthBehavior MaxLength="12"  Required="true" />
+                                    <behaviors:EntryLengthBehavior MaxLength="12"  Required="false" />
                                 </Entry.Behaviors>
                             </Entry>
                         </StackLayout>
@@ -271,7 +271,7 @@
                 <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="FillAndExpand" >
                     <Button Text="Continuar" BackgroundColor="#003264" HorizontalOptions="FillAndExpand" TextColor="White"  VerticalOptions="Center">
                         <Button.Behaviors>
-                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodCns|CodCnsResponsavel|CodMicroarea|NomCidadao|NomSocialCidadao|DataNascimento|CodSexo|CodRacaCor|CodEtnia|NumPisPasep|NomMae|NomPai|CodNacionalidade|CodMunicipio|CodPaisNascimento|DesPortariaNaturalizacao|NumTelefone|DesEmail|CodUF|CPFCidadao|RGCidadao|TituloEleitorCidadao" />
+                            <behaviors:ButtonSubmitBehavior Command="{Binding Continuar}" Controls="CodCns|CodCnsResponsavel|CodMicroarea|NomCidadao|NomSocialCidadao|DataNascimento|CodSexo|CodRacaCor|CodEtnia|NumPisPasep|NomMae|NomPai|CodNacionalidade|CodMunicipio|CodPaisNascimento|DesPortariaNaturalizacao|NumTelefone|DesEmail|CodUF|RGCidadao|TituloEleitorCidadao" />
                         </Button.Behaviors>
                     </Button>
                 </StackLayout>
